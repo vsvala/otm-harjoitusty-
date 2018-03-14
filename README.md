@@ -1,7 +1,6 @@
 <h1>OTM-harjoitustyö<h1> 
 <h2>Tehtävät<h2>
 <h3>Viikko1<h3>
-*https://github.com/vsvala/otm-harjoitusty-/blob/master/laskarit/viikko1/gitlog.txt
-*https://github.com/vsvala/otm-harjoitusty-/blob/master/laskarit/viikko1/komentorivi
-http://github.com - automatic!
-[GitHub](http://github.com)
+##
+*[gitlog.txt](https://github.com/vsvala/otm-harjoitusty-/blob/master/laskarit/viikko1/gitlog.txt)
+*[komentorivi.txt](https://github.com/vsvala/otm-harjoitusty-/blob/master/laskarit/viikko1/komentorivi)
