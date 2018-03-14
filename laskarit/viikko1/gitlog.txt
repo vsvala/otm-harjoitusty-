@@ -1,0 +1,115 @@
+commit c867659d1cacd4a730a47d0344d654ec17a2238f
+Author: Virva <virva.svala@gmail.com>
+Date:   Wed Mar 14 13:31:31 2018 +0200
+
+    uudelleennimeys file 2 --> file 22 ja file1 poisto
+
+ tiedostoja/file1  | 0
+ tiedostoja/file2  | 0
+ tiedostoja/file22 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit e0b225c019c2d16983ede8292c4158f258ede8ec
+Author: Virva <virva.svala@gmail.com>
+Date:   Wed Mar 14 13:22:29 2018 +0200
+
+    tiedostojen file1-3 lisäys tiesostot kansioon
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit ca8cfaa95ed490f7978c657ad818b97f9dd2baec
+Author: Virva <virva.svala@gmail.com>
+Date:   Wed Mar 14 12:56:51 2018 +0200
+
+    muutokset eka ja toka txt:hen git add -p:n avulla
+
+ eka.txt    | 1 +
+ kolmas.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 19ebc9ef364baa8b39e083bf54e093651734a3a1
+Author: Virva <virva.svala@gmail.com>
+Date:   Wed Mar 14 08:43:13 2018 +0200
+
+    tiedosto.txt:n nimen muutos eka.txt:ksi
+
+ eka.txt      | 12 ++++++++++++
+ tiedosto.txt | 12 ------------
+ 2 files changed, 12 insertions(+), 12 deletions(-)
+
+commit c64507cfe69c7ce01aa6571b80af051e1073029f
+Author: Virva <virva.svala@gmail.com>
+Date:   Wed Mar 14 08:40:03 2018 +0200
+
+    toinen.txt tiedoston poisto
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 111a4a1fc71824a3246ef4ee83db727dfbb706c0
+Author: Virva <virva.svala@gmail.com>
+Date:   Wed Mar 14 08:36:56 2018 +0200
+
+    tiedosto.txt:xtä poistettu ja lisätty tekstiä
+
+ tiedosto.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit c16f55489071468aeff37700c46abb79541a13ae
+Author: Virva <virva.svala@gmail.com>
+Date:   Wed Mar 14 08:33:54 2018 +0200
+
+    tiedosto.txt lisätty paljon tekstiä
+
+ tiedosto.txt | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+commit 79cf314cc9ec21733676087711651021b45fe35f
+Author: Virva <virva.svala@gmail.com>
+Date:   Tue Mar 13 23:04:40 2018 +0200
+
+    stuff kansion lisäys
+
+ stuff/jokintiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 081ad139c9a79de6563faf2e13d8ffc74362027a
+Author: Virva <virva.svala@gmail.com>
+Date:   Tue Mar 13 23:00:55 2018 +0200
+
+    kolmannen ja toisen.txt sisällön muutoksia
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit effc168591f4d91b7d25ddbffe7de686b36315a2
+Author: Virva <virva.svala@gmail.com>
+Date:   Tue Mar 13 22:57:46 2018 +0200
+
+    kolmas.txt luuotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 4128aae9b6324066ea967b092aed5258bccbbe86
+Author: Virva <virva.svala@gmail.com>
+Date:   Tue Mar 13 22:54:20 2018 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 49dae5bb6d91198248bb3168b2b1c45d1aefcc5a
+Author: Virva <virva.svala@gmail.com>
+Date:   Tue Mar 13 22:49:56 2018 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
