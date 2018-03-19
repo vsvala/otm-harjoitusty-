@@ -7,14 +7,55 @@ import org.junit.Test;
 public class MaksukorttiTest {
 
     Maksukortti kortti;
+    Kassapaate paate;
 
-    @Before
+    @Before//luodaan kortti alustuksena ennen jokaista testiä 
     public void setUp() {
-        kortti = new Maksukortti(10);
+        kortti = new Maksukortti(10000);
+        paate = new Kassapaate();
     }
 
     @Test
     public void luotuKorttiOlemassa() {
-        assertTrue(kortti!=null);      
+        assertTrue(kortti != null);
     }
+
+    @Test
+    public void konstruktoriAsettaaSaldonOikein() {
+
+        String vastaus = kortti.toString();
+
+        assertEquals("saldo: 100.0", vastaus);
+    }
+
+    @Test
+    public void rahanLataaminenKasvattaaSaldoaOikein() {
+        kortti.lataaRahaa(500);
+        assertEquals("saldo: 105.0", kortti.toString());
+    }
+
+    @Test
+    public void rahanOttaminenVähentääSaldoaOikeinJosRahaa() {
+        kortti.otaRahaa(500);
+        assertEquals("saldo: 95.0", kortti.toString());
+    }
+
+    @Test
+    public void rahanOttaminenVähentääSaldoaOikeinJosEiRahaa() {
+        kortti.otaRahaa(15000);
+        assertEquals("saldo: 100.0", kortti.toString());
+    }
+
+    @Test
+    public void riittääköRahatTrueFalse() {
+
+        assertEquals(true, kortti.otaRahaa(900));
+        assertEquals(false, kortti.otaRahaa(11000));
+    }
+
+    @Test
+    public void luotuKassapääteOnOlemassa() {
+        assertTrue(paate != null);
+    }
+
 }
