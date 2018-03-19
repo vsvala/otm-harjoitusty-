@@ -161,12 +161,21 @@ public class MaksukorttiTest {
         assertEquals(3, paate.edullisiaLounaitaMyyty());
 
     }
-}
 
 //MAin////////////////////////////////////////////////
-//   @Test
-//    public void mainLuoUudenKassapäätteen() {
+   @Test
+    public void mainLuoUudenKassapäätteen() {
+       
+        assertTrue(paate!= null);  
+
+    }
+
+//       @Test
+//    public void mainLuoUudenMaksuKortin() {
 //       
-//           assertTrue(  ,System.out.println(kortti));
+//        assertTrue(kortti!= null);  
 //
-//    }}
+//    }
+
+
+}
