@@ -125,7 +125,7 @@ public class MaksukorttiTest {
         @Test
     public void booleanSyöMaukkaastiEiOtaRahaaKortiltaKunEiSaldoa() {//????????????
         kortti.otaRahaa(900);
-        assertEquals(false, paate.syoEdullisesti(kortti));
+        assertEquals(false, paate.syoMaukkaasti(kortti));
 
     }
 
