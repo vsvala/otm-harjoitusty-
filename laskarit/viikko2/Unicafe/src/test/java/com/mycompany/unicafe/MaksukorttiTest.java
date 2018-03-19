@@ -104,22 +104,28 @@ public class MaksukorttiTest {
     }
 
     @Test
-    public void syöMaukkaastivahentaaKortiltaOikein() {//????????????
-        kortti.otaRahaa(400);
-        assertEquals(true, paate.syoMaukkaasti(kortti));
+    public void booleanSyöEdulllisestivahentaaKortiltaOikeinKunOnSaldoa() {//????????????
+  
+        assertEquals(true, kortti.otaRahaa(240));
 
     }
-//            @Test
-//    public void syöMaukkaastivahentaaKortiltaOikeinJosEiRahaaTarpeeksi() {//????????????
-//       kortti.otaRahaa(1200);
-//        assertEquals(false, paate.syoMaukkaasti(kortti));
-//      
-//    }
+      @Test
+    public void booleanSyöEsullisestiOtaRahaaKortiltaKunEiSaldoa() {//????????????
+      
+        assertEquals(false, kortti.otaRahaa(1400));
+
+    }
 
     @Test
-    public void rahanLatausKortilleKasvattaaKassaaOikein() {//????????????
-        kortti.otaRahaa(400);
-        assertEquals(true, paate.syoMaukkaasti(kortti));
+    public void booleanSyöMaukkaastiOttaaRahaaKortiltaKunOnSaldoa() {//????????????
+       
+        assertEquals(true,  kortti.otaRahaa(400));
+
+    }
+        @Test
+    public void booleanSyöMaukkaastiEiOtaRahaaKortiltaKunEiSaldoa() {//????????????
+      
+        assertEquals(false, kortti.otaRahaa(1400));
 
     }
 
