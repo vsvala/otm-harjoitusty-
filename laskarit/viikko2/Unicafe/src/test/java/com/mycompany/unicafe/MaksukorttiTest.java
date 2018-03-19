@@ -11,7 +11,7 @@ public class MaksukorttiTest {
 
     @Before//luodaan kortti alustuksena ennen jokaista testiä 
     public void setUp() {
-        kortti = new Maksukortti(10000);
+        kortti = new Maksukortti(1000);
         paate = new Kassapaate();
     }
 
@@ -25,25 +25,25 @@ public class MaksukorttiTest {
 
         String vastaus = kortti.toString();
 
-        assertEquals("saldo: 100.0", vastaus);
+        assertEquals("saldo: 10.0", vastaus);
     }
 
     @Test
     public void rahanLataaminenKasvattaaSaldoaOikein() {
         kortti.lataaRahaa(500);
-        assertEquals("saldo: 105.0", kortti.toString());
+        assertEquals("saldo: 15.0", kortti.toString());
     }
 
     @Test
     public void rahanOttaminenVähentääSaldoaOikeinJosRahaa() {
         kortti.otaRahaa(500);
-        assertEquals("saldo: 95.0", kortti.toString());
+        assertEquals("saldo: 5.0", kortti.toString());
     }
 
     @Test
     public void rahanOttaminenVähentääSaldoaOikeinJosEiRahaa() {
         kortti.otaRahaa(15000);
-        assertEquals("saldo: 100.0", kortti.toString());
+        assertEquals("saldo: 10.0", kortti.toString());
     }
 
     @Test
@@ -53,15 +53,22 @@ public class MaksukorttiTest {
         assertEquals(false, kortti.otaRahaa(11000));
     }
 
+    //KAssapäätetestit///////////////////////////////////////////////
     @Test
     public void luotuKassapääteOnOlemassa() {
         assertTrue(paate != null);
     }
 
     @Test
-    public void syöEdullisestiLisaaKassaanOikein() {
+    public void syöEdullisestiLisaaKassaanOikeinRahaaTarpeeksi() {
         paate.syoEdullisesti(400);
         assertEquals(100240, paate.kassassaRahaa());
+
+    }
+        @Test
+    public void syöEdullisestiEilisaaKassaanJosRahaaLiianVahan() {
+        paate.syoEdullisesti(200);
+        assertEquals(100000, paate.kassassaRahaa());
 
     }
 
@@ -76,6 +83,13 @@ public class MaksukorttiTest {
         assertEquals(100400, paate.kassassaRahaa());
 
     }
+         @Test
+    public void syöMaukkaastiEilisaaKassaanJosRahaaLiianVahan() {
+        paate.syoMaukkaasti(200);
+        assertEquals(100000, paate.kassassaRahaa());
+
+    }
+
 
     public void syömaukkaastiKassaPalauttaaOikeinMaksusta() {
         paate.syoMaukkaasti(600);
@@ -108,12 +122,22 @@ public class MaksukorttiTest {
         assertEquals(true, paate.syoMaukkaasti(kortti));
 
     }
-//            @Test
-//    public void rahanLatausKortilleKasvattaaKassaaJaKorttiaOikein() {
-//        kortti.lataaRahaa(400);
-//        assertEquals(1400, paate.);
-//      
-//    }
+
+    @Test
+    public void rahanLatausKortilleKasvattaaKassaaJaKorttiaOikeinKunPositiivinen() {
+
+        paate.lataaRahaaKortille(kortti, 400);
+        assertEquals(100400, paate.kassassaRahaa());
+
+    }
+
+    @Test
+    public void rahanLatausKortilleKasvattaaKassaaJaKorttiaOikeinKunNegatiivinen() {
+
+        paate.lataaRahaaKortille(kortti, -400);
+        assertEquals(100000, paate.kassassaRahaa());
+
+    }
 
     @Test
     public void maukkaitaLounaitamyyty() {//????????????
@@ -126,9 +150,17 @@ public class MaksukorttiTest {
     @Test
     public void edullisiaLounaitamyyty() {//????????????
         paate.syoEdullisesti(240);
-        paate.syoEdullisesti(240);   
+        paate.syoEdullisesti(240);
         paate.syoEdullisesti(240);
         assertEquals(3, paate.edullisiaLounaitaMyyty());
 
     }
 }
+
+//MAin////////////////////////////////////////////////
+//   @Test
+//    public void mainLuoUudenKassapäätteen() {
+//       
+//           assertTrue(  ,System.out.println(kortti));
+//
+//    }}
