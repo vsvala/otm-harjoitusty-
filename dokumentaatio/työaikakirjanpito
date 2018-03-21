@@ -1,0 +1,16 @@
+# työaikakirjanpito
+
+| päivä | aika | mitä tein  |
+| :----:|:-----| :-----|
+| 23.3. | 2    | Alustava määrittelydokumentt |
+| 19.2. | ?    | tutustuminen JavaFX:n, käyttöliittymän alustava toteutus |
+| 20.2. | ?    | käyttäjänhallinta, tallennus tiedostoon, rakenteen refaktorointi |
+|       | ?    | sovelluksen rakenteen refaktorointi |
+|       | ?    | määrittelydokumentti |
+| 21.2. | ?    | arkkitehtuurikuvaus |
+|       | ?    | testaus |
+| 4.3.  | ?    | koodin refaktorointia |
+| 5.3.  | 2    | arkkitehtuurikuvauksen tarkennus |
+|       | 1    | käyttöohje |
+| 6.3.  | 2    | testaus |
+| yht   | 28   | | 
