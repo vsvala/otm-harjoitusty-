@@ -50,121 +50,113 @@ public class MaksukorttiTest {
 
         assertEquals(true, kortti.otaRahaa(900));
         assertEquals(false, kortti.otaRahaa(11000));
-    }
+ }
 
-    //KAssapäätetestit///////////////////////////////////////////////
-    @Test
-    public void luotuKassapääteOnOlemassa() {
-        assertTrue(paate != null);
-    }
-
-    @Test
-    public void syöEdullisestiLisaaKassaanOikeinRahaaTarpeeksi() {
-        paate.syoEdullisesti(400);
-        assertEquals(100240, paate.kassassaRahaa());
-
-    }
-        @Test
-    public void syöEdullisestiEilisaaKassaanJosRahaaLiianVahan() {
-        paate.syoEdullisesti(200);
-        assertEquals(100000, paate.kassassaRahaa());
-
-    }
-
-    public void syöEdullisestiKassaPalauttaaOikeinMaksusta() {
-        paate.syoEdullisesti(400);
-        assertEquals(160, paate.kassassaRahaa());
-    }
-
-    @Test
-    public void syöMaukkaastiLisaaKassaanOikein() {
-        paate.syoMaukkaasti(600);
-        assertEquals(100400, paate.kassassaRahaa());
-
-    }
-        @Test
-    public void syöVähentääKortiltaOikein() {
-        paate.syoMaukkaasti(kortti);
-        assertEquals(600, kortti.saldo());
-
-    }
-         @Test
-    public void syöMaukkaastiEilisaaKassaanJosRahaaLiianVahan() {
-        paate.syoMaukkaasti(200);
-        assertEquals(100000, paate.kassassaRahaa());
-
-    }
-
-
-    public void syömaukkaastiKassaPalauttaaOikeinMaksusta() {
-        paate.syoMaukkaasti(600);
-        assertEquals(200, paate.kassassaRahaa());
-    }
-
-    @Test
-    public void syöEdullisestivahentaaKortiltaOikein() {//????????????
-        kortti.otaRahaa(240);
-        assertEquals(true, paate.syoEdullisesti(kortti));
-
-    }
+//    @Test
+//    public void syöEdullisestiLisaaKassaanOikeinRahaaTarpeeksi() {
+//        paate.syoEdullisesti(400);
+//        assertEquals(100240, paate.kassassaRahaa());
+//
+//    }
+//        @Test
+//    public void syöEdullisestiEilisaaKassaanJosRahaaLiianVahan() {
+//        paate.syoEdullisesti(200);
+//        assertEquals(100000, paate.kassassaRahaa());
+//
+//    }
+//
+//    public void syöEdullisestiKassaPalauttaaOikeinMaksusta() {
+//        paate.syoEdullisesti(400);
+//        assertEquals(160, paate.kassassaRahaa());
+//    }
+//
+//    @Test
+//    public void syöMaukkaastiLisaaKassaanOikein() {
+//        paate.syoMaukkaasti(600);
+//        assertEquals(100400, paate.kassassaRahaa());
+//
+//    }
+//        @Test
+//    public void syöVähentääKortiltaOikein() {
+//        paate.syoMaukkaasti(kortti);
+//        assertEquals(600, kortti.saldo());
+//
+//    }
+//         @Test
+//    public void syöMaukkaastiEilisaaKassaanJosRahaaLiianVahan() {
+//        paate.syoMaukkaasti(200);
+//        assertEquals(100000, paate.kassassaRahaa());
+//
+//    }
+//
+//
+//    public void syömaukkaastiKassaPalauttaaOikeinMaksusta() {
+//        paate.syoMaukkaasti(600);
+//        assertEquals(200, paate.kassassaRahaa());
+//    }
+//
+//    @Test
+//    public void booleanSyöEdullisestivahentaaKortiltaOikein() {
+//        kortti.otaRahaa(240);
+//        assertEquals(true, paate.syoEdullisesti(kortti));
+//
+//    }
 
     @Test
     public void booleanSyöEdulllisestivahentaaKortiltaOikeinKunOnSaldoa() {//????????????
-  
         assertEquals(true, kortti.otaRahaa(240));
-
     }
-      @Test
-    public void booleanSyöEsullisestiOtaRahaaKortiltaKunEiSaldoa() {//????????????
-      kortti.otaRahaa(1000);
-        assertEquals(false, paate.syoEdullisesti(kortti));
-
-    }
-
-    @Test
-    public void booleanSyöMaukkaastiOttaaRahaaKortiltaKunOnSaldoa() {//????????????
-       
-        assertEquals(true,  kortti.otaRahaa(400));
-
-    }
-        @Test
-    public void booleanSyöMaukkaastiEiOtaRahaaKortiltaKunEiSaldoa() {//????????????
-        kortti.otaRahaa(900);
-        assertEquals(false, paate.syoMaukkaasti(kortti));
-
-    }
-
-    @Test
-    public void rahanLatausKortilleKasvattaaKassaaJaKorttiaOikeinKunPositiivinen() {
-
-        paate.lataaRahaaKortille(kortti, 400);
-        assertEquals(100400, paate.kassassaRahaa());
-
-    }
-
-    @Test
-    public void rahanLatausKortilleKasvattaaKassaaJaKorttiaOikeinKunNegatiivinen() {
-
-        paate.lataaRahaaKortille(kortti, -400);
-        assertEquals(100000, paate.kassassaRahaa());
-
-    }
-
-    @Test
-    public void maukkaitaLounaitamyyty() {//????????????
-        paate.syoMaukkaasti(400);
-        paate.syoMaukkaasti(400);
-        assertEquals(2, paate.maukkaitaLounaitaMyyty());
-
-    }
-
-    @Test
-    public void edullisiaLounaitamyyty() {//????????????
-        paate.syoEdullisesti(240);
-        paate.syoEdullisesti(240);
-        paate.syoEdullisesti(240);
-        assertEquals(3, paate.edullisiaLounaitaMyyty());
-
-    }
-
+//      @Test
+//    public void booleanSyöEsullisestiOtaRahaaKortiltaKunEiSaldoa() {//????????????
+//      kortti.otaRahaa(1000);
+//        assertEquals(false, paate.syoEdullisesti(kortti));
+//
+//    }
+//
+//    @Test
+//    public void booleanSyöMaukkaastiOttaaRahaaKortiltaKunOnSaldoa() {//????????????
+//       
+//        assertEquals(true,  kortti.otaRahaa(400));
+//
+//    }
+//        @Test
+//    public void booleanSyöMaukkaastiEiOtaRahaaKortiltaKunEiSaldoa() {//????????????
+//        kortti.otaRahaa(900);
+//        assertEquals(false, paate.syoMaukkaasti(kortti));
+//
+//    }
+//
+//    @Test
+//    public void rahanLatausKortilleKasvattaaKassaaJaKorttiaOikeinKunPositiivinen() {
+//
+//        paate.lataaRahaaKortille(kortti, 400);
+//        assertEquals(100400, paate.kassassaRahaa());
+//
+//    }
+//
+//    @Test
+//    public void rahanLatausKortilleKasvattaaKassaaJaKorttiaOikeinKunNegatiivinen() {
+//
+//        paate.lataaRahaaKortille(kortti, -400);
+//        assertEquals(100000, paate.kassassaRahaa());
+//
+//    }
+//
+//    @Test
+//    public void maukkaitaLounaitamyyty() {//????????????
+//        paate.syoMaukkaasti(400);
+//        paate.syoMaukkaasti(400);
+//        assertEquals(2, paate.maukkaitaLounaitaMyyty());
+//
+//    }
+//
+//    @Test
+//    public void edullisiaLounaitamyyty() {//????????????
+//        paate.syoEdullisesti(240);
+//        paate.syoEdullisesti(240);
+//        paate.syoEdullisesti(240);
+//        assertEquals(3, paate.edullisiaLounaitaMyyty());
+//
+//    }
+//
 }
