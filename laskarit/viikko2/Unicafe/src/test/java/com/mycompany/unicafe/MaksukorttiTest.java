@@ -24,7 +24,6 @@ public class MaksukorttiTest {
     public void konstruktoriAsettaaSaldonOikein() {
 
         String vastaus = kortti.toString();
-
         assertEquals("saldo: 10.0", vastaus);
     }
 
@@ -81,6 +80,12 @@ public class MaksukorttiTest {
     public void syöMaukkaastiLisaaKassaanOikein() {
         paate.syoMaukkaasti(600);
         assertEquals(100400, paate.kassassaRahaa());
+
+    }
+        @Test
+    public void syöVähentääKortiltaOikein() {
+        paate.syoMaukkaasti(kortti);
+        assertEquals(600, kortti.saldo());
 
     }
          @Test
@@ -161,21 +166,5 @@ public class MaksukorttiTest {
         assertEquals(3, paate.edullisiaLounaitaMyyty());
 
     }
-
-//MAin////////////////////////////////////////////////
-   @Test
-    public void mainLuoUudenKassapäätteen() {
-       
-        assertTrue(paate!= null);  
-
-    }
-
-//       @Test
-//    public void mainLuoUudenMaksuKortin() {
-//       
-//        assertTrue(kortti!= null);  
-//
-//    }
-
 
 }
