@@ -5,7 +5,4 @@
 
 [komentorivi.txt](https://github.com/vsvala/otm-harjoitusty-/blob/master/laskarit/viikko1/komentorivi.txt)
 
-:)
-:)
-:)
-[Vaatimusmäärittely](https://github.com/vsvala/otmharjoitusty-/blob/master/dokumentaatio/vaatimusmaarittely.md)
+[Vaatimusmäärittely](https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusm%C3%A4%C3%A4rittely.md)
