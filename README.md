@@ -8,3 +8,4 @@
 :)
 :)
 :)
+[Vaatimusmäärittely](https://github.com/vsvala/otmharjoitusty-/blob/master/dokumentaatio/vaatimusmaarittely.md)
