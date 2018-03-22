@@ -49,3 +49,4 @@ Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seura
 - lisätään päiväkirjaan kenttä, johon on mahdollista merkitä tarkempia tietoja päivän aterioista/liikunnasta
 - käyttäjien yhteyteen salasana, joka vaaditaan kirjautuessa
 - käyttäjätunnuksen (ja siihen liittyvien päiväkirjatiedon) poisto
+- päiväkirja voisi hakea reseptejä netistä ja arpoa sen päivän aterianehdotuksen
