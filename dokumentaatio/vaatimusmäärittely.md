@@ -31,8 +31,13 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 
 - käyttäjä näkee kyseisen päivän päiväkirjan pohjan 
 
-- käyttäjä voi kirjoittaa ylös aterioitaan sekä arvioidun kalorimäärän (
- - luotu päiväkirja näkyy ainoastaan sen luoneelle käyttäjälle
+- käyttäjä voi kirjoittaa ylös aterioitaan sekä arvioidun kalorimäärän 
+
+- Käyttäjä voi kirjoittaa ylös päivittäisen liikunnan ja sen määrän
+
+- Sovellus laskee yhteen päivän kalorit
+
+- luotu päiväkirja näkyy ainoastaan sen luoneelle käyttäjälle
 
 - käyttäjä voi lisätä ja poistaa aterioita
 
