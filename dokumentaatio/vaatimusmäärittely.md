@@ -10,7 +10,7 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli _normaali k�
 
 ## Käyttöliittymäluonnos
 
-Sovellus koostuu neljästä eri näkymästä
+Sovellus kolmesta eri näkymästä
 
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/IMG_5450.JPG" width="750">
 
