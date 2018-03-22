@@ -2,7 +2,7 @@
 
 ## Soveluksen tarkoitus
 
-FitMe sovelluksen avulla käyttäjien on mahdollista pitää ruoka-ja liikuntapäiväkirjaa syödyistä aterioista päivän liikunnasta. Sovellusta on mahdollista käyttää useamman rekisteröityneen käyttäjän, joilla kaikilla on oma yksilöllinen päiväkirjansa.
+FitMe sovelluksen avulla käyttäjien on mahdollista pitää ruokapäiväkirjaa syödyistä aterioista. Sovellusta on mahdollista käyttää useamman rekisteröityneen käyttäjän, joilla kaikilla on oma yksilöllinen päiväkirjansa.
 
 ## Käyttäjät
 
@@ -14,7 +14,7 @@ Sovellus kolmesta eri näkymästä
 
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/IMG_5450.JPG" width="750">
 
-Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän päiväkirja sivulle. 
+Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän päiväkirjasivulle. 
 
 ## Perusversion tarjoama toiminnallisuus
 
@@ -32,8 +32,6 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 - käyttäjä näkee kyseisen päivän päiväkirjan pohjan 
 
 - käyttäjä voi kirjoittaa ylös aterioitaan sekä arvioidun kalorimäärän 
-
-- Käyttäjä voi kirjoittaa ylös päivittäisen liikunnan ja sen määrän
 
 - Sovellus laskee yhteen päivän kalorit
 
@@ -56,3 +54,4 @@ Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seura
 - käyttäjätunnuksen (ja siihen liittyvien päiväkirjatiedon) poisto
 - päiväkirja voisi hakea reseptejä netistä ja arpoa sen päivän aterianehdotuksen
 - päiväkirjaan voidaan asettaa tavoite kalorit ja se kertoo paljonko ollaan minuksella tai plussalla
+- päiväkirjaan voi lisätä päivittäisen liikunnan lajun ja keston
