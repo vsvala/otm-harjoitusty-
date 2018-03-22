@@ -2,7 +2,7 @@
 
 ## Soveluksen tarkoitus
 
-Fitme ovelluksen avulla käyttäjien on mahdollista pitää ruoka-ja liikuntapäiväkirjaa syödyistä aterioista päivän liikunnasta. Sovellusta on mahdollista käyttää useamman rekisteröityneen käyttäjän, joilla kaikilla on oma yksilöllinen päiväkirjansa.
+FitMe sovelluksen avulla käyttäjien on mahdollista pitää ruoka-ja liikuntapäiväkirjaa syödyistä aterioista päivän liikunnasta. Sovellusta on mahdollista käyttää useamman rekisteröityneen käyttäjän, joilla kaikilla on oma yksilöllinen päiväkirjansa.
 
 ## Käyttäjät
 
