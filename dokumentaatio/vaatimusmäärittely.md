@@ -2,7 +2,7 @@
 
 ## Soveluksen tarkoitus
 
-Sovelluksen avulla käyttäjien on mahdollista pitää kirjaa tekemättömistään töistä eli _todoista_. Sovellusta on mahdollista käyttää useamman rekisteröityneen käyttäjän, joilla kaikilla on oma yksilöllinen tehtävälistansa.
+Fitme ovelluksen avulla käyttäjien on mahdollista pitää ruoka-ja liikuntapäiväkirjaa syödyistä aterioista päivän liikunnasta. Sovellusta on mahdollista käyttää useamman rekisteröityneen käyttäjän, joilla kaikilla on oma yksilöllinen päiväkirjansa.
 
 ## Käyttäjät
 
@@ -14,14 +14,14 @@ Sovellus koostuu kolmesta eri näkymästä
 
 <img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/v-1.png" width="750">
 
-Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän tehtävälistaan.
+Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän päiväkirja sivulle. 
 
 ## Perusversion tarjoama toiminnallisuus
 
 ### Ennen kirjautumista
 
 - käyttäjä voi luoda järjestelmään käyttäjätunnuksen
-  - käyttäjätunnuksen täytyy olla uniikki ja pituudeltaan vähintään 3 merkkiä
+  - käyttäjätunnuksen täytyy olla uniikki ja pituudeltaan vähintään 4 merkkiä
 
 - käyttäjä voi kirjautua järjestelmään
   - kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
@@ -29,12 +29,12 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 
 ### Kirjautumisen jälkeen
 
-- käyttäjä näkee omat tekemättömät työt eli _todot_
+- käyttäjä näkee kyseisen päivän päiväkirjan pohjan
 
-- käyttäjä voi luoda uuden todon
-  - luou todo näkyy ainoastaan sen luoneelle käyttäjälle
+- käyttäjä voi kirjoittaa ylös aterioitaan sekä arvioidun kalorimäärän (
+ - luotu päiväkirja näkyy ainoastaan sen luoneelle käyttäjälle
 
-- käyttäjä voi merkitä todon tehdyksi, jolloin todo häviää listalta
+- käyttäjä voi lisätä ja poistaa aterioita
 
 - käyttäjä voi kirjautua ulos järjestelmästä
 
@@ -42,13 +42,10 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 
 Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seuraavilla toiminnallisuuksilla
 
-- tehdyksi merkittyjen todojen tarkastelu
-- tehdyksi merkittyjen todojen merkkaaminen tekemättömiksi
-- todon tietojen editointi
-- todojen järjestely tärkeysjärjestykseen
-- todojen määrittely muille käyttäjille
-- käyttäjätiimit, jotka näkevät kaikki yhteiset todot
-- mahdollisuus useampaan erilliseen todo-listaan
-- lisätään todoon kenttä, johon on mahdollista merkitä tarkempia todoon liittyviä tietoja
+- viikottainen / kuukausittainen yhteenveto tekstinä /kuvana ruoasta ja liikunnasta
+- päiväkirjan tietojen editointi
+- tietojen järjestely tärkeysjärjestykseen
+- käyttäjätiimit, jotka näkevät toisten ruokailut ja voivat kommentoida tai antaa tähtiä 
+- lisätään päiväkirjaan kenttä, johon on mahdollista merkitä tarkempia tietoja päivän aterioista/liikunnasta
 - käyttäjien yhteyteen salasana, joka vaaditaan kirjautuessa
-- käyttäjätunnuksen (ja siihen liittyvien todojen) poisto
+- käyttäjätunnuksen (ja siihen liittyvien päiväkirjatiedon) poisto
