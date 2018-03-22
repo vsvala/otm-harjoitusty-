@@ -10,9 +10,9 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli _normaali k�
 
 ## Käyttöliittymäluonnos
 
-Sovellus koostuu kolmesta eri näkymästä
+Sovellus koostuu neljästä eri näkymästä
 
-<img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/v-1.png" width="750">
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/IMG_5450.JPG" width="750">
 
 Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän päiväkirja sivulle. 
 
