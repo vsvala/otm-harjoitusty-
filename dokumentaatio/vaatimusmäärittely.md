@@ -55,3 +55,4 @@ Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seura
 - käyttäjien yhteyteen salasana, joka vaaditaan kirjautuessa
 - käyttäjätunnuksen (ja siihen liittyvien päiväkirjatiedon) poisto
 - päiväkirja voisi hakea reseptejä netistä ja arpoa sen päivän aterianehdotuksen
+- päiväkirjaan voidaan asettaa tavoite kalorit ja se kertoo paljonko ollaan minuksella tai plussalla
