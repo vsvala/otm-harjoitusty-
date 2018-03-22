@@ -29,7 +29,7 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 
 ### Kirjautumisen jälkeen
 
-- käyttäjä näkee kyseisen päivän päiväkirjan pohjan
+- käyttäjä näkee kyseisen päivän päiväkirjan pohjan 
 
 - käyttäjä voi kirjoittaa ylös aterioitaan sekä arvioidun kalorimäärän (
  - luotu päiväkirja näkyy ainoastaan sen luoneelle käyttäjälle
