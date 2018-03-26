@@ -12,7 +12,7 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli _normaali k�
 
 Sovellus kolmesta eri näkymästä
 
-<img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kl_luonnos.JPG" width="750">
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kl_luonnos.JPG" width="300">
 
 Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän päiväkirjasivulle. 
 
