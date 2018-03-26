@@ -12,7 +12,7 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli _normaali k�
 
 Sovellus kolmesta eri näkymästä
 
-<img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kl_luonnos.JPG" height="750">
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kl_luonnos.JPG" width="750">
 
 Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käyttäjän luomisnäkymään tai onnistuneen kirjautumisen yhteydessä kirjaantuneen käyttäjän päiväkirjasivulle. 
 
@@ -24,7 +24,11 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
   - käyttäjätunnuksen täytyy olla uniikki ja pituudeltaan vähintään 4 merkkiä
 
 - käyttäjä voi kirjautua järjestelmään
-  - kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
+  - kirj​
+32
+- käyttäjä näkee kyseisen päivän päiväkirjan pohjan 
+33
+autuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
   - jos käyttäjää ei olemassa, ilmoittaa järjestelmä tästä
 
 ### Kirjautumisen jälkeen
