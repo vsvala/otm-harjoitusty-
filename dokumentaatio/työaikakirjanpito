@@ -3,9 +3,9 @@
 | päivä | aika | mitä tein  |
 | :----:|:-----| :-----|
 | 22.3. | 3    | Alustava määrittelydokumentti ja tietokantojen kertausta |
-| 25.3. | ?    | tutustuminen JavaFX:n, käyttöliittymän alustava toteutus |
-| 20.2. | ?    | käyttäjänhallinta, tallennus tiedostoon, rakenteen refaktorointi |
-|       | ?    | sovelluksen rakenteen refaktorointi |
+| 3.3.  | 6    | tutustuminen JavaFX:n, käyttöliittymän alustavaa toteutusta (login ja create user) |
+| 4.3.  | 3    | käyttöliittymän toteutusta (diary page) |
+| 20.2. | ?    | sovelluksen rakenteen refaktorointi, käyttäjänhallinta, tallennus tiedostoon, rakenteen refaktorointi |
 |       | ?    | määrittelydokumentti |
 | 21.2. | ?    | arkkitehtuurikuvaus |
 |       | ?    | testaus |
