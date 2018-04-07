@@ -9,3 +9,14 @@
 /laskarit/viikko2/JavaFXApplication/build/
 /laskarit/viikko2/JavaFXApplication/dist/
 /FitMe/target/
+target
+todos.txt 
+users.txt
+.classpath
+.project
+.settings/
+/nbproject/
+target
+.vscode/
+nbactions.xml
+todoapp.jar
