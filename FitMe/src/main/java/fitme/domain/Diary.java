@@ -50,7 +50,7 @@ public class Diary {
         return id;
     }
 
-    public boolean isDelede() {// isDone() {
+    public boolean isDelete() {// isDone() {
         return delete;
     }
 

@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
-import diaryapp.dao.DiaryDao;
-import diaryapp.dao.UserDao;
+import fitme.dao.DiaryDao;
+import fitme.dao.UserDao;
 
 ///**
 // * Sovelluslogiikasta vastaava luokka 
@@ -57,7 +57,7 @@ public class DiaryService {
         return diaryDao.getAll()
             .stream()
             .filter(t-> t.getUser().equals(loggedIn))
-            .filter(t->!t.isDone())
+            .filter(t->!t.isDelete())//idDone
             .collect(Collectors.toList());
     }
    
@@ -69,7 +69,7 @@ public class DiaryService {
     
     public void markDone(int id) {
         try {
-            diaryDao.setDone(id);
+            diaryDao.setDelete(id);
         } catch (Exception ex) {
         }
     }
