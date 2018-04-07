@@ -61,12 +61,12 @@ public class DiaryService {
             .collect(Collectors.toList());
     }
    
-    /**
-    * todon merkitseminen tehdyksi
-    * 
-    * @param   id   tehdyksi merkittävän todon tunniste
-    */    
-    
+//    /**
+//    * todon merkitseminen tehdyksi
+//    * 
+//    * @param   id   tehdyksi merkittävän todon tunniste
+//    */    
+//    
     public void markDone(int id) {
         try {
             diaryDao.setDelete(id);

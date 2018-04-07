@@ -11,30 +11,33 @@ package fitme.ui;
  * @author svsv
  */
 import java.io.FileInputStream;
+import java.util.List;
 import java.util.Properties;
+import fitme.domain.DiaryService;
+import fitme.domain.Diary;
 import javafx.application.Application;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.scene.Scene; //ikkunan näkymä
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Button;//nappi
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;//komponenttien asettelu
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import fitme.dao.FileDiaryDao;
+import fitme.dao.FileUserDao;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;//ikkuna
 
 public class FitMeUi extends Application {
     
-//      private TodoService todoService;
+    private DiaryService diaryService;   //service
     
     private Scene diaryScene;
     private Scene newUserScene;
@@ -42,47 +45,57 @@ public class FitMeUi extends Application {
     
     private VBox todoNodes;
     private Label menuLabel = new Label();
-//    
-//    @Override
-//    public void init() throws Exception {
-//        Properties properties = new Properties();
-//
-//        properties.load(new FileInputStream("config.properties"));
-//        
-//        String userFile = properties.getProperty("userFile");
-//        String todoFile = properties.getProperty("todoFile");
-//            
-////        FileUserDao userDao = new FileUserDao(userFile);
-////        FileTodoDao todoDao = new FileTodoDao(todoFile, userDao);
-////        todoService = new TodoService(todoDao, userDao);
-//    }
     
-//    public Node createTodoNode(Todo todo) {
-//        HBox box = new HBox(10);
-//        Label label  = new Label(todo.getContent());
-//        label.setMinHeight(28);
-//        Button button = new Button("done");
-//        button.setOnAction(e->{
-//            todoService.markDone(todo.getId());
-//            redrawTodolist();
-//        });
-//                
-//        Region spacer = new Region();
-//        HBox.setHgrow(spacer, Priority.ALWAYS);
-//        box.setPadding(new Insets(0,5,0,5));
-//        
-//        box.getChildren().addAll(label, spacer, button);
-//        return box;
-//    }
     
-//    public void redrawTodolist() {
-//        todoNodes.getChildren().clear();     
-//
-//        List<Todo> undoneTodos = todoService.getUndone();
-//        undoneTodos.forEach(todo->{
-//            todoNodes.getChildren().add(createTodoNode(todo));
-//        });     
-//    }
+// /////////////////////////////service
+    
+    @Override
+    public void init() throws Exception {
+        Properties properties = new Properties();
+
+        properties.load(new FileInputStream("config.properties"));
+        
+        String userFile = properties.getProperty("userFile");
+        String diaryFile = properties.getProperty("diaryFile");
+            
+        FileUserDao userDao = new FileUserDao(userFile);
+        FileDiaryDao diaryDao = new FileDiaryDao(diaryFile, userDao);
+        diaryService = new DiaryService(diaryDao, userDao);
+    }
+    
+    public Node createTodoNode(Diary todo) {
+        HBox box = new HBox(10);
+        Label label  = new Label(todo.getContent());
+        label.setMinHeight(28);
+        Button button = new Button("delete");
+        button.setOnAction(e->{
+            diaryService.markDone(todo.getId());
+            redrawTodolist();
+        });
+                
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+        box.setPadding(new Insets(0,5,0,5));
+        
+        box.getChildren().addAll(label, spacer, button);
+        return box;
+    }
+    
+    public void redrawTodolist() {
+        todoNodes.getChildren().clear();     
+
+        List<Diary> undoneTodos = diaryService.getUndone();
+        undoneTodos.forEach(todo->{
+            todoNodes.getChildren().add(createTodoNode(todo));
+        });     
+    }
+    
+    ////////////////////////////////////////////////////////////////////
+    
+    
+    
+    
+    
     
     @Override
     public void start(Stage primaryStage) {               
@@ -107,15 +120,16 @@ public class FitMeUi extends Application {
             menuLabel.setText(username + " logged in...");
             
             
-//            if ( todoService.login(username) ){
+            if (diaryService.login(username) ){          ////////
                 loginMessage.setText("");
-////                redrawTodolist();
+                redrawTodolist(); 
+                ////////////
            primaryStage.setScene(diaryScene);  
-//                usernameInput.setText("");
-//            } else {
-//                loginMessage.setText("user does not exist");
-//                loginMessage.setTextFill(Color.RED);
-//            }      
+                usernameInput.setText("");
+            } else {
+                loginMessage.setText("user does not exist");
+                loginMessage.setTextFill(Color.RED);
+            }      
         });  
         
         //create user nappia painamalla siirrytään uuteen käyttäjänluomisikkunaan
@@ -167,15 +181,15 @@ public class FitMeUi extends Application {
             if ( username.length()==2 || name.length()<2 ) {
                 userCreationMessage.setText("username or name too short");
                 userCreationMessage.setTextFill(Color.RED);              
-//            } else if ( todoService.createUser(username, name) ){
-//                userCreationMessage.setText("");                
-//                loginMessage.setText("new user created");
-//                loginMessage.setTextFill(Color.GREEN);
-//                primaryStage.setScene(loginScene);      
+            } else if ( diaryService.createUser(username, name) ){
+                userCreationMessage.setText("");                
+                loginMessage.setText("new user created");
+                loginMessage.setTextFill(Color.GREEN);
+                primaryStage.setScene(loginScene);      
             } else {
                     primaryStage.setScene(loginScene);  
-//                userCreationMessage.setText("username has to be unique");
-//                userCreationMessage.setTextFill(Color.RED);        
+                userCreationMessage.setText("username has to be unique");
+                userCreationMessage.setTextFill(Color.RED);        
             }
  
         });  
@@ -211,7 +225,7 @@ public class FitMeUi extends Application {
         
         //logout palauttaa login näkymään
         logoutButton.setOnAction(e->{
-//            todoService.logout();
+            diaryService.logout();
             primaryStage.setScene(loginScene);
         });        
         
@@ -220,7 +234,7 @@ public class FitMeUi extends Application {
         
         HBox createForm = new HBox(10);      //riviasettelu
         createForm.setPadding(new Insets(10));
-        Label breakfastLabel = new Label("Breakfast:"); 
+        Label breakfastLabel = new Label("Daily food:"); 
         Button createBreakfast = new Button("create");
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
@@ -231,7 +245,7 @@ public class FitMeUi extends Application {
         todoNodes = new VBox(10);
         todoNodes.setMaxWidth(280);
         todoNodes.setMinWidth(280);
-//        redrawTodolist();
+        redrawTodolist();
         
         mainSrcollbar.setContent(todoNodes);
         mainPane.setBottom(createForm);
@@ -239,23 +253,23 @@ public class FitMeUi extends Application {
         mainPane.setTop(menuPane);
         
         createBreakfast.setOnAction(e->{
-//            todoService.createTodo(newTodoInput.getText());
+//            Service.createTodo(newTodoInput.getText());
             breakfastInput.setText("");       
-//            redrawTodolist();
+            redrawTodolist();
         });
         
-        //luch 
-        HBox createLunchForm = new HBox(10);      //riviasettelu
-        createLunchForm.setPadding(new Insets(10));
-        Label lunchLabel = new Label("Lunch:"); 
-        Button createLunch = new Button("create");
-        Region lunchspacer = new Region();
-        HBox.setHgrow(lunchspacer, Priority.ALWAYS);
-        TextField lunchInput = new TextField();
-        lunchInput.setPrefWidth(300);
-        createLunchForm.getChildren().addAll(lunchLabel, lunchInput, lunchspacer, createLunch);
-         
-        mainPane.setCenter(createLunchForm);
+//        //luch 
+//        HBox createLunchForm = new HBox(10);      //riviasettelu
+//        createLunchForm.setPadding(new Insets(10));
+//        Label lunchLabel = new Label("Lunch:"); 
+//        Button createLunch = new Button("create");
+//        Region lunchspacer = new Region();
+//        HBox.setHgrow(lunchspacer, Priority.ALWAYS);
+//        TextField lunchInput = new TextField();
+//        lunchInput.setPrefWidth(300);
+//        createLunchForm.getChildren().addAll(lunchLabel, lunchInput, lunchspacer, createLunch);
+//         
+//        mainPane.setCenter(createLunchForm);
    
       
  //  seutup primary stage       
@@ -264,10 +278,10 @@ public class FitMeUi extends Application {
         primaryStage.show();
         primaryStage.setOnCloseRequest(e->{
             System.out.println("klose");
-//            System.out.println(todoService.getLoggedUser());
-//            if (todoService.getLoggedUser()!=null) {
-//                e.consume();   
-//            }
+            System.out.println(diaryService.getLoggedUser());
+            if (diaryService.getLoggedUser()!=null) {
+                e.consume();   
+            }
             
         });
     }
