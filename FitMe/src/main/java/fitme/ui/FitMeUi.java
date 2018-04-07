@@ -36,7 +36,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class FitMeUi extends Application {
-    
+     // sovelluslogiikka  
     private DiaryService diaryService;   //service
     
     private Scene diaryScene;
@@ -51,15 +51,25 @@ public class FitMeUi extends Application {
     
     @Override
     public void init() throws Exception {
-        Properties properties = new Properties();
-
-        properties.load(new FileInputStream("config.properties"));
         
-        String userFile = properties.getProperty("userFile");
-        String diaryFile = properties.getProperty("diaryFile");
-            
-        FileUserDao userDao = new FileUserDao(userFile);
-        FileDiaryDao diaryDao = new FileDiaryDao(diaryFile, userDao);
+         FileUserDao userDao = new FileUserDao("users.txt");
+        FileDiaryDao diaryDao = new FileDiaryDao("todos.txt", userDao);
+        // alustetaan sovelluslogiikka 
+        diaryService = new DiaryService(diaryDao, userDao);
+        
+        
+        
+//        Properties properties = new Properties();
+//
+//        properties.load(new FileInputStream("config.properties"));
+//        
+//        String userFile = properties.getProperty("userFile");
+//        String diaryFile = properties.getProperty("diaryFile");
+//            
+//        FileUserDao userDao = new FileUserDao(userFile);
+//        FileDiaryDao diaryDao = new FileDiaryDao(diaryFile, userDao);
+
+
         diaryService = new DiaryService(diaryDao, userDao);
     }
     
@@ -91,11 +101,7 @@ public class FitMeUi extends Application {
     }
     
     ////////////////////////////////////////////////////////////////////
-    
-    
-    
-    
-    
+   
     
     @Override
     public void start(Stage primaryStage) {               
@@ -234,13 +240,15 @@ public class FitMeUi extends Application {
         
         HBox createForm = new HBox(10);      //riviasettelu
         createForm.setPadding(new Insets(10));
-        Label breakfastLabel = new Label("Daily food:"); 
+        Label breakfastLabel = new Label("Todays food:"); 
         Button createBreakfast = new Button("create");
+        Label kcalLabel = new Label("kcal:"); 
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
         TextField breakfastInput = new TextField();
+        TextField kcalInput = new TextField();
         breakfastInput.setPrefWidth(300);
-        createForm.getChildren().addAll(breakfastLabel, breakfastInput, spacer, createBreakfast);
+        createForm.getChildren().addAll(breakfastLabel, breakfastInput, kcalLabel,kcalInput, spacer, createBreakfast);
         
         todoNodes = new VBox(10);
         todoNodes.setMaxWidth(280);
@@ -253,13 +261,13 @@ public class FitMeUi extends Application {
         mainPane.setTop(menuPane);
         
         createBreakfast.setOnAction(e->{
-//            Service.createTodo(newTodoInput.getText());
+            diaryService.createDiary(breakfastInput.getText());
             breakfastInput.setText("");       
             redrawTodolist();
         });
         
 //        //luch 
-//        HBox createLunchForm = new HBox(10);      //riviasettelu
+////        HBox createLunchForm = new HBox(10);      //riviasettelu
 //        createLunchForm.setPadding(new Insets(10));
 //        Label lunchLabel = new Label("Lunch:"); 
 //        Button createLunch = new Button("create");
@@ -277,7 +285,7 @@ public class FitMeUi extends Application {
         primaryStage.setScene(loginScene);
         primaryStage.show();
         primaryStage.setOnCloseRequest(e->{
-            System.out.println("klose");
+            System.out.println("closing");
             System.out.println(diaryService.getLoggedUser());
             if (diaryService.getLoggedUser()!=null) {
                 e.consume();   
