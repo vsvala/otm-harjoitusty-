@@ -24,11 +24,9 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
   - käyttäjätunnuksen täytyy olla uniikki ja pituudeltaan vähintään 4 merkkiä
 
 - käyttäjä voi kirjautua järjestelmään
-  - kirj​
-32
-- käyttäjä näkee kyseisen päivän päiväkirjan pohjan 
-33
-autuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
+  - käyttäjä näkee kyseisen päivän päiväkirjan pohjan 
+
+-Kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
   - jos käyttäjää ei olemassa, ilmoittaa järjestelmä tästä
 
 ### Kirjautumisen jälkeen
