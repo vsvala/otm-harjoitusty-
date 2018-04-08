@@ -10,6 +10,7 @@ package fitme.ui;
  *
  * @author svsv
  */
+import java.sql.*;
 import java.io.FileInputStream;
 import java.util.List;
 import java.util.Properties;
@@ -318,10 +319,24 @@ public class FitMeUi extends Application {
       System.out.println("sovellus sulkeutuu");
     }    
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         launch(args);
+          Connection connection = DriverManager.getConnection("jdbc:sqlite:fitme.db");
+
+        Statement statement = connection.createStatement();
+
+        ResultSet resultSet = statement.executeQuery("SELECT 1");
+
+        if (resultSet.next()) {
+            System.out.println("Hei tietokantamaailma!");
+        } else {
+            System.out.println("Yhteyden muodostaminen epäonnistui.");
+        }
     }
-    
-} 
+}
+        
+        
+        
+
     
    
