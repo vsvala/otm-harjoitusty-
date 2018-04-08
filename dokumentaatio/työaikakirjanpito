@@ -4,7 +4,9 @@
 | :----:|:-----| :-----|
 | 22.3. | 3    | Alustava määrittelydokumentti ja tietokantojen kertausta |
 | 3.3.  | 6    | tutustuminen JavaFX:n, käyttöliittymän alustavaa toteutusta (login ja create user) |
-| 4.3.  | 2    | käyttöliittymän toteutusta (diary page) |
+| 4.3.  | 4    | käyttöliittymän toteutusta (diary page) |
+| 7.3.  | 6    | Daojen tekemistä, taoista tiedostoon tallennus|
+| 8.3.  | 6    | Tietokantojen teoriankertausta, tietokantataulujen luonti|
 | 20.2. | ?    | sovelluksen rakenteen refaktorointi, käyttäjänhallinta, tallennus tiedostoon, rakenteen refaktorointi |
 |       | ?    | määrittelydokumentti |
 | 21.2. | ?    | arkkitehtuurikuvaus |
