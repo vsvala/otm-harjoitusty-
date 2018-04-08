@@ -321,17 +321,23 @@ public class FitMeUi extends Application {
     
     public static void main(String[] args) throws Exception {
         launch(args);
-          Connection connection = DriverManager.getConnection("jdbc:sqlite:fitme.db");
-
-        Statement statement = connection.createStatement();
-
-        ResultSet resultSet = statement.executeQuery("SELECT 1");
-
-        if (resultSet.next()) {
-            System.out.println("Hei tietokantamaailma!");
-        } else {
-            System.out.println("Yhteyden muodostaminen epäonnistui.");
-        }
+        
+//         Database database = new Database("jdbc:sqlite:tasks.db");
+//         DiaryDao diary = new DiaryDao(database);
+//           UserDao users = new UserDao(database);
+        
+         
+//        Connection connection = DriverManager.getConnection("jdbc:sqlite:fitme.db");
+//
+//        Statement statement = connection.createStatement();
+//
+//        ResultSet resultSet = statement.executeQuery("SELECT 1");
+//
+//        if (resultSet.next()) {
+//            System.out.println("Hei tietokantamaailma!");
+//        } else {
+//            System.out.println("Yhteyden muodostaminen epäonnistui.");
+//        }
     }
 }
         

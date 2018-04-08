@@ -5,3 +5,5 @@
 5;hattara;false;M
 6;Juoma;false;M
 7;keitto;true;Viku
+8;kala;false;Kalle
+9;kana;true;Kalle
