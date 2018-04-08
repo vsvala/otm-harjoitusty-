@@ -1,6 +1,6 @@
 
 # <h1>Ohjelmoinnin-harjoitustyö: FitMe sovellus
-Ohjelmoinnin harjoitustyönä tehty Fit me sovellusprojekti sekä projektin dokumentaatio ja testaus.
+Ohjelmoinnin harjoitustyönä tehty Fitme sovellusprojekti sekä projektin dokumentaatio ja testaus.
 
 ## <h2>Dokumentaatio
 
