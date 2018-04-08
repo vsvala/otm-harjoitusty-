@@ -1,6 +1,10 @@
-# <h1>OTM-harjoitustyö 
+
+# <h1>OTM-harjoitustyö: FitMe sovellus
 Ohjelmoinnin harjoitustyönä tehty Fit me sovellusprojekti sekä projektin dokumentaatio ja testaus.
+
 ## <h2>Dokumentaatio
+
+[Käyttöohje](https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
 [Vaatimusmäärittely](https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusm%C3%A4%C3%A4rittely.md)
 
