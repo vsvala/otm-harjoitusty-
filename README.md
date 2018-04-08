@@ -31,8 +31,6 @@ mvn jacoco:report
 
 Kattavuusraporttia voi tarkastella avaamalla selaimella _target/site/jacoco/index.html_
 
-[kattavuusraportti](file:///home/local/svsv/otm-harjoitustyö/FitMe/target/site/jacoco/fitme.domain)
-
 
 ### Suoritettavan jarin generointi
 
