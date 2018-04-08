@@ -1,7 +1,7 @@
-1;Kana;true;Viku
-2;;true;Viku
-3;KAna;true;Viku
-4;Milk;true;Viku
-5;Jotain;true;Viku
-6;Kaalisoppa;false;Viku
-7;Hernekeitto;false;Viku
+1;200;true;Viku
+2;Kana;false;Viku
+3;kukko;false;Viku
+4;500;true;Viku
+5;hattara;false;M
+6;Juoma;false;M
+7;keitto;false;Viku

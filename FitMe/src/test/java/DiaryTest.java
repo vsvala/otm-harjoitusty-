@@ -46,7 +46,7 @@ public class DiaryTest {
     @Test
     public void kostruktoriLuoPaivakirjanSisallon() {
         User user=new User("Matias", "Mat");
-        Diary diary=new Diary("Moi", user);
+        Diary diary=new Diary("Moi",user);
        assertEquals("Moi", diary.getContent());
     }
 

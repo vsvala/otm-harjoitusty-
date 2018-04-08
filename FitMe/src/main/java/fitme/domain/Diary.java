@@ -41,6 +41,9 @@ public class Diary {
     public String getContent() {
         return content;
     }
+//     public String getkcal() {
+//        return content;
+//    }
 
     public User getUser() {
         return user;

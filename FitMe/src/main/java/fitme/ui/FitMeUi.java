@@ -52,7 +52,7 @@ public class FitMeUi extends Application {
     @Override
     public void init() throws Exception {
         
-         FileUserDao userDao = new FileUserDao("users.txt");
+        FileUserDao userDao = new FileUserDao("users.txt");
         FileDiaryDao diaryDao = new FileDiaryDao("todos.txt", userDao);
         // alustetaan sovelluslogiikka 
         diaryService = new DiaryService(diaryDao, userDao);
@@ -73,23 +73,31 @@ public class FitMeUi extends Application {
         diaryService = new DiaryService(diaryDao, userDao);
     }
     
-    public Node createTodoNode(Diary todo) {
+    
+    
+  //päiväkirjan sisällön listaus ja delete nappi ///////////////////////////////////////////////////////////////////  
+   
+    public Node createTodoNode(Diary diary) {
         HBox box = new HBox(10);
-        Label label  = new Label(todo.getContent());
+        Label label  = new Label(diary.getContent());
         label.setMinHeight(28);
+//       Label kcalLabel  = new Label(diary.getKcal());
         Button button = new Button("delete");
-        button.setOnAction(e->{
-            diaryService.markDone(todo.getId());
+    
+//  napin poistotoiminnallisuus 
+        button.setOnAction(e->{ 
+            diaryService.markDone(diary.getId());
             redrawTodolist();
         });
                 
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
-        box.setPadding(new Insets(0,5,0,5));
+        box.setPadding(new Insets(5,0,0,10));
         
-        box.getChildren().addAll(label, spacer, button);
+        box.getChildren().addAll(label, spacer, button); //lisää kcalLAbel
         return box;
     }
+    
     
     public void redrawTodolist() {
         todoNodes.getChildren().clear();     
@@ -100,7 +108,7 @@ public class FitMeUi extends Application {
         });     
     }
     
-    ////////////////////////////////////////////////////////////////////
+   ///////////// ////////////////////////////////////////////////////////////////////
    
     
     @Override
@@ -259,13 +267,23 @@ public class FitMeUi extends Application {
         mainPane.setBottom(createForm);
       
         mainPane.setTop(menuPane);
-        
-        createBreakfast.setOnAction(e->{
+
+        createBreakfast.setOnAction(e -> {
             diaryService.createDiary(breakfastInput.getText());
-            breakfastInput.setText("");       
+            breakfastInput.setText("");
             redrawTodolist();
-        });
         
+             }); 
+            
+        
+        //Kalorit
+//            createBreakfast.setOnAction(e -> {
+//            diaryService.createDiary(kcalInput.getText());
+//            kcalInput.setText("");
+//            redrawTodolist();
+//       
+//        });
+
 //        //luch 
 ////        HBox createLunchForm = new HBox(10);      //riviasettelu
 //        createLunchForm.setPadding(new Insets(10));
