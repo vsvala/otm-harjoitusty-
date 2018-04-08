@@ -41,7 +41,7 @@
                 <version>0.8.0</version>
                 <configuration>
                     <excludes>
-                        <exclude>todoapp/ui/**/*</exclude>
+                        <exclude>fitme/ui/**/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
