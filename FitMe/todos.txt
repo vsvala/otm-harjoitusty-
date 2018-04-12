@@ -15,3 +15,4 @@
 15;pasta;false;hajame
 16;pesto;false;hajame
 17;Moi;false;hajame
+18;pehmis;false;Viku

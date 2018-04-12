@@ -320,7 +320,56 @@ public class FitMeUi extends Application {
     }    
     
     public static void main(String[] args) throws Exception {
-        launch(args);
+//        launch(args);
+        
+        // luodaan yhteys jdbc:n yli sqlite-tietokantaan nimeltä "tietokanta.db"
+        Connection connection = DriverManager.getConnection("jdbc:sqlite:fitme.db");
+
+        // luodaan kyely "SELECT * FROM Opiskelija", jolla haetaan
+        // kaikki tiedot Opiskelija-taulusta
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM User");
+
+        // suoritetaan kysely -- tuloksena resultSet-olio
+        ResultSet resultSet = statement.executeQuery();
+
+        // käydään tuloksena saadussa oliossa olevat rivit läpi -- next-komento hakee
+        // aina seuraavan rivin, ja palauttaa true jos rivi löytyi
+        while(resultSet.next()) {
+            // haetaan nykyiseltä riviltä opiskelijanumero int-muodossa
+//            Integer opNro = resultSet.getInt("id");
+            // haetaan nykyiseltä riviltä nimi String-muodossa
+            String nimi = resultSet.getString("name");
+            String usernimi = resultSet.getString("username");
+            // haetaan nykyiseltä riviltä syntymävuosi int-muodossa
+//           String food  = resultSet.getString("syntymävuosi");
+//            // haetaan nykyiseltä riviltä pääaine String-muodossa
+//            String paaAine = resultSet.getString("pääaine");
+
+            // tulostetaan tiedot
+            System.out.println( "\t" + nimi + "\t" + usernimi + "\t");
+        }
+
+        // suljetaan lopulta yhteys tietokantaan
+        connection.close();
+ 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
 //         Database database = new Database("jdbc:sqlite:tasks.db");
 //         DiaryDao diary = new DiaryDao(database);
