@@ -3,13 +3,15 @@
 | päivä | aika | mitä tein  |
 | :----:|:-----| :-----|
 | 22.3. | 3    | Alustava määrittelydokumentti ja tietokantojen kertausta |
-| 3.3.  | 6    | tutustuminen JavaFX:n, käyttöliittymän alustavaa toteutusta (login ja create user) |
-| 4.3.  | 4    | käyttöliittymän toteutusta (diary page) |
-| 7.3.  | 6    | Daojen tekemistä, taoista tiedostoon tallennus|
-| 8.3.  | 6    | Tietokantojen teoriankertausta, tietokantataulujen luonti|
-| 9.3.  | 2    | Testin teko ja jacoco |
+| 3.4.  | 6    | tutustuminen JavaFX:n, käyttöliittymän alustavaa toteutusta (login ja create user) |
+| 4.4.  | 4    | käyttöliittymän toteutusta (diary page) |
+| 7.4.  | 6    | Daojen tekemistä, taoista tiedostoon tallennus|
+| 8.4.  | 6    | Tietokantojen teoriankertausta, tietokantataulujen luonti|
+| 9.4.  | 2    | Testin teko ja jacoco |
+| 12.4. | 8    | Tietokannan ja daojen kertausta sekä daojen uusimista tietokantaan tallentavaksi|
 | 20.2. | ?    | sovelluksen rakenteen refaktorointi, käyttäjänhallinta, tallennus tiedostoon, rakenteen refaktorointi |
-|       | ?    | määrittelydokumentti |
+| 20.2. | ?    | sovelluksen rakenteen refaktorointi, käyttäjänhallinta, tallennus tiedostoon, rakenteen refaktorointi |
+|       | ?    |   |
 | 21.2. | ?    | arkkitehtuurikuvaus |
 |       | ?    | testaus |
 | 4.3.  | ?    | koodin refaktorointia |
