@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package fitme.dao;
 
-
+import java.sql.*;
+import java.util.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -18,6 +20,39 @@ import fitme.domain.User;
  */
 public class FileUserDao implements UserDao {
     
+// Connection connection = DriverManager.getConnection("jdbc:sqlite:fitme.db");
+//
+//PreparedStatement stmt = connection.prepareStatement("INSERT INTO User"
+//    + " (username, name)"
+//    + " VALUES (?, ?)");
+
+//stmt.setString(1, user.getNimi());
+//stmt.setString(2, user.getUsername());
+//
+//stmt.executeUpdate();
+//stmt.close();
+
+//  
+//// voimme halutessamme tehdä myös toisen kyselyn, jonka avulla saadaan selville
+//// juuri tallennetun olion tunnus -- alla oletetaan, että asiakkaan voi
+//// yksilöidä nimen ja puhelinnumeron perusteella
+//stmt = connection.prepareStatement("SELECT * FROM Asiakas"
+//    + " WHERE nimi = ? AND puhelinnumero = ?");
+//stmt.setString(1, asiakas.getNimi());
+//stmt.setString(2, asiakas.getPuhelinnumero());
+//
+//ResultSet rs = stmt.executeQuery();
+//rs.next(); // vain 1 tulos
+//
+//Asiakas a = new Asiakas(rs.getInt("id"), rs.getString("nimi"),
+//    rs.getString("puhelinnumero"), rs.getString("katuosoite"),
+//    rs.getInt("postinumero"), rs.getString("postitoimipaikka"));
+//  
+//stmt.close();
+//rs.close();
+//
+//connection.close();
+
     private List<User> users;
     private String file;
 

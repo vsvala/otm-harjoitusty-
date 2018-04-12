@@ -16,6 +16,7 @@ public class Diary {
 
 
     private int id;  //päivämäärä? idksi?
+    private long day;
     private String content;
     private boolean delete;  //done korvasin delete
     private User user;
@@ -59,6 +60,16 @@ public class Diary {
     public void setDelete() {
         delete = true;
     }
+    
+        public long getDay() {
+        return day;
+    }
+    
+    public void setday(long time) {
+        this.day = time;
+    }
+    
+    
 
     @Override
     public boolean equals(Object obj) {

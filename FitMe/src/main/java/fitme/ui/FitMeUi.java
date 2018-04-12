@@ -70,8 +70,6 @@ public class FitMeUi extends Application {
 //        FileUserDao userDao = new FileUserDao(userFile);
 //        FileDiaryDao diaryDao = new FileDiaryDao(diaryFile, userDao);
 
-
-        diaryService = new DiaryService(diaryDao, userDao);
     }
     
     
@@ -320,7 +318,7 @@ public class FitMeUi extends Application {
     }    
     
     public static void main(String[] args) throws Exception {
-//        launch(args);
+        launch(args);
         
         // luodaan yhteys jdbc:n yli sqlite-tietokantaan nimeltä "tietokanta.db"
         Connection connection = DriverManager.getConnection("jdbc:sqlite:fitme.db");
@@ -331,7 +329,11 @@ public class FitMeUi extends Application {
 
         // suoritetaan kysely -- tuloksena resultSet-olio
         ResultSet resultSet = statement.executeQuery();
-
+//        if (resultSet.next()) {
+//            System.out.println("Hei tietokantamaailma!");
+//        } else {
+//            System.out.println("Yhteyden muodostaminen epäonnistui.");
+//        }
         // käydään tuloksena saadussa oliossa olevat rivit läpi -- next-komento hakee
         // aina seuraavan rivin, ja palauttaa true jos rivi löytyi
         while(resultSet.next()) {
@@ -348,7 +350,9 @@ public class FitMeUi extends Application {
             // tulostetaan tiedot
             System.out.println( "\t" + nimi + "\t" + usernimi + "\t");
         }
-
+       
+statement.close();
+resultSet.close();
         // suljetaan lopulta yhteys tietokantaan
         connection.close();
  
