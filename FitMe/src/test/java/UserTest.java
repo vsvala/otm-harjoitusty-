@@ -43,19 +43,29 @@ public class UserTest {
     }
     
            @Test
-    public void CompremetodiPalauttaaTrueJosSamat() {
+    public void CompremetodiPalauttaaFalseJosEiSamat() {
            User user=new User("Mat", "Matias");
            User user2=new User("Maj", "Maija");
        assertEquals(false, user.equals(user2) );
     }
+    
+    
 
            @Test
-    public void CompremetodiPalauttaaFalseJosEiSamat() {
+    public void CompremetodiPalauttaaTrueJosSamat() {
         User user=new User("Mat", "Matias");
         User user2=new User("Mat", "Matias");
         assertEquals(true, user.equals(user2) );
     }
-
+    @Test
+    public void equalsMetodiPalauttaaFalseJosEiUserinInstanssi() { 
+          User user=new User("Mat", "Matias");
+          assertEquals(false, user.equals("Maija"));
+          
+    }
+    
+    
+    
 }
 
     

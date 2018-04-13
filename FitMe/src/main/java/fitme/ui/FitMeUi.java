@@ -134,7 +134,7 @@ public class FitMeUi extends Application {
             menuLabel.setText(username + " logged in...");
             
             
-            if (diaryService.login(username) ){          ////////
+            if (diaryService.login(username) ){                        ////////      LOGIN
                 loginMessage.setText("");
                 redrawTodolist(); 
                 ////////////
