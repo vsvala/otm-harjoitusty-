@@ -96,6 +96,7 @@ public class FitMeUi extends Application {
         box.getChildren().addAll(label, spacer, button); //lisää kcalLAbel
         return box;
     }
+   //hbsfklnl   
     
     
     public void redrawTodolist() {
