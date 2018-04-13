@@ -11,11 +11,13 @@
 11;jkshflef;false;Viku
 12;kana;false;Mikko
 13;kala;false;Mikko
-14;moi;false;Viku
+14;moi;true;Viku
 15;pasta;false;hajame
 16;pesto;false;hajame
 17;Moi;false;hajame
-18;pehmis;false;Viku
+18;pehmis;true;Viku
 19;lsflska;true;Viku
 20;lchslkfjb;false;Miksu
-21;jotain;false;Viku
+21;jotain;true;Viku
+22;karkkia;false;Viku
+23;Karkkia;false;Mike

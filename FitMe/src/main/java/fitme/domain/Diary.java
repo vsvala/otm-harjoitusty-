@@ -4,20 +4,22 @@
  * and open the template in the editor.
  */
 package fitme.domain;
-/**
- * Yksittäistä  ruokalajia kuvaava luokka 
- */
 
+import java.util.Date;
+
+/**
+ * Yksittäistä ruokalajia kuvaava luokka
+ */
 /**
  *
  * @author svsv
  */
 public class Diary {
 
-
     private int id;  //päivämäärä? idksi?
-    private long day;
+    private Date day;
     private String content;
+    private String kcal;
     private boolean delete;  //done korvasin delete
     private User user;
 
@@ -27,13 +29,20 @@ public class Diary {
         this.delete = delete;
         this.user = user;
     }
-    
+    public Diary(int id, String content, Date Day, boolean delete, User user) {
+        this.id = id;
+        this.content = content;
+        this.day = day;
+        this.delete = delete;
+        this.user = user;
+    }
+
     public Diary(String content, User user) {
         this.content = content;
         this.user = user;
         this.delete = false;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
@@ -41,9 +50,9 @@ public class Diary {
     public String getContent() {
         return content;
     }
-//     public String getkcal() {
-//        return content;
-//    }
+     public String getKcal() {
+        return content;
+    }
 
     public User getUser() {
         return user;
@@ -60,16 +69,18 @@ public class Diary {
     public void setDelete() {
         delete = true;
     }
-    
-        public long getDay() {
-        return day;
+
+    public Date getDay() {
+        Date today = new java.sql.Date(System.currentTimeMillis());
+
+        return today;
     }
-    
-    public void setday(long time) {
+
+    public void setday(Date time) {
         this.day = time;
     }
-    
-    
+
+ 
 
     @Override
     public boolean equals(Object obj) {
