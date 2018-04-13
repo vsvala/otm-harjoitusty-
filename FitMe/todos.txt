@@ -16,3 +16,5 @@
 16;pesto;false;hajame
 17;Moi;false;hajame
 18;pehmis;false;Viku
+19;lsflska;true;Viku
+20;lchslkfjb;false;Miksu
