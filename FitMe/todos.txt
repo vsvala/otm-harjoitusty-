@@ -1,1 +1,2 @@
-1;Tee;false;Mike
+1;Kana;false;Viku
+2;Leipä;false;Viku

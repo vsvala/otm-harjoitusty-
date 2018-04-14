@@ -31,8 +31,8 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import fitme.dao.FileDiaryDao;
-import fitme.dao.FileUserDao;
+import fitme.dao.DataDiaryDao;
+import fitme.dao.DataUserDao;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.text.Font;
@@ -52,18 +52,17 @@ public class FitMeUi extends Application {
 
     @Override
     public void init() throws Exception {
-        
+          // alustetaan sovelluslogiikka
        Database database = new Database("jdbc:sqlite:fitme.db");
      
-          FileUserDao userDao = new FileUserDao(database);
-//          FileDiaryDaotest diaryDao = new FileDiaryDaotest(database);
-        // alustetaan sovelluslogiikka 
-        
+          DataUserDao userDao = new DataUserDao(database);
+          DataDiaryDao diaryDao = new DataDiaryDao(database);
+      
+          diaryService = new DiaryService(diaryDao, userDao);
+ 
 //        FileUserDao userDao = new FileUserDao("users.txt");
-        FileDiaryDao diaryDao = new FileDiaryDao("todos.txt", userDao);
+//        FileDiaryDao diaryDao = new FileDiaryDao("todos.txt", userDao);
         // alustetaan sovelluslogiikka 
-        diaryService = new DiaryService(diaryDao, userDao);
-
     }
 
     //päiväkirjan sisällön listaus ja delete nappi ///////////////////////////////////////////////////////////////////  
@@ -73,11 +72,19 @@ public class FitMeUi extends Application {
         label.setMinHeight(28);
 //      Label kcalLabel  = new Label(diary.getKcal());
         Button button = new Button("delete");
-
+//             System.out.println("testiäää"+diary.getUser()+diary.getContent()+diary.getId()+diary.getUser().getUsername());
 //  napin poistotoiminnallisuus 
         button.setOnAction(e -> {
-            diaryService.delete(diary.getId());                  //BUTTON ACTION DELETE FROM DIARY
-            redrawView();   
+            System.out.println("testdelete"+diary.getId());
+//           
+          String sid=Integer.toString(diary.getId());
+          System.out.println("sidii--------testdelete"+sid);
+            diaryService.delete(sid);                  //BUTTON ACTION DELETE FROM DIARY
+            try {   
+                redrawView();
+            } catch (SQLException ex) {
+                Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
 
         Region spacer = new Region();
@@ -89,7 +96,7 @@ public class FitMeUi extends Application {
     }
     
 
-    public void redrawView() {
+    public void redrawView() throws SQLException {
         nodes.getChildren().clear();
 
         List<Diary> diaries = diaryService.getDiary();           //FIND ONE DIARY
@@ -101,7 +108,7 @@ public class FitMeUi extends Application {
 
  // LOGINVIEW////////////////////////////////////////////////////////////////////
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws SQLException {
         // login scene
         System.out.println("start");
 
@@ -228,7 +235,7 @@ public class FitMeUi extends Application {
     }
     // METOD CREATE MAIN DIARYVIEW////////////////////////////////////////////////////////////////////////////////////
 
-    public void createDiaryView(Stage primaryStage) {
+    public void createDiaryView(Stage primaryStage) throws SQLException {
 
         ScrollPane mainSrcollbar = new ScrollPane();  //scrollattava paneeli     
         BorderPane mainPane = new BorderPane(mainSrcollbar);
@@ -283,7 +290,11 @@ public class FitMeUi extends Application {
         createBreakfast.setOnAction(e -> {
             diaryService.createDiary(breakfastInput.getText());  //CREATE BUTTON ACTION call metod DIARYSERVICE CREATE DIARY
             breakfastInput.setText("");
-            redrawView();
+            try {
+                redrawView();
+            } catch (SQLException ex) {
+                Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         });
 

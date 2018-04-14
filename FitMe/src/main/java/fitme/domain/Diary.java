@@ -5,7 +5,8 @@
  */
 package fitme.domain;
 
-import java.util.Date;
+import java.time.Instant;
+import java.sql.Date;
 
 /**
  * Yksittäistä ruokalajia kuvaava luokka
@@ -29,15 +30,22 @@ public class Diary {
         this.delete = delete;
         this.user = user;
     }
-    public Diary(int id, String content, Date Day, boolean delete, User user) {
+    public Diary(int id, String content, Date Day, User user) {
         this.id = id;
         this.content = content;
         this.day = day;
-        this.delete = delete;
+        this.delete = false;
         this.user = user;
     }
 
     public Diary(String content, User user) {
+        this.id = id;
+        this.content = content;
+        this.user = user;
+        this.delete = false;
+    }
+     public Diary(int id, String content) {
+        this.id = id;
         this.content = content;
         this.user = user;
         this.delete = false;

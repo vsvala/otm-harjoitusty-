@@ -25,9 +25,11 @@ public class DiaryService {
     
     public DiaryService(DiaryDao diaryDao, UserDao userDao) {
         this.userDao = userDao;
-        this.diaryDao = diaryDao;
+        this.diaryDao = diaryDao; 
     }
-    
+      
+      
+
 //    /**
 //    * Uuden diarysivun lisääminen kirjautuneena olevalle käyttäjälle
 //    *
@@ -37,7 +39,7 @@ public class DiaryService {
     public boolean createDiary(String content) {
         Diary diary = new Diary(content, loggedIn);
         try {   
-            diaryDao.create(diary);
+            diaryDao.saveOrUpdate(diary);
         } catch (Exception ex) {
             return false;
         }
@@ -50,16 +52,15 @@ public class DiaryService {
 //    * @return kirjautuneen käyttäjän tekemättömät todot
 //    */
 //    
-    public List<Diary> getDiary() {
+    public List<Diary> getDiary() throws SQLException {
         if (loggedIn == null) {
             return new ArrayList<>();
         }
-          
-        return diaryDao.getAll()
-            .stream()
-            .filter(t-> t.getUser().equals(loggedIn))
-            .filter(t->!t.isDelete())//idDone
-            .collect(Collectors.toList());
+        return diaryDao.findAll(loggedIn.getUsername());//loggedIn
+//            .stream()
+//            .filter(t-> t.getUser().equals(loggedIn))
+//            .filter(t->!t.isDelete())//idDone
+//            .collect(Collectors.toList());
     }
    
 //    /**
@@ -68,9 +69,9 @@ public class DiaryService {
 //    * @param   id   tehdyksi merkittävän todon tunniste
 //    */    
 //    
-    public void delete(int id) {
+    public void delete(String id) {
         try {
-            diaryDao.setDelete(id);
+            diaryDao.delete(id);
         } catch (Exception ex) {
         }
     }

@@ -18,11 +18,11 @@ import fitme.domain.User;
  *
  * @author svsv
  */
-public class FileUserDao implements UserDao<User, String> {
+public class DataUserDao implements UserDao<User, String> {
     
     private Database database;
 
-    public FileUserDao(Database database) {
+    public DataUserDao(Database database) {
         this.database = database;
     }
 
@@ -84,7 +84,6 @@ public class FileUserDao implements UserDao<User, String> {
     public User findByUsername(String key) throws SQLException {
          Connection conne = database.getConnection();
         PreparedStatement stmt = conne.prepareStatement("SELECT * FROM User WHERE username = ?");
-
         stmt.setString(1, key);
 
         ResultSet rs = stmt.executeQuery();
