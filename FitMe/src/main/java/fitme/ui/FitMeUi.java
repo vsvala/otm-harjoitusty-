@@ -9,6 +9,7 @@ package fitme.ui;
  *
  * @author svsv
  */
+import fitme.dao.Database;
 import java.sql.*;
 import java.io.FileInputStream;
 import java.util.List;
@@ -32,6 +33,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import fitme.dao.FileDiaryDao;
 import fitme.dao.FileUserDao;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
@@ -49,9 +52,14 @@ public class FitMeUi extends Application {
 
     @Override
     public void init() throws Exception {
-
-        System.out.println("init");
-        FileUserDao userDao = new FileUserDao("users.txt");
+        
+       Database database = new Database("jdbc:sqlite:fitme.db");
+     
+          FileUserDao userDao = new FileUserDao(database);
+//          FileDiaryDaotest diaryDao = new FileDiaryDaotest(database);
+        // alustetaan sovelluslogiikka 
+        
+//        FileUserDao userDao = new FileUserDao("users.txt");
         FileDiaryDao diaryDao = new FileDiaryDao("todos.txt", userDao);
         // alustetaan sovelluslogiikka 
         diaryService = new DiaryService(diaryDao, userDao);
@@ -68,7 +76,7 @@ public class FitMeUi extends Application {
 
 //  napin poistotoiminnallisuus 
         button.setOnAction(e -> {
-            diaryService.markDone(diary.getId());                  //BUTTON ACTION DELETE FROM DIARY
+            diaryService.delete(diary.getId());                  //BUTTON ACTION DELETE FROM DIARY
             redrawView();   
         });
 
@@ -84,7 +92,7 @@ public class FitMeUi extends Application {
     public void redrawView() {
         nodes.getChildren().clear();
 
-        List<Diary> diaries = diaryService.getUndone();           //FIND ONE DIARY
+        List<Diary> diaries = diaryService.getDiary();           //FIND ONE DIARY
         diaries.forEach(content -> {
             nodes.getChildren().add(createDiaryNode(content));
         });
@@ -118,16 +126,20 @@ public class FitMeUi extends Application {
             String username = usernameInput.getText();
             menuLabel.setText(username + " logged in...");
 
-            if (diaryService.login(username)) {                        //   DIARYSRVICE CALL METOD LOGIN
-                loginMessage.setText("");
-
-                redrawView();
-
-                primaryStage.setScene(diaryScene);
-                usernameInput.setText("");
-            } else {
-                loginMessage.setText("user does not exist");
-                loginMessage.setTextFill(Color.RED);
+            try {
+                if (diaryService.login(username)) {                        //   DIARYSRVICE CALL METOD LOGIN
+                    loginMessage.setText("");
+                    
+                    redrawView();
+                    
+                    primaryStage.setScene(diaryScene);
+                    usernameInput.setText("");
+                } else {
+                    loginMessage.setText("user does not exist");
+                    loginMessage.setTextFill(Color.RED);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
   
@@ -188,15 +200,19 @@ public class FitMeUi extends Application {
             if (username.length() == 2 || name.length() < 2) {
                 userCreationMessage.setText("username or name too short");
                 userCreationMessage.setTextFill(Color.RED);
-            } else if (diaryService.createUser(username, name)) {              //DIARYSERVICE CALL METOD CREATEUSER
-                userCreationMessage.setText("");
-                loginMessage.setText("new user created");
-                loginMessage.setTextFill(Color.GREEN);
-                primaryStage.setScene(loginScene);
-            } else {
-                primaryStage.setScene(loginScene);
-                userCreationMessage.setText("username has to be unique");
-                userCreationMessage.setTextFill(Color.RED);
+            } else try {
+                if (diaryService.createUser(username, name)) {              //DIARYSERVICE CALL METOD CREATEUSER
+                    userCreationMessage.setText("");
+                    loginMessage.setText("new user created");
+                    loginMessage.setTextFill(Color.GREEN);
+                    primaryStage.setScene(loginScene);
+                } else {
+                    primaryStage.setScene(loginScene);
+                    userCreationMessage.setText("username has to be unique");
+                    userCreationMessage.setTextFill(Color.RED);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });

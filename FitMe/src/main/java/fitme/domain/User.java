@@ -20,8 +20,8 @@ public class User {
 
     public User(String username, String name) {
 //        this.id=id;
+        this.username = username;    
         this.name = name;
-        this.username = username;
     }
 
     public String getName() {

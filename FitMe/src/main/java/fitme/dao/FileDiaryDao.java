@@ -30,9 +30,9 @@ public class FileDiaryDao implements DiaryDao{
                 int id = Integer.parseInt(parts[0]);
                 boolean done = Boolean.parseBoolean(parts[2]);
 //                String kcal = (parts[4]);
-                User user = users.getAll().stream().filter(u->u.getUsername().equals(parts[3])).findFirst().orElse(null); 
-                Diary todo = new Diary(id, parts[1], done, user);
-                todos.add(todo);
+//                User user = users.findAll().stream().filter(u->u.getUsername().equals(parts[3])).findFirst().orElse(null); 
+//                Diary todo = new Diary(id, parts[1], done, user);
+//                todos.add(todo);
             }
         } catch (Exception e) {
             FileWriter writer = new FileWriter(new File(file));

@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import fitme.dao.DiaryDao;
 import fitme.dao.UserDao;
+import java.sql.SQLException;
 
 ///**
 // * Sovelluslogiikasta vastaava luokka 
@@ -49,7 +50,7 @@ public class DiaryService {
 //    * @return kirjautuneen käyttäjän tekemättömät todot
 //    */
 //    
-    public List<Diary> getUndone() {
+    public List<Diary> getDiary() {
         if (loggedIn == null) {
             return new ArrayList<>();
         }
@@ -67,7 +68,7 @@ public class DiaryService {
 //    * @param   id   tehdyksi merkittävän todon tunniste
 //    */    
 //    
-    public void markDone(int id) {
+    public void delete(int id) {
         try {
             diaryDao.setDelete(id);
         } catch (Exception ex) {
@@ -82,8 +83,8 @@ public class DiaryService {
 //    * @return true jos käyttäjätunnus on olemassa, muuten false 
 //    */    
     
-    public boolean login(String username) {
-        User user = userDao.findByUsername(username);
+    public boolean login(String username) throws SQLException {
+        User user = (User) userDao.findByUsername(username);
         if (user == null) {
             return false;
         }
@@ -120,13 +121,13 @@ public class DiaryService {
 //    * @return true jos käyttäjätunnus on luotu onnistuneesti, muuten false 
 //    */ 
 //    
-    public boolean createUser(String username, String name)  {   
+    public boolean createUser(String username, String name) throws SQLException  {   
         if (userDao.findByUsername(username) != null) {
             return false;
         }
         User user = new User(username, name);
         try {
-            userDao.create(user);
+            userDao.saveOrUpdate(user);//create(user);         
         } catch(Exception e) {
             return false;
         }
