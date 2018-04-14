@@ -5,3 +5,6 @@ Mikko;kalle
 hajame;Harri
 Miksu;Mika
 Mike;Mikael
+Mik;Mikko
+Kale;Kaaleppi
+Riik;Riikka

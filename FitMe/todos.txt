@@ -19,5 +19,13 @@
 19;lsflska;true;Viku
 20;lchslkfjb;false;Miksu
 21;jotain;true;Viku
-22;karkkia;false;Viku
+22;karkkia;true;Viku
 23;Karkkia;false;Mike
+24;kokis;true;Viku
+25;vettä;false;Mike
+26;kahvi;true;Viku
+27;kahvi;false;Viku
+28;kahvi;true;Viku
+29;aamupala;true;Viku
+30;j;false;Riik
+31;kana;false;Viku
