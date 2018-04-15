@@ -5,13 +5,13 @@
 | 22.3. | 3    | Alustava määrittelydokumentti ja tietokantojen kertausta |
 | 3.4.  | 6    | tutustuminen JavaFX:n, käyttöliittymän alustavaa toteutusta (login ja create user) |
 | 4.4.  | 4    | käyttöliittymän toteutusta (diary page) |
-| 7.4.  | 6    | Daojen tekemistä, taoista tiedostoon tallennus|
-| 8.4.  | 6    | Tietokantojen teoriankertausta, tietokantataulujen luonti|
-| 9.4.  | 2    | Testin teko ja jacoco |
-| 12.4. | 8    | Tietokannan ja daojen kertausta sekä daojen uusimista tietokantaan tallentavaksi|
-| 20.2. | ?    | sovelluksen rakenteen refaktorointi, käyttäjänhallinta, tallennus tiedostoon, rakenteen refaktorointi |
-| 20.2. | ?    | sovelluksen rakenteen refaktorointi, käyttäjänhallinta, tallennus tiedostoon, rakenteen refaktorointi |
-|       | ?    |   |
+| 7.4.  | 6    | Tiedostoon tallennus|
+| 8.4.  | 8    | Tietokantojen teoriankertausta, alustavan tietokanta/luokkakaavion luonti, tokantataulujen luonti|
+| 9.4.  | 2    | Unit testien aloitusta ja jacoco |
+| 12.4. | 10   | Tietokannan ja daojen kertausta sekä daojen uusimista tietokantaan tallentaviksi, käyttöliittymän metodien nimeämistä ja kommentontia|
+| 13.4  | 10   | Dev branchin luominen ja  käyttäjän tietokantaan tallennusten kuntoon saattamista, daojen kanssa vääntämistä |
+| 14.2. | 8    | Diary luokan tietokantaan tallennukset/daot kuntoon, Unit testien kirjoittamista |
+| 15.2  | ?    | Checkstylen käyttöönotto, lisää testejä, ohjelman alustava rakenne pakkauskaaviona  |
 | 21.2. | ?    | arkkitehtuurikuvaus |
 |       | ?    | testaus |
 | 4.3.  | ?    | koodin refaktorointia |

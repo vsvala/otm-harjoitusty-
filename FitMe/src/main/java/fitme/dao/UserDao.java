@@ -9,18 +9,27 @@ package fitme.dao;
  *
  * @author svsv
  */
-
-import java.util.List;
+import java.sql.*;
+import java.util.*;
 import fitme.domain.User;
 
-public interface UserDao {
-    
-     User create(User user) throws Exception;
 
-       User findByUsername(String username);
-     
-     List<User> getAll();
- 
+public interface UserDao <U, K> {
+   
+    List<U> findAll() throws SQLException;
+    U saveOrUpdate(U object) throws SQLException;
+    void delete(K key)throws SQLException ;
+    U findByUsername(K key)throws SQLException;
     
-    
-}
+} 
+        
+//   VANHA 
+//     User create(User user) throws Exception;
+//
+//     User findByUsername(String username);
+//     
+//     List<User> getAll();
+// 
+//    
+//    
+//}
