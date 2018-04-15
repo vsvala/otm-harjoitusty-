@@ -49,7 +49,6 @@ public class UserTest {
        assertEquals(false, user.equals(user2) );
     }
     
-    
 
            @Test
     public void CompremetodiPalauttaaTrueJosSamat() {

@@ -56,7 +56,7 @@ public class DiaryService {
         if (loggedIn == null) {
             return new ArrayList<>();
         }
-        return diaryDao.findAll(loggedIn.getUsername());//loggedIn
+        return diaryDao.findAll(loggedIn.getUsername());
 //            .stream()
 //            .filter(t-> t.getUser().equals(loggedIn))
 //            .filter(t->!t.isDelete())//idDone
@@ -123,6 +123,10 @@ public class DiaryService {
 //    */ 
 //    
     public boolean createUser(String username, String name) throws SQLException  {   
+        
+        //luo ehto..ettei samaa usernimeä voi luoda uudestaa.
+        //=tarkasta ettei tietokannasta löydy jo vastaavaa ja mitä jos löytyy-->Username on jo käytössä ...create new...username
+        
         if (userDao.findByUsername(username) != null) {
             return false;
         }

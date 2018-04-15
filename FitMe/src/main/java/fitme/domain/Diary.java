@@ -24,12 +24,12 @@ public class Diary {
     private boolean delete;  //done korvasin delete
     private User user;
 
-    public Diary(int id, String content, boolean delete, User user) {
-        this.id = id;
-        this.content = content;
-        this.delete = delete;
-        this.user = user;
-    }
+//    public Diary(int id, String content, boolean delete, User user) {
+//        this.id = id;
+//        this.content = content;
+//        this.delete = delete;
+//        this.user = user;
+//    }
     public Diary(int id, String content, Date Day, User user) {
         this.id = id;
         this.content = content;

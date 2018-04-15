@@ -49,8 +49,10 @@ public class DataDiaryDao implements DiaryDao<Diary, String>{//USer
         } 
         PreparedStatement stmt = connection.prepareStatement("INSERT INTO Diary"
                 + " (user_username, day, content)"
-                + " VALUES (?, ?, ?)");
-
+                + " VALUES (?, ?, ?)");  //(?, CURRENT_TIMESTAMP. ?)
+        //String strDate=rs.getString("date";
+       // DateFormat fmt=new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
+        //Date date=fmt.parse(strDate);
     
         stmt.setObject(1, object.getUser().getUsername());  //huom getusername       
         stmt.setDate(2, object.getDay());     
@@ -58,6 +60,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String>{//USer
      //date
        
         stmt.executeUpdate();
+        
         stmt.close();
         connection.close();
     
@@ -85,7 +88,6 @@ public class DataDiaryDao implements DiaryDao<Diary, String>{//USer
 
         stmt.close();
         rs.close();
-
         connection.close();
 
 // nyt asiakkaat listassa
@@ -110,8 +112,9 @@ public class DataDiaryDao implements DiaryDao<Diary, String>{//USer
             rs.getDate("day"),user);/////////////////////////////////////////DELETE??????????????
 //      (int id, String content, Date Day, boolean delete, User user) {
 
+     
+        stmt.close();   
         rs.close();
-        stmt.close();
         connection.close();
 
         return diary;
@@ -126,6 +129,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String>{//USer
         
         stmt.executeUpdate();
             System.out.println("dao deleye");
+       
         stmt.close();
         con.close();
         

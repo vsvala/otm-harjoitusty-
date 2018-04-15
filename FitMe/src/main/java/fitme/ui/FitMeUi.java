@@ -52,9 +52,15 @@ public class FitMeUi extends Application {
 
     @Override
     public void init() throws Exception {
-          // alustetaan sovelluslogiikka
-       Database database = new Database("jdbc:sqlite:fitme.db");
-     
+        //alustusmetodi init luo käytettävät DAO:t ja injektoi ne sovelluslogiikalle:
+//           Properties properties = new Properties();
+//           properties.load(new FileInputStream("config.properties"));
+//            
+//           String usedDatabase = properties.getProperty("usedDatabase");
+//           Database database = new Database(usedDatabase);//("jdbc:sqlite:fitme.db");
+           
+          Database database = new Database("jdbc:sqlite:fitme.db");
+       
           DataUserDao userDao = new DataUserDao(database);
           DataDiaryDao diaryDao = new DataDiaryDao(database);
       
@@ -75,11 +81,11 @@ public class FitMeUi extends Application {
 //             System.out.println("testiäää"+diary.getUser()+diary.getContent()+diary.getId()+diary.getUser().getUsername());
 //  napin poistotoiminnallisuus 
         button.setOnAction(e -> {
-            System.out.println("testdelete"+diary.getId());
+//            System.out.println("testdelete"+diary.getId());
 //           
           String sid=Integer.toString(diary.getId());
-          System.out.println("sidii--------testdelete"+sid);
-            diaryService.delete(sid);                  //BUTTON ACTION DELETE FROM DIARY
+//          System.out.println("sidii--------testdelete"+sid);
+            diaryService.delete(sid);                            //BUTTON ACTION DELETE FROM DIARY
             try {   
                 redrawView();
             } catch (SQLException ex) {
@@ -99,7 +105,7 @@ public class FitMeUi extends Application {
     public void redrawView() throws SQLException {
         nodes.getChildren().clear();
 
-        List<Diary> diaries = diaryService.getDiary();           //FIND ONE DIARY
+        List<Diary> diaries = diaryService.getDiary();                    //FIND ONE DIARY
         diaries.forEach(content -> {
             nodes.getChildren().add(createDiaryNode(content));
         });
@@ -129,7 +135,7 @@ public class FitMeUi extends Application {
         
    //BUTTON ACTIONS////////////////////////////////////////////////////////////
        
-        loginButton.setOnAction(e -> {                                   //LOGIN BUTTON ACTION
+        loginButton.setOnAction(e -> {                                      //LOGIN BUTTON ACTION
             String username = usernameInput.getText();
             menuLabel.setText(username + " logged in...");
 
