@@ -53,13 +53,13 @@ public class FitMeUi extends Application {
     @Override
     public void init() throws Exception {
         //alustusmetodi init luo käytettävät DAO:t ja injektoi ne sovelluslogiikalle:
-//           Properties properties = new Properties();
-//           properties.load(new FileInputStream("config.properties"));
-//            
-//           String usedDatabase = properties.getProperty("usedDatabase");
-//           Database database = new Database(usedDatabase);//("jdbc:sqlite:fitme.db");
+           Properties properties = new Properties();
+           properties.load(new FileInputStream("config.properties"));
+            
+           String usedDatabase = properties.getProperty("usedDatabase");
+           Database database = new Database(usedDatabase);
            
-          Database database = new Database("jdbc:sqlite:fitme.db");
+//          Database database = new Database("jdbc:sqlite:fitme.db");
        
           DataUserDao userDao = new DataUserDao(database);
           DataDiaryDao diaryDao = new DataDiaryDao(database);
