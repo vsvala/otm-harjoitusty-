@@ -132,8 +132,8 @@ public class DiaryService {
         }
         User user = new User(username, name);
         try {
-            userDao.saveOrUpdate(user);//create(user);         
-        } catch(Exception e) {
+            userDao.saveOrUpdate(user); //create(user);         
+        } catch (Exception e) {
             return false;
         }
 

@@ -28,7 +28,7 @@ public class DataUserDao implements UserDao<User, String> {
 
     @Override
     public List<User> findAll() throws SQLException {
-         Connection connection =  database.getConnection();
+        Connection connection =  database.getConnection();
 
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM User");
         ResultSet rs = stmt.executeQuery();
@@ -40,7 +40,7 @@ public class DataUserDao implements UserDao<User, String> {
                     rs.getString("username"));
 
             users.add(a);
-        }//rs.getInt("id"),
+        } //rs.getInt("id"),
 
         stmt.close();
         rs.close();
@@ -55,7 +55,7 @@ public class DataUserDao implements UserDao<User, String> {
 
     @Override
     public User saveOrUpdate(User object) throws SQLException {
-       Connection connection = database.getConnection();
+        Connection connection = database.getConnection();
 
         User user = findByUsername(object.getUsername());
 
@@ -82,7 +82,7 @@ public class DataUserDao implements UserDao<User, String> {
 
     @Override
     public User findByUsername(String key) throws SQLException {
-         Connection conne = database.getConnection();
+        Connection conne = database.getConnection();
         PreparedStatement stmt = conne.prepareStatement("SELECT * FROM User WHERE username = ?");
         stmt.setString(1, key);
 

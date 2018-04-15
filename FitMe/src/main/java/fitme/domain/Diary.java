@@ -44,7 +44,7 @@ public class Diary {
         this.user = user;
         this.delete = false;
     }
-     public Diary(int id, String content) {
+    public Diary(int id, String content) {
         this.id = id;
         this.content = content;
         this.user = user;
@@ -58,7 +58,7 @@ public class Diary {
     public String getContent() {
         return content;
     }
-     public String getKcal() {
+    public String getKcal() {
         return content;
     }
 
@@ -70,7 +70,7 @@ public class Diary {
         return id;
     }
 
-    public boolean isDelete() {// isDone() {
+    public boolean isDelete() { // isDone() {
         return delete;
     }
 

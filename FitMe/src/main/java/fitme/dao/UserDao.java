@@ -13,14 +13,16 @@ import java.sql.*;
 import java.util.*;
 import fitme.domain.User;
 
+public interface UserDao<U, K> {
 
-public interface UserDao <U, K> {
-   
     List<U> findAll() throws SQLException;
+
     U saveOrUpdate(U object) throws SQLException;
-    void delete(K key)throws SQLException ;
-    U findByUsername(K key)throws SQLException;
-    
+
+    void delete(K key) throws SQLException;
+
+    U findByUsername(K key) throws SQLException;
+
 } 
         
 //   VANHA 

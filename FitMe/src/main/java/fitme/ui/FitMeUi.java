@@ -53,19 +53,18 @@ public class FitMeUi extends Application {
     @Override
     public void init() throws Exception {
         //alustusmetodi init luo käytettävät DAO:t ja injektoi ne sovelluslogiikalle:
-           Properties properties = new Properties();
-           properties.load(new FileInputStream("config.properties"));
-            
-           String usedDatabase = properties.getProperty("usedDatabase");
-           Database database = new Database(usedDatabase);
-           
+        Properties properties = new Properties();
+        properties.load(new FileInputStream("config.properties"));
+
+        String usedDatabase = properties.getProperty("usedDatabase");
+        Database database = new Database(usedDatabase);
+
 //          Database database = new Database("jdbc:sqlite:fitme.db");
-       
-          DataUserDao userDao = new DataUserDao(database);
-          DataDiaryDao diaryDao = new DataDiaryDao(database);
-      
-          diaryService = new DiaryService(diaryDao, userDao);
- 
+        DataUserDao userDao = new DataUserDao(database);
+        DataDiaryDao diaryDao = new DataDiaryDao(database);
+
+        diaryService = new DiaryService(diaryDao, userDao);
+
 //        FileUserDao userDao = new FileUserDao("users.txt");
 //        FileDiaryDao diaryDao = new FileDiaryDao("todos.txt", userDao);
         // alustetaan sovelluslogiikka 
@@ -83,10 +82,10 @@ public class FitMeUi extends Application {
         button.setOnAction(e -> {
 //            System.out.println("testdelete"+diary.getId());
 //           
-          String sid=Integer.toString(diary.getId());
+            String sid = Integer.toString(diary.getId());
 //          System.out.println("sidii--------testdelete"+sid);
             diaryService.delete(sid);                            //BUTTON ACTION DELETE FROM DIARY
-            try {   
+            try {
                 redrawView();
             } catch (SQLException ex) {
                 Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
@@ -100,7 +99,6 @@ public class FitMeUi extends Application {
         box.getChildren().addAll(label, spacer, button); //lisää kcalLAbel
         return box;
     }
-    
 
     public void redrawView() throws SQLException {
         nodes.getChildren().clear();
@@ -111,30 +109,27 @@ public class FitMeUi extends Application {
         });
     }
 
-
- // LOGINVIEW////////////////////////////////////////////////////////////////////
+    // LOGINVIEW////////////////////////////////////////////////////////////////////
     @Override
     public void start(Stage primaryStage) throws SQLException {
         // login scene
         System.out.println("start");
 
-        VBox loginPane = new VBox(10);//arrange nodes in a singe column sarake
-        HBox inputPane = new HBox(10);//arrange nodes in a singe row rivi
+        VBox loginPane = new VBox(10); //arrange nodes in a singe column sarake
+        HBox inputPane = new HBox(10); //arrange nodes in a singe row rivi
         loginPane.setPadding(new Insets(10));
         Label loginLabel = new Label("username");
         TextField usernameInput = new TextField();
 
-        inputPane.getChildren().addAll(loginLabel, usernameInput);//asetetaan username teksti ja input peräkkäin
+        inputPane.getChildren().addAll(loginLabel, usernameInput); //asetetaan username teksti ja input peräkkäin
 
-        Label loginMessage = new Label();//loggaustekstikenttä
+        Label loginMessage = new Label(); //loggaustekstikenttä
 
         //luodaan login ja create buttonit
         Button loginButton = new Button("login");
         Button createButton = new Button("create new user");
-       
-        
-   //BUTTON ACTIONS////////////////////////////////////////////////////////////
-       
+
+        //BUTTON ACTIONS////////////////////////////////////////////////////////////
         loginButton.setOnAction(e -> {                                      //LOGIN BUTTON ACTION
             String username = usernameInput.getText();
             menuLabel.setText(username + " logged in...");
@@ -142,9 +137,9 @@ public class FitMeUi extends Application {
             try {
                 if (diaryService.login(username)) {                        //   DIARYSRVICE CALL METOD LOGIN
                     loginMessage.setText("");
-                    
+
                     redrawView();
-                    
+
                     primaryStage.setScene(diaryScene);
                     usernameInput.setText("");
                 } else {
@@ -155,13 +150,13 @@ public class FitMeUi extends Application {
                 Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-  
+
         //create user nappia painamalla siirrytään uuteen käyttäjänluomisikkunaan
         createButton.setOnAction(e -> {                                 //CREATE BUTTON ACTION; CREATE USER SCENE
             usernameInput.setText("");
             primaryStage.setScene(createUserScene);
         });
-      
+
         // Add Header
         Label headerLabel = new Label("Sign in");
         headerLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
@@ -169,11 +164,9 @@ public class FitMeUi extends Application {
         loginPane.getChildren().addAll(headerLabel, loginMessage, inputPane, loginButton, createButton);    //asetetaan kaikki samaan sarakkeeseen   
 
         loginScene = new Scene(loginPane, 300, 250);
- 
-   
 
 ////Call Metod  create USERVIEW/////////////////////////////////////////////////////////////////////////////
-         createUserView(primaryStage, loginMessage);
+        createUserView(primaryStage, loginMessage);
 //        CreateUserUi cu = new CreateUserUi();    
 //        cu.createUser(primaryStage, loginMessage);
 
@@ -204,28 +197,30 @@ public class FitMeUi extends Application {
 
         Button createNewUserButton = new Button("create");
         createNewUserButton.setPadding(new Insets(10));
-        
+
 //BUTTON ACTION CREATE NEW USER/////////////////////////////////////////////////////////BUTTON ACTION
-        createNewUserButton.setOnAction(e -> {                           
+        createNewUserButton.setOnAction(e -> {
             String username = newUsernameInput.getText();
             String name = newNameInput.getText();
 
             if (username.length() == 2 || name.length() < 2) {
                 userCreationMessage.setText("username or name too short");
                 userCreationMessage.setTextFill(Color.RED);
-            } else try {
-                if (diaryService.createUser(username, name)) {              //DIARYSERVICE CALL METOD CREATEUSER
-                    userCreationMessage.setText("");
-                    loginMessage.setText("new user created");
-                    loginMessage.setTextFill(Color.GREEN);
-                    primaryStage.setScene(loginScene);
-                } else {
-                    primaryStage.setScene(loginScene);
-                    userCreationMessage.setText("username has to be unique");
-                    userCreationMessage.setTextFill(Color.RED);
+            } else {
+                try {
+                    if (diaryService.createUser(username, name)) {              //DIARYSERVICE CALL METOD CREATEUSER
+                        userCreationMessage.setText("");
+                        loginMessage.setText("new user created");
+                        loginMessage.setTextFill(Color.GREEN);
+                        primaryStage.setScene(loginScene);
+                    } else {
+                        primaryStage.setScene(loginScene);
+                        userCreationMessage.setText("username has to be unique");
+                        userCreationMessage.setTextFill(Color.RED);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } catch (SQLException ex) {
-                Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });
@@ -247,7 +242,7 @@ public class FitMeUi extends Application {
         BorderPane mainPane = new BorderPane(mainSrcollbar);
         diaryScene = new Scene(mainPane, 800, 700); //säädetäänkoko
 
-        VBox diaryPane = new VBox(10);//arrange nodes in a singe column sarake
+        VBox diaryPane = new VBox(10); //arrange nodes in a singe column sarake
         HBox menuPane = new HBox(10);
         menuPane.setPadding(new Insets(10));
         Region menuSpacer = new Region();
@@ -260,8 +255,6 @@ public class FitMeUi extends Application {
 
         menuPane.getChildren().addAll(menuLabel, diaryHeaderLabel, menuSpacer, logoutButton);
         diaryPane.getChildren().addAll(menuPane);
-
-    
 
         //breakfast 
         HBox createForm = new HBox(10);      //riviasettelu
@@ -285,14 +278,13 @@ public class FitMeUi extends Application {
         mainPane.setBottom(createForm);
 
         mainPane.setTop(menuPane);
-   
-  //BUTTON ACTIONS///////////////////////////////////////////////////////////////////////////////////////////////////////      
 
+        //BUTTON ACTIONS///////////////////////////////////////////////////////////////////////////////////////////////////////      
         logoutButton.setOnAction(e -> {        // LOGOUT BUTTON logout palauttaa login näkymään
             diaryService.logout();
             primaryStage.setScene(loginScene);
         });
-        
+
         createBreakfast.setOnAction(e -> {
             diaryService.createDiary(breakfastInput.getText());  //CREATE BUTTON ACTION call metod DIARYSERVICE CREATE DIARY
             breakfastInput.setText("");

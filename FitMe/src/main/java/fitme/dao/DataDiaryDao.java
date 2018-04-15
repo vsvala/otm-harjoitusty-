@@ -16,75 +16,71 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 /**
  *
  * @author svsv
  */
-public class DataDiaryDao implements DiaryDao<Diary, String>{//USer
-  
+public class DataDiaryDao implements DiaryDao<Diary, String> { //USer
+
     private Database database;
     private UserDao<User, String> userDao;
-    private DiaryDao<Diary,String> diaryDao;
+    private DiaryDao<Diary, String> diaryDao;
 
-    public DataDiaryDao(Database database) throws Exception {//, DiaryDaotest<Diarytest, Integer> diaryDao
+    public DataDiaryDao(Database database) throws Exception { //, DiaryDaotest<Diarytest, Integer> diaryDao
         this.database = database;
         this.diaryDao = diaryDao;
-       
+
         //diaryDao.findOne(key);
 //    public FileDiaryDao(String file, UserDao users) throws Exception {
 //      usernamee quals   luo diaryn jossa content
-    //findAll()   //kostruktori hakee kirjautuneen käyttäjän  diaryn contentin
+        //findAll()   //kostruktori hakee kirjautuneen käyttäjän  diaryn contentin
 //    }
     }
 
-
     @Override
     public Diary saveOrUpdate(Diary object) throws SQLException {
-       Connection connection = database.getConnection();//DriverManager.getConnection("jdbc:sqlite:fitme.db");
+        Connection connection = database.getConnection(); //DriverManager.getConnection("jdbc:sqlite:fitme.db");
 
-       Diary diary =  findOne(object.getUser().getUsername());
+        Diary diary = findOne(object.getUser().getUsername());
 
         if (diary != null) {
             return diary;
-        } 
+        }
         PreparedStatement stmt = connection.prepareStatement("INSERT INTO Diary"
                 + " (user_username, day, content)"
                 + " VALUES (?, ?, ?)");  //(?, CURRENT_TIMESTAMP. ?)
         //String strDate=rs.getString("date";
-       // DateFormat fmt=new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
+        // DateFormat fmt=new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
         //Date date=fmt.parse(strDate);
-    
+
         stmt.setObject(1, object.getUser().getUsername());  //huom getusername       
-        stmt.setDate(2, object.getDay());     
+        stmt.setDate(2, object.getDay());
         stmt.setString(3, object.getContent());
-     //date
-       
+        //date
+
         stmt.executeUpdate();
-        
+
         stmt.close();
         connection.close();
-    
-     
-        return diary;    
-    }
 
- 
+        return diary;
+    }
 
     @Override
     public List<Diary> findAll(String key) throws SQLException {
-              List<Diary> diaries = new ArrayList<>();
-        
-        Connection connection =  database.getConnection();
+        List<Diary> diaries = new ArrayList<>();
 
-       
-       PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ?");
+        Connection connection = database.getConnection();
+
+        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ?");
         stmt.setObject(1, key);
-       ResultSet rs = stmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-           Diary diary= new Diary(rs.getInt("id"), rs.getString("content"));
+            Diary diary = new Diary(rs.getInt("id"), rs.getString("content"));
 
-           diaries.add(diary);
-        }//rs.getInt("id"),
+            diaries.add(diary);
+        } //rs.getInt("id"),
 
         stmt.close();
         rs.close();
@@ -92,11 +88,13 @@ public class DataDiaryDao implements DiaryDao<Diary, String>{//USer
 
 // nyt asiakkaat listassa
         System.out.println(diaries);
-        return diaries;       
- 
-    }  @Override
+        return diaries;
+
+    }
+
+    @Override
     public Diary findOne(String key) throws SQLException {
-       System.out.println("key"+key);
+        System.out.println("key" + key);
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE id = ?");
         stmt.setString(1, key);
@@ -107,38 +105,36 @@ public class DataDiaryDao implements DiaryDao<Diary, String>{//USer
             return null;
         }
         User user = userDao.findByUsername(rs.getString("user_username"));
-       
-       Diary diary = new Diary( rs.getInt("id"),rs.getString("content"),
-            rs.getDate("day"),user);/////////////////////////////////////////DELETE??????????????
+
+        Diary diary = new Diary(rs.getInt("id"), rs.getString("content"),
+                rs.getDate("day"), user); /////////////////////////////////////////DELETE??????????????
 //      (int id, String content, Date Day, boolean delete, User user) {
 
-     
-        stmt.close();   
+        stmt.close();
         rs.close();
         connection.close();
 
         return diary;
     }
-     @Override
+
+    @Override
     public void delete(String key) throws SQLException {
-              System.out.println("täää"+key);
+        System.out.println("täää" + key);
         Connection con = database.getConnection();
         PreparedStatement stmt = con.prepareStatement("DELETE FROM Diary WHERE id = ?");
 
         stmt.setString(1, key);
-        
+
         stmt.executeUpdate();
-            System.out.println("dao deleye");
-       
+        System.out.println("dao deleye");
+
         stmt.close();
         con.close();
-        
+
     }
 
-   
-      
 }
-    
+
 //  public List<Diary> todos;
 //    private String file;
 //
