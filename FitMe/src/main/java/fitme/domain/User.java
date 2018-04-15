@@ -13,13 +13,15 @@ package fitme.domain;
  */
 public class User {
     
-
+//    private int id;
     private String name;
     private String username;
+    
 
     public User(String username, String name) {
+//        this.id=id;
+        this.username = username;    
         this.name = name;
-        this.username = username;
     }
 
     public String getName() {
@@ -28,7 +30,10 @@ public class User {
 
     public String getUsername() {
         return username;
-    }    
+    }   
+//        public int getId(){
+//        return id;
+//    }
 
     @Override
     public boolean equals(Object obj) {

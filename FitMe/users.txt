@@ -5,11 +5,4 @@ kalle;Mikko
 Harri;hajame
 Virva;Viku
 Viku;Virva
-<<<<<<< HEAD
-=======
-M;Mike
-Kalle;KAlle Kustaa
-Mikko;kalle
-hajame;Harri
-Miksu;Mika
->>>>>>> ea41d914aca6ec98bb8004d12fa4534e3b350498
+
