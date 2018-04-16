@@ -4,7 +4,7 @@
 
 Ohjelman rakenne noudattelee kolmitasoista kerrosarkkitehtuuria, ja koodin pakkaus - ja luokkarakenne on seuraava:
 
-kuva
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/dev/dokumentaatio/kuvat/pakkaus.png" >
 
 Pakkaus _fitme.ui_ sisältää JavaFX:llä toteutetun käyttöliittymän _fitme.domain_ sovelluslogiikan ja _fitme.dao_ tietojen pysyväistallennuksesta vastaavan koodin.
 
@@ -13,29 +13,29 @@ Pakkaus _fitme.ui_ sisältää JavaFX:llä toteutetun käyttöliittymän _fitme.
 Käyttöliittymä sisältää kolme erillistä näkymää
 - kirjautuminen
 - uuden käyttäjän luominen
-- päiväkirjansivun
+- ruokapäiväkirjan sivu
 
 jokainen näistä on toteutettu omana Scene-oliona. Näkymistä yksi kerrallaan on näkyvänä eli sijoitettuna sovelluksen stageen. Käyttöliittymä on rakennettu ohjelmallisesti luokassa fitme.ui.FitMeUi.
 
-Käyttöliittymä on pyritty eristämään täysin sovelluslogiikasta, se ainoastaan kutsuu sopivin parametrein sovelluslogiikan toteuttavan olion _todoServicen_ metodeja.
+Käyttöliittymä on pyritty eristämään täysin sovelluslogiikasta, se ainoastaan kutsuu sopivin parametrein sovelluslogiikan toteuttavan olion _DiaryServicen_ metodeja.
 
-Kun sovelluksen päiväkirjan sivun tilanne muuttuu, eli uusi käyttäjä kirjautuu,  jos sisältöä poistetaan tai luodaan kutsutaan sovelluksen metodia redrawTodolist joka renderöi päiväkirjannäkymän uudelleen sovelluslogiikalta saamansa näytettävien todojen listan perusteella.
+Kun sovelluksen päiväkirjan sivun tilanne muuttuu, eli uusi käyttäjä kirjautuu, tai sisältöä poistetaan tai luodaan, kutsutaan sovelluksen metodia redrawView joka renderöi päiväkirjannäkymän uudelleen sovelluslogiikalta saamansa näytettävien Diary listan perusteella.
 
 ## Sovelluslogiikka
 
-Sovelluksen loogisen datamallin muodostavat luokat User ja Diary, jotka kuvaavat käyttäjiä ja käyttäjien syömiä ruokia:
+Sovelluksen loogisen datamallin muodostavat luokat User ja Diary, jotka kuvaavat käyttäjiä ja käyttäjän ruokapäiväkirjasivua:
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/dev/dokumentaatio/kuvat/tietokanta%20(1).png" >
 
-Toiminnallisista kokonaisuuksista vastaa luokan Diaryervice ainoa olio. Luokka tarjoaa kaikille käyttäliittymän toiminnoille oman metodin. Näitä ovat esim.
+Toiminnallisista kokonaisuuksista vastaa luokan DiaryService ainoa olio. Luokka tarjoaa kaikille käyttäliittymän toiminnoille oman metodin. Näitä ovat esim.
 - boolean login(String username)
-- List<Diary>getDiary() 
+- List<Diary>getDiary()  
 - void createDiary(String content, User user)
 - void delete(int id)
 
-_DiaryService_ pääsee käsiksi käyttäjiin ja Päiväkirjan tietojen tallennuksesta vastaavan pakkauksessa _fitme.dao_ sijaitsevien rajapinnat  Diary_Dao_ ja _UserDao_ toteuttavien luokkien kautta. Luokkien toteutuksen injektoidaan sovelluslogiikalle konstruktorikutsun yhteydessä.
+_DiaryService_ pääsee käsiksi käyttäjiin ja Päiväkirjaan tietojen tallennuksesta vastaavan pakkauksessa _fitme.dao_ sijaitsevien rajapinnat  Diary_Dao_ ja _UserDao_ toteuttavien luokkien kautta. Luokkien toteutuksen injektoidaan sovelluslogiikalle konstruktorikutsun yhteydessä.
 
 DiaryServicen ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
-
-kuva
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/dev/dokumentaatio/kuvat/Untitled%20Diagram.png" >
 
 ## Tietojen pysyväistallennus
 
@@ -50,10 +50,21 @@ Sovellus tallettaa käyttäjien ja Diaryjen tiedot tietokantaan User ja Diary ta
 
 Sovelluksen juureen sijoitettu konfiguraatiotiedostoster määrittelee tietokannan nimen.
 
-Sovelluksen tietokanta taulut ovat seuraavat:
+Sovelluksen tietokantaan tiedot on tallennettu seuraavasti:
 
-kuva
-
+CREATE TABLE User(
+username varchar(10) PRIMARY KEY,
+name varchar (30)
+ );
+ 
+CREATE TABLE Diary(
+id integer PRIMARY KEY,
+user_username varchar,  
+day date,
+content varchar(100),
+kcal Integer (5)
+FOREIGN KEY (user_username) REFERENCES User(username)
+);
 
 
 ### Päätoiminnallisuudet
