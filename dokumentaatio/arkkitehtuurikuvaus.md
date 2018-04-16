@@ -17,9 +17,9 @@ Käyttöliittymä sisältää kolme erillistä näkymää
 
 jokainen näistä on toteutettu omana Scene-oliona. Näkymistä yksi kerrallaan on näkyvänä eli sijoitettuna sovelluksen stageen. Käyttöliittymä on rakennettu ohjelmallisesti luokassa fitme.ui.FitMeUi.
 
-Käyttöliittymä on pyritty eristämään täysin sovelluslogiikasta, se ainoastaan kutsuu sopivin parametrein sovelluslogiikan toteuttavan olion _todoServicen_ metodeja.
+Käyttöliittymä on pyritty eristämään täysin sovelluslogiikasta, se ainoastaan kutsuu sopivin parametrein sovelluslogiikan toteuttavan olion _DiaryServicen_ metodeja.
 
-Kun sovelluksen päiväkirjan sivun tilanne muuttuu, eli uusi käyttäjä kirjautuu,  jos sisältöä poistetaan tai luodaan kutsutaan sovelluksen metodia redrawTodolist joka renderöi päiväkirjannäkymän uudelleen sovelluslogiikalta saamansa näytettävien todojen listan perusteella.
+Kun sovelluksen päiväkirjan sivun tilanne muuttuu, eli uusi käyttäjä kirjautuu, tai sisältöä poistetaan tai luodaan, kutsutaan sovelluksen metodia redrawView joka renderöi päiväkirjannäkymän uudelleen sovelluslogiikalta saamansa näytettävien Diary listan perusteella.
 
 ## Sovelluslogiikka
 
@@ -50,10 +50,21 @@ Sovellus tallettaa käyttäjien ja Diaryjen tiedot tietokantaan User ja Diary ta
 
 Sovelluksen juureen sijoitettu konfiguraatiotiedostoster määrittelee tietokannan nimen.
 
-Sovelluksen tietokanta taulut ovat seuraavat:
+Sovelluksen tietokantan tiedot on tallennettu seuraavasti:
 
-kuva
-
+CREATE TABLE User(
+username varchar(10) PRIMARY KEY,
+name varchar (30)
+ );
+ 
+CREATE TABLE Diary(
+id integer PRIMARY KEY,
+user_username varchar,  
+day date,
+content varchar(100),
+kcal Integer (5)
+FOREIGN KEY (user_username) REFERENCES User(username)
+);
 
 
 ### Päätoiminnallisuudet
