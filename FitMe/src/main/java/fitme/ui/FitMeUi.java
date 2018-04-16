@@ -346,17 +346,10 @@ public class FitMeUi extends Application {
 
     }
 }
-<<<<<<< HEAD
-
-
-
-
 
 
 //TIetokannan yhteyksien testausta...............
-=======
         
->>>>>>> 7fb2bc4591aaab4677014d84aea31a3f7d4b36b9
 //        // luodaan yhteys jdbc:n yli sqlite-tietokantaan nimeltä "tietokanta.db"
 //        Connection connection = DriverManager.getConnection("jdbc:sqlite:fitme.db");
 //
@@ -392,11 +385,3 @@ public class FitMeUi extends Application {
 //resultSet.close();
 //        // suljetaan lopulta yhteys tietokantaan
 //        connection.close();
-<<<<<<< HEAD
-//
-=======
-// 
-//        
-//            
-         
->>>>>>> 7fb2bc4591aaab4677014d84aea31a3f7d4b36b9
