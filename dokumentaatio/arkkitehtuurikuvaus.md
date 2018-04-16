@@ -50,7 +50,7 @@ Sovellus tallettaa käyttäjien ja Diaryjen tiedot tietokantaan User ja Diary ta
 
 Sovelluksen juureen sijoitettu konfiguraatiotiedostoster määrittelee tietokannan nimen.
 
-Sovelluksen tietokantan tiedot on tallennettu seuraavasti:
+Sovelluksen tietokantaan tiedot on tallennettu seuraavasti:
 
 CREATE TABLE User(
 username varchar(10) PRIMARY KEY,
