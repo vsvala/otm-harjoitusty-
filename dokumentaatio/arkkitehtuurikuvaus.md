@@ -26,7 +26,7 @@ Kun sovelluksen päiväkirjan sivun tilanne muuttuu, eli uusi käyttäjä kirjau
 Sovelluksen loogisen datamallin muodostavat luokat User ja Diary, jotka kuvaavat käyttäjiä ja käyttäjän ruokapäiväkirjasivua:
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/dev/dokumentaatio/kuvat/tietokanta.png" >
 
-Toiminnallisista kokonaisuuksista vastaa luokan Diaryervice ainoa olio. Luokka tarjoaa kaikille käyttäliittymän toiminnoille oman metodin. Näitä ovat esim.
+Toiminnallisista kokonaisuuksista vastaa luokan DiaryService ainoa olio. Luokka tarjoaa kaikille käyttäliittymän toiminnoille oman metodin. Näitä ovat esim.
 - boolean login(String username)
 - List<Diary>getDiary()  
 - void createDiary(String content, User user)
