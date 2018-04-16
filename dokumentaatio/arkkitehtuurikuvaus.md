@@ -34,8 +34,7 @@ Toiminnallisista kokonaisuuksista vastaa luokan Diaryervice ainoa olio. Luokka t
 _DiaryService_ pääsee käsiksi käyttäjiin ja Päiväkirjan tietojen tallennuksesta vastaavan pakkauksessa _fitme.dao_ sijaitsevien rajapinnat  Diary_Dao_ ja _UserDao_ toteuttavien luokkien kautta. Luokkien toteutuksen injektoidaan sovelluslogiikalle konstruktorikutsun yhteydessä.
 
 DiaryServicen ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
-
-kuva
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/dev/dokumentaatio/kuvat/pakkaus_luokkakaavio%20(1).pdf" >
 
 ## Tietojen pysyväistallennus
 
