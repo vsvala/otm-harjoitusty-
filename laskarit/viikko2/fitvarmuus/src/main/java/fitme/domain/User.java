@@ -31,6 +31,9 @@ public class User {
     public String getUsername() {
         return username;
     }   
+//        public int getId(){
+//        return id;
+//    }
 
     @Override
     public boolean equals(Object obj) {

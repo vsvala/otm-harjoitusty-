@@ -53,7 +53,6 @@ public class FitMeUi extends Application {
     @Override
     public void init() throws Exception {
         //alustusmetodi init luo käytettävät DAO:t ja injektoi ne sovelluslogiikalle:
-      
         Properties properties = new Properties();
         properties.load(new FileInputStream("config.properties"));
 
@@ -65,7 +64,6 @@ public class FitMeUi extends Application {
         DataDiaryDao diaryDao = new DataDiaryDao(database);
 
         diaryService = new DiaryService(diaryDao, userDao);
-
 
 //        FileUserDao userDao = new FileUserDao("users.txt");
 //        FileDiaryDao diaryDao = new FileDiaryDao("todos.txt", userDao);
@@ -298,7 +296,6 @@ public class FitMeUi extends Application {
 
         });
 
-        
         //Kalorit
 //            createBreakfast.setOnAction(e -> {
 //            diaryService.createDiary(kcalInput.getText());
@@ -318,10 +315,6 @@ public class FitMeUi extends Application {
 //        createLunchForm.getChildren().addAll(lunchLabel, lunchInput, lunchspacer, createLunch);
 //         
 //        mainPane.setCenter(createLunchForm);
-
-
-
-
         //  seutup primary stage       
         primaryStage.setTitle("FitMe");
         primaryStage.setScene(loginScene);
@@ -345,13 +338,8 @@ public class FitMeUi extends Application {
 
     public static void main(String[] args) throws Exception {
         launch(args);
-
     }
 }
-
-
-//TIetokannan yhteyksien testausta...............
-        
 //        // luodaan yhteys jdbc:n yli sqlite-tietokantaan nimeltä "tietokanta.db"
 //        Connection connection = DriverManager.getConnection("jdbc:sqlite:fitme.db");
 //
@@ -368,7 +356,7 @@ public class FitMeUi extends Application {
 ////        }
 //        // käydään tuloksena saadussa oliossa olevat rivit läpi -- next-komento hakee
 //        // aina seuraavan rivin, ja palauttaa true jos rivi löytyi
-//        while(resultSet.next()) {
+//        while (resultSet.next()) {
 //            // haetaan nykyiseltä riviltä opiskelijanumero int-muodossa
 ////            Integer opNro = resultSet.getInt("id");
 //            // haetaan nykyiseltä riviltä nimi String-muodossa
@@ -380,10 +368,27 @@ public class FitMeUi extends Application {
 ////            String paaAine = resultSet.getString("pääaine");
 //
 //            // tulostetaan tiedot
-//            System.out.println( "\t" + nimi + "\t" + usernimi + "\t");
+//            System.out.println("\t" + nimi + "\t" + usernimi + "\t");
 //        }
-//       
-//statement.close();
-//resultSet.close();
+//
+//        statement.close();
+//        resultSet.close();
 //        // suljetaan lopulta yhteys tietokantaan
 //        connection.close();
+//
+////         Database database = new Database("jdbc:sqlite:tasks.db");
+////         DiaryDao diary = new DiaryDao(database);
+////           UserDao users = new UserDao(database);
+////        Connection connection = DriverManager.getConnection("jdbc:sqlite:fitme.db");
+////
+////        Statement statement = connection.createStatement();
+////
+////        ResultSet resultSet = statement.executeQuery("SELECT 1");
+////
+////        if (resultSet.next()) {
+////            System.out.println("Hei tietokantamaailma!");
+////        } else {
+////            System.out.println("Yhteyden muodostaminen epäonnistui.");
+////        }
+//    }
+//}
