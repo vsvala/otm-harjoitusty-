@@ -32,7 +32,7 @@ Toiminnallisista kokonaisuuksista vastaa luokan DiaryService ainoa olio. Luokka 
 - void createDiary(String content, User user)
 - void delete(int id)
 
-_DiaryService_ pääsee käsiksi käyttäjiin ja Päiväkirjan tietojen tallennuksesta vastaavan pakkauksessa _fitme.dao_ sijaitsevien rajapinnat  Diary_Dao_ ja _UserDao_ toteuttavien luokkien kautta. Luokkien toteutuksen injektoidaan sovelluslogiikalle konstruktorikutsun yhteydessä.
+_DiaryService_ pääsee käsiksi käyttäjiin ja Päiväkirjaan tietojen tallennuksesta vastaavan pakkauksessa _fitme.dao_ sijaitsevien rajapinnat  Diary_Dao_ ja _UserDao_ toteuttavien luokkien kautta. Luokkien toteutuksen injektoidaan sovelluslogiikalle konstruktorikutsun yhteydessä.
 
 DiaryServicen ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/dev/dokumentaatio/kuvat/luokka_pakkausKaavio.png" >
