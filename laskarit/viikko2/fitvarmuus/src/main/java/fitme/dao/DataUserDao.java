@@ -40,7 +40,7 @@ public class DataUserDao implements UserDao<User, String> {
                     rs.getString("username"));
 
             users.add(a);
-        } 
+        } //rs.getInt("id"),
 
         stmt.close();
         rs.close();
@@ -77,7 +77,7 @@ public class DataUserDao implements UserDao<User, String> {
 
     @Override
     public void delete(String key) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -101,4 +101,52 @@ public class DataUserDao implements UserDao<User, String> {
         return user;
     }
 }
- 
+//
+//   private List<User> users;
+//    private String file;
+//
+//    public FileUserDao(String file) throws Exception {
+//        users = new ArrayList<>();
+//        this.file = file;
+//        try {
+//            Scanner reader = new Scanner(new File(file));
+//            while (reader.hasNextLine()) {
+//                String[] parts = reader.nextLine().split(";");
+//                User u = new User(parts[0], parts[1]);
+//                users.add(u);
+//            }
+//        } catch (Exception e) {
+//            FileWriter writer = new FileWriter(new File(file));
+//            writer.close();
+//        }
+//        
+//    }
+//    
+//    private void save() throws Exception{
+//        try (FileWriter writer = new FileWriter(new File(file))) {
+//            for (User user : users) {
+//                writer.write(user.getUsername() + ";" + user.getName() + "\n");
+//            }
+//        } 
+//    }
+//    
+//    @Override
+//    public List<User> getAll() {
+//        return users;
+//    }
+//    
+//    @Override
+//    public User findByUsername(String username) {
+//        return users.stream()
+//            .filter(u->u.getUsername()
+//            .equals(username))
+//            .findFirst()
+//            .orElse(null);
+//    }
+//    
+//    @Override
+//    public User create(User user) throws Exception {
+//        users.add(user);
+//        save();
+//        return user;
+//    }  

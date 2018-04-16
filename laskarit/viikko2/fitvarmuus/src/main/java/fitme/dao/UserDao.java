@@ -25,3 +25,13 @@ public interface UserDao<U, K> {
 
 } 
         
+//   VANHA 
+//     User create(User user) throws Exception;
+//
+//     User findByUsername(String username);
+//     
+//     List<User> getAll();
+// 
+//    
+//    
+//}

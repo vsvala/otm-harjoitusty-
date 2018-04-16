@@ -17,11 +17,11 @@ import java.sql.Date;
  */
 public class Diary {
 
-    private int id; 
+    private int id;  //päivämäärä? idksi?
     private Date day;
     private String content;
     private String kcal;
-    private boolean delete; 
+    private boolean delete;  //done korvasin delete
     private User user;
 
 //    public Diary(int id, String content, boolean delete, User user) {
@@ -70,7 +70,7 @@ public class Diary {
         return id;
     }
 
-    public boolean isDelete() {
+    public boolean isDelete() { // isDone() {
         return delete;
     }
 

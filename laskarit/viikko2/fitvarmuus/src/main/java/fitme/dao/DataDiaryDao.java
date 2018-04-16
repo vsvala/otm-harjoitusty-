@@ -134,3 +134,46 @@ public class DataDiaryDao implements DiaryDao<Diary, String> { //USer
     }
 
 }
+
+//  public List<Diary> todos;
+//    private String file;
+//
+//    public FileDiaryDao(String file, UserDao users) throws Exception {
+//        todos = new ArrayList<>();
+//        this.file = file;
+//        try {
+//            Scanner reader = new Scanner(new File(file));
+//            while (reader.hasNextLine()) {
+//                String[] parts = reader.nextLine().split(";");
+//                int id = Integer.parseInt(parts[0]);
+//                boolean done = Boolean.parseBoolean(parts[2]);
+////                String kcal = (parts[4]);
+//
+//
+////konstruktori palauttaa ihan aluksi kaikki userin jutut näkyville
+////                User user = users.findAll().stream().filter(u->u.getUsername().equals(parts[3])).findFirst().orElse(null); 
+////                Diary todo = new Diary(id, parts[1], done, user);
+////                todos.add(todo);
+//            }
+//        } catch (Exception e) {
+//            FileWriter writer = new FileWriter(new File(file));
+//            writer.close();
+//        }
+//        
+//    }
+//    
+//    private void save() throws Exception{
+//        try (FileWriter writer = new FileWriter(new File(file))) {
+//            for (Diary todo : todos) {
+//                writer.write(todo.getId() + ";" + todo.getContent() + ";" + todo.isDelete() + ";" + todo.getUser().getUsername() + "\n");
+//            }
+//        }
+//    }    
+//    
+//    private int generateId() {
+//        return todos.size() + 1;
+//    }
+//    
+//
+//}
+//

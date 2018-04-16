@@ -296,7 +296,6 @@ public class FitMeUi extends Application {
 
         });
 
-        
         //Kalorit
 //            createBreakfast.setOnAction(e -> {
 //            diaryService.createDiary(kcalInput.getText());
@@ -316,10 +315,6 @@ public class FitMeUi extends Application {
 //        createLunchForm.getChildren().addAll(lunchLabel, lunchInput, lunchspacer, createLunch);
 //         
 //        mainPane.setCenter(createLunchForm);
-
-
-
-
         //  seutup primary stage       
         primaryStage.setTitle("FitMe");
         primaryStage.setScene(loginScene);
@@ -345,13 +340,6 @@ public class FitMeUi extends Application {
         launch(args);
     }
 }
-
-
-
-
-
-
-//TIetokannan yhteyksien testausta...............
 //        // luodaan yhteys jdbc:n yli sqlite-tietokantaan nimeltä "tietokanta.db"
 //        Connection connection = DriverManager.getConnection("jdbc:sqlite:fitme.db");
 //
@@ -388,3 +376,19 @@ public class FitMeUi extends Application {
 //        // suljetaan lopulta yhteys tietokantaan
 //        connection.close();
 //
+////         Database database = new Database("jdbc:sqlite:tasks.db");
+////         DiaryDao diary = new DiaryDao(database);
+////           UserDao users = new UserDao(database);
+////        Connection connection = DriverManager.getConnection("jdbc:sqlite:fitme.db");
+////
+////        Statement statement = connection.createStatement();
+////
+////        ResultSet resultSet = statement.executeQuery("SELECT 1");
+////
+////        if (resultSet.next()) {
+////            System.out.println("Hei tietokantamaailma!");
+////        } else {
+////            System.out.println("Yhteyden muodostaminen epäonnistui.");
+////        }
+//    }
+//}
