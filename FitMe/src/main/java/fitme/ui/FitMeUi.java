@@ -53,6 +53,7 @@ public class FitMeUi extends Application {
     @Override
     public void init() throws Exception {
         //alustusmetodi init luo käytettävät DAO:t ja injektoi ne sovelluslogiikalle:
+      
         Properties properties = new Properties();
         properties.load(new FileInputStream("config.properties"));
 
@@ -64,6 +65,7 @@ public class FitMeUi extends Application {
         DataDiaryDao diaryDao = new DataDiaryDao(database);
 
         diaryService = new DiaryService(diaryDao, userDao);
+
 
 //        FileUserDao userDao = new FileUserDao("users.txt");
 //        FileDiaryDao diaryDao = new FileDiaryDao("todos.txt", userDao);
