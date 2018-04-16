@@ -13,7 +13,7 @@ Pakkaus _fitme.ui_ sisältää JavaFX:llä toteutetun käyttöliittymän _fitme.
 Käyttöliittymä sisältää kolme erillistä näkymää
 - kirjautuminen
 - uuden käyttäjän luominen
-- päiväkirjansivun
+- ruokapäiväkirjan sivu
 
 jokainen näistä on toteutettu omana Scene-oliona. Näkymistä yksi kerrallaan on näkyvänä eli sijoitettuna sovelluksen stageen. Käyttöliittymä on rakennettu ohjelmallisesti luokassa fitme.ui.FitMeUi.
 
@@ -23,11 +23,12 @@ Kun sovelluksen päiväkirjan sivun tilanne muuttuu, eli uusi käyttäjä kirjau
 
 ## Sovelluslogiikka
 
-Sovelluksen loogisen datamallin muodostavat luokat User ja Diary, jotka kuvaavat käyttäjiä ja käyttäjien syömiä ruokia:
+Sovelluksen loogisen datamallin muodostavat luokat User ja Diary, jotka kuvaavat käyttäjiä ja käyttäjän ruokapäiväkirjasivua:
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/dev/dokumentaatio/kuvat/tietokanta.png" >
 
 Toiminnallisista kokonaisuuksista vastaa luokan Diaryervice ainoa olio. Luokka tarjoaa kaikille käyttäliittymän toiminnoille oman metodin. Näitä ovat esim.
 - boolean login(String username)
-- List<Diary>getDiary() 
+- List<Diary>getDiary()  
 - void createDiary(String content, User user)
 - void delete(int id)
 
