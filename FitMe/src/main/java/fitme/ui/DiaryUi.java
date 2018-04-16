@@ -5,29 +5,12 @@
  */
 package fitme.ui;
 
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
-
 /**
  *
  * @author svsv
  */
-public class DiaryPageUI {
-    
-
-//    
+public class DiaryUi {
+ //    
 //      public void createDiaryScene(Stage primaryStage, Scene diaryScene, DiaryService diaryService) {    
 //        
 //        
@@ -123,5 +106,5 @@ public class DiaryPageUI {
 //            
 //        });
 //    }
-//    
+//       
 }

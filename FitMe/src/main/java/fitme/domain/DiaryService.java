@@ -47,9 +47,9 @@ public class DiaryService {
     }
     
 //    /**
-//    * kirjautuneen käyttäjän tekemättömät todot
+//    * kirjautuneen käyttäjän content
 //    * 
-//    * @return kirjautuneen käyttäjän tekemättömät todot
+//    * @return kirjautuneen käyttäjän content
 //    */
 //    
     public List<Diary> getDiary() throws SQLException {

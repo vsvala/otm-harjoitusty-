@@ -31,7 +31,7 @@ public class UserTest {
     
        @Test
     public void LuoUserilleKayttajanimen() {
-        User user=new User("Mat", "Matias");
+       User user=new User("Mat", "Matias");
        assertEquals("Mat", user.getUsername());
     }
     
