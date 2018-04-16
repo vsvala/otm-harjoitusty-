@@ -343,8 +343,10 @@ public class FitMeUi extends Application {
 
     public static void main(String[] args) throws Exception {
         launch(args);
+
     }
 }
+<<<<<<< HEAD
 
 
 
@@ -352,6 +354,9 @@ public class FitMeUi extends Application {
 
 
 //TIetokannan yhteyksien testausta...............
+=======
+        
+>>>>>>> 7fb2bc4591aaab4677014d84aea31a3f7d4b36b9
 //        // luodaan yhteys jdbc:n yli sqlite-tietokantaan nimeltä "tietokanta.db"
 //        Connection connection = DriverManager.getConnection("jdbc:sqlite:fitme.db");
 //
@@ -368,7 +373,7 @@ public class FitMeUi extends Application {
 ////        }
 //        // käydään tuloksena saadussa oliossa olevat rivit läpi -- next-komento hakee
 //        // aina seuraavan rivin, ja palauttaa true jos rivi löytyi
-//        while (resultSet.next()) {
+//        while(resultSet.next()) {
 //            // haetaan nykyiseltä riviltä opiskelijanumero int-muodossa
 ////            Integer opNro = resultSet.getInt("id");
 //            // haetaan nykyiseltä riviltä nimi String-muodossa
@@ -380,11 +385,18 @@ public class FitMeUi extends Application {
 ////            String paaAine = resultSet.getString("pääaine");
 //
 //            // tulostetaan tiedot
-//            System.out.println("\t" + nimi + "\t" + usernimi + "\t");
+//            System.out.println( "\t" + nimi + "\t" + usernimi + "\t");
 //        }
-//
-//        statement.close();
-//        resultSet.close();
+//       
+//statement.close();
+//resultSet.close();
 //        // suljetaan lopulta yhteys tietokantaan
 //        connection.close();
+<<<<<<< HEAD
 //
+=======
+// 
+//        
+//            
+         
+>>>>>>> 7fb2bc4591aaab4677014d84aea31a3f7d4b36b9

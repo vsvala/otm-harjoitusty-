@@ -1,11 +1,8 @@
+Virva;Viku
+Mike;M
+KAlle Kustaa;Kalle
+kalle;Mikko
+Harri;hajame
+Virva;Viku
 Viku;Virva
-M;Mike
-Kalle;KAlle Kustaa
-Mikko;kalle
-hajame;Harri
-Miksu;Mika
-Mike;Mikael
-Mik;Mikko
-Kale;Kaaleppi
-Riik;Riikka
-tytti;Tiina
+
