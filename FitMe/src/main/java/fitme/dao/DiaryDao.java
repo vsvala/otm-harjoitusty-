@@ -22,6 +22,8 @@ public interface DiaryDao<D, K> {
     List<D> findAll(K key) throws SQLException;
 
     D saveOrUpdate(D object) throws SQLException;
+   
+//    D saveOrUpdate2(D object) throws SQLException;//uusin
 
     void delete(K key) throws SQLException;
 }

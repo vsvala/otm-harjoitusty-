@@ -20,7 +20,7 @@ public class Diary {
     private int id; 
     private Date day;
     private String content;
-    private String kcal;
+    private Integer kcal;
     private boolean delete; 
     private User user;
 
@@ -30,23 +30,43 @@ public class Diary {
 //        this.delete = delete;
 //        this.user = user;
 //    }
-    public Diary(int id, String content, Date Day, User user) {
-        this.id = id;
-        this.content = content;
+    public Diary(int id, Date Day, String content, int kcal, User user) {
+        this.id = id;     
         this.day = day;
+        this.content = content;
+        this.kcal=kcal;
         this.delete = false;
         this.user = user;
     }
-
-    public Diary(String content, User user) {
+    
+      public Diary(String content, int kcal, User user) {
         this.id = id;
         this.content = content;
+        this.kcal=kcal;
+        this.user = user;
+        this.delete = false;
+    }
+
+    public Diary(int id, String content, int kcal, User user) {             //////////uusin
+        this.id = id;
+        this.day = day;
+        this.content = content;
+        this.kcal=kcal;
+        this.user = user;
+        this.delete = false;
+    }
+        public Diary(int id, String content, int kcal) {             //////////uusin
+        this.id = id;
+        this.day = day;
+        this.content = content;
+        this.kcal=kcal;
         this.user = user;
         this.delete = false;
     }
     public Diary(int id, String content) {
         this.id = id;
         this.content = content;
+        this.kcal=kcal;
         this.user = user;
         this.delete = false;
     }
@@ -58,8 +78,11 @@ public class Diary {
     public String getContent() {
         return content;
     }
-    public String getKcal() {
-        return content;
+    public int getKcal() {   
+        if(kcal==null){
+            return 0;
+        }
+        return kcal;
     }
 
     public User getUser() {

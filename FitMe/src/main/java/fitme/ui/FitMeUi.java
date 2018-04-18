@@ -75,18 +75,33 @@ public class FitMeUi extends Application {
     //päiväkirjan sisällön listaus ja delete nappi ///////////////////////////////////////////////////////////////////  
     public Node createDiaryNode(Diary diary) {
         HBox box = new HBox(10);
+        
+        System.out.println("kcal"+diary.getKcal());
+        String kcal=Integer.toString(diary.getKcal()); 
+        System.out.println("kcal"+diary.getKcal());
+       
+        
+        try {///////////////////////////////////////////////////////////////////////testiäääääääääääääääääääääää
+            System.out.println("kcal"+diaryService.countKcal());
+        } catch (SQLException ex) {
+            Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         Label label = new Label(diary.getContent());               //GET DIARY CONTENT
+//        String kcal=Integer.toString(diary.getKcal());              //Get KCAL
+        Label kcalLabel = new Label(kcal);
         label.setMinHeight(28);
+        kcalLabel.setMinHeight(28);
 //      Label kcalLabel  = new Label(diary.getKcal());
         Button button = new Button("delete");
 //             System.out.println("testiäää"+diary.getUser()+diary.getContent()+diary.getId()+diary.getUser().getUsername());
 //  napin poistotoiminnallisuus 
-        button.setOnAction(e -> {
+        button.setOnAction(e -> {                                       //BUTTON ACTION DELETE FROM DIARY
 //            System.out.println("testdelete"+diary.getId());
 //           
             String sid = Integer.toString(diary.getId());
 //          System.out.println("sidii--------testdelete"+sid);
-            diaryService.delete(sid);                            //BUTTON ACTION DELETE FROM DIARY
+            diaryService.delete(sid);                                   //DELETE FOM DATABASE                      
             try {
                 redrawView();
             } catch (SQLException ex) {
@@ -98,17 +113,20 @@ public class FitMeUi extends Application {
         HBox.setHgrow(spacer, Priority.ALWAYS);
         box.setPadding(new Insets(5, 0, 0, 10));
 
-        box.getChildren().addAll(label, spacer, button); //lisää kcalLAbel
+        box.getChildren().addAll(label, spacer, kcalLabel, button); //lisää kcalLAbel/ //
         return box;
     }
 
     public void redrawView() throws SQLException {
         nodes.getChildren().clear();
 
-        List<Diary> diaries = diaryService.getDiary();                    //FIND ONE DIARY
-        diaries.forEach(content -> {
-            nodes.getChildren().add(createDiaryNode(content));
+        List<Diary> diaries = diaryService.getDiary();                    //FIND ONE DIARY  HAKEE SISÄLLÖN
+        diaries.forEach(diarycontent -> {
+            nodes.getChildren().add(createDiaryNode(diarycontent));
+       
         });
+    
+      
     }
 
     // LOGINVIEW////////////////////////////////////////////////////////////////////
@@ -272,8 +290,8 @@ public class FitMeUi extends Application {
         createForm.getChildren().addAll(breakfastLabel, breakfastInput, kcalLabel, kcalInput, spacer, createBreakfast);
 
         nodes = new VBox(10);
-        nodes.setMaxWidth(280);
-        nodes.setMinWidth(280);
+        nodes.setMaxWidth(250);
+        nodes.setMinWidth(250);
         redrawView();
 
         mainSrcollbar.setContent(nodes);
@@ -287,9 +305,17 @@ public class FitMeUi extends Application {
             primaryStage.setScene(loginScene);
         });
 
-        createBreakfast.setOnAction(e -> {
-            diaryService.createDiary(breakfastInput.getText());  //CREATE BUTTON ACTION call metod DIARYSERVICE CREATE DIARY
+        createBreakfast.setOnAction(e -> {  
+            
+            int kcal = Integer.parseInt(kcalInput.getText()); 
+            
+            diaryService.createDiary(breakfastInput.getText(), kcal);  //CREATE BUTTON ACTION call metod DIARYSERVICE CREATE DIARY
+          
+//            diaryService.createKcal(breakfastInput.getText(), kcal);
             breakfastInput.setText("");
+            kcalInput.setText("");
+          
+            
             try {
                 redrawView();
             } catch (SQLException ex) {

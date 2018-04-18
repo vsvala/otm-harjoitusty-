@@ -48,8 +48,8 @@ public class DataDiaryDao implements DiaryDao<Diary, String> { //USer
             return diary;
         }
         PreparedStatement stmt = connection.prepareStatement("INSERT INTO Diary"
-                + " (user_username, day, content)"
-                + " VALUES (?, ?, ?)");  //(?, CURRENT_TIMESTAMP. ?)
+                + " (user_username, day, content, kcal)"
+                + " VALUES (?, ?, ?, ?)");  //(?, CURRENT_TIMESTAMP. ?)
         //String strDate=rs.getString("date";
         // DateFormat fmt=new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
         //Date date=fmt.parse(strDate);
@@ -57,6 +57,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> { //USer
         stmt.setObject(1, object.getUser().getUsername());  //huom getusername       
         stmt.setDate(2, object.getDay());
         stmt.setString(3, object.getContent());
+        stmt.setInt(4, object.getKcal());
         //date
 
         stmt.executeUpdate();
@@ -66,6 +67,36 @@ public class DataDiaryDao implements DiaryDao<Diary, String> { //USer
 
         return diary;
     }
+    //vanha ennen kcal
+    
+//        @Override
+//    public Diary saveOrUpdate2(Diary object) throws SQLException {   //uusin
+//        Connection connection = database.getConnection(); //DriverManager.getConnection("jdbc:sqlite:fitme.db");
+//
+//        Diary diary = findOne(object.getUser().getUsername());
+//
+//        if (diary != null) {
+//            return diary;
+//        }
+//        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Diary"
+//                + " (user_username, day, content)"
+//                + " VALUES (?, ?, ?)");  //(?, CURRENT_TIMESTAMP. ?)
+//        //String strDate=rs.getString("date";
+//        // DateFormat fmt=new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
+//        //Date date=fmt.parse(strDate);
+//
+//        stmt.setObject(1, object.getUser().getUsername());  //huom getusername       
+//        stmt.setDate(2, object.getDay());
+//        stmt.setString(3, object.getContent());
+//        //date
+//
+//        stmt.executeUpdate();
+//
+//        stmt.close();
+//        connection.close();
+//
+//        return diary;
+//    }
 
     @Override
     public List<Diary> findAll(String key) throws SQLException {
@@ -77,7 +108,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> { //USer
         stmt.setObject(1, key);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            Diary diary = new Diary(rs.getInt("id"), rs.getString("content"));
+            Diary diary = new Diary(rs.getInt("id"), rs.getString("content"), rs.getInt("kcal"));
 
             diaries.add(diary);
         } //rs.getInt("id"),
@@ -106,10 +137,11 @@ public class DataDiaryDao implements DiaryDao<Diary, String> { //USer
         }
         User user = userDao.findByUsername(rs.getString("user_username"));
 
-        Diary diary = new Diary(rs.getInt("id"), rs.getString("content"),
-                rs.getDate("day"), user); /////////////////////////////////////////DELETE??????????????
+        Diary diary = new Diary(rs.getInt("id"),rs.getDate("day"), rs.getString("content"), rs.getInt("kcal"),
+                user); /////////////////////////////////////////DELETE??????????????
 //      (int id, String content, Date Day, boolean delete, User user) {
-
+//    }
+            //public Diary(int id, Date Day, String content, int kcal, User user) {
         stmt.close();
         rs.close();
         connection.close();
