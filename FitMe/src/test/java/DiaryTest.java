@@ -103,6 +103,12 @@ public class DiaryTest {
         Date expected = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
         assertEquals(expected, diary.getDay());
     }
+    
+//    @Test
+//    public void setdayworks(24) {
+//        this.day = time;
+//    }
+
 
 //        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 //        Date parsed = null;
@@ -143,6 +149,20 @@ public class DiaryTest {
         diary.setDelete();
 
         assertEquals(true, diary.isDelete());
+
+    }
+       @Test
+    public void setIdworks() {
+        diary.setId(4);
+
+        assertEquals(4, diary.getId());
+
+    }
+    
+        @Test
+    public void getKcalReturns0IfNull() {
+     Diary  diarytest = new Diary(2,"onycontent");
+        assertEquals(0, diarytest.getKcal());
 
     }
 

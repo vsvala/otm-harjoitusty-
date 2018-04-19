@@ -24,13 +24,7 @@ public class Diary {
     private boolean delete; 
     private User user;
 
-//    public Diary(int id, String content, boolean delete, User user) {
-//        this.id = id;
-//        this.content = content;
-//        this.delete = delete;
-//        this.user = user;
-//    }
-    public Diary(int id, Date Day, String content, int kcal, User user) {
+    public Diary(int id, Date day, String content, int kcal, User user) {
         this.id = id;     
         this.day = day;
         this.content = content;
@@ -63,13 +57,12 @@ public class Diary {
         this.user = user;
         this.delete = false;
     }
-//    public Diary(int id, String content) {
-//        this.id = id;
-//        this.content = content;
-//        this.kcal=kcal;
-//        this.user = user;
-//        this.delete = false;
-//    }
+    public Diary(int id, String content) {
+        this.id = id;
+        this.content = content;
+        this.user = user;
+        this.delete = false;
+    }
 
     public void setId(int id) {
         this.id = id;
