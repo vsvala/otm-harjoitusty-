@@ -95,14 +95,14 @@ public class DiaryTest {
 //        assertEquals(expected, diary.getDay());
 //    }
 //
-//    @Test
-//    public void kostruktoriNeljallaLuoPaivakirjanPaivayksen() {
-//        User user2 = new User("Matias", "Mat");
-//        Diary diary = new Diary(1, "Moi", new java.sql.Date(Calendar.getInstance().getTimeInMillis()), user2);
-//        System.out.println("aika" + diary.getDay());
-//        Date expected = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
-//        assertEquals(expected, diary.getDay());
-//    }
+    @Test
+    public void kostruktoriNeljallaLuoPaivakirjanPaivayksen() {
+        User user2 = new User("Matias", "Mat");
+        Diary diary4 = new Diary(1, new java.sql.Date(Calendar.getInstance().getTimeInMillis()),"Moi",200, user2);
+        System.out.println("aika" + diary.getDay());
+        Date expected = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
+        assertEquals(expected, diary.getDay());
+    }
 
 //        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 //        Date parsed = null;

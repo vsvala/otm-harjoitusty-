@@ -30,14 +30,14 @@ public class Diary {
 //        this.delete = delete;
 //        this.user = user;
 //    }
-//    public Diary(int id, Date Day, String content, int kcal, User user) {
-//        this.id = id;     
-//        this.day = day;
-//        this.content = content;
-//        this.kcal=kcal;
-//        this.delete = false;
-//        this.user = user;
-//    }
+    public Diary(int id, Date Day, String content, int kcal, User user) {
+        this.id = id;     
+        this.day = day;
+        this.content = content;
+        this.kcal=kcal;
+        this.delete = false;
+        this.user = user;
+    }
     
       public Diary(String content, int kcal, User user) {
         this.id = id;
