@@ -28,44 +28,81 @@ import static org.junit.Assert.*;
 public class DiaryTest {
 
     User user;
+    Diary diary;
+    Diary diary2;
 
     @Before
     public void setUp() {
-        User user = new User("Matias", "Mat");
+        user = new User("Mat", "Matias");
+        diary = new Diary("Moi", 200, user);
+        diary2 = new Diary(2,"Heippa", 400);
     }
 
     @Test
-    public void kostruktoriContentUserLuoPaivakirjanSisallon() {
-        User user2 = new User("Matias", "Mat");
-        Diary diary = new Diary("Moi", user2);
+    public void kostruktorContentKcalUserCreatesContent() {
+   
         assertEquals("Moi", diary.getContent());
     }
-
-    @Test
-    public void kostruktoriIdContentLuoPaivakirjanSisallon() {
-        Diary diary = new Diary(1, "Moikka");
-
-        assertEquals("Moikka", diary.getContent());
-        assertEquals(1, diary.getId());
+       @Test
+    public void kostruktorContentKcalUserCreatesKcal() {
+   
+        assertEquals(200, diary.getKcal());
+    }
+//        @Test
+//    public void kostruktorContentKcalUserCreatesUsername() {
+//   
+//        assertEquals(user, diary.getUser());
+//    }
+     
+      @Test
+    public void kostruktorIdContentKcalCreatesId() {
+   
+        assertEquals(2, diary2.getId());
+        
+    }
+//      @Test
+//    public void kostruktorContentKcalUserCreatesuser() {
+//   
+//        assertEquals(user, diary2.getUser());
+//    }
+    
+      @Test
+    public void kostruktorIdContentKcalCreatescontent() {
+   
+        assertEquals("Heippa", diary2.getContent());
+    }
+          @Test
+    public void kostruktorIdContentKcalCreatesKcal() {
+   
+        assertEquals(400, diary2.getKcal());
     }
 
-    @Test
-    public void kostruktoriNeljallaLuoPaivakirjanSisallon() {
-        User user2 = new User("Matias", "Mat");
-        Diary diary = new Diary(1, "Moi", new java.sql.Date(Calendar.getInstance().getTimeInMillis()), user2);
-        System.out.println("aika" + diary.getDay());
-        Date expected = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
-        assertEquals(expected, diary.getDay());
-    }
 
-    @Test
-    public void kostruktoriNeljallaLuoPaivakirjanPaivayksen() {
-        User user2 = new User("Matias", "Mat");
-        Diary diary = new Diary(1, "Moi", new java.sql.Date(Calendar.getInstance().getTimeInMillis()), user2);
-        System.out.println("aika" + diary.getDay());
-        Date expected = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
-        assertEquals(expected, diary.getDay());
-    }
+//    @Test
+//    public void kostruktoriIdContenKcaltLuoPaivakirjanSisallon() {
+//        Diary diary = new Diary(1, "Moikka");
+//
+//        assertEquals("Moikka", diary.getContent());
+//        assertEquals(1, diary.getId());
+//    }
+//
+//    @Test
+//    public void kostruktoriNeljallaLuoPaivakirjanSisallon() {
+//        User user2 = new User("Matias", "Mat");
+//        Diary diary = new Diary(1, "Moi", new java.sql.Date(Calendar.getInstance().getTimeInMillis()), user2);
+//        System.out.println("aika" + diary.getDay());
+//        Date expected = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
+//        assertEquals(expected, diary.getDay());
+//    }
+//
+//    @Test
+//    public void kostruktoriNeljallaLuoPaivakirjanPaivayksen() {
+//        User user2 = new User("Matias", "Mat");
+//        Diary diary = new Diary(1, "Moi", new java.sql.Date(Calendar.getInstance().getTimeInMillis()), user2);
+//        System.out.println("aika" + diary.getDay());
+//        Date expected = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
+//        assertEquals(expected, diary.getDay());
+//    }
 
 //        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 //        Date parsed = null;
@@ -77,36 +114,32 @@ public class DiaryTest {
 //        java.sql.Date sql = new java.sql.Date(parsed.getTime());
 //        System.out.println("sql.Date"+sql);
 //   
+//    @Test
+//    public void getIdReturnsId() {
+//        User user2 = new User("Matias", "Mat");
+//        Diary diary = new Diary("Moi", user2);
+//        diary.setId(2);
+//
+//        assertEquals(2, diary.getId());
+//
+//    }
+//
+//    @Test
+//    public void getContentReturnsContent() {
+//        User user2 = new User("Matias", "Mat");
+//        Diary diary = new Diary("Moi", user2);
+//        assertEquals("Moi", diary.getContent());
+//
+//    }
+
     @Test
-    public void getIdReturnsId() {
-        User user2 = new User("Matias", "Mat");
-        Diary diary = new Diary("Moi", user2);
-        diary.setId(2);
-
-        assertEquals(2, diary.getId());
-
-    }
-
-    @Test
-    public void getContentReturnsContent() {
-        User user2 = new User("Matias", "Mat");
-        Diary diary = new Diary("Moi", user2);
-        assertEquals("Moi", diary.getContent());
-
-    }
-
-    @Test
-    public void getUsertReturnsUsername() {
-        User user2 = new User("Mat", "Matias");
-        Diary diary = new Diary("Moi", user2);
+    public void getUsernameReturnsUsername() {
         assertEquals("Mat", diary.getUser().getUsername());
 
     }
 
     @Test
     public void isDeleteReturnsDelete() {
-        User user2 = new User("Mat", "Matias");
-        Diary diary = new Diary("Moi", user2);
         diary.setDelete();
 
         assertEquals(true, diary.isDelete());
@@ -122,11 +155,20 @@ public class DiaryTest {
 //        assertEquals(false, diary.getId()==(diary2.getId()));
 //    }
     @Test
+    public void equalsMetodiPalauttaaTrueifSameOgject() {
+  
+        assertEquals(true, diary.getId()==(diary.getId()));
+
+    }
+    
+      public void equalsMetodiPalauttaaFalseJosEiUseriObj() {
+  
+        assertEquals(false, diary=(diary));
+      }
+       @Test
     public void equalsMetodiPalauttaaFalseJosEiUserinInstanssi() {
-        User user2 = new User("Mil", "Milla");
-        Diary diary2 = new Diary("Moi", user2);
-        Diary diary = new Diary("Hih", user);
-        assertEquals(true, diary.equals(diary2));
+  
+        assertEquals(false, diary.equals(diary2));
 
     }
 }

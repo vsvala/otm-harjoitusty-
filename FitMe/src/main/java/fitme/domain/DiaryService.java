@@ -64,21 +64,26 @@ public class DiaryService {
 //    * @return kirjautuneen käyttäjän content
 //    */
 //    
-    public List<Diary> getDiary() throws SQLException {
+    public List<Diary> getDiary() throws SQLException { //returns all loggedusers diarymarkings in the list
         if (loggedIn == null) {
             return new ArrayList<>();
         }
-        return diaryDao.findAll(loggedIn.getUsername());
-//            .stream()
-//            .filter(t-> t.getUser().equals(loggedIn))
-//            .filter(t->!t.isDelete())//idDone
-//            .collect(Collectors.toList());
+        return diaryDao.findAll(loggedIn.getUsername());           
+    }
+      
+    
+    
+    public Object getOne() throws SQLException { //returns all loggedusers diarymarkings in the list
+        if (loggedIn == null) {
+            return null;
+        }
+        return diaryDao.findOne(loggedIn.getUsername());           
     }
    
 //    /**
-//    * todon merkitseminen tehdyksi
+//    * delete diary markings
 //    * 
-//    * @param   id   tehdyksi merkittävän todon tunniste
+//    * @param   id   deletoitavan ssällön tunniste
 //    */    
 //    
     public void delete(String id) {

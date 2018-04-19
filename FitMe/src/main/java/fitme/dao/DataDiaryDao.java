@@ -104,7 +104,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> { //USer
 
         Connection connection = database.getConnection();
 
-        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ?");
+        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ?");//ja pvm=sama..??..
         stmt.setObject(1, key);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
@@ -117,14 +117,14 @@ public class DataDiaryDao implements DiaryDao<Diary, String> { //USer
         rs.close();
         connection.close();
 
-// nyt asiakkaat listassa
+       // now diary markings on list
         System.out.println(diaries);
         return diaries;
 
     }
 
     @Override
-    public Diary findOne(String key) throws SQLException {
+    public Diary findOne(String key) throws SQLException {  //on diary marking
         System.out.println("key" + key);
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE id = ?");
