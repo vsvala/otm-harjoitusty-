@@ -36,17 +36,15 @@ public class DiaryService {
 //    * @param   content   luotavan todon sisältö
 //    */
 //    
-    public boolean createDiary(String content, int kcal) {
+    public boolean createDiary(String content, int kcal) throws SQLException {
         Diary diary = new Diary(content, kcal, loggedIn);
-        try {   
-            diaryDao.saveOrUpdate(diary);
-        } catch (Exception ex) {
-            return false;
-        }
+
+        diaryDao.saveOrUpdate(diary);
+
         return true;
-    
+
     }
-    
+
 //      public boolean createKcal(String content, int kcal) {  //////uusin
 //        Diary diary = new Diary(content, kcal, loggedIn);
 //        try {   
@@ -104,6 +102,7 @@ public class DiaryService {
     public boolean login(String username) throws SQLException {
         User user = (User) userDao.findByUsername(username);
         if (user == null) {
+            
             return false;
         }
         

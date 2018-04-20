@@ -33,6 +33,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import fitme.dao.DataDiaryDao;
 import fitme.dao.DataUserDao;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.text.Font;
@@ -55,24 +58,39 @@ public class FitMeUi extends Application {
   
 
     @Override
-    public void init() throws Exception {
-        //alustusmetodi init luo käytettävät DAO:t ja injektoi ne sovelluslogiikalle:
-
-        Properties properties = new Properties();
-        properties.load(new FileInputStream("config.properties"));
-
-        String usedDatabase = properties.getProperty("usedDatabase");
-        Database database = new Database(usedDatabase);
-
+    public void init() throws IOException, Exception {
+             Database database = new Database("jdbc:sqlite:fitme.db");
+             database.init();
+             
+//        try {
+//            //alustusmetodi init luo käytettävät DAO:t ja injektoi ne sovelluslogiikalle:
+//            
+//            
+//            Properties properties = new Properties();
+//          
+//            properties.load(new FileInputStream("config.properties"));
+//            
+//            
+//            String usedDatabase = properties.getProperty("usedDatabase");
+//            Database database = new Database(usedDatabase);
+            
 //          Database database = new Database("jdbc:sqlite:fitme.db");
-        DataUserDao userDao = new DataUserDao(database);
-        DataDiaryDao diaryDao = new DataDiaryDao(database);
+             DataUserDao userDao = new DataUserDao(database);
+             DataDiaryDao diaryDao = new DataDiaryDao(database);
 
-        diaryService = new DiaryService(diaryDao, userDao);
+            diaryService = new DiaryService(diaryDao, userDao);
 
 //        FileUserDao userDao = new FileUserDao("users.txt");
 //        FileDiaryDao diaryDao = new FileDiaryDao("todos.txt", userDao);
-        // alustetaan sovelluslogiikka 
+// alustetaan sovelluslogiikka 
+        
+//        } catch (ClassNotFoundException ex) {
+////                File file=new File("fitme.db");
+//////                Database database = new Database("jbc:sqlite"+file.getAbsolutePath());
+//              
+//    
+//        }
+    
     }
 
     //päiväkirjan sisällön listaus ja delete nappi ///////////////////////////////////////////////////////////////////  
@@ -343,7 +361,11 @@ public class FitMeUi extends Application {
         createBreakfast.setOnAction(e -> {
 
             int kcal = Integer.parseInt(kcalInput.getText());
-            diaryService.createDiary(foodInput.getText(), kcal);  //CREATE BUTTON ACTION call metod DIARYSERVICE CREATE DIARY
+            try {
+                diaryService.createDiary(foodInput.getText(), kcal);  //CREATE BUTTON ACTION call metod DIARYSERVICE CREATE DIARY
+            } catch (SQLException ex) {
+                Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
+            }
            foodInput.setText("");
             kcalInput.setText("");
 

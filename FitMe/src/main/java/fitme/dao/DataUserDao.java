@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package fitme.dao;
 
 import java.sql.*;
@@ -14,12 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import fitme.domain.User;
+
 /**
  *
  * @author svsv
  */
 public class DataUserDao implements UserDao<User, String> {
-    
+
     private Database database;
 
     public DataUserDao(Database database) {
@@ -28,7 +28,7 @@ public class DataUserDao implements UserDao<User, String> {
 
     @Override
     public List<User> findAll() throws SQLException {
-        Connection connection =  database.getConnection();
+        Connection connection = database.getConnection();
 
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM User");
         ResultSet rs = stmt.executeQuery();
@@ -40,7 +40,7 @@ public class DataUserDao implements UserDao<User, String> {
                     rs.getString("username"));
 
             users.add(a);
-        } 
+        }
 
         stmt.close();
         rs.close();
@@ -49,20 +49,22 @@ public class DataUserDao implements UserDao<User, String> {
 
 // nyt asiakkaat listassa
         System.out.println(users);
-        return users; 
-        
+        return users;
+
     }
 
     @Override
-    public User saveOrUpdate(User object) throws SQLException {
+    public boolean saveOrUpdate(User object) throws SQLException {//User
         Connection connection = database.getConnection();
-
-        User user = findByUsername(object.getUsername());
-
-        if (user != null) {
-            System.out.println("käyttäjälöytyy..palautetaan käyttäjä");
-            return user;
-        }
+//       System.out.println("teeestaa");
+//        User user = findByUsername(object.getUsername());
+////     
+////        System.out.println("teeestaa"+user);
+//
+//        if (user != null) {
+//            System.out.println("käyttäjälöytyy..palautetaan käyttäjä");
+//            return false;
+//        }
         System.out.println("luodaan tietokantaan uus käyttäjä");
         PreparedStatement stmt = connection.prepareStatement("INSERT INTO User(username, name) VALUES(?, ?)");
 
@@ -72,12 +74,19 @@ public class DataUserDao implements UserDao<User, String> {
         stmt.executeUpdate();
         stmt.close();
 
-        return user;
+        return true;
     }
 
     @Override
-    public void delete(String key) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    public boolean delete(String key) throws SQLException {
+        Connection connection = database.getConnection();
+        PreparedStatement stmt = connection.prepareStatement("DELETE FROM User WHERE username= ?");
+        stmt.setString(1, key);
+
+        stmt.executeUpdate();
+        stmt.close();
+        connection.close();
+        return true;
     }
 
     @Override
@@ -101,4 +110,3 @@ public class DataUserDao implements UserDao<User, String> {
         return user;
     }
 }
- 

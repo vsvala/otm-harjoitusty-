@@ -17,9 +17,9 @@ public interface UserDao<U, K> {
 
     List<U> findAll() throws SQLException;
 
-    U saveOrUpdate(U object) throws SQLException;
+    boolean saveOrUpdate(U object) throws SQLException;//U
 
-    void delete(K key) throws SQLException;
+    boolean delete(K key) throws SQLException;
 
     U findByUsername(K key) throws SQLException;
 
