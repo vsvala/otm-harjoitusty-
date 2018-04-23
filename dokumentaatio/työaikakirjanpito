@@ -13,9 +13,9 @@
 | 14.4. | 8    | Diary luokan tietokantaan tallennukset/daot kuntoon, Unit testien kirjoittamista |
 | 15.4  | 5    | Checkstylen käyttöönotto, ohjelman alustava rakenne pakkauskaaviona, arkkitehtuurikuvausta |
 | 16.4. | 4    | lisää testejä, kaavioiden säätöä|
-|       | ?    | testaus |
-|       | ?    | koodin refaktorointia |
-|       |      | arkkitehtuurikuvauksen tarkennus |
+| 19.4  |  4   | kalorilaskuri, testejä |
+|20-21.4|  4   | Databasiin init ja tietokannan luonti if not exist Jarrin luomista varten|
+| 23.4  |  4   | päivämäärien uusintaa Stringeiksi/haku pvm mukaan, jar, testejä |
 |       |      | käyttöohje |
 |       |      | testaus |
-| yht   | 66   |          | 
+| yht   |      |          | 
