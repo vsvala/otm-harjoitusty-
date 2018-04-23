@@ -43,7 +43,7 @@ Komento
 mvn package
 ```
 
-generoi hakemistoon _target_ suoritettavan jar-tiedoston _Fitme.jar_
+generoi hakemistoon _target_ suoritettavan jar-tiedoston _FitMe.jar_
 
 ### JavaDoc
 
