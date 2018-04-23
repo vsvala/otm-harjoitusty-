@@ -20,18 +20,16 @@ import java.text.SimpleDateFormat;
 ///**
 // * Sovelluslogiikasta vastaava luokka 
 // */
-
 public class DiaryService {
+
     private DiaryDao diaryDao;
     private UserDao userDao;
     private User loggedIn;
-    
+
     public DiaryService(DiaryDao diaryDao, UserDao userDao) {
         this.userDao = userDao;
-        this.diaryDao = diaryDao; 
+        this.diaryDao = diaryDao;
     }
-      
-      
 
 //    /**
 //    * Uuden diarysivun lisääminen kirjautuneena olevalle käyttäjälle
@@ -40,27 +38,16 @@ public class DiaryService {
 //    */
 //    
     public boolean createDiary(String content, int kcal) throws SQLException {
-        
-        String day=getDayToday();
+
+        String day = getDayToday();
         Diary diary = new Diary(day, content, kcal, loggedIn);
-     
-            diaryDao.saveOrUpdate(diary);
-   
+
+        diaryDao.saveOrUpdate(diary);
+
         return true;
-    
+
     }
-    
-//      public boolean createKcal(String content, int kcal) {  //////uusin
-//        Diary diary = new Diary(content, kcal, loggedIn);
-//        try {   
-//            diaryDao.saveOrUpdate2(diary);
-//        } catch (Exception ex) {
-//            return false;
-//        }
-//        return true;
-//    }
-    
-    
+
 //    /**
 //    * kirjautuneen käyttäjän content
 //    * 
@@ -71,29 +58,25 @@ public class DiaryService {
         if (loggedIn == null) {
             return new ArrayList<>();
         }
-        return diaryDao.findAll(loggedIn.getUsername());           
+        return diaryDao.findAll(loggedIn.getUsername());
     }
-      
-    
-    
+
     public Object getOne() throws SQLException { //returns all loggedusers diarymarkings in the list
         if (loggedIn == null) {
             return null;
         }
-        return diaryDao.findOne(loggedIn.getUsername());           
+        return diaryDao.findOne(loggedIn.getUsername());
     }
-    
-    
-       public List<Diary> getDiaryByDate() throws SQLException { //returns all loggedusers diarymarkings in the list
+
+    public List<Diary> getDiaryByDate() throws SQLException { //returns all loggedusers diarymarkings from tody in the list
         if (loggedIn == null) {
-             
-           return new ArrayList<>();
+
+            return new ArrayList<>();
         }
-      
-        return diaryDao.findDiaryByDate(loggedIn.getUsername());           
+
+        return diaryDao.findDiaryByDate(loggedIn.getUsername());
     }
-   
-   
+
 //    /**
 //    * delete diary markings
 //    * 
@@ -106,7 +89,7 @@ public class DiaryService {
         } catch (Exception ex) {
         }
     }
-    
+
 //    /**
 //    * sisäänkirjautuminen
 //    * 
@@ -114,24 +97,22 @@ public class DiaryService {
 //    * 
 //    * @return true jos käyttäjätunnus on olemassa, muuten false 
 //    */    
-    
     public boolean login(String username) throws SQLException {
         User user = (User) userDao.findByUsername(username);
         if (user == null) {
             return false;
         }
-        
+
         loggedIn = user;
-        
+
         return true;
     }
-    
+
 //    /**
 //    * kirjautuneena oleva käyttäjä
 //    * 
 //    * @return kirjautuneena oleva käyttäjä 
 //    */   
-    
     public User getLoggedUser() {
         return loggedIn;
     }
@@ -139,11 +120,11 @@ public class DiaryService {
 //    /**
 //    * uloskirjautuminen
 //    */  
-    
+
     public void logout() {
-        loggedIn = null;  
+        loggedIn = null;
     }
-    
+
 //    /**
 //    * uuden käyttäjän luominen
 //    * 
@@ -153,39 +134,33 @@ public class DiaryService {
 //    * @return true jos käyttäjätunnus on luotu onnistuneesti, muuten false 
 //    */ 
 //    
-    public boolean createUser(String username, String name) throws SQLException  {   
-        
-        //luo ehto..ettei samaa usernimeä voi luoda uudestaa.
-        //=tarkasta ettei tietokannasta löydy jo vastaavaa ja mitä jos löytyy-->Username on jo käytössä ...create new...username
-        
+    public boolean createUser(String username, String name) throws SQLException {
+
         if (userDao.findByUsername(username) != null) {
             return false;
         }
         User user = new User(username, name);
         try {
-            userDao.saveOrUpdate(user); //create(user);         
+            userDao.saveOrUpdate(user);         //SAVEORUPPDATE USER     
         } catch (Exception e) {
             return false;
         }
 
         return true;
     }
-    
-   public int countKcal() throws SQLException { //laskeekokaikkien yhteen.. pitöisi tehdä  joka laskee vain päivän
-       int sum=0;
-    List<Diary> diaries = getDiary(); //FIND ALL
+
+    public int countKcal() throws SQLException {
+        int sum = 0;
+        List<Diary> diaries = getDiaryByDate();
 //       System.out.println("päiväkirjat"+diaries);
-   
-   for (int i = 0; i < diaries.size(); i++) {
-      sum=sum+diaries.get(i).getKcal();      
-}
-//  System.out.println("summa"+sum);
-//        return diaryDao.findAll(loggedIn.getUsername());
-//     
-        
+
+        for (int i = 0; i < diaries.size(); i++) {
+            sum = sum + diaries.get(i).getKcal();
+        }
+
         return sum;
     }
-   
+
     public String getDayToday() {
         Date todaysDate = new java.sql.Date(System.currentTimeMillis());
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy");

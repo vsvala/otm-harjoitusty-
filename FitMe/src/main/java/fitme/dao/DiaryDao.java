@@ -9,11 +9,8 @@ package fitme.dao;
  *
  * @author svsv
  */
-import java.sql.*;
-import java.util.*;
 import java.sql.SQLException;
 import java.util.List;
-import fitme.domain.Diary;
 
 public interface DiaryDao<D, K> {
 
@@ -21,11 +18,9 @@ public interface DiaryDao<D, K> {
 
     List<D> findAll(K key) throws SQLException;
        
-    List<D>findDiaryByDate(K key) throws SQLException;
+    List<D> findDiaryByDate(K key) throws SQLException;
 
     D saveOrUpdate(D object) throws SQLException;
-   
-//    D saveOrUpdate2(D object) throws SQLException;//uusin
 
     void delete(K key) throws SQLException;
 }

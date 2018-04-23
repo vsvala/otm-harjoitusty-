@@ -47,18 +47,16 @@ public class DataUserDao implements UserDao<User, String> {
 
         connection.close();
 
-// nyt asiakkaat listassa
         System.out.println(users);
         return users;
 
     }
 
     @Override
-    public boolean saveOrUpdate(User object) throws SQLException {//User
+    public boolean saveOrUpdate(User object) throws SQLException { //User
         Connection connection = database.getConnection();
 //       System.out.println("teeestaa");
-//        User user = findByUsername(object.getUsername());
-////     
+//        User user = findByUsername(object.getUsername());     
 ////        System.out.println("teeestaa"+user);
 //
 //        if (user != null) {

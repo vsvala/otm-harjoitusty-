@@ -35,17 +35,18 @@ public class DiaryTest {
     public void setUp() {
         user = new User("Mat", "Matias");
         diary = new Diary("Moi", 200, user);
-        diary2 = new Diary(2,"Heippa", 400);
+        diary2 = new Diary(2, "Heippa", 400);
     }
 
     @Test
     public void kostruktorContentKcalUserCreatesContent() {
-   
+
         assertEquals("Moi", diary.getContent());
     }
-       @Test
+
+    @Test
     public void kostruktorContentKcalUserCreatesKcal() {
-   
+
         assertEquals(200, diary.getKcal());
     }
 //        @Test
@@ -53,30 +54,30 @@ public class DiaryTest {
 //   
 //        assertEquals(user, diary.getUser());
 //    }
-     
-      @Test
+
+    @Test
     public void kostruktorIdContentKcalCreatesId() {
-   
+
         assertEquals(2, diary2.getId());
-        
+
     }
 //      @Test
 //    public void kostruktorContentKcalUserCreatesuser() {
 //   
 //        assertEquals(user, diary2.getUser());
 //    }
-    
-      @Test
+
+    @Test
     public void kostruktorIdContentKcalCreatescontent() {
-   
+
         assertEquals("Heippa", diary2.getContent());
     }
-          @Test
+
+    @Test
     public void kostruktorIdContentKcalCreatesKcal() {
-   
+
         assertEquals(400, diary2.getKcal());
     }
-
 
 //    @Test
 //    public void kostruktoriIdContenKcaltLuoPaivakirjanSisallon() {
@@ -98,18 +99,16 @@ public class DiaryTest {
     @Test
     public void kostruktoriNeljallaLuoPaivakirjanPaivayksen() {
         User user2 = new User("Matias", "Mat");
-        Diary diary4 = new Diary(1, new java.sql.Date(Calendar.getInstance().getTimeInMillis()),"Moi",200, user2);
-        System.out.println("aika" + diary.getDay());
-        Date expected = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
-        assertEquals(expected, diary.getDay());
+        Diary diary4 = new Diary(1, "26.4.2018", "Moi", 200, user2); //new java.sql.Date(Calendar.getInstance().getTimeInMillis())
+        System.out.println("aika" + diary.getday());
+//        Date expected = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
+        assertEquals("26.4.2018", diary.getday());//expected
     }
-    
+
 //    @Test
 //    public void setdayworks(24) {
 //        this.day = time;
 //    }
-
-
 //        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 //        Date parsed = null;
 //        try {
@@ -137,7 +136,6 @@ public class DiaryTest {
 //        assertEquals("Moi", diary.getContent());
 //
 //    }
-
     @Test
     public void getUsernameReturnsUsername() {
         assertEquals("Mat", diary.getUser().getUsername());
@@ -151,17 +149,18 @@ public class DiaryTest {
         assertEquals(true, diary.isDelete());
 
     }
-       @Test
+
+    @Test
     public void setIdworks() {
         diary.setId(4);
 
         assertEquals(4, diary.getId());
 
     }
-    
-        @Test
+
+    @Test
     public void getKcalReturns0IfNull() {
-     Diary  diarytest = new Diary(2,"onycontent");
+        Diary diarytest = new Diary(2, "onycontent");
         assertEquals(0, diarytest.getKcal());
 
     }
@@ -176,18 +175,19 @@ public class DiaryTest {
 //    }
     @Test
     public void equalsMetodiPalauttaaTrueifSameOgject() {
-  
-        assertEquals(true, diary.getId()==(diary.getId()));
+
+        assertEquals(true, diary.getId() == (diary.getId()));
 
     }
-    
-      public void equalsMetodiPalauttaaFalseJosEiUseriObj() {
-  
-        assertEquals(false, diary=(diary));
-      }
-       @Test
+
+    public void equalsMetodiPalauttaaFalseJosEiUseriObj() {
+
+        assertEquals(false, diary = (diary));
+    }
+
+    @Test
     public void equalsMetodiPalauttaaFalseJosEiUserinInstanssi() {
-  
+
         assertEquals(false, diary.equals(diary2));
 
     }
