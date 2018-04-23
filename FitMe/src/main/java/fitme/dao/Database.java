@@ -56,7 +56,7 @@ public class Database {
 //CREATE TABLE Diary(
 //id integer PRIMARY KEY,
 //user_username varchar,  
-//day date,
+//day varchar,
 //content varchar(100),
 //kcal Integer (5),
 //FOREIGN KEY (user_username) REFERENCES User(username)
@@ -64,11 +64,18 @@ public class Database {
 
         // tietokantataulujen luomiseen tarvittavat komennot suoritusjärjestyksessä
         lista.add("CREATE TABLE IF NOT EXISTS User (username varchar (10) PRIMARY KEY, name varchar(30));");
-        lista.add("CREATE TABLE IF NOT EXISTS Diary (id integer PRIMARY KEY, user_username varchar, day date, content varchar(100), kcal Integer (5), FOREIGN KEY (user_username) REFERENCES User(username));");
+        lista.add("CREATE TABLE IF NOT EXISTS Diary (id integer PRIMARY KEY, user_username varchar, day varchar content varchar(100), kcal Integer (5), FOREIGN KEY (user_username) REFERENCES User(username));");
         
-        
-//        lista.add("INSERT INTO Opiskelija (nimi) VALUES ('Platon');");
-//        lista.add("INSERT INTO Opiskelija (nimi) VALUES ('Aristoteles');");
+//        
+//        lista.add("NSERT INTO User(\n" +
+//        "name,\n" +
+//        "username) VALUES ('Virva', 'Viku');");
+//        lista.add("INSERT INTO Diary(\n" +
+//        "user_username,\n" +
+//        "day,\n" +
+//        "content,\n" +
+//        "kcal)\n" +
+//        "VALUES ('Test', 24.4.1977, 'kana', 100);");
 //        lista.add("INSERT INTO Opiskelija (nimi) VALUES ('Homeros');");
 
         return lista;

@@ -36,6 +36,7 @@ import fitme.dao.DataUserDao;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.text.Font;
@@ -54,7 +55,7 @@ public class FitMeUi extends Application {
     private int totalKcal;
     private Label menuLabel = new Label();
     private Label kcalSumLabel;
-    private Date date = new java.sql.Date(System.currentTimeMillis());
+//    private Date date = new java.sql.Date(System.currentTimeMillis());
   
 
     @Override
@@ -62,34 +63,34 @@ public class FitMeUi extends Application {
              Database database = new Database("jdbc:sqlite:fitme.db");
              database.init();
              
-//        try {
-//            //alustusmetodi init luo käytettävät DAO:t ja injektoi ne sovelluslogiikalle:
-//            
+    
+            //alustusmetodi init luo käytettävät DAO:t ja injektoi ne sovelluslogiikalle:
+            
 //            
 //            Properties properties = new Properties();
 //          
 //            properties.load(new FileInputStream("config.properties"));
 //            
-//            
+//              try {
 //            String usedDatabase = properties.getProperty("usedDatabase");
-//            Database database = new Database(usedDatabase);
-            
-//          Database database = new Database("jdbc:sqlite:fitme.db");
+//           
+//             database = new Database(usedDatabase);
+//               
+//              } catch (Exception ex) {
+//                   Database database = new Database("jdbc:sqlite:fitme.db");
+//                   database.init();    
+////            }
+//            
+   
              DataUserDao userDao = new DataUserDao(database);
              DataDiaryDao diaryDao = new DataDiaryDao(database);
 
             diaryService = new DiaryService(diaryDao, userDao);
 
-//        FileUserDao userDao = new FileUserDao("users.txt");
-//        FileDiaryDao diaryDao = new FileDiaryDao("todos.txt", userDao);
-// alustetaan sovelluslogiikka 
-        
-//        } catch (ClassNotFoundException ex) {
-////                File file=new File("fitme.db");
-//////                Database database = new Database("jbc:sqlite"+file.getAbsolutePath());
-//              
-//    
-//        }
+
+//                File file=new File("fitme.db");
+////              Database database = new Database("jbc:sqlite"+file.getAbsolutePath());
+
     
     }
 
@@ -105,9 +106,12 @@ public class FitMeUi extends Application {
         Label label = new Label(diary.getContent());               //GET DIARY CONTENT
         label.setMinHeight(28);
 
-        Label kcalLabel = new Label(diary.getKcal() + "           ");//kcal
+        Label kcalLabel = new Label(diary.getKcal() + " kcal          ");//kcal
         kcalLabel.setMinHeight(28);
      
+          System.out.println("tesaaaaaaaaaaaaat"+diary.getday());
+        Label dateLabel= new Label(diary.getday()+ "           ");//kcal
+        kcalLabel.setMinHeight(28);
         
 //       date=diary.getDay();
 //      System.out.println("test"+date);
@@ -132,7 +136,7 @@ public class FitMeUi extends Application {
         HBox.setHgrow(spacer, Priority.ALWAYS);
         box.setPadding(new Insets(5, 0, 0, 20));
 
-        box.getChildren().addAll(label, spacer, kcalLabel, button); //lisää kcalLAbel/ //
+        box.getChildren().addAll(label, spacer, kcalLabel, dateLabel, button); //lisää kcalLAbel/ //
 
         return box;
     }
@@ -142,16 +146,24 @@ public class FitMeUi extends Application {
         totalKcal = diaryService.countKcal();
         System.out.println("sum of kcal testaaaaaaaaaaaa" + totalKcal);
         nodes.getChildren().clear();
-
-        List<Diary> diaries = diaryService.getDiary();                    //FIND ONE DIARY  HAKEE SISÄLLÖN
-        diaries.forEach(diarycontent -> {
+         
+        List<Diary> diaries; 
+//        if(diaryService.getDiaryByDate() == null){
+//             diaries = diaryService.getDiary();               //FIND ONE DIARY  HAKEE SISÄLLÖN GET DIARY
+//            } else{
+        diaries = diaryService.getDiaryByDate();
+//        }
+        
+        diaries.forEach(diarycontent -> {        
             try {
-                nodes.getChildren().add(createDiaryNode(diarycontent));//create content and kcal for every food added on the list 
+                nodes.getChildren().add(createDiaryNode(diarycontent)); //create content and kcal for every food added on the list 
             } catch (SQLException ex) {
                 Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
             }
+         
 
         });
+   
         
 //        System.out.println("test"+date);
         
@@ -161,6 +173,8 @@ public class FitMeUi extends Application {
         kcalSumLabel.setPadding(new Insets(30, 0, 0, 20));//(ylös ja vasenreuna
 
         nodes.getChildren().addAll(kcalSumLabel);
+        
+        
         
       
 
@@ -314,10 +328,10 @@ public class FitMeUi extends Application {
 
         //header
        // diaryService.getOne().;
-        Label diaryHeaderLabel = new Label("My Food Diary "+date);//tee diaryservice haku tietokantaan...
+        Label diaryHeaderLabel = new Label("My Food Diary "+diaryService.getDayToday()); //+date
         diaryHeaderLabel.setPadding(new Insets(20, 20, 20,20));
         diaryHeaderLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
-
+ 
         menuPane.getChildren().addAll(menuLabel, diaryHeaderLabel, menuSpacer, logoutButton);
         diaryPane.getChildren().addAll(menuPane);
 
@@ -328,16 +342,26 @@ public class FitMeUi extends Application {
 
         HBox createForm = new HBox(10);      //riviasettelu
         createForm.setPadding(new Insets(20,20,20,20));
-        Label addLabel = new Label("Add food:");
-        Button createBreakfast = new Button(" add ");
+       
+        Label addLabel = new Label("food:");
         Label kcalLabel = new Label("kcal:");
+//        Label dateLabel = new Label("date: ");
+       
+        Button createBreakfast = new Button(" add ");
         Region spacer = new Region();
+        
+   
         HBox.setHgrow(spacer, Priority.ALWAYS);
+        
         TextField foodInput = new TextField();
-       foodInput.setPrefWidth(200);
+        foodInput.setPrefWidth(200);
         TextField kcalInput = new TextField();
-        kcalInput.setPrefWidth(100);
-        createForm.getChildren().addAll(addLabel, foodInput, kcalLabel, kcalInput, spacer, createBreakfast);
+        kcalInput.setPrefWidth(75);
+//        TextField dateInput = new TextField();
+//        dateInput.setPrefWidth(100);
+        
+        
+        createForm.getChildren().addAll(addLabel, foodInput, kcalLabel, kcalInput, spacer, createBreakfast);// dateLabel, dateInput
 
         nodes = new VBox(10);
         nodes.setMaxWidth(400);
@@ -361,13 +385,15 @@ public class FitMeUi extends Application {
         createBreakfast.setOnAction(e -> {
 
             int kcal = Integer.parseInt(kcalInput.getText());
+//            String  day = dateInput.getText();
             try {
                 diaryService.createDiary(foodInput.getText(), kcal);  //CREATE BUTTON ACTION call metod DIARYSERVICE CREATE DIARY
             } catch (SQLException ex) {
                 Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
             }
            foodInput.setText("");
-            kcalInput.setText("");
+           kcalInput.setText("");
+//              dateInput.setText("");
 
             try {
                 redrawView();

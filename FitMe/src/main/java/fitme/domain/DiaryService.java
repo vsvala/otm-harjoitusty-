@@ -12,7 +12,10 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import fitme.dao.DiaryDao;
 import fitme.dao.UserDao;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 ///**
 // * Sovelluslogiikasta vastaava luokka 
@@ -37,14 +40,16 @@ public class DiaryService {
 //    */
 //    
     public boolean createDiary(String content, int kcal) throws SQLException {
-        Diary diary = new Diary(content, kcal, loggedIn);
-
-        diaryDao.saveOrUpdate(diary);
-
+        
+        String day=getDayToday();
+        Diary diary = new Diary(day, content, kcal, loggedIn);
+     
+            diaryDao.saveOrUpdate(diary);
+   
         return true;
-
+    
     }
-
+    
 //      public boolean createKcal(String content, int kcal) {  //////uusin
 //        Diary diary = new Diary(content, kcal, loggedIn);
 //        try {   
@@ -77,6 +82,17 @@ public class DiaryService {
         }
         return diaryDao.findOne(loggedIn.getUsername());           
     }
+    
+    
+       public List<Diary> getDiaryByDate() throws SQLException { //returns all loggedusers diarymarkings in the list
+        if (loggedIn == null) {
+             
+           return new ArrayList<>();
+        }
+      
+        return diaryDao.findDiaryByDate(loggedIn.getUsername());           
+    }
+   
    
 //    /**
 //    * delete diary markings
@@ -102,7 +118,6 @@ public class DiaryService {
     public boolean login(String username) throws SQLException {
         User user = (User) userDao.findByUsername(username);
         if (user == null) {
-            
             return false;
         }
         
@@ -156,9 +171,9 @@ public class DiaryService {
         return true;
     }
     
-   public int countKcal() throws SQLException {
+   public int countKcal() throws SQLException { //laskeekokaikkien yhteen.. pitöisi tehdä  joka laskee vain päivän
        int sum=0;
-    List<Diary> diaries = getDiary(); 
+    List<Diary> diaries = getDiary(); //FIND ALL
 //       System.out.println("päiväkirjat"+diaries);
    
    for (int i = 0; i < diaries.size(); i++) {
@@ -171,4 +186,12 @@ public class DiaryService {
         return sum;
     }
    
+    public String getDayToday() {
+        Date todaysDate = new java.sql.Date(System.currentTimeMillis());
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+        String testDateString = df.format(todaysDate);
+        System.out.println("String in dd/MM/yyyy format is: " + testDateString);
+        return testDateString;
+    }
+
 }
