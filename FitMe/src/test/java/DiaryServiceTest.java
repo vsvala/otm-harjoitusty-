@@ -18,6 +18,7 @@ import fitme.domain.User;
 import fitme.domain.DiaryService;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.Properties;
 
 /**
@@ -25,45 +26,55 @@ import java.util.Properties;
  * @author svsv
  */
 public class DiaryServiceTest {
-    
-    public DiaryServiceTest() {
+
+    Database database = new Database("jdbc:sqlite:fitme.db");
+    DataUserDao userDao;
+    DataDiaryDao diaryDao;
+//            DiaryService(DiaryDao diaryDao, UserDao userDao);
+    User loggedIn;
+    DiaryService diaryService;
+
+    public DiaryServiceTest() throws Exception {
+        diaryService = new DiaryService(diaryDao, userDao);
+        diaryDao = new DataDiaryDao(database);
+        userDao = new DataUserDao(database);
     }
-    
+
     @BeforeClass
-    public static void setUpClass()  throws Exception  {
-     Properties properties = new Properties();
-        properties.load(new FileInputStream("config.properties"));
+    public static void setUpClass() throws Exception {
+//     Properties properties = new Properties();
+//        properties.load(new FileInputStream("config.properties"));
+//
+//        String usedDatabase = properties.getProperty("usedDatabase");
+//        Database database = new Database(usedDatabase);
 
-        String usedDatabase = properties.getProperty("usedDatabase");
-        Database database = new Database(usedDatabase);
-
-//          Database database = new Database("jdbc:sqlite:fitme.db");
-        DataUserDao userDao = new DataUserDao(database);
-        DataDiaryDao diaryDao = new DataDiaryDao(database);
-        
-        
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
-       //DiaryService(DiaryDao diaryDao, UserDao userDao
-//      @Test
-//    public void createDiaryCreatesDiary() {
-////         DiaryService diaryService= new  DiaryService(diaryDao, userDao);
-//         Diary diary = new Diary(content, loggedIn);         
-//    
-//       assertEquals(True, diaryService.createDiary("makkara");
-//    } 
-//    
-    
-    
-}
-
-
-
+//    @Test
+//    public void createDiaryCreatesDiary() throws SQLException {
+////      
+////        String day = "20.04.2018";
+//        int kcal = 30;
+//        String content = "Terve";
+////        Diary diary = new Diary(day, content, kcal, loggedIn);
+//        assertEquals(true, diaryService.createDiary(content, kcal));
+//    }
+        @Test
+      public void deleteDeletesDiary() throws SQLException {
+        Diary diary = new Diary(500, "24.04.2018", "eihei", 600, loggedIn);
+        assertEquals(true, diaryService.delete("500"));
+    }
+      
+        public void getLoggedUserReturnsLogged() {
+         assertEquals(loggedIn, diaryService.getLoggedUser());
+    }
+      
+//         public void countKcalReturnsKcal() throws SQLException{
+//             
+//         assertEquals(300, diaryService.countKcal());
+//    }
+        
+  }
 //    public DiaryService(DiaryDao diaryDao, UserDao userDao) {
 //        this.userDao = userDao;
 //        this.diaryDao = diaryDao; 
@@ -85,8 +96,7 @@ public class DiaryServiceTest {
 //            return false;
 //        }
 //        return true;
-//    }
-//    
+//    }    
 ////    /**
 ////    * kirjautuneen käyttäjän content
 ////    * 
@@ -140,10 +150,12 @@ public class DiaryServiceTest {
 ////    * 
 ////    * @return kirjautuneena oleva käyttäjä 
 ////    */   
-//    
-//    public User getLoggedUser() {
-//        return loggedIn;
+//    @Test
+//    public void getLoggedUserReturnsUsser() {
+//        assertEquals(loggedIn, DiaryService.getLoggedUser());
 //    }
+//}
+
 ////   
 ////    /**
 ////    * uloskirjautuminen

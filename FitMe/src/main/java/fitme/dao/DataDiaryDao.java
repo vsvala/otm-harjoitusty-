@@ -150,7 +150,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
     }
 
     @Override
-    public void delete(String key) throws SQLException {
+    public boolean delete(String key) throws SQLException {
         System.out.println("täää" + key);
         Connection con = database.getConnection();
         PreparedStatement stmt = con.prepareStatement("DELETE FROM Diary WHERE id = ?");
@@ -162,6 +162,8 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
 
         stmt.close();
         con.close();
+       
+        return true;
 
     }
 

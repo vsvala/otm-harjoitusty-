@@ -25,7 +25,7 @@ public class Diary {
     private String content;
     private Integer kcal;
     private boolean delete;
-    private User user;
+    public User user;
 
     public Diary(int id, String day, String content, int kcal, User user) {
         this.id = id;
@@ -119,12 +119,17 @@ public class Diary {
     }
 
     public String getday() {
+       Date todaysDate =new java.sql.Date(System.currentTimeMillis());
+       DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+       String day = df.format(todaysDate);
+       
+//       
         return day;
     }
 
-    public void setday(String day) {
-        this.day = day;
-    }
+//    public void setday(String day) {
+//        this.day = day;
+//    }
 
     @Override
     public boolean equals(Object obj) {

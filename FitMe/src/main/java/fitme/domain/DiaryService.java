@@ -83,11 +83,12 @@ public class DiaryService {
 //    * @param   id   deletoitavan ssällön tunniste
 //    */    
 //    
-    public void delete(String id) {
+    public boolean delete(String id) {
         try {
             diaryDao.delete(id);
         } catch (Exception ex) {
         }
+        return true;
     }
 
 //    /**

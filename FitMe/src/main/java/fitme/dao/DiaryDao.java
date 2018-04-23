@@ -22,5 +22,5 @@ public interface DiaryDao<D, K> {
 
     D saveOrUpdate(D object) throws SQLException;
 
-    void delete(K key) throws SQLException;
+    boolean delete(K key) throws SQLException;
 }

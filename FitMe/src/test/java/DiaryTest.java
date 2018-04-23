@@ -8,6 +8,7 @@ import fitme.domain.Diary;
 import fitme.domain.User;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -79,13 +80,22 @@ public class DiaryTest {
         assertEquals(400, diary2.getKcal());
     }
 
-//    @Test
-//    public void kostruktoriIdContenKcaltLuoPaivakirjanSisallon() {
-//        Diary diary = new Diary(1, "Moikka");
-//
-//        assertEquals("Moikka", diary.getContent());
-//        assertEquals(1, diary.getId());
-//    }
+    @Test
+    public void kostruktoriIntSTringUserLuoPaivakirjanSisallon() {
+        Diary diary = new Diary(1,"23.04.2018", "Moikka", 300);
+
+        assertEquals("Moikka", diary.getContent());
+        assertEquals(1, diary.getId());
+//        assertEquals("Ma", diary.getUser());
+    }
+        @Test
+    public void kostruktoriIntSTringUserCreatesDiary() {
+        Diary diary = new Diary(1,"23.04.2018", user);
+
+      
+        assertEquals(1, diary.getId());
+       assertEquals("Mat", diary.getUser().getUsername());
+    }
 //
 //    @Test
 //    public void kostruktoriNeljallaLuoPaivakirjanSisallon() {
@@ -98,12 +108,36 @@ public class DiaryTest {
 //
     @Test
     public void kostruktoriNeljallaLuoPaivakirjanPaivayksen() {
-        User user2 = new User("Matias", "Mat");
-        Diary diary4 = new Diary(1, "26.4.2018", "Moi", 200, user2); //new java.sql.Date(Calendar.getInstance().getTimeInMillis())
+        
+        Diary diary4 = new Diary("26.4.2018", "Moi", 200, user); //new java.sql.Date(Calendar.getInstance().getTimeInMillis())
         System.out.println("aika" + diary.getday());
+        Date expected = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
+       // Date todaysDate = new java.sql.Date(System.currentTimeMillis());
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+        String day = df.format(expected);
+        
+        assertEquals(day, diary4.getday());//expected
+    }    @Test
+   
+    public void kostruktorWirh5ParametersCreatesDiary() {
+//        
+//        User user2 = new User("Matias", "Mat");
+        Diary diary4 = new Diary(20, "26.4.2018", "Moi", 200, user); //new java.sql.Date(Calendar.getInstance().getTimeInMillis())
+//        System.out.println("aika" + diary.getday());
 //        Date expected = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
-        assertEquals("26.4.2018", diary.getday());//expected
+//       // Date todaysDate = new java.sql.Date(System.currentTimeMillis());
+//        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+//        String day = df.format(expected);
+
+        assertEquals(20, diary4.getId());
+        assertEquals("Moi", diary4.getContent());
+        assertEquals("Mat", diary4.getUser().getUsername());
+        assertEquals(200, diary4.getKcal());
+//expected
     }
+    
+    
+    
 
 //    @Test
 //    public void setdayworks(24) {

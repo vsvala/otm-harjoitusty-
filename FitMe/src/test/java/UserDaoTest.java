@@ -102,7 +102,7 @@ public class UserDaoTest {
 //         stmt.executeUpdate();
         stmt.close();
         connection.close();
-
+//             assertEquals(users, userDao.findAll());
     }
     
 //    
