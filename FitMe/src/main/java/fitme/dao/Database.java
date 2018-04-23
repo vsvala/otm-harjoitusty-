@@ -4,15 +4,20 @@
  * and open the template in the editor.
  */
 package fitme.dao;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author svsv
  */
 public class Database {
-    
+
     private String databaseAddress;
 
     public Database(String databaseAddress) throws ClassNotFoundException {
@@ -22,6 +27,57 @@ public class Database {
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(databaseAddress);
     }
+
+    public void init() {
+        List<String> lauseet = sqliteLauseet();
+
+        // "try with resources" sulkee resurssin automaattisesti lopuksi
+        try (Connection conn = getConnection()) {
+            Statement st = conn.createStatement();
+
+            // suoritetaan komennot
+            for (String lause : lauseet) {
+                System.out.println("Running command >> " + lause);
+                st.executeUpdate(lause);
+            }
+
+        } catch (Throwable t) {
+            // jos tietokantataulu on jo olemassa, ei komentoja suoriteta
+            System.out.println("Error >> " + t.getMessage());
+        }
+
+    }
+
+    private List<String> sqliteLauseet() {
+        ArrayList<String> lista = new ArrayList<>();
+//CREATE TABLE User(
+//username varchar(10) PRIMARY KEY,
+//name varchar (30)
+// );
+//CREATE TABLE Diary(
+//id integer PRIMARY KEY,
+//user_username varchar,  
+//day varchar,
+//content varchar(100),
+//kcal Integer (5),
+//FOREIGN KEY (user_username) REFERENCES User(username)
+//);
+
+        // tietokantataulujen luomiseen tarvittavat komennot suoritusjärjestyksessä
+        lista.add("CREATE TABLE IF NOT EXISTS User (username varchar (10) PRIMARY KEY, name varchar(30));");
+        lista.add("CREATE TABLE IF NOT EXISTS Diary (id integer PRIMARY KEY, user_username varchar, day varchar, content varchar(100), kcal Integer (5), FOREIGN KEY (user_username) REFERENCES User(username));");
+
+//        
+//        lista.add("NSERT INTO User(\n" +
+//        "name,\n" +
+//        "username) VALUES ('Virva', 'Viku');");
+//        lista.add("INSERT INTO Diary(\n" +
+//        "user_username,\n" +
+//        "day,\n" +
+//        "content,\n" +
+//        "kcal)\n" +
+//        "VALUES ('Test', 24.4.1977, 'kana', 100);");
+//        lista.add("INSERT INTO Opiskelija (nimi) VALUES ('Homeros');");
+        return lista;
+    }
 }
-
-

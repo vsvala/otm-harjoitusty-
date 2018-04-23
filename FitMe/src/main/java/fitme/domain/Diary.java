@@ -7,6 +7,9 @@ package fitme.domain;
 
 import java.time.Instant;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 /**
  * Yksittäistä ruokalajia kuvaava luokka
@@ -17,37 +20,70 @@ import java.sql.Date;
  */
 public class Diary {
 
-    private int id; 
-    private Date day;
+    private int id;
+    private String day;     //private Date day;
     private String content;
-    private String kcal;
-    private boolean delete; 
-    private User user;
+    private Integer kcal;
+    private boolean delete;
+    public User user;
 
-//    public Diary(int id, String content, boolean delete, User user) {
-//        this.id = id;
-//        this.content = content;
-//        this.delete = delete;
-//        this.user = user;
-//    }
-    public Diary(int id, String content, Date Day, User user) {
+    public Diary(int id, String day, String content, int kcal, User user) {
         this.id = id;
-        this.content = content;
         this.day = day;
-        this.delete = false;
+        this.content = content;
+        this.kcal = kcal;
         this.user = user;
+        this.delete = false;
     }
 
-    public Diary(String content, User user) {
-        this.id = id;
+    public Diary(String day, String content, int kcal, User user) {
+//        this.id = id;     
+        this.day = day;
         this.content = content;
+        this.kcal = kcal;
         this.user = user;
         this.delete = false;
     }
+
+    public Diary(String content, int kcal, User user) {
+//        this.id = id;
+//        this.day = day;
+        this.content = content;
+        this.kcal = kcal;
+        this.user = user;
+        this.delete = false;
+    }
+
+    public Diary(int id, String day, String content, int kcal) {             //////////uusin
+        this.id = id;
+        this.day = day;
+        this.content = content;
+        this.kcal = kcal;
+//        this.user = user;
+        this.delete = false;
+    }
+
+    public Diary(int id, String content, int kcal) {             //////////uusin
+        this.id = id;
+//        this.day = day;
+        this.content = content;
+        this.kcal = kcal;
+//        this.user = user;
+        this.delete = false;
+    }
+
+    public Diary(int id, String day, User user) {
+        this.id = id;
+        this.day = day;
+//        this.content = content;
+        this.user = user;
+        this.delete = false;
+    }
+
     public Diary(int id, String content) {
         this.id = id;
         this.content = content;
-        this.user = user;
+//        this.user = user;
         this.delete = false;
     }
 
@@ -58,8 +94,12 @@ public class Diary {
     public String getContent() {
         return content;
     }
-    public String getKcal() {
-        return content;
+
+    public int getKcal() {
+        if (kcal == null) {
+            return 0;
+        }
+        return kcal;
     }
 
     public User getUser() {
@@ -78,17 +118,18 @@ public class Diary {
         delete = true;
     }
 
-    public Date getDay() {
-        Date today = new java.sql.Date(System.currentTimeMillis());
-
-        return today;
+    public String getday() {
+       Date todaysDate =new java.sql.Date(System.currentTimeMillis());
+       DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+       String day = df.format(todaysDate);
+       
+//       
+        return day;
     }
 
-    public void setday(Date time) {
-        this.day = time;
-    }
-
- 
+//    public void setday(String day) {
+//        this.day = day;
+//    }
 
     @Override
     public boolean equals(Object obj) {
@@ -100,3 +141,14 @@ public class Diary {
     }
 
 }
+
+//    public Date getToday() {
+//       Date todaysDate =new java.sql.Date(System.currentTimeMillis());
+//       DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+//       String testDateString = df.format(todaysDate);
+//       System.out.println("String in dd/MM/yyyy format is: " + testDateString);
+//       
+//       
+//        Date today = new java.sql.Date(System.currentTimeMillis());
+//        return today;
+//    }
