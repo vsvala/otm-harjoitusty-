@@ -8,12 +8,15 @@ Ohjelmoinnin harjoitustyönä tehty Fitme sovellusprojekti sekä projektin dokum
 
 [Vaatimusmäärittely](https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/vaatimusm%C3%A4%C3%A4rittely.md)
 
-[Arkkitehtuurikuvaus](https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/arkkitehtuurikuvaus)
+[Arkkitehtuurikuvaus](https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/arkkitehtuurikuvaus.md)
 
 [Testausdokumentti](https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/testaus.md)
 
 [Työaikakirjanpito](https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/ty%C3%B6aikakirjanpito)
 
+## Releaset
+
+[Viikko 5](https://github.com/vsvala/otm-harjoitustyo/releases)
 
 ## <h2>Komentorivitoiminnot
 
@@ -40,7 +43,7 @@ Komento
 mvn package
 ```
 
-generoi hakemistoon _target_ suoritettavan jar-tiedoston _Fitme-1.0-SNAPSHOT.jar_
+generoi hakemistoon _target_ suoritettavan jar-tiedoston _FitMep-1.0-SNAPSHOT.jar_
 
 ### JavaDoc
 

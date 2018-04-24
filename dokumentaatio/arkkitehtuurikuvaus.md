@@ -73,6 +73,12 @@ Kuvataan seuraavaksi sovelluksen toimintalogiikka muutaman päätoiminnallisuude
 
 #### käyttäjän kirjaantuminen
 
+Kun kirjautumisnäkymässä on syötekenttään kirjoitettu käyttäjätunnus ja klikataan painiketta loginButton etenee sovelluksen kontrolli seuraavasti:
+
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/login_sekvenssikaavio%20(1).png">
+
+Painikkeen painamiseen reagoiva tapahtumankäsittelijä kutsuu sovelluslogiikan diaryService metodia login antaen parametriksi kirjautuneen käyttäjätunnuksen. Sovelluslogiikka selvittää userDao:n ja databasen avulla onko käyttäjätunnus olemassa. Jos on, eli kirjautuminen onnistuu, on seurauksena se että käyttöliittymä vaihtaa näkymäksi diaryScenen, eli sovelluksen varsinaisen päänäkymän ja renderöi näkymään kirjautuneen käyttäjän diaryt eli  ruokapäiväkirjamerkinnät.
+
 #### uuden käyttäjän luominen
 
 
