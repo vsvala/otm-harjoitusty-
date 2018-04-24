@@ -56,5 +56,5 @@ Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seura
 - käyttäjätunnuksen (ja siihen liittyvien päiväkirjatiedon) poisto
 - päiväkirja voisi hakea reseptejä netistä ja arpoa sen päivän aterianehdotuksen
 - päiväkirjaan voidaan asettaa tavoite kalorit ja se kertoo paljonko ollaan minuksella tai plussalla
-- päiväkirjaan voi lisätä päivittäisen liikunnan lajun ja keston
+- päiväkirjaan voi lisätä päivittäisen liikunnan lajin ja keston
 - päiväkirjaan voi tehdä hakuja päivämäärän perusteella
