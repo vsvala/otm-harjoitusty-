@@ -10,7 +10,7 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli _normaali k�
 
 ## Käyttöliittymäluonnos
 
-Sovellus kolmesta eri näkymästä
+Sovellus neljästä eri näkymästä
 
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kl_luonnos.JPG" width="500">
 
@@ -24,14 +24,14 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
   - käyttäjätunnuksen täytyy olla uniikki ja pituudeltaan vähintään 4 merkkiä
 
 - käyttäjä voi kirjautua järjestelmään
-  - käyttäjä näkee kyseisen päivän päiväkirjan pohjan 
+  - kirjautunut käyttäjä näkee kyseisen päivän päiväkirjan pohjan  ja sen päivän merkinnät 
 
 -Kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
   - jos käyttäjää ei olemassa, ilmoittaa järjestelmä tästä
 
 ### Kirjautumisen jälkeen
 
-- käyttäjä näkee kyseisen päivän päiväkirjan pohjan 
+- käyttäjä näkee kyseisen päivän päiväkirjan pohjan jossa näkyy kyseisen päivän merkinnät
 
 - käyttäjä voi kirjoittaa ylös aterioitaan sekä arvioidun kalorimäärän 
 
@@ -56,5 +56,5 @@ Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seura
 - käyttäjätunnuksen (ja siihen liittyvien päiväkirjatiedon) poisto
 - päiväkirja voisi hakea reseptejä netistä ja arpoa sen päivän aterianehdotuksen
 - päiväkirjaan voidaan asettaa tavoite kalorit ja se kertoo paljonko ollaan minuksella tai plussalla
-- päiväkirjaan voi lisätä päivittäisen liikunnan lajun ja keston
+- päiväkirjaan voi lisätä päivittäisen liikunnan lajin ja keston
 - päiväkirjaan voi tehdä hakuja päivämäärän perusteella
