@@ -119,10 +119,10 @@ public class Diary {
     }
 
     public String getday() {
-       Date todaysDate =new java.sql.Date(System.currentTimeMillis());
-       DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-       String day = df.format(todaysDate);
-       
+        Date todaysDate = new java.sql.Date(System.currentTimeMillis());
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+        String day = df.format(todaysDate);
+
 //       
         return day;
     }
@@ -130,7 +130,6 @@ public class Diary {
 //    public void setday(String day) {
 //        this.day = day;
 //    }
-
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Diary)) {

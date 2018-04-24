@@ -52,7 +52,7 @@ public class DiaryDaoTest {
         userDao = new DataUserDao(database);
         diaryDao = new DataDiaryDao(database);
         testuser = new User("testJokke", "testJorma");
-        testDiary = new Diary(600,"27.04.2018", "Moi", 200, testuser);
+        testDiary = new Diary(600, "27.04.2018", "Moi", 200, testuser);
 //        diary2 = new Diary(2, "Heippa", 400);
     }
 
@@ -71,21 +71,20 @@ public class DiaryDaoTest {
     @After
     public void tearDown() {
     }
+
     @Test
     public void deleteDeletesDiary() throws SQLException {
-      
-       assertEquals(true, diaryDao.delete("600"));
+
+        assertEquals(true, diaryDao.delete("600"));
 
     }
-       } 
-    
-    
-    
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+}
+
+// TODO add test methods here.
+// The methods must be annotated with annotation @Test. For example:
+//
+// @Test
+// public void hello() {}
 //    @Test
 //    public void findAllByDateNow() throws SQLException {
 //        List<Diary> diaries = new ArrayList<>();
@@ -159,8 +158,6 @@ public class DiaryDaoTest {
 //        rs.close();
 //        connection.close(); 
 //    }
-    
-    
 //    @Test
 //    public Diary findOne(String key) throws SQLException {  //on diary marking
 //        System.out.println("key" + key);
