@@ -24,14 +24,14 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
   - käyttäjätunnuksen täytyy olla uniikki ja pituudeltaan vähintään 4 merkkiä
 
 - käyttäjä voi kirjautua järjestelmään
-  - käyttäjä näkee kyseisen päivän päiväkirjan pohjan 
+  - kirjautunut käyttäjä näkee kyseisen päivän päiväkirjan pohjan  ja sen päivän merkinnät 
 
 -Kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
   - jos käyttäjää ei olemassa, ilmoittaa järjestelmä tästä
 
 ### Kirjautumisen jälkeen
 
-- käyttäjä näkee kyseisen päivän päiväkirjan pohjan 
+- käyttäjä näkee kyseisen päivän päiväkirjan pohjan jossa näkyy kyseisen päivän merkinnät
 
 - käyttäjä voi kirjoittaa ylös aterioitaan sekä arvioidun kalorimäärän 
 
