@@ -28,7 +28,7 @@ public class Database {
         return DriverManager.getConnection(databaseAddress);
     }
 
-    public void init() {
+    public boolean init() {
         List<String> lauseet = sqliteLauseet();
 
         // "try with resources" sulkee resurssin automaattisesti lopuksi
@@ -44,11 +44,12 @@ public class Database {
         } catch (Throwable t) {
             // jos tietokantataulu on jo olemassa, ei komentoja suoriteta
             System.out.println("Error >> " + t.getMessage());
+            return false;
         }
-
+        return true;
     }
 
-    private List<String> sqliteLauseet() {
+    public List<String> sqliteLauseet() { //private?
         ArrayList<String> lista = new ArrayList<>();
 //CREATE TABLE User(
 //username varchar(10) PRIMARY KEY,
@@ -68,16 +69,22 @@ public class Database {
         lista.add("CREATE TABLE IF NOT EXISTS Diary (id integer PRIMARY KEY, user_username varchar, day varchar, content varchar(100), kcal Integer (5), FOREIGN KEY (user_username) REFERENCES User(username));");
 
 //        
-//        lista.add("NSERT INTO User(\n" +
-//        "name,\n" +
-//        "username) VALUES ('Virva', 'Viku');");
-//        lista.add("INSERT INTO Diary(\n" +
-//        "user_username,\n" +
-//        "day,\n" +
-//        "content,\n" +
-//        "kcal)\n" +
-//        "VALUES ('Test', 24.4.1977, 'kana', 100);");
+        lista.add("NSERT INTO User(\n" +
+        "name,\n" +
+        "username) VALUES ('tesjorma', 'testJokke');");
+        lista.add("INSERT INTO Diary(\n" +
+        "id,\n" +
+        "user_username,\n" +
+        "day,\n" +
+        "content,\n" +
+        "kcal)\n" +
+        "VALUES (600, 'testJokke', 01.05.2018, 'makkara', 400);");
 //        lista.add("INSERT INTO Opiskelija (nimi) VALUES ('Homeros');");
+
+//        testuser = new User("testJokke", "testJorma");
+//        testDiary = new Diary(600,"27.04.2018", "Moi", 200, testuser);
+
+
         return lista;
     }
 }
