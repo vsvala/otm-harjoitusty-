@@ -39,6 +39,10 @@ Onnistuneen kirjautumisen myötä siirrytään käyttäjän päiväkirjamerkint�
 
 Näkymä mahdollistaa olemassaolevien merkintöjen postamisen painikkeella _delete_ sekä uusien merkintöje  luomisen kirjoittamalla syötekenttään food: syödyn ruoan ja kcal: kalorimäärän ja painamalla _add_. 
 
-Sovellus laskee näkyvillä päivän aikana yhteensä syödyt kalorit
+Sovellus laskee näkyville päivän aikana yhteensä syödyt kalorit
 
-Klikkaamalla näkymän oikean ylänurkan painiketta _logout_, käyttäjä kirjautuu ulos sovelluksesta ja sovellus palaa takaisin kirjaantumisnäkymään. Painamalla  painiketta _summary_, käyttäjä pääsee tarkasteleman yhteenveto sivua, jossa voi tarkastella viimeisen 7 päivän, 30 päivän tai haluamansa ajanjakson ruokia ja kaloreita.
+Klikkaamalla näkymän oikean ylänurkan painiketta _logout_, käyttäjä kirjautuu ulos sovelluksesta ja sovellus palaa takaisin kirjaantumisnäkymään. 
+
+Painamalla  painiketta _summary_, käyttäjä pääsee tarkasteleman yhteenvetosivua, jossa voi tarkastella viimeisen 7 päivän, 30 päivän tai haluamansa ajanjakson ruokia ja kaloreita.    
+
+todo: kuva ja lisää näkymän käytöstä
