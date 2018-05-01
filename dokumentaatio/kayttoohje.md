@@ -27,7 +27,7 @@ Kirjautumisnäkymästä on mahdollista siirtyä uuden käyttäjän luomisnäkym�
 
 Uusi käyttäjä luodaan syöttämällä tiedot syötekenttiin ja painamalla _create_
 
-<img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/k-2.png" width="400">
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/CreateUser.png" width="400">
 
 Jos käyttäjän luominen onnistuu, palataan kirjautumisnäkymään.
 
