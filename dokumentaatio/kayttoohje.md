@@ -35,7 +35,7 @@ Jos käyttäjän luominen onnistuu, palataan kirjautumisnäkymään.
 
 Onnistuneen kirjautumisen myötä siirrytään käyttäjän päiväkirjamerkintöjä listaavaan näkymään
 
-<img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/DiaryPage.png" width="400">
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/DiaryPage.png" width="600">
 
 Näkymä mahdollistaa olemassaolevien merkintöjen postamisen painikkeella _delete_ sekä uusien merkintöje  luomisen kirjoittamalla syötekenttään Food ruoan ja kcal kalorimäärän ja painamalla _create_. 
 
