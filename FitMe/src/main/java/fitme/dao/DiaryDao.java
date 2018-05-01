@@ -16,7 +16,7 @@ public interface DiaryDao<D, K> {
 
     D findOne(K key) throws SQLException;
 
-    List<D> findAll(K key) throws SQLException;
+//    List<D> findAll(K key) throws SQLException;
        
     List<D> findDiaryByDate(K key) throws SQLException;
     List<D> findDiaryByWeek(K key) throws SQLException;

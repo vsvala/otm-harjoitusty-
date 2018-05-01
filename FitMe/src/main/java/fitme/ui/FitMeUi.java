@@ -193,7 +193,7 @@ public class FitMeUi extends Application {
     }
   
     
-        public void redrawViewSummary() throws SQLException {
+        public void redrawViewSummary() throws SQLException {  //tähän vielä kalorit pitäisi laskea oikein...
             System.out.println("summaryredraw");
 //        totalKcalWeek = diaryService.countKcalWeek();
 //        System.out.println("sum of kcal testaaaaaaaaaaaa" + totalKcal);
@@ -215,40 +215,17 @@ public class FitMeUi extends Application {
         kcalSumLabel7.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         kcalSumLabel7.setMinHeight(28);
         kcalSumLabel7.setPadding(new Insets(30, 0, 0, 20));  //(ylös ja vasenreuna)
-        Button kcal7Button = new Button("show last 7 days");  //pelkk' linkki tekstiin??'
       
         
         kcalSumLabel30 = new Label("Kcal eaten last 30 days dayfrom-today:  " + totalKcal); //diaryService.countKcal()////tähän metori ja laske alkupäivä ja tämä pivä
         kcalSumLabel30.setFont(Font.font("Arial", FontWeight.BOLD, 20));                //tai voisko näissä olla linkit
         kcalSumLabel30.setMinHeight(28);
         kcalSumLabel30.setPadding(new Insets(30, 0, 0, 20));//(ylös ja vasenreuna)
-        Button kcal30Button = new Button("show last 30 days");
-        
-        nodes2.getChildren().addAll(kcalSumLabel7, kcal7Button, kcalSumLabel30, kcal30Button);
 
-
-        kcal7Button.setOnAction(e -> {   try {
-            //////////////////////
- 
-            redrawViewSummary();
-                } catch (SQLException ex) {
-                    Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-        });
         
-//          kcal30Button.setOnAction(e -> {
-//            //////////////////////
-// 
-//              nodes2.getChildren().clear();
-////                try {
-//////                    redrawViewSummary();
-////                } catch (SQLException ex) {
-////                    Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
-////                }
-//        });
-     
-        
+        nodes2.getChildren().addAll(kcalSumLabel7, kcalSumLabel30); //kcal7Button,kcal30Button
+
+   
             } 
 
  // LOGINVIEW////////////////////////////////////////////////////////////////////
@@ -398,19 +375,22 @@ public class FitMeUi extends Application {
 
         VBox diaryPane = new VBox(10); //arrange nodes in a singe column sarake
         HBox menuPane = new HBox(10); //row
+        HBox buttonPane = new HBox(10); //row
         menuPane.setPadding(new Insets(20));
         Region menuSpacer = new Region();
         HBox.setHgrow(menuSpacer, Priority.ALWAYS);
         Button summaryButton = new Button("summary");
         Button logoutButton = new Button("logout");
+        Button kcal7Button = new Button("show last 7 days");
 
         //header
         Label diaryHeaderLabel = new Label("My Food Diary " + diaryService.getDayToday()); //+date
         diaryHeaderLabel.setPadding(new Insets(20, 20, 20, 20));
         diaryHeaderLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
 
-        menuPane.getChildren().addAll(menuLabel, diaryHeaderLabel, menuSpacer, summaryButton, logoutButton);//menulabel=logged in
-        diaryPane.getChildren().addAll(menuPane);
+        menuPane.getChildren().addAll(kcal7Button, menuLabel, diaryHeaderLabel, menuSpacer, summaryButton, logoutButton);//menulabel=logged in
+        buttonPane.getChildren().addAll(kcal7Button);
+        diaryPane.getChildren().addAll(menuPane, buttonPane);
 
         // add food
 //        VBox putColumn = new VBox(10);//vertical
@@ -544,14 +524,14 @@ public class FitMeUi extends Application {
         diaryPanes.getChildren().addAll(menuPanes);
 
         // add food
-//        VBox putColumn = new VBox(10);//vertical
-        HBox createSums = new HBox(10);
-        createSums.setPadding(new Insets(20));
+        VBox putColumn = new VBox(10);//vertical
+        HBox createButtons = new HBox(10);
+        createButtons.setPadding(new Insets(20));
 
         HBox createForms = new HBox(10);      //riviasettelu
         createForms.setPadding(new Insets(20, 20, 20, 20));
 
-        
+//        Button kcal7Button = new Button("show last 7 days");  //pelkk' linkki tekstiin??'
         
         Label dateLabel = new Label("Search diary by time: from");
         TextField dateStartInput = new TextField();
@@ -569,9 +549,34 @@ public class FitMeUi extends Application {
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
         
+        Button kcal7Button = new Button("show  all from last 7 days"); 
+        Button kcal30Button = new Button("show all from last 30 days");
+        
+        kcal7Button.setOnAction(e -> {   try {
+ 
+            redrawViewSummary();
+                } catch (SQLException ex) {
+                    Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
+        });
+        
+                
+          kcal30Button.setOnAction(e -> {
+ 
+              nodes2.getChildren().clear();
+              
+//                try {
+////                    redrawViewSummary();///////////tähän oma näkymä johon haetaan viimeiset 30 päivää
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+        });
+
+        createButtons.getChildren().addAll(kcal7Button,kcal30Button);
         createForms.getChildren().addAll(dateLabel, dateStartInput, dateToLabel ,dateToInput, spacer, createSearch);// down part
-            
+        putColumn.getChildren().addAll(createButtons, createForms);
+        
         nodes2 = new VBox(10);
         nodes2.setMaxWidth(500);
         nodes2.setMinWidth(500);
@@ -580,8 +585,8 @@ public class FitMeUi extends Application {
         mainSrcollbarSummary.setContent(nodes2);
 //       
         mainPanes.setTop(menuPanes);
-//  
-        mainPanes.setBottom(createForms);
+
+        mainPanes.setBottom(putColumn);
         
         
  //BUTTON ACTIONS///////////////////////////////////////////////////////////////////////////////////////////////////////      

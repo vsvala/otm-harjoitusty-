@@ -65,29 +65,29 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
 
         return diary;
     }
-
-    @Override
-    public List<Diary> findAll(String key) throws SQLException {
-        List<Diary> diaries = new ArrayList<>();
-
-        Connection connection = database.getConnection();
-
-        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ?");
-        stmt.setObject(1, key);
-
-        ResultSet rs = stmt.executeQuery();
-        while (rs.next()) {
-            Diary diary = new Diary(rs.getInt("id"), rs.getString("day"), rs.getString("content"), rs.getInt("kcal"));
-            diaries.add(diary);
-        }
-
-        stmt.close();
-        rs.close();
-        connection.close();
-
-        System.out.println(diaries);
-        return diaries;
-    }
+//
+//    @Override
+//    public List<Diary> findAll(String key) throws SQLException {
+//        List<Diary> diaries = new ArrayList<>();
+//
+//        Connection connection = database.getConnection();
+//
+//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ?");
+//        stmt.setObject(1, key);
+//
+//        ResultSet rs = stmt.executeQuery();
+//        while (rs.next()) {
+//            Diary diary = new Diary(rs.getInt("id"), rs.getString("day"), rs.getString("content"), rs.getInt("kcal"));
+//            diaries.add(diary);
+//        }
+//
+//        stmt.close();
+//        rs.close();
+//        connection.close();
+//
+//        System.out.println(diaries);
+//        return diaries;
+//    }
 
     @Override
     public List<Diary> findDiaryByDate(String key) throws SQLException {

@@ -53,20 +53,20 @@ public class DiaryService {
 //    * 
 //    * @return kirjautuneen käyttäjän content
 //    */
-//    
-    public List<Diary> getDiary() throws SQLException { //returns all loggedusers diarymarkings in the list
-        if (loggedIn == null) {
-            return new ArrayList<>();
-        }
-        return diaryDao.findAll(loggedIn.getUsername());
-    }
+////    
+//    public List<Diary> getDiary() throws SQLException { //returns all loggedusers diarymarkings in the list
+//        if (loggedIn == null) {
+//            return new ArrayList<>();
+//        }
+//        return diaryDao.findAll(loggedIn.getUsername());
+//    }
 
-    public Object getOne() throws SQLException { //returns all loggedusers diarymarkings in the list
-        if (loggedIn == null) {
-            return null;
-        }
-        return diaryDao.findOne(loggedIn.getUsername());
-    }
+//    public Object getOne() throws SQLException { //returns all loggedusers diarymarkings in the list
+//        if (loggedIn == null) {
+//            return null;
+//        }
+//        return diaryDao.findOne(loggedIn.getUsername());
+//    }
 
     public List<Diary> getDiaryByDate() throws SQLException { //returns all loggedusers diarymarkings from tody in the list
         if (loggedIn == null) {
