@@ -1,29 +1,23 @@
 # Käyttöohje
 
-Lataa tiedosto [todoapp.jar](https://github.com/mluukkai/OtmTodoApp/releases/tag/0.1)
+Lataa tiedosto [FitMe.jar](https://github.com/mluukkai/OtmTodoApp/releases/tag/0.1)
 
 ## Konfigurointi
-
-Ohjelma olettaa, että sen käynnistyshakemistossa on konfiguraatiotiedosto _config.properties_, joka määrittelee käyttäjät ja todot tallettavien tiedostojen nimet. Tiedoston muoto on seuraava
-
-```
-userFile=users.txt
-todoFile=todos.txt
-```
+Ohjelma luo tietokantataulut, jos niitä ei ole olemassa.
 
 ## Ohjelman käynnistäminen
 
 Ohjelma käynnistetään komennolla 
 
 ```
-java -jar todoapp.jar
+java -jar FitMe.jar
 ```
 
 ## Kirjautuminen
 
 Sovellus käynnistyy kirjautumisnäkymään:
 
-<img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/k-1.png" width="400">
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/SignIn.png" width="400">
 
 Kirjautuminen onnistuu kirjoittamalla olemassaoleva käyttäjätunnus syötekenttään ja painamalla _login_.
 
