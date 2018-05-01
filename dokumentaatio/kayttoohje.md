@@ -31,12 +31,14 @@ Uusi käyttäjä luodaan syöttämällä tiedot syötekenttiin ja painamalla _cr
 
 Jos käyttäjän luominen onnistuu, palataan kirjautumisnäkymään.
 
-## Todojen luominen ja tehdyksi merkkaaminen
+## Ruokapäiväkirjamerkintöjen luominen ja poistaminen
 
-Onnistuneen kirjautumisen myötä siirrytään käyttäjien tekemättömät työt listaavaan näkymään
+Onnistuneen kirjautumisen myötä siirrytään käyttäjän päiväkirjamerkintöjä listaavaan näkymään
 
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/DiaryPage.png" width="400">
 
-Näkymä mahdollistaa olemassaolevien todojen merkkaamisen tehdyksi painikkeella _done_ sekä uusien todojen luomisen kirjoittamalla syötekenttään tehtävän kuvauksen ja painamalla _create_. 
+Näkymä mahdollistaa olemassaolevien merkintöjen postamisen painikkeella _delete_ sekä uusien merkintöje  luomisen kirjoittamalla syötekenttään Food ruoan ja kcal kalorimäärän ja painamalla _create_. 
 
-Klikkaamalla näkymän oikean ylänurkan painiketta _logout_, käyttäjä kirjautuu ulos sovelluksesta ja sovellus palaa takaisin kirjaantumisnäkymään.
+Sovellus laskee näkyvillä päivän aikana yhteensä syödyt kalorit
+
+Klikkaamalla näkymän oikean ylänurkan painiketta _logout_, käyttäjä kirjautuu ulos sovelluksesta ja sovellus palaa takaisin kirjaantumisnäkymään. Painamalla  painiketta _summary_, käyttäjä pääsee tarkasteleman yhteenveto sivua, jossa voi tarkastella viimeisen 7 päivän, 30 päivän tai haluamansa ajanjakson ruokia ja kaloreita.
