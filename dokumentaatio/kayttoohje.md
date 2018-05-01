@@ -37,7 +37,7 @@ Onnistuneen kirjautumisen myötä siirrytään käyttäjän päiväkirjamerkint�
 
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/DiaryPage.png" width="600">
 
-Näkymä mahdollistaa olemassaolevien merkintöjen postamisen painikkeella _delete_ sekä uusien merkintöje  luomisen kirjoittamalla syötekenttään Food ruoan ja kcal kalorimäärän ja painamalla _create_. 
+Näkymä mahdollistaa olemassaolevien merkintöjen postamisen painikkeella _delete_ sekä uusien merkintöje  luomisen kirjoittamalla syötekenttään food: syödyn ruoan ja kcal: kalorimäärän ja painamalla _add_. 
 
 Sovellus laskee näkyvillä päivän aikana yhteensä syödyt kalorit
 
