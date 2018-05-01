@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa tiedosto [FitMe.jar](https://github.com/mluukkai/OtmTodoApp/releases/tag/0.1)
+Lataa tiedosto [FitMe.jar](https://github.com/vsvala/otm-harjoitustyo/releases)
 
 ## Konfigurointi
 Ohjelma luo tietokantataulut, jos niitä ei ole olemassa.
