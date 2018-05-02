@@ -43,7 +43,7 @@ Komento
 mvn package
 ```
 
-generoi hakemistoon _target_ suoritettavan jar-tiedoston _FitMep-1.0-SNAPSHOT.jar_
+generoi hakemistoon _target_ suoritettavan jar-tiedoston _FitMe-1.0-SNAPSHOT.jar_
 
 ### JavaDoc
 
