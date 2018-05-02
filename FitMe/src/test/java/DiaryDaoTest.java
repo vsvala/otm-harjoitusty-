@@ -8,6 +8,7 @@ import fitme.dao.DataDiaryDao;
 import fitme.dao.DataUserDao;
 import fitme.dao.Database;
 import fitme.domain.Diary;
+import fitme.domain.DiaryService;
 import fitme.domain.User;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -38,7 +39,8 @@ public class DiaryDaoTest {
     Database database;
     DataUserDao userDao;
     DataDiaryDao diaryDao;
-    User testuser;
+    DiaryService diaryService;
+    User testUser;
     Diary testDiary;
 
     public DiaryDaoTest() throws FileNotFoundException, IOException, ClassNotFoundException, Exception {
@@ -48,30 +50,96 @@ public class DiaryDaoTest {
 //          database = new Database(usedDatabase);
 
         database = new Database("jdbc:sqlite:fitme.db");
-
+     
         userDao = new DataUserDao(database);
+<<<<<<< HEAD
         diaryDao = new DataDiaryDao(database);
         testuser = new User("testJokke", "testJorma");
         testDiary = new Diary(600, "27.04.2018", "Moi", 200, testuser);
 //        diary2 = new Diary(2, "Heippa", 400);
+=======
+        diaryDao = new DataDiaryDao(database); 
+        diaryService=new DiaryService(diaryDao, userDao);
+        
+        testUser = new User("testJokke", "testJorma");
+        testDiary = new Diary("27.04.2018", "Moi", 200, testUser);
+//       diary2 = new Diary(2, "Heippa", 400);
+>>>>>>> dev
+    }
+//
+//    @BeforeClass
+//    public static void setUpClass() {
+//    }
+//
+//    @AfterClass
+//    public static void tearDownClass() {
+//    }
+//
+//    @Before
+//    public void setUp() {
+//    }
+//
+//    @After
+//    public void tearDown() {
+//
+//    }
+
+    @Test
+    public void saveOrUpdateReturnsDiaryIfNotNull() throws SQLException {
+       
+                //        Connection connection = database.getConnection();
+                //
+                //        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Diary"
+                //                + " (user_username, day, content, kcal)" //id lisäys?
+                //                + " VALUES (?, ?, ?, ?)");  //(?, CURRENT_TIMESTAMP. ?)
+                //
+                //        stmt.setObject(1, testDiary.getUser().getUsername());
+                //        stmt.setString(2, testDiary.getday());
+                //        stmt.setString(3, testDiary.getContent());
+                //        stmt.setInt(4, testDiary.getKcal());
+                //
+                //        stmt.executeUpdate();
+
+//            Connection connection = database.getConnection();
+//            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE id = ?")) {
+//            stmt.setString(1, "testJokke");
+//
+//            ResultSet rs = stmt.executeQuery();
+////
+////     
+//
+////           diaryDao.saveOrUpdate(testDiary);
+//           
+//            System.out.println("testaa" + testDiary.getContent());
+//           
+//            String content=rs.getString("content");
+//            System.out.println("testaa2" + content);
+//           
+//            assertEquals(testDiary,diaryDao.saveOrUpdate(testDiary));
+//            stmt.close();
+////            connection.close();
+//        }
     }
 
-    @BeforeClass
-    public static void setUpClass() {
+    @Test
+    public void findOneDiaryWithGivenUsername() throws SQLException {
+        String key = testDiary.getUser().getUsername();
+        Connection connection = database.getConnection();
+        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ?");
+        stmt.setString(1, key);
+
+        ResultSet rs = stmt.executeQuery();
+
+        Diary diary = new Diary(rs.getInt("id"), rs.getString("day"), rs.getString("content"), rs.getInt("kcal"),
+                testUser);
+
+        assertEquals(diary.getContent(), testDiary.getContent());
+        stmt.close();
+        rs.close();
+        connection.close();
     }
 
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
+<<<<<<< HEAD
     @Test
     public void deleteDeletesDiary() throws SQLException {
 
@@ -85,6 +153,58 @@ public class DiaryDaoTest {
 //
 // @Test
 // public void hello() {}
+=======
+//  @Test
+//    public void findDiaryByDate() throws SQLException {
+//        List<Diary> diaries = new ArrayList<>();
+//
+//        Date todaysDate = new java.sql.Date(System.currentTimeMillis());
+//        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+//        String day = df.format(todaysDate);
+//
+//        Connection connection = database.getConnection();
+//    
+//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day = ?"); //day = CURRENT_TIMESTAMP
+//
+//        stmt.setObject(1, key);
+//        stmt.setObject(2, day);
+//        ResultSet rs = stmt.executeQuery();
+//
+//        while (rs.next()) {
+//            Diary diary = new Diary(rs.getInt("id"), day, rs.getString("content"), rs.getInt("kcal"));
+//            diaries.add(diary);
+//        }
+////        for (Diary diary : diaries) {
+////            System.out.println("test" + diary);
+////
+////        }
+//
+//    assertEquals(diary.getContent(), testDiary.getContent()
+//        stmt.close();
+//        rs.close();
+//        connection.close();
+//    }
+
+    }
+
+
+    
+    
+    
+    
+//
+//    @Test
+//    public void deleteDeletesDiary() throws SQLException {   
+//        assertEquals(true, diaryDao.delete("200"));
+//
+//    }
+
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
+    // @Test
+    // public void hello() {}
+>>>>>>> dev
 //    @Test
 //    public void findAllByDateNow() throws SQLException {
 //        List<Diary> diaries = new ArrayList<>();

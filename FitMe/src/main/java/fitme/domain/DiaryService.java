@@ -53,20 +53,20 @@ public class DiaryService {
 //    * 
 //    * @return kirjautuneen käyttäjän content
 //    */
-//    
-    public List<Diary> getDiary() throws SQLException { //returns all loggedusers diarymarkings in the list
-        if (loggedIn == null) {
-            return new ArrayList<>();
-        }
-        return diaryDao.findAll(loggedIn.getUsername());
-    }
+////    
+//    public List<Diary> getDiary() throws SQLException { //returns all loggedusers diarymarkings in the list
+//        if (loggedIn == null) {
+//            return new ArrayList<>();
+//        }
+//        return diaryDao.findAll(loggedIn.getUsername());
+//    }
 
-    public Object getOne() throws SQLException { //returns all loggedusers diarymarkings in the list
-        if (loggedIn == null) {
-            return null;
-        }
-        return diaryDao.findOne(loggedIn.getUsername());
-    }
+//    public Object getOne() throws SQLException { //returns all loggedusers diarymarkings in the list
+//        if (loggedIn == null) {
+//            return null;
+//        }
+//        return diaryDao.findOne(loggedIn.getUsername());
+//    }
 
     public List<Diary> getDiaryByDate() throws SQLException { //returns all loggedusers diarymarkings from tody in the list
         if (loggedIn == null) {
@@ -76,6 +76,17 @@ public class DiaryService {
 
         return diaryDao.findDiaryByDate(loggedIn.getUsername());
     }
+        public List<Diary> getDiaryByWeek() throws SQLException { //returns all loggedusers diarymarkings from tody in the list
+        if (loggedIn == null) {
+
+            return new ArrayList<>();
+        }
+
+        return diaryDao.findDiaryByWeek(loggedIn.getUsername());
+    }
+    
+    
+    
 
 //    /**
 //    * delete diary markings
@@ -126,17 +137,16 @@ public class DiaryService {
         loggedIn = null;
     }
 
-//    /**
-//    * uuden käyttäjän luominen
-//    * 
-//    * @param   username   käyttäjätunnus
-//    * @param   name   käyttäjän nimi
-//    * 
-//    * @return true jos käyttäjätunnus on luotu onnistuneesti, muuten false 
-//    */ 
-//    
+    /**
+    * uuden käyttäjän luominen
+    * 
+    * @param   username   käyttäjätunnus
+    * @param   name   käyttäjän nimi
+    * 
+    * @return true jos käyttäjätunnus on luotu onnistuneesti, muuten false 
+    */ 
+    
     public boolean createUser(String username, String name) throws SQLException {
-
         if (userDao.findByUsername(username) != null) {
             return false;
         }

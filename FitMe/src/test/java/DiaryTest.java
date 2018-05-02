@@ -109,12 +109,13 @@ public class DiaryTest {
     @Test
     public void kostruktoriNeljallaLuoPaivakirjanPaivayksen() {
         
-        Diary diary4 = new Diary("26.4.2018", "Moi", 200, user); //new java.sql.Date(Calendar.getInstance().getTimeInMillis())
+//        Diary diary4 = new Diary("26.4.2018", "Moi", 200, user); //new java.sql.Date(Calendar.getInstance().getTimeInMillis())
         System.out.println("aika" + diary.getday());
         Date expected = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
        // Date todaysDate = new java.sql.Date(System.currentTimeMillis());
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         String day = df.format(expected);
+        Diary diary4 = new Diary(day, "Moi", 200, user); //new java.sql.Date(Calendar.getInstance().getTimeInMillis())
         
         assertEquals(day, diary4.getday());//expected
     }    @Test
