@@ -56,9 +56,9 @@ public class DiaryDaoTest {
         diaryDao = new DataDiaryDao(database);
         diaryService = new DiaryService(diaryDao, userDao);
 
-//    
-//        testUser = new User("testJokke", "testJorma");
-//        testDiary = new Diary(1, "28.04.2018", "makkara", 400, testUser);
+////    
+        testUser = new User("testJokke", "testJorma");
+        testDiary = new Diary(1, "28.04.2018", "makkara", 400, testUser);
 //        testDiary2 = new Diary(2, "02.05.2018", "nakki", 111, testUser);
 //
 //        diaryService.delete("69");
@@ -78,12 +78,13 @@ public class DiaryDaoTest {
 //
 //    @Before
 //    public void setUp() {
+    
 //    }
 //
 
     @After
     public void tearDown() throws SQLException {
-//        diaryService.delete("1");
+//        diaryDao.delete("1");
 //        diaryService.delete("2");
 
     }
@@ -172,41 +173,47 @@ public class DiaryDaoTest {
 ////        stmt.close();
 ////        rs.close();
 ////        connectionclose();
-//    }
-}
-
-
-////       @Test
-//    public void deleteDeletesGivenDiary() throws SQLException {
-//        String key = testDiary.getUser().getUsername();
-//        Connection connection = database.getConnection();
-//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ?");
-//        stmt.setString(1, key);
+  
+    @Test
+    public void findOneIfNull() throws SQLException {
+        assertEquals(null, diaryDao.findOne("1"));   
+    }
+//      @Test
+//    public void findOneNotNull() throws SQLException {
+//         testDiary2 = new Diary(2, "02.05.2018", "nakki", 111, testUser);
+//         Connection connection = database.getConnection();
+//        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Diary(id, user_username, day, content, kcal) VALUES(?, ?, ?, ?, ?)");
 //
-//        ResultSet rs = stmt.executeQuery();
-//
-//        Diary diary = new Diary(rs.getInt("id"), rs.getString("day"), rs.getString("content"), rs.getInt("kcal"),
-//                testUser);
-//         String sid = Integer.toString(diary.getId());
-////          String sid = Integer.toString(rs.getInt("id"));
-//       
-////        System.out.println("täää" + key);
-////        Connection con = database.getConnection();
-////        PreparedStatement stmt = con.prepareStatement("DELETE FROM Diary WHERE id = ?");
-////
-////        stmt.setString(1, key);
-////       
-////        stmt.executeUpdate();
+//        stmt.setString(1,"2");
+//        stmt.setString(2, "testJokke");
+//        stmt.setString(3, "02.05.2018");
+//        stmt.setString(4, "munakas");
+//        stmt.setInt(5, 333);
 //
 //        stmt.executeUpdate();
-//        System.out.println("dao deleye");
+////
+////        stmt = connection.prepareStatement("SELECT * FROM User WHERE username = 'testJokke'");
+////
+////        ResultSet rs = stmt.executeQuery();
+////        User user = new User(rs.getString("username"), rs.getString("name"));
 //
 //        stmt.close();
+////        rs.close();
+//
 //        connection.close();
-//
-//           assertEquals(true, diaryDao.delete(sid));
-//
+//        
+//        assertEquals(testDiary2, diaryDao.findOne("2"));
+//        assertEquals(null, diaryDao.findOne("18902"));
 //    }
+    
+
+    @Test
+    public void deleteDeletesGivenDiary() throws SQLException {
+
+        assertEquals(true, diaryDao.delete("1"));
+        assertEquals(true, diaryDao.delete("66"));
+    }
+}
 //  @Test
 //    public void findDiaryByDate() throws SQLException {
 //        List<Diary> diaries = new ArrayList<>();

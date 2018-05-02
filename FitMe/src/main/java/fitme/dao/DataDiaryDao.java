@@ -116,71 +116,72 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
         return diaries;
 
     }
+//TODONEXT
+//
+//    /**
+//     *   * Etsii parametrina annetun käyttäjänimen päiväkirjamerkinnät
+//     * viimiesiltä 7 päivältä
+//     *
+//     * @param key username
+//     * @param date tämä päivä
+//     * @return lista päiväkirjamerkinnöistä viimeisiltä 7 päivältä
+//     * @throws SQLException
+//     */
 
-    /**
-     *   * Etsii parametrina annetun käyttäjänimen päiväkirjamerkinnät
-     * viimiesiltä 7 päivältä
-     *
-     * @param key username
-     * @param date tämä päivä
-     * @return lista päiväkirjamerkinnöistä viimeisiltä 7 päivältä
-     * @throws SQLException
-     */
-
-    @Override
-    public List<Diary> findDiaryByWeek(String key, String date) throws SQLException { //HAETAAN 7 VIMEISINTÄ PÄIVÄÄ
-        List<Diary> diaries = new ArrayList<>();
-        String d;
-
-        long dayInMs = 1000 * 60 * 60 * 24;                       //todo SIIRRETÄÄNKÖ DIARYLUOKKAAN TAI sERVICE LUOKKAAN?
-        System.out.println("aikanyt" + dayInMs);
-        Date startDate = new Date(System.currentTimeMillis() - (7 * dayInMs));
-        System.out.println("aika7daysago" + startDate);
-        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-        d = df.format(startDate);
-        System.out.println("aika7daysagoStringinä" + d);
-
-//  //         Date todaysDate = new java.sql.Date(System.currentTimeMillis());  //todo poista?       
-//         
-////DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-////        String day = df.format(todaysDate);
-//        String dd = date.substring(0, 2);
-//        System.out.println("dd" + dd);
-//        int startday = Integer.parseInt(dd);
-//        if (startday>7){
-//        startday = startday - 7;
+//    @Override
+//    public List<Diary> findDiaryByWeek(String key, String date) throws SQLException { //HAETAAN 7 VIMEISINTÄ PÄIVÄÄ
+//        List<Diary> diaries = new ArrayList<>();
+//        String d;
+//
+//        long dayInMs = 1000 * 60 * 60 * 24;                       //todo SIIRRETÄÄNKÖ DIARYLUOKKAAN TAI sERVICE LUOKKAAN?
+//        System.out.println("aikanyt" + dayInMs);
+//        Date startDate = new Date(System.currentTimeMillis() - (7 * dayInMs));
+//        System.out.println("aika7daysago" + startDate);
+//        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+//        d = df.format(startDate);
+//        System.out.println("aika7daysagoStringinä" + d);
+//
+////  //         Date todaysDate = new java.sql.Date(System.currentTimeMillis());  //todo poista?       
+////         
+//////DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+//////        String day = df.format(todaysDate);
+////        String dd = date.substring(0, 2);
+////        System.out.println("dd" + dd);
+////        int startday = Integer.parseInt(dd);
+////        if (startday>7){
+////        startday = startday - 7;
+//////        }
+////        System.out.println("tod" + startday);
+//////        if (startday > 0) {
+////            d = Integer.toString(startday);
+////        } else { 
+////            startday = startday + 30 - 7;
+////            d = Integer.toString(startday);
 ////        }
-//        System.out.println("tod" + startday);
-////        if (startday > 0) {
-//            d = Integer.toString(startday);
-//        } else { 
-//            startday = startday + 30 - 7;
-//            d = Integer.toString(startday);
+//        Connection connection = database.getConnection();
+//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day >= ? OR day<=? "); // day = CURRENT_TIMESTAMP=
+//
+//        stmt.setObject(1, key);
+//        stmt.setObject(2, d);
+//        stmt.setObject(3, date);
+//
+//        ResultSet rs = stmt.executeQuery();
+//
+//        while (rs.next()) {
+//            Diary diary = new Diary(rs.getInt("id"), rs.getString("day"), rs.getString("content"), rs.getInt("kcal"));
+//            diaries.add(diary);
 //        }
-        Connection connection = database.getConnection();
-        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day >= ? OR day<=? "); // day = CURRENT_TIMESTAMP=
-
-        stmt.setObject(1, key);
-        stmt.setObject(2, d);
-        stmt.setObject(3, date);
-
-        ResultSet rs = stmt.executeQuery();
-
-        while (rs.next()) {
-            Diary diary = new Diary(rs.getInt("id"), rs.getString("day"), rs.getString("content"), rs.getInt("kcal"));
-            diaries.add(diary);
-        }
-//        for (Diary diary : diaries) {
-//            System.out.println("test" + diary);
-//        }
-
-        stmt.close();
-        rs.close();
-        connection.close();
-
-        return diaries;
-
-    }
+////        for (Diary diary : diaries) {
+////            System.out.println("test" + diary);
+////        }
+//
+//        stmt.close();
+//        rs.close();
+//        connection.close();
+//
+//        return diaries;
+//
+//    }
 
     // TODONEXT
 //    /**

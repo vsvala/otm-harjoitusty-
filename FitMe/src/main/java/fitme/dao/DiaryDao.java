@@ -18,9 +18,9 @@ public interface DiaryDao<D, K> {
 
     List<D> findDiaryByDate(K key) throws SQLException;
 
-    List<D> findDiaryByWeek(K key, String date) throws SQLException;
+//    List<D> findDiaryByWeek(K key, String date) throws SQLException; //todoNEXT
 
-//    List<D> findDiaryByMonth(String key, String date) throws SQLException;//todoNEXT
+//    List<D> findDiaryByMonth(String key, String date) throws SQLException; //todoNEXT
 
     D saveOrUpdate(D object) throws SQLException;
 

@@ -194,7 +194,8 @@ public class FitMeUi extends Application {
         nodes2.getChildren().clear();
 
         List<Diary> diariessum;                    //FINDDIARY BY WEEK  HAKEE SISÄLLÖN GET DIARY 
-        diariessum = diaryService.getDiaryByWeek();
+//        diariessum = diaryService.getDiaryByWeek();  //TODOVAIHDA NÄMÄ
+          diariessum = diaryService.getDiaryByToday();
 
         diariessum.forEach(diarycontent -> {
             try {
