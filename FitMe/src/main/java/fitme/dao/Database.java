@@ -68,23 +68,20 @@ public class Database {
         lista.add("CREATE TABLE IF NOT EXISTS User (username varchar (10) PRIMARY KEY, name varchar(30));");
         lista.add("CREATE TABLE IF NOT EXISTS Diary (id integer PRIMARY KEY, user_username varchar, day varchar, content varchar(100), kcal Integer (5), FOREIGN KEY (user_username) REFERENCES User(username));");
 
-       
-        lista.add("INSERT INTO User(\n" +
-        "name,\n" +
-        "username) VALUES ('tesjorma', 'testJokke');");
-        lista.add("INSERT INTO Diary(\n" +
-        "id,\n" +
-        "user_username,\n" +
-        "day,\n" +
-        "content,\n" +
-        "kcal)\n" +
-        "VALUES (600, 'testJokke', 01.05.2018, 'makkara', 400);");
+        lista.add("INSERT INTO User(\n"
+                + "name,\n"
+                + "username) VALUES ('tesjorma', 'testJokke');");
+        lista.add("INSERT INTO Diary(\n"
+                + "id,\n"
+                + "user_username,\n"
+                + "day,\n"
+                + "content,\n"
+                + "kcal)\n"
+                + "VALUES (600, 'testJokke', 01.05.2018, 'makkara', 400);");
 //        lista.add("INSERT INTO Opiskelija (nimi) VALUES ('Homeros');");
 
 //        testuser = new User("testJokke", "testJorma");
 //        testDiary = new Diary(600,"27.04.2018", "Moi", 200, testuser);
-
-
         return lista;
     }
 }
