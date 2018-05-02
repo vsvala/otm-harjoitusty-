@@ -48,7 +48,7 @@ public class DatabaseTest {
         lista.add("CREATE TABLE IF NOT EXISTS Diary (id integer PRIMARY KEY, user_username varchar, day varchar, content varchar(100), kcal Integer (5), FOREIGN KEY (user_username) REFERENCES User(username));");
 
        
-        lista.add("NSERT INTO User(\n"
+        lista.add("INSERT INTO User(\n"
                 + "name,\n"
                 + "username) VALUES ('tesjorma', 'testJokke');");
         lista.add("INSERT INTO Diary(\n"
