@@ -36,7 +36,7 @@ public class DiaryTest {
     public void setUp() {
         user = new User("Mat", "Matias");
         diary = new Diary("Moi", 200, user);
-        diary2 = new Diary(2, "Heippa", 400);
+//        diary2 = new Diary(2, "Heippa", 400);
     }
 
     @Test
@@ -56,29 +56,29 @@ public class DiaryTest {
 //        assertEquals(user, diary.getUser());
 //    }
 
-    @Test
-    public void kostruktorIdContentKcalCreatesId() {
-
-        assertEquals(2, diary2.getId());
-
-    }
-//      @Test
-//    public void kostruktorContentKcalUserCreatesuser() {
-//   
-//        assertEquals(user, diary2.getUser());
+//    @Test
+//    public void kostruktorIdContentKcalCreatesId() {
+//
+//        assertEquals(2, diary2.getId());
+//
 //    }
-
-    @Test
-    public void kostruktorIdContentKcalCreatescontent() {
-
-        assertEquals("Heippa", diary2.getContent());
-    }
-
-    @Test
-    public void kostruktorIdContentKcalCreatesKcal() {
-
-        assertEquals(400, diary2.getKcal());
-    }
+////      @Test
+////    public void kostruktorContentKcalUserCreatesuser() {
+////   
+////        assertEquals(user, diary2.getUser());
+////    }
+//
+//    @Test
+//    public void kostruktorIdContentKcalCreatescontent() {
+//
+//        assertEquals("Heippa", diary2.getContent());
+//    }
+//
+//    @Test
+//    public void kostruktorIdContentKcalCreatesKcal() {
+//
+//        assertEquals(400, diary2.getKcal());
+//    }
 
     @Test
     public void kostruktoriIntSTringUserLuoPaivakirjanSisallon() {
@@ -88,14 +88,14 @@ public class DiaryTest {
         assertEquals(1, diary.getId());
 //        assertEquals("Ma", diary.getUser());
     }
-        @Test
-    public void kostruktoriIntSTringUserCreatesDiary() {
-        Diary diary = new Diary(1,"23.04.2018", user);
-
-      
-        assertEquals(1, diary.getId());
-       assertEquals("Mat", diary.getUser().getUsername());
-    }
+//        @Test
+//    public void kostruktoriIntSTringUserCreatesDiary() {
+//        Diary diary = new Diary(1,"23.04.2018", user);
+//
+//      
+//        assertEquals(1, diary.getId());
+//       assertEquals("Mat", diary.getUser().getUsername());
+//    }
 //
 //    @Test
 //    public void kostruktoriNeljallaLuoPaivakirjanSisallon() {
