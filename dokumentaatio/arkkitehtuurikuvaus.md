@@ -10,10 +10,11 @@ Pakkaus _fitme.ui_ sisältää JavaFX:llä toteutetun käyttöliittymän _fitme.
 
 ## Käyttöliittymä
 
-Käyttöliittymä sisältää kolme erillistä näkymää
+Käyttöliittymä sisältää neljä erillistä näkymää
 - kirjautuminen
 - uuden käyttäjän luominen
 - ruokapäiväkirjan sivu
+- yhteenvetosivu
 
 jokainen näistä on toteutettu omana Scene-oliona. Näkymistä yksi kerrallaan on näkyvänä eli sijoitettuna sovelluksen stageen. Käyttöliittymä on rakennettu ohjelmallisesti luokassa fitme.ui.FitMeUi.
 
@@ -28,9 +29,9 @@ Sovelluksen loogisen datamallin muodostavat luokat User ja Diary, jotka kuvaavat
 
 Toiminnallisista kokonaisuuksista vastaa luokan DiaryService ainoa olio. Luokka tarjoaa kaikille käyttäliittymän toiminnoille oman metodin. Näitä ovat esim.
 - boolean login(String username)
-- List<Diary>getDiary()  
-- void createDiary(String content, User user)
-- void delete(int id)
+- List<Diary> getDiaryByDate() 
+- boolean createDiary(String content, int kcal) 
+- boolean delete(String id) 
 
 _DiaryService_ pääsee käsiksi käyttäjiin ja Päiväkirjaan tietojen tallennuksesta vastaavan pakkauksessa _fitme.dao_ sijaitsevien rajapinnat  Diary_Dao_ ja _UserDao_ toteuttavien luokkien kautta. Luokkien toteutuksen injektoidaan sovelluslogiikalle konstruktorikutsun yhteydessä.
 
@@ -44,11 +45,11 @@ Pakkauksen _fitme.dao_ luokat _DataDiaryoDao_ ja _DataserDao_ huolehtivat tietoj
 Luokat noudattavat Data Access Object-suunnittelumallia ja ne on tarvittaessa mahdollista korvata uusilla toteutuksilla, jos sovelluksen datan talletustapaa päätetään vaihtaa. Luokat onkin eristetty rajapintojen _DiaryoDao_ ja _UserDao_ taakse ja sovelluslogiikka ei käytä luokkia suoraan.
 
 
-### Tiedostot
+### Tietokanta
 
-Sovellus tallettaa käyttäjien ja Diaryjen tiedot tietokantaan User ja Diary tauluihin.
+Sovellus tallettaa käyttäjien ja Diaryjen tiedot fitme.db tietokantaan User ja Diary tauluihin.
 
-Sovelluksen juureen sijoitettu konfiguraatiotiedostoster määrittelee tietokannan nimen.
+Käynnistettäessä ohjelmaa esim jar tiedostosta, Database luoka luo tietokantataulut, jos niitä ei ole olemassa
 
 Sovelluksen tietokantaan tiedot on tallennettu seuraavasti:
 
