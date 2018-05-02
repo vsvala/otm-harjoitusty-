@@ -124,33 +124,27 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
         return diaries;
 
     }
-    
-       @Override
+
+    @Override
     public List<Diary> findDiaryByWeek(String key) throws SQLException { //HAETAAN 7 VIMEISINTÄ PÄIVÄÄ
         List<Diary> diaries = new ArrayList<>();
         String d;
         Date todaysDate = new java.sql.Date(System.currentTimeMillis());
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         String day = df.format(todaysDate);
-        String dd= day.substring(0, 2);
-        System.out.println("dd"+dd);
-        int today=Integer.parseInt(dd);
-        today=today-7;
-        System.out.println("tod"+today);
-        if (today>0){
-        d=Integer.toString(today);}
-        else{
-        today=today+30-7;   
-        d=Integer.toString(today);}
-
-//        System.out.println("String in dd/MM/yyyy format is: " + day);
-//        java.sql.Date(Calendar.getInstance().getTimeInMillis()
-//        Date now = new java.sql.Date(Calendar.getInstance().getTimeInMillis());//ava.sql.Date(System.currentTimeMillis());
-//        int today=Integer.parseInt(now);
-////        int dayn=now;  
+        String dd = day.substring(0, 2);
+        System.out.println("dd" + dd);
+        int today = Integer.parseInt(dd);
+        today = today - 7;
+        System.out.println("tod" + today);
+        if (today > 0) {
+            d = Integer.toString(today);
+        } else {
+            today = today + 30 - 7;
+            d = Integer.toString(today);
+        }
 
         Connection connection = database.getConnection();
-////      
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day >= ?"); //day = CURRENT_TIMESTAMP=
 
         stmt.setObject(1, key);
@@ -163,7 +157,6 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
         }
 //        for (Diary diary : diaries) {
 //            System.out.println("test" + diary);
-//
 //        }
 
         stmt.close();
@@ -211,9 +204,14 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
 
         stmt.close();
         con.close();
-       
+
         return true;
 
     }
 
 }
+//        System.out.println("String in dd/MM/yyyy format is: " + day);
+//        java.sql.Date(Calendar.getInstance().getTimeInMillis()
+//        Date now = new java.sql.Date(Calendar.getInstance().getTimeInMillis());//ava.sql.Date(System.currentTimeMillis());
+//        int today=Integer.parseInt(now);
+////        int dayn=now; 
