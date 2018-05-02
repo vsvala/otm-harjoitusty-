@@ -226,4 +226,10 @@ public class DiaryTest {
         assertEquals(false, diary.equals(diary2));
 
     }
+     @Test
+    public void  equals(){
+
+        assertEquals(true, diary.equals(diary));
+
+    }
 }

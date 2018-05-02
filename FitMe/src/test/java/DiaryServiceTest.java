@@ -120,12 +120,12 @@ public class DiaryServiceTest {
         
         
         
-//          @Test 
-//          public void login() throws SQLException{
-//    
-//          assertEquals(true, diaryService.login("Viku"));
-//    }
-//       
+          @Test 
+          public void logoutWorks() throws SQLException{
+    
+          assertEquals(true, diaryService.logout());
+    }
+       
 //        
         
     
