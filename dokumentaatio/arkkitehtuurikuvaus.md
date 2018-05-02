@@ -61,7 +61,7 @@ name varchar (30)
 CREATE TABLE Diary(
 id integer PRIMARY KEY,
 user_username varchar,  
-day date,
+day String,
 content varchar(100),
 kcal Integer (5)
 FOREIGN KEY (user_username) REFERENCES User(username)
