@@ -15,9 +15,9 @@ Ohjelmoinnin harjoitustyönä tehty Fitme sovellusprojekti sekä projektin dokum
 [Työaikakirjanpito](https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/ty%C3%B6aikakirjanpito)
 
 ## Releaset
-[Viikko 6](https://github.com/vsvala/otm-harjoitustyo/releases)
+[Viikko 6](https://github.com/vsvala/otm-harjoitustyo/releases/tag/viikko6)
 
-[Viikko 5](https://github.com/vsvala/otm-harjoitustyo/releases/tag/viikko6)
+[Viikko 5](https://github.com/vsvala/otm-harjoitustyo/releases/tag/viikko5)
 
 ## <h2>Komentorivitoiminnot
 
