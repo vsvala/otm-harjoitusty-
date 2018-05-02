@@ -40,10 +40,10 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
 
     /**
      * Tallentaa annetun päiväkirjamerkinnän tietokantaan
-     * 
+     *
      * @param object =päiväkirjamerkintä
      * @return talletettu päiväkirjamerkintä
-     * @throws SQLException 
+     * @throws SQLException
      */
     @Override
     public Diary saveOrUpdate(Diary object) throws SQLException {
@@ -71,12 +71,14 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
 
         return diary;
     }
+
     /**
-     * Etsii parametrina annetun käyttäjänimen päiväkirjamerkinnät tältä päivältä
-     * 
+     * Etsii parametrina annetun käyttäjänimen päiväkirjamerkinnät tältä
+     * päivältä
+     *
      * @param key =username
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
 
     @Override
@@ -114,13 +116,15 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
         return diaries;
 
     }
+
     /**
-     *   * Etsii parametrina annetun käyttäjänimen päiväkirjamerkinnät viimiesiltä 7 päivältä
-     * 
+     *   * Etsii parametrina annetun käyttäjänimen päiväkirjamerkinnät
+     * viimiesiltä 7 päivältä
+     *
      * @param key username
      * @param date tämä päivä
      * @return lista päiväkirjamerkinnöistä viimeisiltä 7 päivältä
-     * @throws SQLException 
+     * @throws SQLException
      */
 
     @Override
@@ -129,7 +133,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
         String d;
 
         long dayInMs = 1000 * 60 * 60 * 24;                       //todo SIIRRETÄÄNKÖ DIARYLUOKKAAN TAI sERVICE LUOKKAAN?
-        System.out.println("aikanyt" +dayInMs );
+        System.out.println("aikanyt" + dayInMs);
         Date startDate = new Date(System.currentTimeMillis() - (7 * dayInMs));
         System.out.println("aika7daysago" + startDate);
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
@@ -177,8 +181,8 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
         return diaries;
 
     }
-    
-   // TODONEXT
+
+    // TODONEXT
 //    /**
 //     *   * Etsii parametrina annetun käyttäjänimen päiväkirjamerkinnät viimiesiltä 30 päivältä
 //     * 
@@ -237,13 +241,13 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
 //        return diaries;
 //
 //    }
-/**
- * palauttaa päiväkirjamerkinnän tunnisteen perusteella
- * 
- * @param key id päiväkirjan tunniste
- * @return päiväkirja
- * @throws SQLException 
- */
+    /**
+     * palauttaa päiväkirjamerkinnän tunnisteen perusteella
+     *
+     * @param key id päiväkirjan tunniste
+     * @return päiväkirja
+     * @throws SQLException
+     */
     @Override
     public Diary findOne(String key) throws SQLException {
         System.out.println("key" + key);
@@ -270,12 +274,11 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
 
     /**
      * Poistaa päiväkirjan merkinnän tunnisteen perusteella
-     * 
+     *
      * @param key tunniste
      * @return true jos poisto onnistuu
-     * @throws SQLException 
+     * @throws SQLException
      */
-    
     @Override
     public boolean delete(String key) throws SQLException {
         System.out.println("täää" + key);
@@ -296,9 +299,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
 
 }
 
-
 //TODO   annettujen päivämäärien mukaan hakeminen
-
 //
 //    @Override
 //    public List<Diary> findAll(String key) throws SQLException {
