@@ -43,6 +43,8 @@ public class DiaryServiceTest {
         diaryService = new DiaryService(diaryDao, userDao);
         diaryDao = new DataDiaryDao(database);
         userDao = new DataUserDao(database);
+        loggedIn=new User("testUseri","tU");
+        
     }
 
     @BeforeClass
@@ -57,11 +59,11 @@ public class DiaryServiceTest {
 
 //    @Test
 //    public void createDiaryCreatesDiary() throws SQLException {
-////      
-////        String day = "20.04.2018";
 //        int kcal = 30;
 //        String content = "Terve";
-////        Diary diary = new Diary(day, content, kcal, loggedIn);
+//        String day = diaryService.getDayToday();
+//        Diary diary = new Diary(day, content, kcal, loggedIn);
+//        diaryDao.saveOrUpdate(diary);
 //        assertEquals(true, diaryService.createDiary(content, kcal));
 //    }
         @Test
@@ -69,11 +71,11 @@ public class DiaryServiceTest {
         Diary diary = new Diary(500, "24.04.2018", "eihei", 600, loggedIn);
         assertEquals(true, diaryService.delete("500"));
     }
-         @Test
-        public void getLoggedUserReturnsLogged() {
-         assertEquals(loggedIn, diaryService.getLoggedUser());
-    }
-        
+//         @Test
+//        public void getLoggedUserReturnsLogged() {
+//         assertEquals(loggedIn.getUsername(), diaryService.getLoggedUser().getUsername());
+//    }
+//        
         @Test
         public void getDayTodayReturnDay(){
         Date todaysDate = new java.sql.Date(System.currentTimeMillis());
@@ -99,13 +101,9 @@ public class DiaryServiceTest {
 //        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 //        String testDateString = df.format(todaysDate);  
           
-         assertEquals(diaries, diaryService.getDiaryByWeek());
+         assertEquals(diaries, diaryService.getDiaryByMonth());
     }   
         
-        
-        
-        
-     
         
         @Test
         public void countKcalReturnsKcalSum() throws SQLException{
