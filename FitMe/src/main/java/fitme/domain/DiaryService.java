@@ -139,8 +139,9 @@ public class DiaryService {
 //    * uloskirjautuminen
 //    */  
 
-    public void logout() {
+    public boolean logout() {
         loggedIn = null;
+        return true;
     }
 
     /**
