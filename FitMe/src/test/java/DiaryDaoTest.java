@@ -131,6 +131,42 @@ public class DiaryDaoTest {
         rs.close();
         connection.close();
     }
+////       @Test
+//    public void deleteDeletesGivenDiary() throws SQLException {
+//        String key = testDiary.getUser().getUsername();
+//        Connection connection = database.getConnection();
+//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ?");
+//        stmt.setString(1, key);
+//
+//        ResultSet rs = stmt.executeQuery();
+//
+//        Diary diary = new Diary(rs.getInt("id"), rs.getString("day"), rs.getString("content"), rs.getInt("kcal"),
+//                testUser);
+//         String sid = Integer.toString(diary.getId());
+////          String sid = Integer.toString(rs.getInt("id"));
+//       
+////        System.out.println("täää" + key);
+////        Connection con = database.getConnection();
+////        PreparedStatement stmt = con.prepareStatement("DELETE FROM Diary WHERE id = ?");
+////
+////        stmt.setString(1, key);
+////       
+////        stmt.executeUpdate();
+//
+//        stmt.executeUpdate();
+//        System.out.println("dao deleye");
+//
+//        stmt.close();
+//        connection.close();
+//
+//           assertEquals(true, diaryDao.delete(sid));
+//
+//    }
+
+    
+    
+    
+    
 
 //  @Test
 //    public void findDiaryByDate() throws SQLException {

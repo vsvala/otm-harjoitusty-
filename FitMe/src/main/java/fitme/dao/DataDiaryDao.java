@@ -31,11 +31,10 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
 
     private Database database;
     private UserDao<User, String> userDao;
-    private DiaryDao<Diary, String> diaryDao;
+//    private DiaryDao<Diary, String> diaryDao; //poista
 
     public DataDiaryDao(Database database) throws Exception {
         this.database = database;
-        this.diaryDao = diaryDao;
 
     }
 
@@ -255,6 +254,9 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
     }
 
 }
+
+
+//TODO   annettujen päivämäärien mukaan hakeminen
 
 //
 //    @Override

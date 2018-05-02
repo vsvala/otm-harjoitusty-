@@ -27,6 +27,13 @@ public class Database {
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(databaseAddress);
     }
+    
+    /**
+     * Init metodi suorittaa listalta tietokantataulujen luontilauseet
+     * 
+     * @return palauttaa true jos uudet tietokantataulut luodaan
+     */
+    
 
     public boolean init() {
         List<String> lauseet = sqliteLauseet();
@@ -48,6 +55,12 @@ public class Database {
         }
         return true;
     }
+    
+    /**
+     * Luo listan tietokannanluontilauseista, jos niitä ei ole olemassa esim jar:ia luodessa
+     * 
+     * @return lista tietokannanlunotilauseista
+     */
 
     public List<String> sqliteLauseet() { //private?
         ArrayList<String> lista = new ArrayList<>();

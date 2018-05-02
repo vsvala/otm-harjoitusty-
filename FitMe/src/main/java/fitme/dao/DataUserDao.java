@@ -25,33 +25,14 @@ public class DataUserDao implements UserDao<User, String> {
     public DataUserDao(Database database) {
         this.database = database;
     }
-
-    @Override
-    public List<User> findAll() throws SQLException {
-        Connection connection = database.getConnection();
-
-        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM User");
-        ResultSet rs = stmt.executeQuery();
-
-        List<User> users = new ArrayList<>();
-
-        while (rs.next()) {
-            User a = new User(rs.getString("name"),
-                    rs.getString("username"));
-
-            users.add(a);
-        }
-
-        stmt.close();
-        rs.close();
-
-        connection.close();
-
-        System.out.println(users);
-        return users;
-
-    }
-
+/**
+ * tallentaa parametrinään saadun päiväkirjan tietokantaan
+ * 
+ * @param object tallennettava päiväkirja
+ * @return true, jos tallennus onnistuu
+ * @throws SQLException 
+ */
+    
     @Override
     public boolean saveOrUpdate(User object) throws SQLException { //User
         Connection connection = database.getConnection();
@@ -74,6 +55,13 @@ public class DataUserDao implements UserDao<User, String> {
 
         return true;
     }
+    /**
+     * Poistaa parametrina annetun käyttäjän päiväkirjamerkinnän 
+     * 
+     * @param key poistettavan merkinnän käyttäjänimi
+     * @return true, jos poisto onnistuu
+     * @throws SQLException 
+     */
 
     @Override
     public boolean delete(String key) throws SQLException {
@@ -86,7 +74,13 @@ public class DataUserDao implements UserDao<User, String> {
         connection.close();
         return true;
     }
-
+/**
+ * Etsii käyttäjän käyttäjänimenperusteella
+ * 
+ * @param key käyttäjänimi
+ * @return käyttäjä
+ * @throws SQLException 
+ */
     @Override
     public User findByUsername(String key) throws SQLException {
         Connection conne = database.getConnection();
@@ -108,3 +102,33 @@ public class DataUserDao implements UserDao<User, String> {
         return user;
     }
 }
+
+
+
+
+
+//    @Override
+//    public List<User> findAll() throws SQLException {
+//        Connection connection = database.getConnection();
+//
+//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM User");
+//        ResultSet rs = stmt.executeQuery();
+//
+//        List<User> users = new ArrayList<>();
+//
+//        while (rs.next()) {
+//            User a = new User(rs.getString("name"),
+//                    rs.getString("username"));
+//
+//            users.add(a);
+//        }
+//
+//        stmt.close();
+//        rs.close();
+//
+//        connection.close();
+//
+//        System.out.println(users);
+//        return users;
+//
+//    }

@@ -12,11 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 /**
- * Yksittäistä ruokalajia kuvaava luokka
- */
-/**
- *
- * @author svsv
+ * Yksittäistä päiväkirjamerkintää kuvaava luokka
  */
 public class Diary {
 
@@ -58,20 +54,6 @@ public class Diary {
         this.kcal = kcal;;
         this.delete = false;
     }
-
-//    public Diary(int id, String content, int kcal) {  //TODO poista?
-//        this.id = id;
-//        this.content = content;
-//        this.kcal = kcal;
-//        this.delete = false;
-//    }
-
-//    public Diary(int id, String day, User user) {  // //TODO poista?
-//        this.id = id;
-//        this.day = day;
-//        this.user = user;
-//        this.delete = false;
-//    }
 
     public Diary(int id, String content) {  //use in test
         this.id = id;
@@ -124,6 +106,20 @@ public class Diary {
     }
 
 }
+
+///TODOOO POISTETTAVAAAAAAAAAAAAAAA KAMAAAAAAAAAAAAAAAAAAAAAAAA
+//    public Diary(int id, String content, int kcal) {  //TODO poista?
+//        this.id = id;
+//        this.content = content;
+//        this.kcal = kcal;
+//        this.delete = false;
+//    }
+//    public Diary(int id, String day, User user) {  // //TODO poista?
+//        this.id = id;
+//        this.day = day;
+//        this.user = user;
+//        this.delete = false;
+//    }
 //    public void setday(String day) {
 //        this.day = day;
 //    }
@@ -137,7 +133,6 @@ public class Diary {
 //        Date today = new java.sql.Date(System.currentTimeMillis());
 //        return today;
 //    }
-
 //
 //    public String getday() {
 ////       Date todaysDate =new java.sql.Date(System.currentTimeMillis());

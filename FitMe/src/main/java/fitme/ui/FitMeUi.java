@@ -125,6 +125,8 @@ public class FitMeUi extends Application {
                 Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        
+      
 
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
@@ -142,7 +144,7 @@ public class FitMeUi extends Application {
         nodes.getChildren().clear();
 
         List<Diary> diaries;  //FIND ONE DIARY  HAKEE SISÄLLÖN GET DIARY
-        diaries = diaryService.getDiaryByDate();
+        diaries = diaryService.getDiaryByToday();
 
         diaries.forEach(diarycontent -> {
             try {

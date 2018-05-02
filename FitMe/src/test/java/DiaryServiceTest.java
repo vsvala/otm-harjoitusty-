@@ -108,7 +108,7 @@ public class DiaryServiceTest {
         @Test
         public void countKcalReturnsKcalSum() throws SQLException{
         int sum = 0;
-        List<Diary> diaries = diaryService.getDiaryByDate();
+        List<Diary> diaries = diaryService.getDiaryByToday();
 //       System.out.println("päiväkirjat"+diaries);
 
         for (int i = 0; i < diaries.size(); i++) {
@@ -117,8 +117,13 @@ public class DiaryServiceTest {
 
          assertEquals(sum, diaryService.countKcal());
     }
-        
-        
+//        
+//                @Test 
+//          public void loginWorks() throws SQLException{
+//    
+//          assertEquals(true, diaryService.login("Viku"));
+//    }
+       
         
           @Test 
           public void logoutWorks() throws SQLException{
