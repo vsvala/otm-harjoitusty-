@@ -128,9 +128,9 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
         List<Diary> diaries = new ArrayList<>();
         String d;
 
-        long DAY_IN_MS = 1000 * 60 * 60 * 24;                       //todo SIIRRETÄÄNKÖ DIARYLUOKKAAN TAI sERVICE LUOKKAAN?
-        System.out.println("aikanyt" + DAY_IN_MS);
-        Date startDate = new Date(System.currentTimeMillis() - (7 * DAY_IN_MS));
+        long dayInMs = 1000 * 60 * 60 * 24;                       //todo SIIRRETÄÄNKÖ DIARYLUOKKAAN TAI sERVICE LUOKKAAN?
+        System.out.println("aikanyt" +dayInMs );
+        Date startDate = new Date(System.currentTimeMillis() - (7 * dayInMs));
         System.out.println("aika7daysago" + startDate);
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         d = df.format(startDate);

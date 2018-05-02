@@ -174,29 +174,7 @@ public class DiaryDaoTest {
 ////        connectionclose();
 //    }
 }
-//    @Override
-//    public Diary findOne(String key) throws SQLException {
-//        System.out.println("key" + key);
-//        Connection connection = database.getConnection();
-//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE id = ?");
-//        stmt.setString(1, key);
-//
-//        ResultSet rs = stmt.executeQuery();
-//        boolean hasOne = rs.next();
-//        if (!hasOne) {
-//            return null;
-//        }
-//        User user = userDao.findByUsername(rs.getString("user_username"));
-//
-//        Diary diary = new Diary(rs.getInt("id"), rs.getString("day"), rs.getString("content"), rs.getInt("kcal"),
-//                user);
-//        //public Diary(int id, Date Day, String content, int kcal, User user)
-//        stmt.close();
-//        rs.close();
-//        connection.close();
-//
-//        return diary;
-//    }
+
 
 ////       @Test
 //    public void deleteDeletesGivenDiary() throws SQLException {
@@ -265,84 +243,7 @@ public class DiaryDaoTest {
 //        assertEquals(true, diaryDao.delete("200"));
 //
 //    }
-// TODO add test methods here.
-// The methods must be annotated with annotation @Test. For example:
 //
-// @Test
-// public void hello() {}
-//    @Test
-//    public void findAllByDateNow() throws SQLException {
-//        List<Diary> diaries = new ArrayList<>();
-//        Connection connection = database.getConnection();
-//        PreparedStatement stmt = connection.prepareStatement("DELETE FROM User WHERE username='testJokke'");
-//        stmt.executeUpdate();
-//
-////   
-////        PreparedStatement
-////                
-//        stmt = connection.prepareStatement("INSERT INTO User(username, name) VALUES(?, ?)");
-//
-//        stmt.setString(1, testuser.getUsername());
-//        stmt.setString(2, testuser.getName());
-//
-//        stmt.executeUpdate();
-//
-//        Date todaysDate = new java.sql.Date(System.currentTimeMillis());
-//        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-//        String today = df.format(todaysDate);
-//
-//        testDiary = new Diary(5, today, "Moikka", 200, testuser);
-//        //(int id, Date dSay, String content, int kcal, User user)
-//
-//        stmt = connection.prepareStatement("SELECT * FROM Diary WHERE day=CURRENT_TIMESTAMP AND user_username = 'testJokke'"); //ja pvm=sama..??..
-//
-//        ResultSet rs = stmt.executeQuery();
-//        while (rs.next()) {
-//            Diary diary = new Diary(rs.getInt("id"), rs.getString("content"), rs.getInt("kcal"));
-//
-//            diaries.add(diary);
-//            //rs.getInt("id"),
-//
-//            // now diary markings on list
-//            System.out.println(diaries);
-//
-//            assertEquals(diaries.get(rs.getInt("id")).getday(), testDiary.getday());
-////        assertEquals("testLiisa", testuser.getName());
-////        Connection connection = database.getConnection();
-//            stmt = connection.prepareStatement("DELETE FROM User WHERE username='testJokke'");
-//            stmt.executeUpdate();
-//        }
-//        stmt.close();
-//        rs.close();
-//        connection.close();
-//
-//    }
-//
-//    @Test
-//    public void findAllFindsAllFromDatabase() throws SQLException {
-//        List<Diary> diaries = new ArrayList<>();
-//
-//        Connection connection = database.getConnection();
-//
-//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = 'testJokke'");
-////        stmt.setObject(1, key);
-//        ResultSet rs = stmt.executeQuery();
-//        while (rs.next()) {
-//            Diary diary = new Diary(rs.getInt("id"), rs.getString("content"), rs.getInt("kcal"));
-//
-//            diaries.add(diary);
-//        } //rs.getInt("id"),
-//
-//        stmt.close();
-//        rs.close();
-//        connection.close();
-//       
-//         assertEquals(diaries.get(0), diaryDao.findAll().diaries.get(0));
-//         
-//        stmt.close();
-//        rs.close();
-//        connection.close(); 
-//    }
 //    @Test
 //    public Diary findOne(String key) throws SQLException {  //on diary marking
 //        System.out.println("key" + key);
