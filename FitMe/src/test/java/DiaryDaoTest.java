@@ -42,6 +42,7 @@ public class DiaryDaoTest {
     DiaryService diaryService;
     User testUser;
     Diary testDiary;
+    Diary testDiary2;
 
     public DiaryDaoTest() throws FileNotFoundException, IOException, ClassNotFoundException, Exception {
 //        Properties properties = new Properties();
@@ -50,24 +51,20 @@ public class DiaryDaoTest {
 //          database = new Database(usedDatabase);
 
         database = new Database("jdbc:sqlite:fitme.db");
-     
+
         userDao = new DataUserDao(database);
-        diaryDao = new DataDiaryDao(database); 
-        diaryService=new DiaryService(diaryDao, userDao);
-        
-    
-        testUser = new User("testJokke", "testJorma"); 
-        userDao.saveOrUpdate(testUser);
-        testDiary = new Diary(1,"27.04.2018", "Moi", 200, testUser);
-//        diaryDao.saveOrUpdate(testDiary);
-        diaryDao.delete("100");
-        diaryService.delete("100");
-        diaryService.delete("99");
-        diaryService.delete("98");
-        diaryService.delete("97");
-        diaryService.delete("96");
-//        userDao.delete("testJokke");
-        
+        diaryDao = new DataDiaryDao(database);
+        diaryService = new DiaryService(diaryDao, userDao);
+
+//    
+//        testUser = new User("testJokke", "testJorma");
+//        testDiary = new Diary(1, "28.04.2018", "makkara", 400, testUser);
+//        testDiary2 = new Diary(2, "02.05.2018", "nakki", 111, testUser);
+//
+//        diaryService.delete("69");
+//        + "VALUES (1, 'testJokke', 28.04.2018, 'makkara', 400);");
+//                + "VALUES (2, 'testJokke', 02.05.2018, 'nakki', 111);");
+//            
 //       diary2 = new Diary(2, "Heippa", 400);
     }
 //
@@ -83,15 +80,17 @@ public class DiaryDaoTest {
 //    public void setUp() {
 //    }
 //
-    @After
-    public void tearDown() {
 
+    @After
+    public void tearDown() throws SQLException {
+//        diaryService.delete("1");
+//        diaryService.delete("2");
 
     }
 
     @Test
-    public void saveOrUpdateReturnsNullIf() throws SQLException {
-       
+    public void saveOrUpdateReturnsDiary() throws SQLException {
+
 //                        Connection connection = database.getConnection();
 //                
 //                        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Diary"
@@ -104,40 +103,35 @@ public class DiaryDaoTest {
 //                        stmt.setInt(4, testDiary.getKcal());
 //                
 //                        stmt.executeUpdate();
-
-//            Connection connection = database.getConnection();
-//            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE id = ?")) {
-//            stmt.setString(1, "testJokke");
+//        Connection connection = database.getConnection();
+//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE  user_username = ?");
+//        stmt.setString(1, "testJokke");
 //
-//            ResultSet rs = stmt.executeQuery();
+//        ResultSet rs = stmt.executeQuery();
+//
+////          
+//////     
 ////
-////     
-//
-////           diaryDao.saveOrUpdate(testDiary);
-//           
-//            System.out.println("testaa" + testDiary.getContent());
-//           
-//            String content=rs.getString("content");
-//            System.out.println("testaa2" + content);
-//           
-            assertEquals(null, diaryDao.saveOrUpdate(testDiary));
+//////           diaryDao.saveOrUpdate(testDiary);
+////           
+////            System.out.println("testaa" + testDiary.getContent());
+////           
+//        String content = rs.getString("content");
+//        System.out.println("testaa2" + content);
+////           diaryDao.saveOrUpdate(testDiary)
+//        assertEquals("makkara", diaryDao.saveOrUpdate(testDiary).getContent());
 //            assertEquals(testDiary, diaryDao.saveOrUpdate(testDiary));
 //            stmt.close();
 //            connection.close();
-        }
-    
-        @Test
-    public void saveOrUpdateReturnsDiary() throws SQLException {
-       
-//           
-            assertEquals(testDiary, diaryDao.saveOrUpdate(testDiary));
-//     
-        }
-    
-    
-    
-    
-    
+    }
+
+//        @Test
+//    public void saveOrUpdateReturnsDiary() throws SQLException {
+//       
+////           
+//            assertEquals(testDiary, diaryDao.saveOrUpdate(testDiary));
+////     
+//        }
 //        @Test
 //    public void createdTodosAreListed() throws Exception {    
 //        dao.create(new Todo("lue kokeeseen", new User("testertester", "")));
@@ -150,7 +144,6 @@ public class DiaryDaoTest {
 //        assertNotEquals(1, todo.getId());
 //        assertEquals("testertester", todo.getUser().getUsername());
 //    }  
-    
 //        @Test
 //    public void diarysCanBeSeDelete() throws Exception {
 ////        diaryDao.delete("1");
@@ -158,29 +151,53 @@ public class DiaryDaoTest {
 //        Diary diary = diaryDao.findDiaryByDate(today).get(0);
 //        assertTrue(diary.isDelete());
 //    }       
-    
-    
-//
-    @Test
-    public void findOneDiaryWithGivenUsername() throws SQLException {
-        String key = "testJokke";
-        diaryDao.saveOrUpdate(testDiary);
+////
+//    @Test
+//    public void findOneDiaryWithGivenUsername() throws SQLException {
+//        String key = "66";
+////        =diaryDao.findOne(key);
+////        diaryDao.saveOrUpdate(testDiary);
+////        Connection connection = database.getConnection();
+////        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ?");
+////        stmt.setString(1, key);
+////
+////        ResultSet rs = stmt.executeQuery();
+////
+////        Diary diary = new Diary(rs.getInt("id"), rs.getString("day"), rs.getString("content"), rs.getInt("kcal"),
+////                testUser);
+//          System.out.println("test"+diaryDao.findOne(key).getUser().getUsername());
+//          
+//          
+//        assertEquals("nakki", diaryDao.findOne(key).getContent());
+////        stmt.close();
+////        rs.close();
+////        connectionclose();
+//    }
+}
+//    @Override
+//    public Diary findOne(String key) throws SQLException {
+//        System.out.println("key" + key);
 //        Connection connection = database.getConnection();
-//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ?");
+//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE id = ?");
 //        stmt.setString(1, key);
 //
 //        ResultSet rs = stmt.executeQuery();
+//        boolean hasOne = rs.next();
+//        if (!hasOne) {
+//            return null;
+//        }
+//        User user = userDao.findByUsername(rs.getString("user_username"));
 //
 //        Diary diary = new Diary(rs.getInt("id"), rs.getString("day"), rs.getString("content"), rs.getInt("kcal"),
-//                testUser);
-
-        assertEquals("testJokke", diaryDao.findOne(key).getUser().getUsername());
+//                user);
+//        //public Diary(int id, Date Day, String content, int kcal, User user)
 //        stmt.close();
 //        rs.close();
 //        connection.close();
-    }
-      }
-    
+//
+//        return diary;
+//    }
+
 ////       @Test
 //    public void deleteDeletesGivenDiary() throws SQLException {
 //        String key = testDiary.getUser().getUsername();
@@ -212,12 +229,6 @@ public class DiaryDaoTest {
 //           assertEquals(true, diaryDao.delete(sid));
 //
 //    }
-
-    
-    
-    
-    
-
 //  @Test
 //    public void findDiaryByDate() throws SQLException {
 //        List<Diary> diaries = new ArrayList<>();
@@ -248,26 +259,17 @@ public class DiaryDaoTest {
 //        rs.close();
 //        connection.close();
 //    }
-
- 
-
-
-    
-    
-    
-    
 //
 //    @Test
 //    public void deleteDeletesDiary() throws SQLException {   
 //        assertEquals(true, diaryDao.delete("200"));
 //
 //    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+// TODO add test methods here.
+// The methods must be annotated with annotation @Test. For example:
+//
+// @Test
+// public void hello() {}
 //    @Test
 //    public void findAllByDateNow() throws SQLException {
 //        List<Diary> diaries = new ArrayList<>();
