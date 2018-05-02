@@ -96,29 +96,6 @@ public class UserDaoTest {
     }
 
     @Test
-    public void findAllReturnsListOfUsers() throws SQLException {
-        Connection connection = database.getConnection();
-
-        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM User");
-        ResultSet rs = stmt.executeQuery();
-
-        List<User> users = new ArrayList<>();
-
-        while (rs.next()) {
-            User a = new User(rs.getString("name"),
-                    rs.getString("username"));
-
-            users.add(a);
-        }
-
-        stmt.close();
-        rs.close();
-
-        connection.close();
-        assertEquals(users, userDao.findAll());
-    }
-
-    @Test
     public void deleteDeletesUser() throws SQLException {
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("INSERT INTO User(username, name) VALUES('testLissu', 'testLiisa')");
@@ -155,3 +132,29 @@ public class UserDaoTest {
     }
 
 }
+
+
+//TODO tarpeettomana? menossa poistoon
+//
+//    @Test
+//    public void findAllReturnsListOfUsers() throws SQLException {
+//        Connection connection = database.getConnection();
+//
+//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM User");
+//        ResultSet rs = stmt.executeQuery();
+//
+//        List<User> users = new ArrayList<>();
+//
+//        while (rs.next()) {
+//            User a = new User(rs.getString("name"),
+//                    rs.getString("username"));
+//
+//            users.add(a);
+//        }
+//
+//        stmt.close();
+//        rs.close();
+//
+//        connection.close();
+//        assertEquals(users, userDao.findAll());
+//    }

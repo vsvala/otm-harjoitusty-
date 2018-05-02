@@ -6,10 +6,7 @@
 package fitme.domain;
 
 /**
- *
- * @author svsv
- *
- * Järjestelmän käyttäjää edustava luokka
+ * Järjestelmän käyttäjää edustava luokka 
  */
 public class User {
 

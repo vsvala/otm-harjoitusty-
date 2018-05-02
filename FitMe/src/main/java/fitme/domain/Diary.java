@@ -12,22 +12,28 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 /**
- * Yksittäistä ruokalajia kuvaava luokka
- */
-/**
- *
- * @author svsv
+ * Yksittäistä päiväkirjamerkintää kuvaava luokka
  */
 public class Diary {
 
     private int id;
-    private String day;     //private Date day;
+    private String day;
     private String content;
     private Integer kcal;
     private boolean delete;
     public User user;
 
-    public Diary(int id, String day, String content, int kcal, User user) {
+    
+   /**
+    *  Daoluokassa metodi: findOne(String key) käyttää käyttäjän yhdenpäivän Diaryn palauttamiseen
+    * 
+    * @param id tuniste primary key
+    * @param day  päivämäärä
+    * @param content  sisältö
+    * @param kcal kalorimäärä
+    * @param user käyttäjä
+    */
+    public Diary(int id, String day, String content, int kcal, User user) {  //dao uses
         this.id = id;
         this.day = day;
         this.content = content;
@@ -35,9 +41,9 @@ public class Diary {
         this.user = user;
         this.delete = false;
     }
+    
 
-    public Diary(String day, String content, int kcal, User user) {
-//        this.id = id;     
+    public Diary(String day, String content, int kcal, User user) { //service uses
         this.day = day;
         this.content = content;
         this.kcal = kcal;
@@ -45,45 +51,24 @@ public class Diary {
         this.delete = false;
     }
 
-    public Diary(String content, int kcal, User user) {
-//        this.id = id;
-//        this.day = day;
+    public Diary(String content, int kcal, User user) { //test uses
         this.content = content;
         this.kcal = kcal;
         this.user = user;
         this.delete = false;
     }
 
-    public Diary(int id, String day, String content, int kcal) {             //////////uusin
+    public Diary(int id, String day, String content, int kcal) { //diarydao uses
         this.id = id;
         this.day = day;
         this.content = content;
-        this.kcal = kcal;
-//        this.user = user;
+        this.kcal = kcal;;
         this.delete = false;
     }
 
-    public Diary(int id, String content, int kcal) {             //////////uusin
-        this.id = id;
-//        this.day = day;
-        this.content = content;
-        this.kcal = kcal;
-//        this.user = user;
-        this.delete = false;
-    }
-
-    public Diary(int id, String day, User user) {
-        this.id = id;
-        this.day = day;
-//        this.content = content;
-        this.user = user;
-        this.delete = false;
-    }
-
-    public Diary(int id, String content) {
+    public Diary(int id, String content) {  //use in test
         this.id = id;
         this.content = content;
-//        this.user = user;
         this.delete = false;
     }
 
@@ -119,6 +104,7 @@ public class Diary {
     }
 
     public String getday() {
+<<<<<<< HEAD
 //       Date todaysDate =new java.sql.Date(System.currentTimeMillis());
 //       DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 //       String day = df.format(todaysDate);
@@ -129,6 +115,11 @@ public class Diary {
 //    public void setday(String day) {
 //        this.day = day;
 //    }
+=======
+        return day;
+    }
+
+>>>>>>> dev
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Diary)) {
@@ -140,6 +131,22 @@ public class Diary {
 
 }
 
+///TODOOO POISTETTAVAAAAAAAAAAAAAAA KAMAAAAAAAAAAAAAAAAAAAAAAAA
+//    public Diary(int id, String content, int kcal) {  //TODO poista?
+//        this.id = id;
+//        this.content = content;
+//        this.kcal = kcal;
+//        this.delete = false;
+//    }
+//    public Diary(int id, String day, User user) {  // //TODO poista?
+//        this.id = id;
+//        this.day = day;
+//        this.user = user;
+//        this.delete = false;
+//    }
+//    public void setday(String day) {
+//        this.day = day;
+//    }
 //    public Date getToday() {
 //       Date todaysDate =new java.sql.Date(System.currentTimeMillis());
 //       DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -150,3 +157,14 @@ public class Diary {
 //        Date today = new java.sql.Date(System.currentTimeMillis());
 //        return today;
 //    }
+//
+//    public String getday() {
+////       Date todaysDate =new java.sql.Date(System.currentTimeMillis());
+////       DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+////       String day = df.format(todaysDate);      
+//        return day;
+//    }
+//
+////    public void setday(String day) {
+////        this.day = day;
+////    }

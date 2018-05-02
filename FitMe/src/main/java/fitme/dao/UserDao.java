@@ -14,12 +14,13 @@ import java.util.*;
 
 public interface UserDao<U, K> {
 
-    List<U> findAll() throws SQLException;
-
-    boolean saveOrUpdate(U object) throws SQLException; //U
+    boolean saveOrUpdate(U object) throws SQLException; 
 
     boolean delete(K key) throws SQLException;
 
     U findByUsername(K key) throws SQLException;
 
 }
+
+//  TODO Poistettacaksi tarpeeton?
+//List<U> findAll() throws SQLException;

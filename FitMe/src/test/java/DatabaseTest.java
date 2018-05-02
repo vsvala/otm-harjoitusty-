@@ -48,16 +48,24 @@ public class DatabaseTest {
         lista.add("CREATE TABLE IF NOT EXISTS Diary (id integer PRIMARY KEY, user_username varchar, day varchar, content varchar(100), kcal Integer (5), FOREIGN KEY (user_username) REFERENCES User(username));");
 
        
-        lista.add("INSERT INTO User(\n"
-                + "name,\n"
-                + "username) VALUES ('tesjorma', 'testJokke');");
-        lista.add("INSERT INTO Diary(\n"
-                + "id,\n"
-                + "user_username,\n"
-                + "day,\n"
-                + "content,\n"
-                + "kcal)\n"
-                + "VALUES (600, 'testJokke', 01.05.2018, 'makkara', 400);");
+//        lista.add("INSERT INTO User(\n"
+//                + "name,\n"
+//                + "username) VALUES ('testjorma', 'testJokke');");
+//        lista.add("INSERT INTO Diary(\n"
+//                + "id,\n"
+//                + "user_username,\n"
+//                + "day,\n"
+//                + "content,\n"
+//                + "kcal)\n"
+//                + "VALUES (67, 'testJokke', 28.04.2018, 'makkara', 400);");
+//         lista.add("INSERT INTO Diary(\n"
+//                + "id,\n"
+//                + "user_username,\n"
+//                + "day,\n"
+//                + "content,\n"
+//                + "kcal)\n"
+//                + "VALUES (66, 'testJokke', 02.05.2018, 'nakki', 111);");
+//        
 
         assertEquals(lista, database.sqliteLauseet());
     }
@@ -65,7 +73,7 @@ public class DatabaseTest {
     @Test
     public void initReturnsFalseIfDatabaseExists() {
 
-        assertEquals(false, database.init());
+        assertEquals(true, database.init());
     }
 
 }
