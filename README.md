@@ -21,6 +21,8 @@ Ohjelmoinnin harjoitustyönä tehty Fitme sovellusprojekti sekä projektin dokum
 
 ## <h2>Komentorivitoiminnot
 
+### Testien suoritus
+
 Testit suoritetaan komennolla
 
 ```
