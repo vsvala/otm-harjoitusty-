@@ -52,7 +52,6 @@ public class DiaryDaoTest {
         database = new Database("jdbc:sqlite:fitme.db");
      
         userDao = new DataUserDao(database);
-
         diaryDao = new DataDiaryDao(database); 
         diaryService=new DiaryService(diaryDao, userDao);
         
@@ -133,14 +132,56 @@ public class DiaryDaoTest {
         connection.close();
     }
 
-    @Test
-    public void deleteDeletesDiary() throws SQLException {
-
-        assertEquals(true, diaryDao.delete("600"));
+//  @Test
+//    public void findDiaryByDate() throws SQLException {
+//        List<Diary> diaries = new ArrayList<>();
+//
+//        Date todaysDate = new java.sql.Date(System.currentTimeMillis());
+//        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+//        String day = df.format(todaysDate);
+//
+//        Connection connection = database.getConnection();
+//    
+//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day = ?"); //day = CURRENT_TIMESTAMP
+//
+//        stmt.setObject(1, key);
+//        stmt.setObject(2, day);
+//        ResultSet rs = stmt.executeQuery();
+//
+//        while (rs.next()) {
+//            Diary diary = new Diary(rs.getInt("id"), day, rs.getString("content"), rs.getInt("kcal"));
+//            diaries.add(diary);
+//        }
+////        for (Diary diary : diaries) {
+////            System.out.println("test" + diary);
+////
+////        }
+//
+//    assertEquals(diary.getContent(), testDiary.getContent()
+//        stmt.close();
+//        rs.close();
+//        connection.close();
+//    }
 
     }
-}
 
+
+    
+    
+    
+    
+//
+//    @Test
+//    public void deleteDeletesDiary() throws SQLException {   
+//        assertEquals(true, diaryDao.delete("200"));
+//
+//    }
+
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
+    // @Test
+    // public void hello() {}
 //    @Test
 //    public void findAllByDateNow() throws SQLException {
 //        List<Diary> diaries = new ArrayList<>();
