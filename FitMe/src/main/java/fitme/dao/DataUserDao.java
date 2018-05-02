@@ -36,10 +36,7 @@ public class DataUserDao implements UserDao<User, String> {
     @Override
     public boolean saveOrUpdate(User object) throws SQLException { //User
         Connection connection = database.getConnection();
-//       System.out.println("teeestaa");
-//        User user = findByUsername(object.getUsername());     
-////        System.out.println("teeestaa"+user);
-//
+
 //        if (user != null) {
 //            System.out.println("käyttäjälöytyy..palautetaan käyttäjä");
 //            return false;

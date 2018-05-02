@@ -82,23 +82,23 @@ public class DiaryService {
 
         return diaryDao.findDiaryByWeek(loggedIn.getUsername(), getDayToday());
     }
-    
-     /**
-     * 
-     * kirjautuneen käyttäjän viimeisen kuukauden päiväkirjamerkinnät
-     *
-     * @return lista viimeisen kuukauden päiväkirjamerkinnöistä
-     * @throws SQLException 
-     */
-    
-    public List<Diary> getDiaryByMonth() throws SQLException { //returns all loggedusers diarymarkings from tody in the list
-        if (loggedIn == null) {
-
-            return new ArrayList<>();
-        }
-
-        return diaryDao.findDiaryByMonth(loggedIn.getUsername(), getDayToday());
-    }
+//    TODONEXT
+//     /**
+//     * 
+//     * kirjautuneen käyttäjän viimeisen kuukauden päiväkirjamerkinnät
+//     *
+//     * @return lista viimeisen kuukauden päiväkirjamerkinnöistä
+//     * @throws SQLException 
+//     */
+//    
+//    public List<Diary> getDiaryByMonth() throws SQLException { //returns all loggedusers diarymarkings from tody in the list
+//        if (loggedIn == null) {
+//
+//            return new ArrayList<>();
+//        }
+//
+//        return diaryDao.findDiaryByMonth(loggedIn.getUsername(), getDayToday());
+//    }
 
   
     /**

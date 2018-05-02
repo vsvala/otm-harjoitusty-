@@ -210,46 +210,48 @@ public class FitMeUi extends Application {
         kcalSumLabel7.setMinHeight(28);
         kcalSumLabel7.setPadding(new Insets(30, 0, 0, 20));  //(ylös ja vasenreuna)
 
-        kcalSumLabel30 = new Label("Kcal eaten last 30 days dayfrom-today:  " + totalKcal); //diaryService.countKcal()////tähän metori ja laske alkupäivä ja tämä pivä
-        kcalSumLabel30.setFont(Font.font("Arial", FontWeight.BOLD, 20));                //tai voisko näissä olla linkit
-        kcalSumLabel30.setMinHeight(28);
-        kcalSumLabel30.setPadding(new Insets(30, 0, 0, 20));//(ylös ja vasenreuna)
+        
+        //POISTA
+//        kcalSumLabel30 = new Label("Kcal eaten last 30 days dayfrom-today:  " + totalKcal); //diaryService.countKcal()////tähän metori ja laske alkupäivä ja tämä pivä
+//        kcalSumLabel30.setFont(Font.font("Arial", FontWeight.BOLD, 20));                //tai voisko näissä olla linkit
+//        kcalSumLabel30.setMinHeight(28);
+//        kcalSumLabel30.setPadding(new Insets(30, 0, 0, 20));//(ylös ja vasenreuna)
 
-        nodes2.getChildren().addAll(kcalSumLabel7, kcalSumLabel30); //kcal7Button,kcal30Button
-
-    }
-
-    public void redrawViewSummaryMonth() throws SQLException {  //tähän vielä kalorit pitäisi laskea oikein...
-        System.out.println("summaryredraw");
-//        totalKcalWeek = diaryService.countKcalWeek();
-//        System.out.println("sum of kcal testaaaaaaaaaaaa" + totalKcal);
-        nodes2.getChildren().clear();
-
-        List<Diary> diariessum;                    //FINDDIARY BY WEEK  HAKEE SISÄLLÖN GET DIARY 
-        diariessum = diaryService.getDiaryByMonth();
-
-        diariessum.forEach(diarycontent -> {
-            try {
-                nodes2.getChildren().add(createDiaryNodeSummary(diarycontent)); //create content and kcal for every food added on the list 
-            } catch (SQLException ex) {
-                Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        });
-
-        kcalSumLabel7 = new Label("Kcal eaten last 7 days dayfrom-today:  " + totalKcal); //diaryService.countKcal()////tähän metori ja laske alkupäivä ja tämä pivä
-        kcalSumLabel7.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-        kcalSumLabel7.setMinHeight(28);
-        kcalSumLabel7.setPadding(new Insets(30, 0, 0, 20));  //(ylös ja vasenreuna)
-
-        kcalSumLabel30 = new Label("Kcal eaten last 30 days dayfrom-today:  " + totalKcal); //diaryService.countKcal()////tähän metori ja laske alkupäivä ja tämä pivä
-        kcalSumLabel30.setFont(Font.font("Arial", FontWeight.BOLD, 20));                //tai voisko näissä olla linkit
-        kcalSumLabel30.setMinHeight(28);
-        kcalSumLabel30.setPadding(new Insets(30, 0, 0, 20));//(ylös ja vasenreuna)
-
-        nodes2.getChildren().addAll(kcalSumLabel7, kcalSumLabel30); //kcal7Button,kcal30Button
+        nodes2.getChildren().addAll(kcalSumLabel7); //kcal7Button,kcal30Button, kcalSumLabel30
 
     }
+//TODONEXT
+//    public void redrawViewSummaryMonth() throws SQLException {  //tähän vielä kalorit pitäisi laskea oikein...
+//        System.out.println("summaryredraw");
+////        totalKcalWeek = diaryService.countKcalWeek();
+////        System.out.println("sum of kcal testaaaaaaaaaaaa" + totalKcal);
+//        nodes2.getChildren().clear();
+//
+//        List<Diary> diariessum;                    //FINDDIARY BY WEEK  HAKEE SISÄLLÖN GET DIARY 
+//        diariessum = diaryService.getDiaryByMonth();
+//
+//        diariessum.forEach(diarycontent -> {
+//            try {
+//                nodes2.getChildren().add(createDiaryNodeSummary(diarycontent)); //create content and kcal for every food added on the list 
+//            } catch (SQLException ex) {
+//                Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//
+//        });
+////POISTA
+////        kcalSumLabel7 = new Label("Kcal eaten last 7 days dayfrom-today:  " + totalKcal); //diaryService.countKcal()////tähän metori ja laske alkupäivä ja tämä pivä
+////        kcalSumLabel7.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+////        kcalSumLabel7.setMinHeight(28);
+////        kcalSumLabel7.setPadding(new Insets(30, 0, 0, 20));  //(ylös ja vasenreuna)
+////
+//        kcalSumLabel30 = new Label("Kcal eaten last 30 days dayfrom-today:  " + totalKcal); //diaryService.countKcal()////tähän metori ja laske alkupäivä ja tämä pivä
+//        kcalSumLabel30.setFont(Font.font("Arial", FontWeight.BOLD, 20));                //tai voisko näissä olla linkit
+//        kcalSumLabel30.setMinHeight(28);
+//        kcalSumLabel30.setPadding(new Insets(30, 0, 0, 20));//(ylös ja vasenreuna)
+//
+//        nodes2.getChildren().addAll(kcalSumLabel7, kcalSumLabel30); //kcal7Button,kcal30Button
+//
+//    }
 
     // LOGINVIEW////////////////////////////////////////////////////////////////////
     @Override
@@ -571,17 +573,17 @@ public class FitMeUi extends Application {
             }
 
         });
-
-        kcal30Button.setOnAction(e -> {
-
-            nodes2.getChildren().clear();
-
-            try {
-                redrawViewSummaryMonth();///////////tähän oma näkymä johon haetaan viimeiset 30 päivää
-            } catch (SQLException ex) {
-                Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+////TODONEXT
+//        kcal30Button.setOnAction(e -> {
+//
+//            nodes2.getChildren().clear();
+//
+//            try {
+//                redrawViewSummaryMonth();///////////tähän oma näkymä johon haetaan viimeiset 30 päivää
+//            } catch (SQLException ex) {
+//                Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        });
 
         createButtons.getChildren().addAll(kcal7Button, kcal30Button);
         createForms.getChildren().addAll(dateLabel, dateStartInput, dateToLabel, dateToInput, spacer, createSearch);// down part

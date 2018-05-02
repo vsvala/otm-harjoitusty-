@@ -23,6 +23,16 @@ public class Diary {
     private boolean delete;
     public User user;
 
+    
+   /**
+    *  Daoluokassa metodi: findOne(String key) käyttää käyttäjän yhdenpäivän Diaryn palauttamiseen
+    * 
+    * @param id tuniste primary key
+    * @param day  päivämäärä
+    * @param content  sisältö
+    * @param kcal kalorimäärä
+    * @param user käyttäjä
+    */
     public Diary(int id, String day, String content, int kcal, User user) {  //dao uses
         this.id = id;
         this.day = day;
@@ -31,6 +41,7 @@ public class Diary {
         this.user = user;
         this.delete = false;
     }
+    
 
     public Diary(String day, String content, int kcal, User user) { //service uses
         this.day = day;

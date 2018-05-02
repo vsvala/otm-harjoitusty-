@@ -43,7 +43,10 @@ public class DiaryServiceTest {
         diaryService = new DiaryService(diaryDao, userDao);
         diaryDao = new DataDiaryDao(database);
         userDao = new DataUserDao(database);
-        loggedIn=new User("testUseri","tU");
+//        loggedIn=new User("testUseri","tU");
+        
+    
+        
         
     }
 
@@ -77,7 +80,7 @@ public class DiaryServiceTest {
 //    }
 //        
         @Test
-        public void getDayTodayReturnDay(){
+        public void getDayTodayReturnsDay(){
         Date todaysDate = new java.sql.Date(System.currentTimeMillis());
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         String testDateString = df.format(todaysDate);  
@@ -94,15 +97,17 @@ public class DiaryServiceTest {
           
          assertEquals(diaries, diaryService.getDiaryByWeek());
     }
-           @Test
-        public void getDayTodayReturnMonthReturnsEMptyListIfLoggedInIsNull() throws SQLException{  
-        List<Diary> diaries = new ArrayList<>(); 
-//        Date todaysDate = new java.sql.Date(System.currentTimeMillis());
-//        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-//        String testDateString = df.format(todaysDate);  
-          
-         assertEquals(diaries, diaryService.getDiaryByMonth());
-    }   
+        
+        //TODONEXT
+//           @Test
+//        public void getDayTodayReturnMonthReturnsEMptyListIfLoggedInIsNull() throws SQLException{  
+//        List<Diary> diaries = new ArrayList<>(); 
+////        Date todaysDate = new java.sql.Date(System.currentTimeMillis());
+////        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+////        String testDateString = df.format(todaysDate);  
+//          
+//         assertEquals(diaries, diaryService.getDiaryByMonth());
+//    }   
         
         
         @Test
@@ -120,8 +125,9 @@ public class DiaryServiceTest {
 //        
 //                @Test 
 //          public void loginWorks() throws SQLException{
-//    
-//          assertEquals(true, diaryService.login("Viku"));
+////          diaryService.login("Viku");
+////          userDao.findByUsername(testUseri)
+//          assertEquals(true, diaryService.login(userDao.findByUsername("testUseri").getUsername()));
 //    }
        
         
@@ -130,6 +136,12 @@ public class DiaryServiceTest {
     
           assertEquals(true, diaryService.logout());
     }
+          
+//         @Test 
+//          public void getLoggedUserReturnsLoggedIn() throws SQLException{
+//          diaryService.login("testUseri");
+//          assertEquals(loggedIn, diaryService.getLoggedUser());
+//    }
        
 //        
         

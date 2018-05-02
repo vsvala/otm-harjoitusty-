@@ -55,8 +55,19 @@ public class DiaryDaoTest {
         diaryDao = new DataDiaryDao(database); 
         diaryService=new DiaryService(diaryDao, userDao);
         
-        testUser = new User("testJokke", "testJorma");
-        testDiary = new Diary("27.04.2018", "Moi", 200, testUser);
+    
+        testUser = new User("testJokke", "testJorma"); 
+        userDao.saveOrUpdate(testUser);
+        testDiary = new Diary(1,"27.04.2018", "Moi", 200, testUser);
+//        diaryDao.saveOrUpdate(testDiary);
+        diaryDao.delete("100");
+        diaryService.delete("100");
+        diaryService.delete("99");
+        diaryService.delete("98");
+        diaryService.delete("97");
+        diaryService.delete("96");
+//        userDao.delete("testJokke");
+        
 //       diary2 = new Diary(2, "Heippa", 400);
     }
 //
@@ -72,26 +83,27 @@ public class DiaryDaoTest {
 //    public void setUp() {
 //    }
 //
-//    @After
-//    public void tearDown() {
-//
-//    }
+    @After
+    public void tearDown() {
+
+
+    }
 
     @Test
-    public void saveOrUpdateReturnsDiaryIfNotNull() throws SQLException {
+    public void saveOrUpdateReturnsNullIf() throws SQLException {
        
-                //        Connection connection = database.getConnection();
-                //
-                //        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Diary"
-                //                + " (user_username, day, content, kcal)" //id lisäys?
-                //                + " VALUES (?, ?, ?, ?)");  //(?, CURRENT_TIMESTAMP. ?)
-                //
-                //        stmt.setObject(1, testDiary.getUser().getUsername());
-                //        stmt.setString(2, testDiary.getday());
-                //        stmt.setString(3, testDiary.getContent());
-                //        stmt.setInt(4, testDiary.getKcal());
-                //
-                //        stmt.executeUpdate();
+//                        Connection connection = database.getConnection();
+//                
+//                        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Diary"
+//                                + " (user_username, day, content, kcal)" //id lisäys?
+//                                + " VALUES (?, ?, ?, ?)");  //(?, CURRENT_TIMESTAMP. ?)
+//                
+//                        stmt.setObject(1, testDiary.getUser().getUsername());
+//                        stmt.setString(2, testDiary.getday());
+//                        stmt.setString(3, testDiary.getContent());
+//                        stmt.setInt(4, testDiary.getKcal());
+//                
+//                        stmt.executeUpdate();
 
 //            Connection connection = database.getConnection();
 //            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE id = ?")) {
@@ -108,29 +120,67 @@ public class DiaryDaoTest {
 //            String content=rs.getString("content");
 //            System.out.println("testaa2" + content);
 //           
-//            assertEquals(testDiary,diaryDao.saveOrUpdate(testDiary));
+            assertEquals(null, diaryDao.saveOrUpdate(testDiary));
+//            assertEquals(testDiary, diaryDao.saveOrUpdate(testDiary));
 //            stmt.close();
-////            connection.close();
-//        }
-    }
-
+//            connection.close();
+        }
+    
+        @Test
+    public void saveOrUpdateReturnsDiary() throws SQLException {
+       
+//           
+            assertEquals(testDiary, diaryDao.saveOrUpdate(testDiary));
+//     
+        }
+    
+    
+    
+    
+    
+//        @Test
+//    public void createdTodosAreListed() throws Exception {    
+//        dao.create(new Todo("lue kokeeseen", new User("testertester", "")));
+//        
+//        List<Todo> todos = dao.getAll();
+//        assertEquals(2, todos.size());
+//        Todo todo = todos.get(1);
+//        assertEquals("lue kokeeseen", todo.getContent());
+//        assertFalse(todo.isDone());
+//        assertNotEquals(1, todo.getId());
+//        assertEquals("testertester", todo.getUser().getUsername());
+//    }  
+    
+//        @Test
+//    public void diarysCanBeSeDelete() throws Exception {
+////        diaryDao.delete("1");
+//        String today="27.04.2018";
+//        Diary diary = diaryDao.findDiaryByDate(today).get(0);
+//        assertTrue(diary.isDelete());
+//    }       
+    
+    
+//
     @Test
     public void findOneDiaryWithGivenUsername() throws SQLException {
-        String key = testDiary.getUser().getUsername();
-        Connection connection = database.getConnection();
-        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ?");
-        stmt.setString(1, key);
+        String key = "testJokke";
+        diaryDao.saveOrUpdate(testDiary);
+//        Connection connection = database.getConnection();
+//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ?");
+//        stmt.setString(1, key);
+//
+//        ResultSet rs = stmt.executeQuery();
+//
+//        Diary diary = new Diary(rs.getInt("id"), rs.getString("day"), rs.getString("content"), rs.getInt("kcal"),
+//                testUser);
 
-        ResultSet rs = stmt.executeQuery();
-
-        Diary diary = new Diary(rs.getInt("id"), rs.getString("day"), rs.getString("content"), rs.getInt("kcal"),
-                testUser);
-
-        assertEquals(diary.getContent(), testDiary.getContent());
-        stmt.close();
-        rs.close();
-        connection.close();
+        assertEquals("testJokke", diaryDao.findOne(key).getUser().getUsername());
+//        stmt.close();
+//        rs.close();
+//        connection.close();
     }
+      }
+    
 ////       @Test
 //    public void deleteDeletesGivenDiary() throws SQLException {
 //        String key = testDiary.getUser().getUsername();
@@ -199,7 +249,7 @@ public class DiaryDaoTest {
 //        connection.close();
 //    }
 
-    }
+ 
 
 
     
