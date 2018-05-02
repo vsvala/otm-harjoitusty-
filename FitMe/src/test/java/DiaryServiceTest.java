@@ -18,7 +18,12 @@ import fitme.domain.User;
 import fitme.domain.DiaryService;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -64,15 +69,68 @@ public class DiaryServiceTest {
         Diary diary = new Diary(500, "24.04.2018", "eihei", 600, loggedIn);
         assertEquals(true, diaryService.delete("500"));
     }
-      
+         @Test
         public void getLoggedUserReturnsLogged() {
          assertEquals(loggedIn, diaryService.getLoggedUser());
     }
-      
-//         public void countKcalReturnsKcal() throws SQLException{
-//             
-//         assertEquals(300, diaryService.countKcal());
+        
+        @Test
+        public void getDayTodayReturnDay(){
+        Date todaysDate = new java.sql.Date(System.currentTimeMillis());
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+        String testDateString = df.format(todaysDate);  
+            
+         assertEquals(testDateString, diaryService.getDayToday());
+    }
+        
+       @Test
+        public void getDayTodayReturnWeekReturnsEMptyListIfLoggedInIsNull() throws SQLException{  
+        List<Diary> diaries = new ArrayList<>(); 
+//        Date todaysDate = new java.sql.Date(System.currentTimeMillis());
+//        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+//        String testDateString = df.format(todaysDate);  
+          
+         assertEquals(diaries, diaryService.getDiaryByWeek());
+    }
+           @Test
+        public void getDayTodayReturnMonthReturnsEMptyListIfLoggedInIsNull() throws SQLException{  
+        List<Diary> diaries = new ArrayList<>(); 
+//        Date todaysDate = new java.sql.Date(System.currentTimeMillis());
+//        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+//        String testDateString = df.format(todaysDate);  
+          
+         assertEquals(diaries, diaryService.getDiaryByWeek());
+    }   
+        
+        
+        
+        
+     
+        
+        @Test
+        public void countKcalReturnsKcalSum() throws SQLException{
+        int sum = 0;
+        List<Diary> diaries = diaryService.getDiaryByDate();
+//       System.out.println("päiväkirjat"+diaries);
+
+        for (int i = 0; i < diaries.size(); i++) {
+            sum = sum + diaries.get(i).getKcal();
+        }
+
+         assertEquals(sum, diaryService.countKcal());
+    }
+        
+        
+        
+//          @Test 
+//          public void login() throws SQLException{
+//    
+//          assertEquals(true, diaryService.login("Viku"));
 //    }
+//       
+//        
+        
+    
         
   }
 //    public DiaryService(DiaryDao diaryDao, UserDao userDao) {
