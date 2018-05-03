@@ -18,7 +18,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 /**
- * Sovelluslogiikasta vastaava luokka 
+ * Sovelluslogiikasta vastaava luokka
  */
 public class DiaryService {
 
@@ -32,12 +32,11 @@ public class DiaryService {
     }
 
     /**
-    * Uuden diarymerkinnän lisääminen kirjautuneena olevalle käyttäjälle
-    *
-    * @param   content   luotavan päiväkirjamerkinnän sisältö=ruoka 
-    * @param   kcal luotavan päiväkirjamerkinnän sisältö=ruoka
-    */
-    
+     * Uuden diarymerkinnän lisääminen kirjautuneena olevalle käyttäjälle
+     *
+     * @param content luotavan päiväkirjamerkinnän sisältö=ruoka
+     * @param kcal luotavan päiväkirjamerkinnän sisältö=ruoka
+     */
     public boolean createDiary(String content, int kcal) throws SQLException {
 
         String day = getDayToday();
@@ -48,15 +47,14 @@ public class DiaryService {
         return true;
 
     }
-    
+
     /**
-     * 
+     *
      * kirjautuneen käyttäjän tämän päivän päiväkirjamerkinnät
      *
      * @return lista tämän päivän päiväkirjamerkinnöistä
-     * @throws SQLException 
+     * @throws SQLException
      */
-    
     public List<Diary> getDiaryByToday() throws SQLException { //returns all loggedusers diarymarkings from tody in the list
         if (loggedIn == null) {
 
@@ -65,49 +63,46 @@ public class DiaryService {
 
         return diaryDao.findDiaryByDate(loggedIn.getUsername());
     }
-    //TODONEXT
-//     /**
-//     * 
-//     * kirjautuneen käyttäjän viimeisen viikon päiväkirjamerkinnät
-//     *
-//     * @return lista viimeisen viikon päiväkirjamerkinnöistä
-//     * @throws SQLException 
-//     */
 
-//    public List<Diary> getDiaryByWeek() throws SQLException { //returns all loggedusers diarymarkings from tody in the list
-//        if (loggedIn == null) {
-//
-//            return new ArrayList<>();
-//        }
-//
-//        return diaryDao.findDiaryByWeek(loggedIn.getUsername(), getDayToday());
-//    }
-//    TODONEXT
-//     /**
-//     * 
-//     * kirjautuneen käyttäjän viimeisen kuukauden päiväkirjamerkinnät
-//     *
-//     * @return lista viimeisen kuukauden päiväkirjamerkinnöistä
-//     * @throws SQLException 
-//     */
-//    
-//    public List<Diary> getDiaryByMonth() throws SQLException { //returns all loggedusers diarymarkings from tody in the list
-//        if (loggedIn == null) {
-//
-//            return new ArrayList<>();
-//        }
-//
-//        return diaryDao.findDiaryByMonth(loggedIn.getUsername(), getDayToday());
-//    }
-
-  
     /**
-    * Päiväkirjamerkintöjen poistaminen
-    * 
-    * @param   id   poistettavan merkinnän tunniste
-    * @return 
-    */    
-    
+     *
+     * kirjautuneen käyttäjän viimeisen viikon päiväkirjamerkinnät
+     *
+     * @return lista viimeisen viikon päiväkirjamerkinnöistä
+     * @throws SQLException
+     */
+    public List<Diary> getDiaryByWeek() throws SQLException { //returns all loggedusers diarymarkings from tody in the list
+        if (loggedIn == null) {
+
+            return new ArrayList<>();
+        }
+
+        return diaryDao.findDiaryByWeek(loggedIn.getUsername(), getDayToday());
+    }
+
+    /**
+     *
+     * kirjautuneen käyttäjän haetun päivämpäiväkirjamerkinnät
+     *
+     * @param date haettava päivämäärä
+     * @return lista viimeisen kuukauden päiväkirjamerkinnöistä
+     * @throws SQLException
+     */
+    public List<Diary> getDiaryBySearch(String date) throws SQLException { //returns all loggedusers diarymarkings from tody in the list
+        if (loggedIn == null) {
+
+            return new ArrayList<>();
+        }
+
+        return diaryDao.findDiaryBySearch(loggedIn.getUsername(), date);
+    }
+
+    /**
+     * Päiväkirjamerkintöjen poistaminen
+     *
+     * @param id poistettavan merkinnän tunniste
+     * @return
+     */
     public boolean delete(String id) {
         try {
             diaryDao.delete(id);
@@ -116,16 +111,14 @@ public class DiaryService {
         return true;
     }
 
-   //////////////KIRJAUTUMINEN//////////////////Pitäiskö laittaa luoda userService luokka erikseen??? 
-    
+    //////////////KIRJAUTUMINEN//////////////////Pitäiskö laittaa luoda userService luokka erikseen??? 
     /**
-    * sisäänkirjautuminen
-    * 
-    * @param   username   käyttäjätunnus
-    * 
-    * @return true jos käyttäjätunnus on olemassa, muuten false 
-    */    
-    
+     * sisäänkirjautuminen
+     *
+     * @param username käyttäjätunnus
+     *
+     * @return true jos käyttäjätunnus on olemassa, muuten false
+     */
     public boolean login(String username) throws SQLException {
         User user = (User) userDao.findByUsername(username);
         if (user == null) {
@@ -138,21 +131,19 @@ public class DiaryService {
     }
 
     /**
-    * kirjautuneena oleva käyttäjä
-    * 
-    * @return kirjautuneena oleva käyttäjä 
-    */   
-    
+     * kirjautuneena oleva käyttäjä
+     *
+     * @return kirjautuneena oleva käyttäjä
+     */
     public User getLoggedUser() {
         return loggedIn;
     }
-    
+
     /**
-     * uloskirjautuminen 
-     * 
+     * uloskirjautuminen
+     *
      * @return ture, jos ei kirjautunutta käyttäjää
      */
-
     public boolean logout() {
         loggedIn = null;
         return true;
@@ -166,7 +157,6 @@ public class DiaryService {
      *
      * @return true jos käyttäjätunnus on luotu onnistuneesti, muuten false
      */
-    
     public boolean createUser(String username, String name) throws SQLException {
         if (userDao.findByUsername(username) != null) {
             return false;
@@ -183,30 +173,45 @@ public class DiaryService {
 
     /**
      * Tämän päivän kalorien yhteenlaskeminen
-     * 
+     *
      * @return tämän päivän kalorit yhteensä
-     * @throws SQLException 
+     * @throws SQLException
      */
-    
     public int countKcal() throws SQLException {
         int sum = 0;
         List<Diary> diaries = getDiaryByToday();
-
         for (int i = 0; i < diaries.size(); i++) {
             sum = sum + diaries.get(i).getKcal();
         }
 
         return sum;
     }
-    
-    
-    
+
+    public int countKcalPerWeek() throws SQLException {
+        int sum = 0;
+        List<Diary> diaries = getDiaryByWeek();
+        for (int i = 0; i < diaries.size(); i++) {
+            sum = sum + diaries.get(i).getKcal();
+        }
+
+        return sum;
+    }
+
+    public int countKcalPerSearch(String date) throws SQLException {
+        int sum = 0;
+        List<Diary> diaries = getDiaryBySearch(date);
+        for (int i = 0; i < diaries.size(); i++) {
+            sum = sum + diaries.get(i).getKcal();
+        }
+
+        return sum;
+    }
+
     /**
      * Luo tämän päivän päiväyksen ja muuttaa sen string muotoiseksi
-     * 
-     * @return  tämä päivämäärä stringinä
+     *
+     * @return tämä päivämäärä stringinä
      */
-
     public String getDayToday() {
         Date todaysDate = new java.sql.Date(System.currentTimeMillis());
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
@@ -218,15 +223,8 @@ public class DiaryService {
 }
 
 //TODO 30päivän ja 7 päivän kalorien yhteenlasku
-
 //TODO Tänne vois siirtää Diarydaosta 7päivän ja 30 pivän laskemisjutut
-
-
-
-
 //TODO    vanhoja poistettavaksi lopuksi
-
-
 //    /**
 //    * kirjautuneen käyttäjän content
 //    * 
@@ -245,4 +243,4 @@ public class DiaryService {
 //        }
 //        return diaryDao.findOne(loggedIn.getUsername());
 //    }
-    
+
