@@ -82,7 +82,7 @@ public class DiaryService {
 
     /**
      *
-     * kirjautuneen käyttäjän haetun päivämpäiväkirjamerkinnät
+     * kirjautuneen käyttäjän haetun päiväkirjamerkinnät
      *
      * @param date haettava päivämäärä
      * @return lista viimeisen kuukauden päiväkirjamerkinnöistä

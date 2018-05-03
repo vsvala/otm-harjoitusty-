@@ -31,7 +31,6 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
 
     private Database database;
     private UserDao<User, String> userDao;
-    
 
     public DataDiaryDao(Database database) throws Exception {
         this.database = database;
@@ -165,7 +164,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
             System.out.println("aika6daysagoStringinä" + d6);
 
             Connection connection = database.getConnection();
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day <= ? OR user_username = ? AND day >= ?"); 
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day <= ? OR user_username = ? AND day >= ?");
 
             stmt.setObject(1, key);
             stmt.setObject(2, date);
