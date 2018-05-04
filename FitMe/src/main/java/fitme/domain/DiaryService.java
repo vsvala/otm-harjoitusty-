@@ -77,7 +77,7 @@ public class DiaryService {
             return new ArrayList<>();
         }
 
-        return diaryDao.findDiaryByWeek(loggedIn.getUsername(), getDayToday());
+        return diaryDao.findDiaryByWeek(loggedIn.getUsername(), getDayToday(), getDay6DaysAgo());
     }
 
     /**
@@ -219,6 +219,22 @@ public class DiaryService {
         System.out.println("String in dd/MM/yyyy format is: " + testDateString);
         return testDateString;
     }
+    
+    public String getDay6DaysAgo() {
+        long dayInMs = 1000 * 60 * 60 * 24; 
+        dayInMs = 1000 * 60 * 60 * 24;                       //todo SIIRRETÄÄNKÖ DIARYLUOKKAAN TAI sERVICE LUOKKAAN?
+        //      System.out.println("aikanyt" + dayInMs);     
+        Date sd6 = new Date(System.currentTimeMillis() - (6 * dayInMs));
+        System.out.println("aika6daysago" + sd6);
+        DateFormat df6 = new SimpleDateFormat("dd.MM.yyyy");
+        String d6 = df6.format(sd6);
+        System.out.println("aika6daysagoStringinä" + d6);
+
+        return d6;
+
+    }
+
+    
 
 }
 

@@ -41,39 +41,19 @@ public class UserDaoTest {
         database = new Database("jdbc:sqlite:fitme.db");
         userDao = new DataUserDao(database);
         testuser = new User("testLissu", "testLiisa");
-
+        
     }
 
     @After
     public void tearDown() throws SQLException {
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("DELETE FROM User WHERE username='testLissu'");
-//         stmt = connection.prepareStatement("DELETE FROM User WHERE username='testNick'");
 
         stmt.executeUpdate();
         stmt.close();
         connection.close();
     }
 
-    @Test
-    public void saveOrUpdateSavesNewUserToDatabase() throws SQLException {
-
-        Connection connection = database.getConnection();
-
-        PreparedStatement stmt = connection.prepareStatement("INSERT INTO User(username, name) VALUES(?, ?)");
-
-        stmt.setString(1, testuser.getUsername());
-        stmt.setString(2, testuser.getName());
-
-        stmt.executeUpdate();
-
-        assertEquals("testLissu", testuser.getUsername());
-        assertEquals("testLiisa", testuser.getName());
-
-        stmt.close();
-        connection.close();
-//    
-    }
 
     @Test
     public void saveOrUpdateSavesNewUser() throws SQLException {
@@ -84,12 +64,7 @@ public class UserDaoTest {
 
     @Test
     public void deleteDeletesUser() throws SQLException {
-        Connection connection = database.getConnection();
-        PreparedStatement stmt = connection.prepareStatement("INSERT INTO User(username, name) VALUES('testLissu', 'testLiisa')");
-        stmt.executeUpdate();
-
-        stmt.close();
-        connection.close();
+        userDao.saveOrUpdate(testuser);
 
         assertEquals(true, userDao.delete("testLissu"));
     }
@@ -97,14 +72,10 @@ public class UserDaoTest {
     @Test
     public void findByUsernameReturnsUser() throws SQLException {
         Connection connection = database.getConnection();
-        PreparedStatement stmt = connection.prepareStatement("INSERT INTO User(username, name) VALUES(?, ?)");
-
-        stmt.setString(1, testuser.getUsername());
-        stmt.setString(2, testuser.getName());
-
-        stmt.executeUpdate();
-
-        stmt = connection.prepareStatement("SELECT * FROM User WHERE username = 'testLissu'");
+//     
+        assertEquals(true, userDao.saveOrUpdate(testuser));
+        
+         PreparedStatement  stmt = connection.prepareStatement("SELECT * FROM User WHERE username = 'testLissu'");
 
         ResultSet rs = stmt.executeQuery();
         User user = new User(rs.getString("username"), rs.getString("name"));

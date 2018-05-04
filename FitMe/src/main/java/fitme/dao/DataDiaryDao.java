@@ -120,18 +120,19 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
      * @throws SQLException
      */
     @Override
-    public List<Diary> findDiaryByWeek(String key, String date) throws SQLException { //HAETAAN 7 VIMEISINTÄ PÄIVÄÄ
+    public List<Diary> findDiaryByWeek(String key, String date, String d6) throws SQLException { //HAETAAN 7 VIMEISINTÄ PÄIVÄÄ
 
-        System.out.println("käyttäjä+" + key);
         List<Diary> diaries = new ArrayList<>();
-        String d;
-        long dayInMs = 1000 * 60 * 60 * 24;                       //todo SIIRRETÄÄNKÖ DIARYLUOKKAAN TAI sERVICE LUOKKAAN?
-        System.out.println("aikanyt" + dayInMs);
-        Date startDate = new Date(System.currentTimeMillis() - (7 * dayInMs));
-        System.out.println("aika7daysago" + startDate);
-        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-        d = df.format(startDate);
-        System.out.println("aika7daysagoStringinä" + d);
+        
+        //TODO POISTA SIIRRETTY DIARYSERVICEEN
+//        String d;
+//        long dayInMs = 1000 * 60 * 60 * 24;                       //todo SIIRRETÄÄNKÖ DIARYLUOKKAAN TAI sERVICE LUOKKAAN?
+//        System.out.println("aikanyt" + dayInMs);
+//        Date startDate = new Date(System.currentTimeMillis() - (7 * dayInMs));
+//        System.out.println("aika7daysago" + startDate);
+//        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+//        d = df.format(startDate);
+//        System.out.println("aika7daysagoStringinä" + d);
 
         String dd = date.substring(0, 2);
         System.out.println("dd" + dd);
@@ -142,7 +143,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day >=?");
 
             stmt.setObject(1, key);
-            stmt.setObject(2, d);
+            stmt.setObject(2, d6);
 
             ResultSet rs = stmt.executeQuery();
 
@@ -155,14 +156,18 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
             rs.close();
             connection.close();
         } else {
-            dayInMs = 1000 * 60 * 60 * 24;                       //todo SIIRRETÄÄNKÖ DIARYLUOKKAAN TAI sERVICE LUOKKAAN?
-            //      System.out.println("aikanyt" + dayInMs);     
-            Date sd6 = new Date(System.currentTimeMillis() - (6 * dayInMs));
-            System.out.println("aika6daysago" + sd6);
-            DateFormat df6 = new SimpleDateFormat("dd.MM.yyyy");
-            String d6 = df6.format(sd6);
+            
+            
+           //todo POSTOON  SIIRRETTY DIARYsERVICE LUOKKAAN?
+//            dayInMs = 1000 * 60 * 60 * 24;                       
+//            //      System.out.println("aikanyt" + dayInMs);     
+//            Date sd6 = new Date(System.currentTimeMillis() - (6 * dayInMs));
+//            System.out.println("aika6daysago" + sd6);
+//            DateFormat df6 = new SimpleDateFormat("dd.MM.yyyy");
+//            String d6 = df6.format(sd6);
             System.out.println("aika6daysagoStringinä" + d6);
-
+//            
+//            
             Connection connection = database.getConnection();
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day <= ? OR user_username = ? AND day >= ?");
 
@@ -230,7 +235,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
      */
     @Override
     public Diary findOne(String key) throws SQLException {
-//        System.out.println("key" + key);
+
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE id = ?");
         stmt.setString(1, key);
@@ -261,7 +266,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
      */
     @Override
     public boolean delete(String key) throws SQLException {
-//        System.out.println("täää" + key);
+        
         Connection con = database.getConnection();
         PreparedStatement stmt = con.prepareStatement("DELETE FROM Diary WHERE id = ?");
 
