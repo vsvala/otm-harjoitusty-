@@ -216,47 +216,27 @@ public class DiaryService {
         Date todaysDate = new java.sql.Date(System.currentTimeMillis());
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         String testDateString = df.format(todaysDate);
-        System.out.println("String in dd/MM/yyyy format is: " + testDateString);
+//        System.out.println("String in dd/MM/yyyy format is: " + testDateString);
         return testDateString;
     }
-    
+
+    /**
+     * Laskee mikä päivä on kuusi päivää sitten
+     *
+     * @return String päivämäärä 6 päivää sitten muodossa dd.MM.yyyy
+     */
+
     public String getDay6DaysAgo() {
-        long dayInMs = 1000 * 60 * 60 * 24; 
-        dayInMs = 1000 * 60 * 60 * 24;                       //todo SIIRRETÄÄNKÖ DIARYLUOKKAAN TAI sERVICE LUOKKAAN?
+        long dayInMs = 1000 * 60 * 60 * 24;
         //      System.out.println("aikanyt" + dayInMs);     
         Date sd6 = new Date(System.currentTimeMillis() - (6 * dayInMs));
-        System.out.println("aika6daysago" + sd6);
+//        System.out.println("aika6daysago" + sd6);
         DateFormat df6 = new SimpleDateFormat("dd.MM.yyyy");
         String d6 = df6.format(sd6);
-        System.out.println("aika6daysagoStringinä" + d6);
+//        System.out.println("aika6daysagoStringinä" + d6);
 
         return d6;
 
     }
 
-    
-
 }
-
-//TODO 30päivän ja 7 päivän kalorien yhteenlasku
-//TODO Tänne vois siirtää Diarydaosta 7päivän ja 30 pivän laskemisjutut
-//TODO    vanhoja poistettavaksi lopuksi
-//    /**
-//    * kirjautuneen käyttäjän content
-//    * 
-//    * @return kirjautuneen käyttäjän content
-//    */
-////    
-//    public List<Diary> getDiary() throws SQLException { //returns all loggedusers diarymarkings in the list
-//        if (loggedIn == null) {
-//            return new ArrayList<>();
-//        }
-//        return diaryDao.findAll(loggedIn.getUsername());                  //FINA ALL
-//    }
-//    public Object getOne() throws SQLException { //returns all loggedusers diarymarkings in the list
-//        if (loggedIn == null) {
-//            return null;
-//        }
-//        return diaryDao.findOne(loggedIn.getUsername());
-//    }
-

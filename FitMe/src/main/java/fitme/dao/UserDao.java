@@ -10,7 +10,7 @@ package fitme.dao;
  * @author svsv
  */
 import java.sql.*;
-import java.util.*;
+
 
 public interface UserDao<U, K> {
 
