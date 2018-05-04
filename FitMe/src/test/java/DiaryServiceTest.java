@@ -133,7 +133,6 @@ public class DiaryServiceTest {
     @Test
     public void loggedUsersListContainsAddedDiary() throws SQLException {
         addDiary("mummonmuusi", 300);
-
         List<Diary> diaries = diaryService.getDiaryByToday();
         assertEquals(3, diaries.size());
         Diary diary = diaries.get(0);
