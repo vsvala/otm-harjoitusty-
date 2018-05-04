@@ -122,19 +122,6 @@ public class Diary {
 
 }
 
-///TODOOO POISTETTAVAAAAAAAAAAAAAAA KAMAAAAAAAAAAAAAAAAAAAAAAAA
-//    public Diary(int id, String content, int kcal) {  //TODO poista?
-//        this.id = id;
-//        this.content = content;
-//        this.kcal = kcal;
-//        this.delete = false;
-//    }
-//    public Diary(int id, String day, User user) {  // //TODO poista?
-//        this.id = id;
-//        this.day = day;
-//        this.user = user;
-//        this.delete = false;
-//    }
 //    public void setday(String day) {
 //        this.day = day;
 //    }

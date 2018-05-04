@@ -67,20 +67,6 @@ public class DiaryDaoTest {
 //            
 //       diary2 = new Diary(2, "Heippa", 400);
     }
-//
-//    @BeforeClass
-//    public static void setUpClass() {
-//    }
-//
-//    @AfterClass
-//    public static void tearDownClass() {
-//    }
-//
-//    @Before
-//    public void setUp() {
-    
-//    }
-//
 
     @After
     public void tearDown() throws SQLException {

@@ -13,12 +13,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -38,23 +34,14 @@ public class UserDaoTest {
 //        properties.load(new FileInputStream("config.properties"));
 //        String usedDatabase = properties.getProperty("usedDatabase");
 //        database = new Database(usedDatabase);
+    }
+
+    @Before
+    public void setUp() throws FileNotFoundException, IOException, ClassNotFoundException, Exception {
         database = new Database("jdbc:sqlite:fitme.db");
         userDao = new DataUserDao(database);
         testuser = new User("testLissu", "testLiisa");
 
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws FileNotFoundException, IOException, ClassNotFoundException, Exception {
-
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
     }
 
     @After
@@ -132,29 +119,3 @@ public class UserDaoTest {
     }
 
 }
-
-
-//TODO tarpeettomana? menossa poistoon
-//
-//    @Test
-//    public void findAllReturnsListOfUsers() throws SQLException {
-//        Connection connection = database.getConnection();
-//
-//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM User");
-//        ResultSet rs = stmt.executeQuery();
-//
-//        List<User> users = new ArrayList<>();
-//
-//        while (rs.next()) {
-//            User a = new User(rs.getString("name"),
-//                    rs.getString("username"));
-//
-//            users.add(a);
-//        }
-//
-//        stmt.close();
-//        rs.close();
-//
-//        connection.close();
-//        assertEquals(users, userDao.findAll());
-//    }

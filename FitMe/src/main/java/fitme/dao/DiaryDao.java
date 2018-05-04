@@ -14,17 +14,18 @@ import java.util.List;
 
 public interface DiaryDao<D, K> {
 
-    D findOne(K key) throws SQLException;
-
-    List<D> findDiaryByDate(K key) throws SQLException;
-
-//    List<D> findDiaryByWeek(K key, String date) throws SQLException; //todoNEXT
-
-//    List<D> findDiaryByMonth(String key, String date) throws SQLException; //todoNEXT
-
+    D findOne(K key) throws SQLException;  
+    
     D saveOrUpdate(D object) throws SQLException;
 
     boolean delete(K key) throws SQLException;
+
+    List<D> findDiaryByDate(K key) throws SQLException;
+
+    List<D> findDiaryByWeek(K key, String date) throws SQLException; //todoNEXT
+
+    List<D> findDiaryBySearch(String key, String date) throws SQLException; //todoNEXT
+ 
 }
 
 //   TODO poistoon

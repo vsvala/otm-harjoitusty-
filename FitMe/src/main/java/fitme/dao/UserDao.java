@@ -21,6 +21,3 @@ public interface UserDao<U, K> {
     U findByUsername(K key) throws SQLException;
 
 }
-
-//  TODO Poistettacaksi tarpeeton?
-//List<U> findAll() throws SQLException;
