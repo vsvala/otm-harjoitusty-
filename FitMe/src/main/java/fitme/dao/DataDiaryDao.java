@@ -5,13 +5,8 @@
  */
 package fitme.dao;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.io.File;
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import fitme.domain.Diary;
 import fitme.domain.User;
 import java.sql.Connection;
@@ -21,7 +16,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 /**
  *
@@ -87,8 +81,6 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         String day = df.format(todaysDate);
 
-//        java.sql.Date(Calendar.getInstance().getTimeInMillis()
-////       Date now = new java.sql.Date(Calendar.getInstance().getTimeInMillis());//ava.sql.Date(System.currentTimeMillis());
         Connection connection = database.getConnection();
 
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day = ?");
@@ -111,8 +103,8 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
     }
 
     /**
-     *   * Etsii parametrina annetun käyttäjänimen päiväkirjamerkinnät
-     * viimiesiltä 7 päivältä
+     * Etsii parametrina annetun käyttäjänimen päiväkirjamerkinnät viimiesiltä 7
+     * päivältä
      *
      * @param key username
      * @param date tämä päivä
@@ -120,21 +112,12 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
      * @throws SQLException
      */
     @Override
-    public List<Diary> findDiaryByWeek(String key, String date) throws SQLException { //HAETAAN 7 VIMEISINTÄ PÄIVÄÄ
+    public List<Diary> findDiaryByWeek(String key, String date, String d6) throws SQLException {
 
-        System.out.println("käyttäjä+" + key);
         List<Diary> diaries = new ArrayList<>();
-        String d;
-        long dayInMs = 1000 * 60 * 60 * 24;                       //todo SIIRRETÄÄNKÖ DIARYLUOKKAAN TAI sERVICE LUOKKAAN?
-        System.out.println("aikanyt" + dayInMs);
-        Date startDate = new Date(System.currentTimeMillis() - (7 * dayInMs));
-        System.out.println("aika7daysago" + startDate);
-        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-        d = df.format(startDate);
-        System.out.println("aika7daysagoStringinä" + d);
 
         String dd = date.substring(0, 2);
-        System.out.println("dd" + dd);
+//        System.out.println("dd" + dd);
         int dateToday = Integer.parseInt(dd);
 
         if (dateToday > 7) {
@@ -142,7 +125,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day >=?");
 
             stmt.setObject(1, key);
-            stmt.setObject(2, d);
+            stmt.setObject(2, d6);
 
             ResultSet rs = stmt.executeQuery();
 
@@ -155,13 +138,6 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
             rs.close();
             connection.close();
         } else {
-            dayInMs = 1000 * 60 * 60 * 24;                       //todo SIIRRETÄÄNKÖ DIARYLUOKKAAN TAI sERVICE LUOKKAAN?
-            //      System.out.println("aikanyt" + dayInMs);     
-            Date sd6 = new Date(System.currentTimeMillis() - (6 * dayInMs));
-            System.out.println("aika6daysago" + sd6);
-            DateFormat df6 = new SimpleDateFormat("dd.MM.yyyy");
-            String d6 = df6.format(sd6);
-            System.out.println("aika6daysagoStringinä" + d6);
 
             Connection connection = database.getConnection();
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day <= ? OR user_username = ? AND day >= ?");
@@ -187,7 +163,6 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
 
     }
 
-    // TODONEXT
     /**
      *   * Etsii parametrina annetun käyttäjänimen päiväkirjamerkinnät annetulta
      * päivältä
@@ -230,7 +205,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
      */
     @Override
     public Diary findOne(String key) throws SQLException {
-//        System.out.println("key" + key);
+
         Connection connection = database.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE id = ?");
         stmt.setString(1, key);
@@ -261,7 +236,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
      */
     @Override
     public boolean delete(String key) throws SQLException {
-//        System.out.println("täää" + key);
+
         Connection con = database.getConnection();
         PreparedStatement stmt = con.prepareStatement("DELETE FROM Diary WHERE id = ?");
 

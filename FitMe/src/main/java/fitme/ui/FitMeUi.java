@@ -36,7 +36,6 @@ import fitme.dao.DataUserDao;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.text.Font;
@@ -63,6 +62,7 @@ public class FitMeUi extends Application {
     private String date;
 //    private String to;
 //    private Date date = new java.sql.Date(System.currentTimeMillis
+//    DiaryUi diaryUi = new DiaryUi();
 
     @Override
     public void init() throws IOException, Exception {
@@ -154,7 +154,7 @@ public class FitMeUi extends Application {
 
         });
 
-        kcalSumLabel = new Label("Total kcal:  " + totalKcal); 
+        kcalSumLabel = new Label("Total kcal:  " + totalKcal);
         kcalSumLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         kcalSumLabel.setMinHeight(28);
         kcalSumLabel.setPadding(new Insets(30, 0, 0, 20));//(ylös ja vasenreuna)
@@ -212,7 +212,7 @@ public class FitMeUi extends Application {
         int totalKcalDay = diaryService.countKcalPerSearch(date);
         nodes2.getChildren().clear();
 
-        kcalSumLabels = new Label("Kcal eaten "+date+" :    " + totalKcalDay);
+        kcalSumLabels = new Label("Kcal eaten " + date + " :    " + totalKcalDay);
         kcalSumLabels.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         kcalSumLabels.setMinHeight(28);
         kcalSumLabels.setPadding(new Insets(30, 0, 0, 20));//(ylös ja vasenreuna)
@@ -472,6 +472,7 @@ public class FitMeUi extends Application {
         });
 
         createSummaryView(primaryStage);
+
     }
 
     // METOD CREATE SUMMARY VIEW////////////////////////////////////////////////////////////////////////////////////
@@ -520,7 +521,6 @@ public class FitMeUi extends Application {
 //        dateToInput.setText("dd.mm.yyyy");
 //        dateToInput.setFont(Font.font("Verdana", FontPosture.ITALIC, 12));
 //        dateToInput.setPrefWidth(100);
-
         Button searchButton = new Button(" Search ");
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
@@ -544,7 +544,7 @@ public class FitMeUi extends Application {
             try {
                 date = dateStartInput.getText();
 //            to=dateToInput.getText();
-                redrawViewSummarySearch();///////////tähän oma näkymä johon haetaan viimeiset 30 päivää
+                redrawViewSummarySearch();
             } catch (SQLException ex) {
                 Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -576,7 +576,6 @@ public class FitMeUi extends Application {
             primaryStage.setScene(loginScene);
         });
 
-
     }
 
     @Override
@@ -590,62 +589,3 @@ public class FitMeUi extends Application {
 
     }
 }
-
-//        redrawViewSummary();
-//        ////////////////DIARY hakeee annnetun päivämäärän mukaan
-//        createSearch.setOnAction(e -> {   //////////////////////
-//
-//            String date = dateInput.getText();
-////            String  day = dateInput.getText();
-//            try {
-//                diaryService.createDiaryByWeek(dateInput.getText());  //CREATE BUTTON ACTION call metod DIARYSERVICE CREATE DIARY
-//            } catch (SQLException ex) {
-//                Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            foodInput.setText("");
-//            kcalInput.setText("");
-////          dateInput.setText("");
-//
-//            try {Summary)
-//                redrawView();
-//            } catch (SQLException ex) {
-//                Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//
-//        });
-//TIetokannan yhteyksien testausta...............
-//        // luodaan yhteys jdbc:n yli sqlite-tietokantaan nimeltä "tietokanta.db"
-//        Connection connection = DriverManager.getConnection("jdbc:sqlite:fitme.db");
-//
-//        // luodaan kyely "SELECT * FROM Opiskelija", jolla haetaan
-//        // kaikki tiedot Opiskelija-taulusta
-//        PreparedStatement statement = connection.prepareStatement("SELECT * FROM User");
-//
-//        // suoritetaan kysely -- tuloksena resultSet-olio
-//        ResultSet resultSet = statement.executeQuery();
-////        if (resultSet.next()) {
-////            System.out.println("Hei tietokantamaailma!");
-////        } else {
-////            System.out.println("Yhteyden muodostaminen epäonnistui.");
-////        }
-//        // käydään tuloksena saadussa oliossa olevat rivit läpi -- next-komento hakee
-//        // aina seuraavan rivin, ja palauttaa true jos rivi löytyi
-//        while(resultSet.next()) {
-//            // haetaan nykyiseltä riviltä opiskelijanumero int-muodossa
-////            Integer opNro = resultSet.getInt("id");
-//            // haetaan nykyiseltä riviltä nimi String-muodossa
-//            String nimi = resultSet.getString("name");
-//            String usernimi = resultSet.getString("username");
-//            // haetaan nykyiseltä riviltä syntymävuosi int-muodossa
-////           String food  = resultSet.getString("syntymävuosi");
-////            // haetaan nykyiseltä riviltä pääaine String-muodossa
-////            String paaAine = resultSet.getString("pääaine");
-//
-//            // tulostetaan tiedot
-//            System.out.println( "\t" + nimi + "\t" + usernimi + "\t");
-//        }
-//       
-//statement.close();
-//resultSet.close();
-//        // suljetaan lopulta yhteys tietokantaan
-//        connection.close();
