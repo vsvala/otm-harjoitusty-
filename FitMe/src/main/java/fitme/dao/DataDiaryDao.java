@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fitme.dao;
 
 import java.util.ArrayList;
@@ -116,16 +112,17 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
 
         List<Diary> diaries = new ArrayList<>();
 
+  
         String dd = date.substring(0, 2);
-//        System.out.println("dd" + dd);
         int dateToday = Integer.parseInt(dd);
 
-        if (dateToday > 7) {
+        if (dateToday <= 7) {
+         
             Connection connection = database.getConnection();
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day >=?");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day <=?");
 
             stmt.setObject(1, key);
-            stmt.setObject(2, d6);
+            stmt.setObject(2, date);
 
             ResultSet rs = stmt.executeQuery();
 
@@ -138,14 +135,13 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
             rs.close();
             connection.close();
         } else {
-
+       
             Connection connection = database.getConnection();
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day <= ? OR user_username = ? AND day >= ?");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day <= ? AND day >= ?");
 
             stmt.setObject(1, key);
             stmt.setObject(2, date);
-            stmt.setObject(3, key);
-            stmt.setObject(4, d6);
+            stmt.setObject(3, d6);
 
             ResultSet rs = stmt.executeQuery();
 

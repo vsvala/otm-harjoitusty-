@@ -1,15 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fitme.domain;
 
-import java.time.Instant;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
 
 /**
  * Yksittäistä päiväkirjamerkintää kuvaava luokka
@@ -33,7 +24,7 @@ public class Diary {
     * @param kcal kalorimäärä
     * @param user käyttäjä
     */
-    public Diary(int id, String day, String content, int kcal, User user) {  //dao uses
+    public Diary(int id, String day, String content, int kcal, User user) {  
         this.id = id;
         this.day = day;
         this.content = content;
@@ -117,28 +108,3 @@ public class Diary {
     }
 
 }
-
-//    public void setday(String day) {
-//        this.day = day;
-//    }
-//    public Date getToday() {
-//       Date todaysDate =new java.sql.Date(System.currentTimeMillis());
-//       DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-//       String testDateString = df.format(todaysDate);
-//       System.out.println("String in dd/MM/yyyy format is: " + testDateString);
-//       
-//       
-//        Date today = new java.sql.Date(System.currentTimeMillis());
-//        return today;
-//    }
-//
-//    public String getday() {
-////       Date todaysDate =new java.sql.Date(System.currentTimeMillis());
-////       DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-////       String day = df.format(todaysDate);      
-//        return day;
-//    }
-//
-////    public void setday(String day) {
-////        this.day = day;
-////    }

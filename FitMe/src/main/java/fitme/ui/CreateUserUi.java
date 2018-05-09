@@ -1,11 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
-// */
+/////*
+//// * To change this license header, choose License Headers in Project Properties.
+//// * To change this template file, choose Tools | Templates
+//// * and open the template in the editor.
+////// */
 //package fitme.ui;
 //
 //import fitme.domain.DiaryService;
+//import java.sql.SQLException;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+//import javafx.application.Application;
 //import javafx.geometry.Insets;
 //import javafx.scene.Scene;
 //import javafx.scene.control.Button;
@@ -22,14 +26,17 @@
 //// *
 //// * @author svsv
 //// */
-//public class CreateUserUi {
+//public class CreateUserUi extends Application  { //
 //        private DiaryService diaryService;   //service
 //       private Scene newUserScene;
 //    private Scene diaryScene;
 //    private Scene loginScene;
-//    
-//   public void createUser(Stage primaryStage, Label loginMessage) {  
-//     
+// 
+//public CreateUserUi(FitMeUi fu) {
+//  
+//}
+//      
+// public void createUserView(Stage primaryStage, Label loginMessage) { 
 //        
 //        VBox newUserPane = new VBox(10);
 //        
@@ -59,15 +66,19 @@
 //            if ( username.length()==2 || name.length()<2 ) {
 //                userCreationMessage.setText("username or name too short");
 //                userCreationMessage.setTextFill(Color.RED);              
-//            } else if ( diaryService.createUser(username, name) ){
-//                userCreationMessage.setText("");                
-//                loginMessage.setText("new user created");
-//                loginMessage.setTextFill(Color.GREEN);
-//                primaryStage.setScene(loginScene);      
-//            } else {
-//                    primaryStage.setScene(loginScene);  
-//                userCreationMessage.setText("username has to be unique");
-//                userCreationMessage.setTextFill(Color.RED);        
+//            } else try {
+//                if ( diaryService.createUser(username, name) ){
+//                    userCreationMessage.setText("");
+//                    loginMessage.setText("new user created");
+//                    loginMessage.setTextFill(Color.GREEN);
+//                    primaryStage.setScene(loginScene);
+//                } else {
+//                    primaryStage.setScene(loginScene);
+//                    userCreationMessage.setText("username has to be unique");        
+//                    userCreationMessage.setTextFill(Color.RED);
+//                }
+//            } catch (SQLException ex) {
+//                Logger.getLogger(CreateUserUi.class.getName()).log(Level.SEVERE, null, ex);
 //            }
 // 
 //        }); 
@@ -81,7 +92,14 @@
 //        newUserScene = new Scene(newUserPane, 300, 250);
 //   
 //        
-//        // main diaryscene
 //       }
-//         
-//}
+//
+//    @Override
+//    public void start(Stage primaryStage) throws Exception {
+//     Application.launch(CreateUserUi, args);  // correct
+////     Application.launch(appClass, args);
+////     launch(CreateUserUi);   
+//    }
+//
+//  
+//   }

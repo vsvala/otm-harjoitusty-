@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fitme.dao;
 
 /**
@@ -22,11 +18,9 @@ public interface DiaryDao<D, K> {
 
     List<D> findDiaryByDate(K key) throws SQLException;
 
-    List<D> findDiaryByWeek(K key, String date, String d6) throws SQLException; //todoNEXT
+    List<D> findDiaryByWeek(K key, String date, String d6) throws SQLException; 
 
-    List<D> findDiaryBySearch(String key, String date) throws SQLException; //todoNEXT
+    List<D> findDiaryBySearch(String key, String date) throws SQLException; 
  
 }
 
-//   TODO poistoon
-//List<D> findAll(K key) throws SQLException;

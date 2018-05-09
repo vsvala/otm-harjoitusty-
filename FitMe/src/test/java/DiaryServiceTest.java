@@ -8,9 +8,7 @@ import fitme.dao.DataDiaryDao;
 import fitme.dao.DataUserDao;
 import fitme.dao.Database;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import fitme.domain.Diary;
@@ -215,7 +213,7 @@ public class DiaryServiceTest {
         System.out.println("sum" + sum);
 
         assertEquals(sum, diaryService.countKcalPerWeek());
-        assertEquals(604, sum);
+        assertEquals(904, sum);
     }
 
     @Test
