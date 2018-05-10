@@ -47,9 +47,9 @@ Klikkaamalla näkymän oikean ylänurkan painiketta _logout_, käyttäjä kirjau
 
 Painamalla  painiketta _summary_ , käyttäjä pääsee tarkasteleman yhteenvetosivua, jossa näkyy viimeisen 7 päivän ruokamerkinnät.
 
-Sivun alalaidan hakukentään voi kirjoittaa haettavan päivän päiväyksen dd.mm.yyyy muodossa ja klikkaamall _summary_ painiketta näytetään kyseisen päivän päiväkirjamerkinnät ja yhteenlasketut kalorit.
+Sivun alalaidan hakukentään voi kirjoittaa haettavan päivän päiväyksen dd.mm.yyyy muodossa ja klikkaamall _Search_ painiketta näytetään haetun päivän päiväkirjamerkinnät ja yhteenlasketut kalorit.
 
-_Last 7 days_ painikkeesta pääsee takaisin 7 päivän yhteenvetoon.
+l_Last 7 days_ painikkeesta pääsee takaisin 7 päivän yhteenvetoon.
 
 _diary_ painikkeen klikkaus palauttaa taas takaisin päiväkirjan ruokamerkintöjen lisäämisnäkymään.
 
