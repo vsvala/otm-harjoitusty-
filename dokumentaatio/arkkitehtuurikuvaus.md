@@ -93,7 +93,7 @@ Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createUser antaen paramet
 Uuden todon luovan createTodo-painikkeen klikkaamisen jälkeen sovelluksen kontrolli eteneeseuraavasti:
 
 
-Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createTodo antaen parametriksi luotavan työn tiedot. Sovelluslogiikka luo uuden Todo-olion ja tallettaa sen kutsumalla todoDao:n metodia create. Tästä seurauksena on se, että käyttöliittymä päivittää näytettävät todot kutsumalla omaa metodiaan redrawTodolist.
+Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createDiary antaen parametriksi luotavan työn tiedot. Sovelluslogiikka luo uuden Diary-olion ja tallettaa sen kutsumalla DiaryDao:n metodia saveOrUpdate. Tästä seurauksena on se, että käyttöliittymä päivittää näytettävät päiväkirjamerkinnät kutsumalla omaa metodiaan redrawView.
 
 
 #### Muut toiminnallisuudet
