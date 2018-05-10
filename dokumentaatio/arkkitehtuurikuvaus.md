@@ -90,7 +90,7 @@ Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createUser antaen paramet
 
 #### Päiväkirjamerkinnän luominen
 
-Uuden todon luovan createTodo-painikkeen klikkaamisen jälkeen sovelluksen kontrolli eteneeseuraavasti:
+Uuden päiväkirjamerkinnän luovan add-painikkeen klikkaamisen jälkeen sovelluksen kontrolli etenee seuraavasti:
 
 
 Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createDiary antaen parametriksi luotavan työn tiedot. Sovelluslogiikka luo uuden Diary-olion ja tallettaa sen kutsumalla DiaryDao:n metodia saveOrUpdate. Tästä seurauksena on se, että käyttöliittymä päivittää näytettävät päiväkirjamerkinnät kutsumalla omaa metodiaan redrawView.
@@ -98,6 +98,7 @@ Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createDiary antaen parame
 
 #### Päiväkirjamerkintöjen hakeminen
 
+Kun SummaryScenessä eli yhteenvetonäkymässä syötetään haluttu päivämäärä ja klikataan search-painiketta sovelluksen kontrolli etenee seuraavasti:
 
 #### Muut toiminnallisuudet
 
