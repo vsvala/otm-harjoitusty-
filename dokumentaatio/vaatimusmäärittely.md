@@ -52,6 +52,7 @@ Perusversion jälkeen järjestelmää voitaisiin laajentaa esim. seuraavilla toi
 - käyttäjätunnuksen (ja siihen liittyvien päiväkirjatiedon) poisto
 - viikottainen / kuukausittainen yhteenveto kaloreista kuvana tai diagrammina
 - lisätään päiväkirjaan kenttä, johon on mahdollista merkitä tarkempia tietoja tai kommentteja päivän aterioista
-- käyttäjätiimit, jotka näkevät toisten päiväkirja merkinnät ja voivat kommentoida tai antaa tsemppi tähtiä 
+- käyttäjätiimit, jotka näkevät toisten päiväkirja merkinnät ja voivat kommentoida tai antaa tsemppitähtiä 
 - päiväkirja voisi hakea reseptejä netistä ja arpoa sen päivän aterianehdotuksen
 - päiväkirjaan voisi lisätä päivittäisen liikunnan lajin ja keston kirjaamisen
+- päiväkirjaan voisi lisätä päivittäisen tai viikottaisen painon seuraamisen
