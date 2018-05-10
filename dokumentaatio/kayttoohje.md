@@ -41,23 +41,25 @@ Onnistuneen kirjautumisen myötä siirrytään käyttäjän päiväkirjamerkint�
 
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/DiaryPage.png" width="600">
 
-Näkymä mahdollistaa olemassaolevien merkintöjen postamisen painikkeella _delete_ sekä uusien merkintöje  luomisen kirjoittamalla syötekenttään food: syödyn ruoan ja kcal: kalorimäärän ja painamalla _add_. 
+Näkymä mahdollistaa olemassaolevien merkintöjen postamisen painikkeella _delete_ sekä uusien päiväkirjamerkintöjen  luomisen. Merkintä luodaan kirjoittamalla ensin syötekenttään food: syöty ruoka sekä kenttään kcal: kalorimäärän ja sen jälkeen klikkaamalla _add_ painiketta. 
 
-Sovellus laskee näkyville päivän aikana yhteensä syödyt kalorit
+Sovellus näyttää kyseisen päiväm merkinnät sekä laskee päivän aikana yhteensä syödyt kalorit.
 
-Klikkaamalla näkymän oikean ylänurkan painiketta _logout_, käyttäjä kirjautuu ulos sovelluksesta ja sovellus palaa takaisin kirjaantumisnäkymään. 
+Klikkaamalla näkymän oikean ylänurkan painiketta _logout_, käyttäjä kirjautuu ulos sovelluksesta ja sovellus palaa takaisin kirjaantumisnäkymään. Ohjelman voi sulkea kirjautumisnäkymän yläkulman raksista.
 
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/summary.png" width="600">
 
-Painamalla  painiketta _summary_ , käyttäjä pääsee tarkasteleman yhteenvetosivua, jossa näkyy viimeisen 7 päivän ruokamerkinnät.
+Painamalla  painiketta _summary_ , käyttäjä pääsee tarkasteleman yhteenvetosivua, jossa näkyy viimeisen 7 päivän ruokamerkinnät ja yhteenlaskettu kalorimäärä.
 
-Sivun alalaidan hakukentään voi kirjoittaa haettavan päivän päiväyksen dd.mm.yyyy muodossa ja klikkaamall _Search_ painiketta näytetään haetun päivän päiväkirjamerkinnät ja yhteenlasketut kalorit.
+Sivun alalaidan hakukentään voi kirjoittaa haettavan päiväyksen dd.mm.yyyy muodossa ja klikkaamall _Search_ painiketta näytetään kyseisen päivän päiväkirjamerkinnät ja yhteenlasketut kalorit.
 
-l_Last 7 days_ painikkeesta pääsee takaisin 7 päivän yhteenvetoon.
+_Last 7 days_ painikkeesta pääsee takaisin viimeisen 7 päivän yhteenvetoon.
 
-_diary_ painikkeen klikkaus palauttaa taas takaisin päiväkirjan ruokamerkintöjen lisäämisnäkymään.
 
-Klikkaamalla näkymän oikean ylänurkan painiketta _logout_, käyttäjä kirjautuu ulos sovelluksesta ja sovellus palaa takaisin kirjaantumisnäkymään. 
+Klikkaamalla näkymän oikean ylänurkan painiketta _logout_, käyttäjä kirjautuu ulos sovelluksesta ja sovellus palaa takaisin kirjaantumisnäkymään
+
+_diary_ painikkeen klikkaus puolestaan palauttaa takaisin päiväkirjamerkintöjen lisäämisnäkymään.
+ 
 
 
 
