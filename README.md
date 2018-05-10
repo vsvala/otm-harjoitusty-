@@ -21,7 +21,7 @@ Ohjelmoinnin harjoitustyönä tehty Fitme ruokapäiväkirja sovellusprojekti sek
 
 ## <h2>Komentorivitoiminnot
 
-### Testien suoritus
+### Testaus
 
 Testit suoritetaan komennolla
 
