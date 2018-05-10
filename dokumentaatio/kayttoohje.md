@@ -3,7 +3,11 @@
 Lataa tiedosto [FitMe.jar](https://github.com/vsvala/otm-harjoitustyo/releases)
 
 ## Konfigurointi
-Ohjelma luo tietokantataulut, jos niitä ei ole olemassa.
+Ohjelma olettaa, että sen käynnistyshakemistossa on konfiguraatiotiedosto config.properties, joka määrittelee käyttäjät ja ruokapäiväkirjamerkinnät tallentavan tietokannan nimen. Tiedoston muoto on seuraava
+
+```
+usedDatabase=jdbc:sqlite:fitme.db
+```
 
 ## Ohjelman käynnistäminen
 
