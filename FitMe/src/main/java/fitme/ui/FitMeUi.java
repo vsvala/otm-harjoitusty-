@@ -275,29 +275,25 @@ public class FitMeUi extends Application {
         mainPane.setPadding(new Insets(20, 20, 20, 20));
         diaryScene = new Scene(mainPane, 700, 700); //säädetäänkoko
 
-        VBox diaryPane = new VBox(10); //arrange nodes in a singe column sarake
-        HBox menuPane = new HBox(10); //row rivi
-        HBox buttonPane = new HBox(10); 
-        menuPane.setPadding(new Insets(20));
+        HBox topPane = new HBox(10); //row rivi
+        topPane.setPadding(new Insets(20));
         Region menuSpacer = new Region();
         HBox.setHgrow(menuSpacer, Priority.ALWAYS);
         Button summaryButton = new Button("summary");
         Button logoutButton = new Button("logout");
-        Button kcal7Button = new Button("show last 7 days");
+
 
         //header
         Label diaryHeaderLabel = new Label("My Food Diary " + diaryService.getDayToday());
         diaryHeaderLabel.setPadding(new Insets(20, 20, 20, 20));
         diaryHeaderLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
 
-        menuPane.getChildren().addAll(kcal7Button, menuLabel, diaryHeaderLabel, menuSpacer, summaryButton, logoutButton);
-        buttonPane.getChildren().addAll(kcal7Button);
-        diaryPane.getChildren().addAll(menuPane, buttonPane);
+        topPane.getChildren().addAll(menuLabel, diaryHeaderLabel, menuSpacer, summaryButton, logoutButton);
 
-        // add food
-        HBox createSum = new HBox(10);
-        createSum.setPadding(new Insets(20));
-
+        // add food;
+        VBox downbox = new VBox(10); //arrange nodes in a singe column sarake
+        HBox messagePane = new HBox(10);
+        messagePane.setPadding(new Insets(20, 0, 0, 180));
         HBox createForm = new HBox(10);      //riviasettelu
         createForm.setPadding(new Insets(20, 20, 20, 20));
 
@@ -313,18 +309,24 @@ public class FitMeUi extends Application {
         foodInput.setPrefWidth(200);
         TextField kcalInput = new TextField();
         kcalInput.setPrefWidth(75);
-
+        Label kcalMessage = new Label();
+        
+         
         createForm.getChildren().addAll(addLabel, foodInput, kcalLabel, kcalInput, spacer, createFood);
-
+        messagePane.getChildren().addAll(kcalMessage);
+        downbox.getChildren().addAll(messagePane, createForm); 
+        
         nodes = new VBox(10);
         nodes.setMaxWidth(500);
         nodes.setMinWidth(500);
         redrawView();
 
         mainSrcollbar.setContent(nodes);
-        mainPane.setTop(menuPane);
-        mainPane.setBottom(createForm);
-
+        mainPane.setTop(topPane);
+        mainPane.setBottom(downbox);//createForm
+     
+        
+        
 // SUMMARY BUTTON ACTION creates summary view
         summaryButton.setOnAction(e -> {
             try {
@@ -340,12 +342,20 @@ public class FitMeUi extends Application {
             diaryService.logout();
             primaryStage.setScene(loginScene);
         });
-
-//CREATEFOOD BUTTON ACTION creates one diary marking      
+              
+            
+//CREATEFOOD BUTTON ACTION creates one diary marking   
         createFood.setOnAction(e -> {
-            int kcal = Integer.parseInt(kcalInput.getText());
+
             try {
+                kcalMessage.setText("");
+                int kcal = Integer.parseInt(kcalInput.getText());
                 diaryService.createDiary(foodInput.getText(), kcal);  // DIARYSERVICE CREATE DIARY TO DATABASE
+
+            } catch (java.lang.NumberFormatException ne) {
+                System.out.println("Kelvoton syöte");
+                kcalMessage.setText("Syötäthän kalorit kokonaislukuna!!!");
+                kcalMessage.setTextFill(Color.RED);
             } catch (SQLException ex) {
                 Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
             }
