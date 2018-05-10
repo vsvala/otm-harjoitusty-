@@ -87,6 +87,15 @@ Kun uuden käyttäjän luomisnäkymässä on syötetty käyttäjätunnus joka ei
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/createUser_sekvens.png">
 Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createUser antaen parametriksi luotavan käyttäjän tiedot. Sovelluslogiikka selvittää userDao:n avulla onko käyttäjätunnus olemassa. Jos ei, eli uuden käyttäjän luominen on mahdollista, luo sovelluslogiikka User-olion ja tallettaa sen kutsumalla userDao:n metodia saveOrUpdate. Tästä seurauksena on se, että käyttöliittymä vaihtaa näkymäksi loginScenen eli kirjautumisnäkymän.
 
+
+#### Päiväkirjamerkinnän luominen
+
+Uuden todon luovan createTodo-painikkeen klikkaamisen jälkeen sovelluksen kontrolli eteneeseuraavasti:
+
+
+Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createTodo antaen parametriksi luotavan työn tiedot. Sovelluslogiikka luo uuden Todo-olion ja tallettaa sen kutsumalla todoDao:n metodia create. Tästä seurauksena on se, että käyttöliittymä päivittää näytettävät todot kutsumalla omaa metodiaan redrawTodolist.
+
+
 #### Muut toiminnallisuudet
 
 
