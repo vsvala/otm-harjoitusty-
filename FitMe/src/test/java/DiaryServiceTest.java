@@ -78,7 +78,7 @@ public class DiaryServiceTest {
         assertEquals(2, diaries.size());
         Diary diary = diaries.get(0);;
         assertEquals("munkki", diary.getContent());
-        assertEquals(testuser, diaryService.getLoggedUser());
+        assertEquals("testLissu", diaryService.getLoggedUser().getUsername());
     }
 
     @Test
