@@ -29,30 +29,29 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 
 ### Kirjautumisen jälkeen
 
-- käyttäjä näkee kyseisen päivän päiväkirjan pohjan jossa näkyy kyseisen päivän merkinnät
+- käyttäjä näkee ko. päivän päiväkirjamerkinnät sekä niiden yhteenlasketun kalorimäärän
 
-- käyttäjä voi kirjoittaa ylös aterioitaan sekä arvioidun kalorimäärän 
+- käyttäjä voi tehdä uuden päiväkirjamerkinnän syöttämällä tekstikenttiin aterian sekä sen arvioidun kalorimäärän 
+  -luotu merkintä näkyy ainoastaan sen luoneelle käyttäjälle
 
-- Sovellus laskee yhteen päivän kalorit
+- käyttäjä voi lisätä ja poistaa päiväkirjamerkintöjä
 
-- luotu päiväkirja näkyy ainoastaan sen luoneelle käyttäjälle
+- Klikatessaan summary näkymää, käyttäjä näkee yhteenvedon viimeisen 7 päivän päiväkirjamerkinnöistä
 
-- käyttäjä voi lisätä ja poistaa aterioita
+- Summary näkymässä käyttäjä voi myös hakea haluamansa päivän päiväkirjamerkinnät näkyville.
 
 - käyttäjä voi kirjautua ulos järjestelmästä
 
 ## Jatkokehitysideoita
 
-Perusversion jälkeen järjestelmää täydennetään ajan salliessa esim. seuraavilla toiminnallisuuksilla
+Perusversion jälkeen järjestelmää voitaisiin laajentaa esim. seuraavilla toiminnallisuuksilla
 
-- viikottainen / kuukausittainen yhteenveto tekstinä /kuvana ruoasta ja liikunnasta
-- päiväkirjan tietojen editointi
-- tietojen järjestely tärkeysjärjestykseen
-- käyttäjätiimit, jotka näkevät toisten ruokailut ja voivat kommentoida tai antaa tähtiä 
-- lisätään päiväkirjaan kenttä, johon on mahdollista merkitä tarkempia tietoja päivän aterioista/liikunnasta
+- päiväkirjaan voisi asettaa tavoite kalorit jolloin se kertoisi paljonko ollaan minuksella tai plussalla
+- aikaisempien päivien päiväkirjamerkintöjen editointi ja poisto
 - käyttäjien yhteyteen salasana, joka vaaditaan kirjautuessa
 - käyttäjätunnuksen (ja siihen liittyvien päiväkirjatiedon) poisto
+- viikottainen / kuukausittainen yhteenveto kaloreista kuvana tai diagrammina
+- lisätään päiväkirjaan kenttä, johon on mahdollista merkitä tarkempia tietoja tai kommentteja päivän aterioista
+- käyttäjätiimit, jotka näkevät toisten päiväkirja merkinnät ja voivat kommentoida tai antaa tsemppi tähtiä 
 - päiväkirja voisi hakea reseptejä netistä ja arpoa sen päivän aterianehdotuksen
-- päiväkirjaan voidaan asettaa tavoite kalorit ja se kertoo paljonko ollaan minuksella tai plussalla
-- päiväkirjaan voi lisätä päivittäisen liikunnan lajin ja keston
-- päiväkirjaan voi tehdä hakuja päivämäärän perusteella
+- päiväkirjaan voisi lisätä päivittäisen liikunnan lajin ja keston kirjaamisen
