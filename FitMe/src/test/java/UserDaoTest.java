@@ -21,19 +21,19 @@ public class UserDaoTest {
     Database testdatabase;
     DataUserDao userDao;
     User testuser;
-   
+
     @Before
-    public void setUp() throws IOException, ClassNotFoundException, Exception {  
-        testdatabase = new Database("jdbc:sqlite:test.db");   
-        testdatabase.init();   
+    public void setUp() throws IOException, ClassNotFoundException, Exception {
+        testdatabase = new Database("jdbc:sqlite:test.db");
+        testdatabase.init();
         userDao = new DataUserDao(testdatabase);
         testuser = new User("testLissu", "testLiisa");
-        
+
     }
 
     @After
     public void tearDown() throws SQLException {
-             
+
         Connection connection = testdatabase.getConnection();
         PreparedStatement stmt = connection.prepareStatement("DROP TABLE User");
 
@@ -41,7 +41,6 @@ public class UserDaoTest {
         stmt.close();
         connection.close();
     }
-
 
     @Test
     public void saveOrUpdateSavesNewUser() throws SQLException {
@@ -58,10 +57,10 @@ public class UserDaoTest {
     @Test
     public void findByUsernameReturnsUser() throws SQLException {
         Connection connection = testdatabase.getConnection();
-//     
+
         assertEquals(true, userDao.saveOrUpdate(testuser));
-        
-         PreparedStatement  stmt = connection.prepareStatement("SELECT * FROM User WHERE username = 'testLissu'");
+
+        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM User WHERE username = 'testLissu'");
 
         ResultSet rs = stmt.executeQuery();
         User user = new User(rs.getString("username"), rs.getString("name"));

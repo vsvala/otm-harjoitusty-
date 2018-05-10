@@ -85,7 +85,7 @@ public class DiaryServiceTest {
     public void createsUserRetusnsDiaryOrFalseIfAllreadyExists() throws SQLException {
 
         List<Diary> diaries = diaryService.getDiaryBySearch("24.04.2018");
-//
+
         assertEquals("testLissu", diaryService.getLoggedUser().getUsername());
         assertEquals(false, diaryService.createUser("testLissu", "testLiisa"));
 
