@@ -96,6 +96,9 @@ Uuden todon luovan createTodo-painikkeen klikkaamisen jälkeen sovelluksen kontr
 Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createDiary antaen parametriksi luotavan työn tiedot. Sovelluslogiikka luo uuden Diary-olion ja tallettaa sen kutsumalla DiaryDao:n metodia saveOrUpdate. Tästä seurauksena on se, että käyttöliittymä päivittää näytettävät päiväkirjamerkinnät kutsumalla omaa metodiaan redrawView.
 
 
+#### Päiväkirjamerkintöjen hakeminen
+
+
 #### Muut toiminnallisuudet
 
 
