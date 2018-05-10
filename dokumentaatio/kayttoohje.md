@@ -44,6 +44,7 @@ Sovellus laskee näkyville päivän aikana yhteensä syödyt kalorit
 Klikkaamalla näkymän oikean ylänurkan painiketta _logout_, käyttäjä kirjautuu ulos sovelluksesta ja sovellus palaa takaisin kirjaantumisnäkymään. 
 
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/summary.png" width="600">
+
 Painamalla  painiketta _summary_ , käyttäjä pääsee tarkasteleman yhteenvetosivua, jossa näkyy viimeisen 7 päivän ruokamerkinnät.
 
 Sivun alalaidan hakukentään voi kirjoittaa haettavan päivän päiväyksen dd.mm.yyyy muodossa ja klikkaamall _summary_ painiketta näytetään kyseisen päivän päiväkirjamerkinnät ja yhteenlasketut kalorit.
