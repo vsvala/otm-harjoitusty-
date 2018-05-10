@@ -1,6 +1,6 @@
 
-# <h1>Ohjelmoinnin-harjoitustyö: FitMe sovellus
-Ohjelmoinnin harjoitustyönä tehty Fitme sovellusprojekti sekä projektin dokumentaatio ja testaus. Sovelluksen avulla käyttäjän on mahdollista pitää ruokapäiväkirjaa: kirjata ylös päivän aikan syömiään ruokia sekä niiden kalorimäärät. Sovellus laskee päivän aikana kertyneet kalorimäärän yhteensä. Lisäksi sovelluksesta voi tehdä yhteenvetoja kuten nähdä päiväkirjamerkinnät ja kalorit yhteensä viimeiseltä 7 päivältä ja hakea merkintöjä haluamallaan päivämäärällä. Sovellusta on mahdollista käyttää useamman rekisteröityneen käyttäjän, jolloin kullakin käyttäjällä on oma yksilöllinen ruokapäiväkirjansa.
+# <h1>Ohjelmoinnin-harjoitustyö: FitMe ruokapäiväkirja sovellus
+Ohjelmoinnin harjoitustyönä tehty Fitme ruokapäiväkirja sovellusprojekti sekä projektin dokumentaatio ja testaus. Sovelluksen avulla käyttäjän on mahdollista pitää ruokapäiväkirjaa: kirjata ylös päivän aikan syömiään ruokia sekä niiden kalorimäärät. Sovellus laskee päivän aikana kertyneet kalorimäärän yhteensä. Lisäksi sovelluksesta voi tehdä yhteenvetoja kuten nähdä päiväkirjamerkinnät ja kalorit yhteensä viimeiseltä 7 päivältä ja hakea merkintöjä haluamallaan päivämäärällä. Sovellusta on mahdollista käyttää useamman rekisteröityneen käyttäjän, jolloin kullakin käyttäjällä on oma yksilöllinen ruokapäiväkirjansa.
 
 ## <h2>Dokumentaatio
 
