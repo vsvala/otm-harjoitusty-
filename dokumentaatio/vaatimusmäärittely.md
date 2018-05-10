@@ -23,8 +23,8 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 - käyttäjä voi luoda järjestelmään käyttäjätunnuksen
   - käyttäjätunnuksen täytyy olla uniikki ja pituudeltaan vähintään 4 merkkiä
 
-- käyttäjä voi kirjautua järjestelmään 
-  -Kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
+- käyttäjä voi kirjautua järjestelmään   
+  - Kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
   - jos käyttäjää ei olemassa, ilmoittaa järjestelmä tästä
 
 ### Kirjautumisen jälkeen
