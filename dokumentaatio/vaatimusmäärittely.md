@@ -2,7 +2,7 @@
 
 ## Soveluksen tarkoitus
 
-FitMe sovelluksen avulla käyttäjien on mahdollista pitää ruokapäiväkirjaa syödyistä aterioista. Sovellusta on mahdollista käyttää useamman rekisteröityneen käyttäjän, joilla kaikilla on oma yksilöllinen päiväkirjansa.
+FitMe sovelluksen avulla käyttäjien on mahdollista pitää ruokapäiväkirjaa syödyistä aterioista. Yhteenvetonäkymässä voi tarkastella viimeisen 7 päivän merkintöjä ja hakea aikaisempia merkintöjä hakupäivämäärän mukaan. Sovellusta on mahdollista käyttää useamman rekisteröityneen käyttäjän, joilla kaikilla on oma yksilöllinen päiväkirjansa.
 
 ## Käyttäjät
 
@@ -23,10 +23,9 @@ Sovellus aukeaa kirjautumisnäkymään, josta on mahdollista siirtyä uuden käy
 - käyttäjä voi luoda järjestelmään käyttäjätunnuksen
   - käyttäjätunnuksen täytyy olla uniikki ja pituudeltaan vähintään 4 merkkiä
 
-- käyttäjä voi kirjautua järjestelmään
-  - kirjautunut käyttäjä näkee kyseisen päivän päiväkirjan pohjan  ja sen päivän merkinnät 
+- käyttäjä voi kirjautua järjestelmään 
 
--Kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
+  -Kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
   - jos käyttäjää ei olemassa, ilmoittaa järjestelmä tästä
 
 ### Kirjautumisen jälkeen
