@@ -60,14 +60,13 @@ public class FitMeUi extends Application {
     private Label kcalSumLabels;
     private String date;
     private TextField dateStartInput;
+    private Label wrongInputMessage;
     public Database database;
-
 
     @Override
     public void init() throws IOException, Exception {
 
         //alustusmetodi init hakee tietokantaosoitteen ja luo käytettävät DAO:t ja injektoi ne sovelluslogiikalle:
-          
         Properties properties = new Properties();
         properties.load(new FileInputStream("config.properties"));
         try {
@@ -75,7 +74,7 @@ public class FitMeUi extends Application {
             database = new Database(usedDatabase);
         } catch (Exception ex) {
         }
-        
+
         //luo tietokantataulut if not exist
         database.init();
 
@@ -101,7 +100,6 @@ public class FitMeUi extends Application {
 
         Label loginMessage = new Label(); //loggaustekstikenttä
 
-      
         Button loginButton = new Button("login");
         Button createButton = new Button("create new user");
 
@@ -147,7 +145,6 @@ public class FitMeUi extends Application {
     }
 
 /////////////////////////////////////////////////CREATE USERSCENE//////////////////////////////////////////////////////////////////////////////
-    
     public void createUserView(Stage primaryStage, Label loginMessage) {
 
         VBox newUserPane = new VBox(10);
@@ -205,8 +202,7 @@ public class FitMeUi extends Application {
 
     }
 
-   /////////////////////////////////DIARYSCENE//////////////////////////////////////////////////////////////////////////////////////      
-  
+    /////////////////////////////////DIARYSCENE//////////////////////////////////////////////////////////////////////////////////////      
     public Node createDiaryNode(Diary diary) throws SQLException {
         HBox box = new HBox(10);
 
@@ -221,7 +217,7 @@ public class FitMeUi extends Application {
 
         Button button = new Button("delete");
 
- //BUTTON ACTION DELETE FROM DIARY    
+        //BUTTON ACTION DELETE FROM DIARY    
         button.setOnAction(e -> {
             String sid = Integer.toString(diary.getId());
             diaryService.delete(sid);                        //DELETE DIARY FOM DATABASE                      
@@ -283,7 +279,6 @@ public class FitMeUi extends Application {
         Button summaryButton = new Button("summary");
         Button logoutButton = new Button("logout");
 
-
         //header
         Label diaryHeaderLabel = new Label("My Food Diary " + diaryService.getDayToday());
         diaryHeaderLabel.setPadding(new Insets(20, 20, 20, 20));
@@ -311,12 +306,11 @@ public class FitMeUi extends Application {
         TextField kcalInput = new TextField();
         kcalInput.setPrefWidth(75);
         Label kcalMessage = new Label();
-        
-         
+
         createForm.getChildren().addAll(addLabel, foodInput, kcalLabel, kcalInput, spacer, createFood);
         messagePane.getChildren().addAll(kcalMessage);
-        downbox.getChildren().addAll(messagePane, createForm); 
-        
+        downbox.getChildren().addAll(messagePane, createForm);
+
         nodes = new VBox(10);
         nodes.setMaxWidth(500);
         nodes.setMinWidth(500);
@@ -325,9 +319,7 @@ public class FitMeUi extends Application {
         mainSrcollbar.setContent(nodes);
         mainPane.setTop(topPane);
         mainPane.setBottom(downbox);//createForm
-     
-        
-        
+
 // SUMMARY BUTTON ACTION creates summary view
         summaryButton.setOnAction(e -> {
             try {
@@ -343,8 +335,7 @@ public class FitMeUi extends Application {
             diaryService.logout();
             primaryStage.setScene(loginScene);
         });
-              
-            
+
 //CREATEFOOD BUTTON ACTION creates one diary marking   
         createFood.setOnAction(e -> {
 
@@ -354,8 +345,8 @@ public class FitMeUi extends Application {
                 diaryService.createDiary(foodInput.getText(), kcal);  // DIARYSERVICE CREATE DIARY TO DATABASE
 
             } catch (java.lang.NumberFormatException ne) {
-                System.out.println("Kelvoton syöte");
-                kcalMessage.setText("Syötäthän kalorit kokonaislukuna!!!");
+                System.out.println("input type wrong");
+                kcalMessage.setText("Give calories as numbers!!!");
                 kcalMessage.setTextFill(Color.RED);
             } catch (SQLException ex) {
                 Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
@@ -385,11 +376,10 @@ public class FitMeUi extends Application {
     }
 
     ///////////////////////////SUMMARYSCENE/////////////////////////////////////////////////////////////////////////////////////////////////
-    
     public Node createDiaryNodeSummary(Diary diary) throws SQLException {
         HBox box = new HBox(10);
 
-        Label label = new Label(diary.getContent());         
+        Label label = new Label(diary.getContent());
         label.setMinHeight(28);
 
         Label kcalLabel = new Label(diary.getKcal() + " kcal          ");
@@ -432,6 +422,7 @@ public class FitMeUi extends Application {
     public void redrawViewSummarySearch() throws SQLException {
 
         int totalKcalDay = diaryService.countKcalPerSearch(date);
+
         nodes2.getChildren().clear();
 
         kcalSumLabels = new Label("Kcal eaten " + date + " :    " + totalKcalDay);
@@ -441,13 +432,13 @@ public class FitMeUi extends Application {
 
         nodes2.getChildren().addAll(kcalSumLabels);
 
-        List<Diary> diariessum;
-        diariessum = diaryService.getDiaryBySearch(date);           //FIND DIARY BY SEARCH FROM DATABASE
+        List<Diary> diariessum = diaryService.getDiaryBySearch(date);           //FIND DIARY BY SEARCH FROM DATABASE
 
         diariessum.forEach(diarycontent -> {
             try {
-                nodes2.getChildren().add(createDiaryNodeSummary(diarycontent)); 
+                nodes2.getChildren().add(createDiaryNodeSummary(diarycontent));
             } catch (SQLException ex) {
+
                 Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
@@ -458,10 +449,10 @@ public class FitMeUi extends Application {
 
         totalKcal = diaryService.countKcal();
 
-        ScrollPane mainSrcollbarSummary = new ScrollPane();      
+        ScrollPane mainSrcollbarSummary = new ScrollPane();
         BorderPane mainPanes = new BorderPane(mainSrcollbarSummary);
         mainPanes.setPadding(new Insets(20, 20, 20, 20));
-        summaryScene = new Scene(mainPanes, 700, 700); 
+        summaryScene = new Scene(mainPanes, 700, 700);
 
         VBox diaryPanes = new VBox(10);
         HBox menuPanes = new HBox(10);
@@ -484,7 +475,7 @@ public class FitMeUi extends Application {
         HBox createButtons = new HBox(10);
         createButtons.setPadding(new Insets(20));
 
-        HBox createForms = new HBox(10);  
+        HBox createForms = new HBox(10);
         createForms.setPadding(new Insets(20, 20, 20, 20));
 
         Label dateLabel = new Label("Search diary by date: ");
@@ -494,6 +485,7 @@ public class FitMeUi extends Application {
         dateStartInput.setPrefWidth(100);
 
         Button searchButton = new Button(" Search ");
+
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
@@ -511,6 +503,7 @@ public class FitMeUi extends Application {
             nodes2.getChildren().clear();
             try {
                 date = dateStartInput.getText();
+
                 redrawViewSummarySearch();
                 dateStartInput.setText("");
                 dateStartInput.setPromptText("dd.mm.yyyy");
@@ -537,7 +530,7 @@ public class FitMeUi extends Application {
             primaryStage.setScene(diaryScene);
         });
 
- // LOGOUT BUTTON ACTION logout palauttaa login näkymään       
+        // LOGOUT BUTTON ACTION logout palauttaa login näkymään       
         logoutButtons.setOnAction(e -> {
             diaryService.logout();
             primaryStage.setScene(loginScene);
