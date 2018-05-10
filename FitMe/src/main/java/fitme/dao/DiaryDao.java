@@ -16,7 +16,7 @@ public interface DiaryDao<D, K> {
 
     boolean delete(K key) throws SQLException;
 
-    List<D> findDiaryByDate(K key) throws SQLException;
+    List<D> findDiaryByDate(K key, String date) throws SQLException;
 
     List<D> findDiaryByWeek(K key, String date, String d6) throws SQLException; 
 

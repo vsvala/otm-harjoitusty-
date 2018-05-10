@@ -100,7 +100,7 @@ public class FitMeUi extends Application {
 
         Label loginMessage = new Label(); //loggaustekstikenttä
 
-        //luodaan login ja create buttonit
+      
         Button loginButton = new Button("login");
         Button createButton = new Button("create new user");
 
@@ -276,8 +276,8 @@ public class FitMeUi extends Application {
         diaryScene = new Scene(mainPane, 700, 700); //säädetäänkoko
 
         VBox diaryPane = new VBox(10); //arrange nodes in a singe column sarake
-        HBox menuPane = new HBox(10); //row
-        HBox buttonPane = new HBox(10); //row
+        HBox menuPane = new HBox(10); //row rivi
+        HBox buttonPane = new HBox(10); 
         menuPane.setPadding(new Insets(20));
         Region menuSpacer = new Region();
         HBox.setHgrow(menuSpacer, Priority.ALWAYS);

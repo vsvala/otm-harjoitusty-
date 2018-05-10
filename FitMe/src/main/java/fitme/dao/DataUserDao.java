@@ -20,7 +20,7 @@ public class DataUserDao implements UserDao<User, String> {
  * 
  * @param object tallennettava päiväkirja
  * @return true, jos tallennus onnistuu
- * @throws SQLException 
+ * @throws SQLException  jos  tietokantatoiminnot ei onnistu
  */
     
     @Override
@@ -43,7 +43,7 @@ public class DataUserDao implements UserDao<User, String> {
      * 
      * @param key poistettavan merkinnän käyttäjänimi
      * @return true, jos poisto onnistuu
-     * @throws SQLException 
+     * @throws SQLException  jos  tietokantatoiminnot ei onnistu
      */
 
     @Override
@@ -62,7 +62,7 @@ public class DataUserDao implements UserDao<User, String> {
  * 
  * @param key käyttäjänimi
  * @return käyttäjä
- * @throws SQLException 
+ * @throws SQLException  jos  tietokantatoiminnot ei onnistu
  */
     @Override
     public User findByUsername(String key) throws SQLException {

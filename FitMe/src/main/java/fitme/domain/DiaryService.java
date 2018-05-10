@@ -30,7 +30,7 @@ public class DiaryService {
      * @param content luotavan päiväkirjamerkinnän sisältö=ruoka
      * @param kcal luotavan päiväkirjamerkinnän sisältö=ruoka
      * @return true jos lisääminen onnistuu
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException  jos  tietokantatoiminnot ei onnistu
      */
     public boolean createDiary(String content, int kcal) throws SQLException {
 
@@ -48,7 +48,7 @@ public class DiaryService {
      * kirjautuneen käyttäjän tämän päivän päiväkirjamerkinnät
      *
      * @return lista tämän päivän päiväkirjamerkinnöistä
-     * @throws SQLException
+     * @throws SQLException  jos  tietokantatoiminnot ei onnistu
      */
     public List<Diary> getDiaryByToday() throws SQLException {
         if (loggedIn == null) {
@@ -56,7 +56,7 @@ public class DiaryService {
             return new ArrayList<>();
         }
 
-        return diaryDao.findDiaryByDate(loggedIn.getUsername());
+        return diaryDao.findDiaryByDate(loggedIn.getUsername(), getDayToday());
     }
 
     /**
@@ -64,7 +64,7 @@ public class DiaryService {
      * kirjautuneen käyttäjän viimeisen viikon päiväkirjamerkinnät
      *
      * @return lista viimeisen viikon päiväkirjamerkinnöistä
-     * @throws SQLException
+     * @throws SQLException  jos  tietokantatoiminnot ei onnistu
      */
     public List<Diary> getDiaryByWeek() throws SQLException {
         if (loggedIn == null) {
@@ -81,7 +81,7 @@ public class DiaryService {
      *
      * @param date haettava päivämäärä
      * @return lista viimeisen kuukauden päiväkirjamerkinnöistä
-     * @throws SQLException
+     * @throws SQLException  jos  tietokantatoiminnot ei onnistu
      */
     public List<Diary> getDiaryBySearch(String date) throws SQLException {
         if (loggedIn == null) {
@@ -96,7 +96,7 @@ public class DiaryService {
      * Päiväkirjamerkintöjen poistaminen
      *
      * @param id poistettavan merkinnän tunniste
-     * @return
+     * @return true jos poisto onnistuu
      */
     public boolean delete(String id) {
         try {
@@ -114,7 +114,7 @@ public class DiaryService {
      * @param username käyttäjätunnus
      *
      * @return true jos käyttäjätunnus on olemassa, muuten false
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException  jos  tietokantatoiminnot ei onnistu
      */
     public boolean login(String username) throws SQLException {
         User user = (User) userDao.findByUsername(username);
@@ -153,7 +153,7 @@ public class DiaryService {
      * @param name käyttäjän nimi
      *
      * @return true jos käyttäjätunnus on luotu onnistuneesti, muuten false
-     * @throws java.sql.SQLException
+     * @throws java.sql.SQLException  jos  tietokantatoiminnot ei onnistu
      */
     public boolean createUser(String username, String name) throws SQLException {
         if (userDao.findByUsername(username) != null) {
@@ -175,7 +175,7 @@ public class DiaryService {
      * Tämän päivän kalorien yhteenlaskeminen
      *
      * @return tämän päivän kalorit yhteensä
-     * @throws SQLException
+     * @throws SQLException  jos  tietokantatoiminnot ei onnistu
      */
     public int countKcal() throws SQLException {
         int sum = 0;
@@ -191,7 +191,7 @@ public class DiaryService {
      * Viimisen 7 päivän kalorien yhteenlaskeminen
      *
      * @return int sum viimeiden 7 päivän kalorien yhteenlaskettu määrä
-     * @throws SQLException
+     * @throws SQLException  jos  tietokantatoiminnot ei onnistu
      */
 
     public int countKcalPerWeek() throws SQLException {
@@ -207,8 +207,9 @@ public class DiaryService {
     /**
      * Kyseisen päivän kalorien yhteenlaskeminen
      *
+     * @param date käyttäjän syöttämä päivämäärä
      * @return int sum kyseisen päivän kalorien yhteenlaskettu määrä
-     * @throws SQLException
+     * @throws SQLException  jos  tietokantatoiminnot ei onnistu
      */
 
     public int countKcalPerSearch(String date) throws SQLException {

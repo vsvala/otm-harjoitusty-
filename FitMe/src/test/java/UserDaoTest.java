@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import fitme.dao.DataUserDao;
 import fitme.dao.Database;
 import fitme.domain.User;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,30 +18,24 @@ import static org.junit.Assert.*;
  */
 public class UserDaoTest {
 
-    Database database;
+    Database testdatabase;
     DataUserDao userDao;
     User testuser;
-
-    public UserDaoTest() throws FileNotFoundException, IOException, ClassNotFoundException, Exception {
-
-//        Properties properties = new Properties();
-//        properties.load(new FileInputStream("config.properties"));
-//        String usedDatabase = properties.getProperty("usedDatabase");
-//        database = new Database(usedDatabase);
-    }
-
+   
     @Before
-    public void setUp() throws FileNotFoundException, IOException, ClassNotFoundException, Exception {
-        database = new Database("jdbc:sqlite:fitme.db");
-        userDao = new DataUserDao(database);
+    public void setUp() throws IOException, ClassNotFoundException, Exception {  
+        testdatabase = new Database("jdbc:sqlite:test.db");   
+        testdatabase.init();   
+        userDao = new DataUserDao(testdatabase);
         testuser = new User("testLissu", "testLiisa");
         
     }
 
     @After
     public void tearDown() throws SQLException {
-        Connection connection = database.getConnection();
-        PreparedStatement stmt = connection.prepareStatement("DELETE FROM User WHERE username='testLissu'");
+             
+        Connection connection = testdatabase.getConnection();
+        PreparedStatement stmt = connection.prepareStatement("DROP TABLE User");
 
         stmt.executeUpdate();
         stmt.close();
@@ -57,7 +45,6 @@ public class UserDaoTest {
 
     @Test
     public void saveOrUpdateSavesNewUser() throws SQLException {
-
         assertEquals(true, userDao.saveOrUpdate(testuser));
 
     }
@@ -65,13 +52,12 @@ public class UserDaoTest {
     @Test
     public void deleteDeletesUser() throws SQLException {
         userDao.saveOrUpdate(testuser);
-
         assertEquals(true, userDao.delete("testLissu"));
     }
 
     @Test
     public void findByUsernameReturnsUser() throws SQLException {
-        Connection connection = database.getConnection();
+        Connection connection = testdatabase.getConnection();
 //     
         assertEquals(true, userDao.saveOrUpdate(testuser));
         

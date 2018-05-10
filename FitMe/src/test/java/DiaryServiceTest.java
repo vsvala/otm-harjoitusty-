@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import fitme.dao.DataDiaryDao;
 import fitme.dao.DataUserDao;
@@ -14,6 +9,7 @@ import static org.junit.Assert.*;
 import fitme.domain.Diary;
 import fitme.domain.User;
 import fitme.domain.DiaryService;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -22,67 +18,57 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-//import java.sql.Connection;
-//import java.sql.Date;
-//import java.sql.PreparedStatement;
-//import java.sql.SQLException;
-//import java.text.DateFormat;
-//import java.text.SimpleDateFormat;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Properties;
 /**
  *
  * @author svsv
  */
 public class DiaryServiceTest {
 
-    Database database;
+    Database testdatabase;
     DataUserDao userDao;
     DataDiaryDao diaryDao;
-//  DiaryService(DiaryDao diaryDao, UserDao userDao);
     DiaryService diaryService;
-//    User loggedIn;
-
-//    public DiaryServiceTest() throws ClassNotFoundException {
-    public DiaryServiceTest() throws Exception {
-
-        this.database = new Database("jdbc:sqlite:fitme.db");
-        diaryService = new DiaryService(diaryDao, userDao);
-        diaryDao = new DataDiaryDao(database);
-        userDao = new DataUserDao(database);
-        User loggedIn = new User("ttester1", "Teuvo Testaaja");
-//        User u2 = new User("ttester2", "Tellervo Testaaja");
-
-//        userDao.saveOrUpdate(loggedIn);
-//        userDao.saveOrUpdate(u2);  
-        String date = diaryService.getDayToday();
-        diaryDao.saveOrUpdate(new Diary(1, date, "chili", 4, loggedIn));
-        diaryService = new DiaryService(diaryDao, userDao);
-        diaryService.login("ttester1");
-
-    }
+    User testuser;
+    Diary testdiary;
+    String date;
 
     @Before
-    public void setUpClass() throws Exception {
+    public void setUp() throws IOException, ClassNotFoundException, Exception {
+        testdatabase = new Database("jdbc:sqlite:test.db");
+        testdatabase.init();
 
-//        Properties properties = new Properties();
-//        properties.load(new FileInputStream("config.properties"));
-//
-//        String usedDatabase = properties.getProperty("usedDatabase");
-//        Database database = new Database(usedDatabase);
+        userDao = new DataUserDao(testdatabase);
+        diaryDao = new DataDiaryDao(testdatabase);
+        diaryService = new DiaryService(diaryDao, userDao);
+
+        testuser = new User("testLissu", "testLiisa");
+        userDao.saveOrUpdate(testuser);
+        diaryService.login("testLissu");
+
+        date = diaryService.getDayToday();
+        testdiary = new Diary(1, "24.04.2018", "chili", 4, testuser);
+        diaryDao.saveOrUpdate(testdiary);
+        diaryDao.saveOrUpdate(new Diary(2, date, "munkki", 500, testuser));
+        diaryDao.saveOrUpdate(new Diary(3, date, "sima", 100, testuser));
+
     }
 
     @After
     public void tearDown() throws SQLException {
-        Connection connection = database.getConnection();
-//        PreparedStatement stmt = connection.prepareStatement("DELETE FROM User WHERE username='ttester1'");
-        PreparedStatement stmt = connection.prepareStatement("DELETE FROM Diary WHERE user_username='ttester1' AND content='chili'");
-//      PreparedStatement stmt = connection.prepareStatement("DELETE FROM Diary WHERE user_username='ttester1' AND content='mummonmuusi'");
+
+        Connection connection = testdatabase.getConnection();
+        PreparedStatement stmt = connection.prepareStatement("DROP TABLE Diary");
 
         stmt.executeUpdate();
         stmt.close();
         connection.close();
+
+        Connection connection2 = testdatabase.getConnection();
+        PreparedStatement stmt2 = connection2.prepareStatement("DROP TABLE User");
+
+        stmt2.executeUpdate();
+        stmt2.close();
+        connection2.close();
     }
 
     @Test
@@ -91,35 +77,26 @@ public class DiaryServiceTest {
 
         assertEquals(2, diaries.size());
         Diary diary = diaries.get(0);;
-//           System.out.println("tt"+diary.getUser().getUsername());
-        assertEquals("mummonmuusi", diary.getContent());
-//        assertEquals("ttester1", diary.getUser().getUsername())
+        assertEquals("munkki", diary.getContent());
+        assertEquals(testuser, diaryService.getLoggedUser());
     }
 
     @Test
-    public void createsUser() throws SQLException {
+    public void createsUserRetusnsDiaryOrFalseIfAllreadyExists() throws SQLException {
 
-        User u2 = new User("tester3", "Tellervo");
-//       userDao.saveOrUpdate(u2);  
-
-        diaryService.createUser("tester3", "Tellervo");
-        diaryService.login("tester3");
-        diaryDao.saveOrUpdate(new Diary(1, "04.05.2018", "jalapeno", 4, u2));
-
-        List<Diary> diaries = diaryService.getDiaryBySearch("04.05.2018");
-
-        Diary diary = diaries.get(0);;
-        assertEquals("tester3", diaryService.getLoggedUser().getUsername());
+        List<Diary> diaries = diaryService.getDiaryBySearch("24.04.2018");
+//
+        assertEquals("testLissu", diaryService.getLoggedUser().getUsername());
+        assertEquals(false, diaryService.createUser("testLissu", "testLiisa"));
 
         diaryService.logout();
-        
-        Connection connection = database.getConnection();
+
+        Connection connection = testdatabase.getConnection();
         PreparedStatement stmt = connection.prepareStatement("DELETE FROM User WHERE username='tester3'");
         stmt.executeUpdate();
         stmt.close();
         connection.close();
     }
-
 
     @Test
     public void listEmpytIfNotLoggedIn() throws SQLException {
@@ -134,7 +111,7 @@ public class DiaryServiceTest {
 
         List<Diary> diaries = diaryService.getDiaryByToday();
         assertEquals(3, diaries.size());
-        Diary diary = diaries.get(0);
+        Diary diary = diaries.get(2);
 
         assertEquals("mummonmuusi", diary.getContent());
 
@@ -144,10 +121,10 @@ public class DiaryServiceTest {
     public void whenMarkedDeleteIsNotListed() throws SQLException {
 
         List<Diary> diaries = diaryService.getDiaryByToday();
-        Diary diary = diaries.get(1);
+        Diary diary = diaries.get(0);
         String sid = Integer.toString(diary.getId());
         diaryService.delete(sid);
-        assertEquals(3, diaries.size());
+        assertEquals(2, diaries.size());
     }
 
     private void addDiary(String content, int kcal) throws SQLException {
@@ -156,9 +133,8 @@ public class DiaryServiceTest {
 
     @Test
     public void getLoggedUserReturnsLogged() {
-        assertEquals("ttester1", diaryService.getLoggedUser().getUsername());
+        assertEquals("testLissu", diaryService.getLoggedUser().getUsername());
 
-//    
     }
 
     @Test
@@ -174,72 +150,51 @@ public class DiaryServiceTest {
     public void countKcalReturnsKcalSum() throws SQLException {
         int sum = 0;
         List<Diary> diaries = diaryService.getDiaryByToday();
-//       System.out.println("päiväkirjat"+diaries);
 
         for (int i = 0; i < diaries.size(); i++) {
             sum = sum + diaries.get(i).getKcal();
         }
-        System.out.println("sum" + sum);
 
         assertEquals(sum, diaryService.countKcal());
-        assertEquals(304, sum);
+        assertEquals(600, sum);
     }
 
     @Test
     public void countKcalBySearchkReturnsKcalSum() throws SQLException {
         int sum = 0;
-        List<Diary> diaries = diaryService.getDiaryBySearch("03.05.2018");
-        System.out.println("päiväkirjat" + diaries);
+        List<Diary> diaries = diaryService.getDiaryBySearch("24.04.2018");
 
         for (int i = 0; i < diaries.size(); i++) {
             sum = sum + diaries.get(i).getKcal();
         }
-        System.out.println("sum" + sum);
 
-        assertEquals(sum, diaryService.countKcalPerSearch("03.05.2018"));
-        assertEquals(0, diaryService.countKcalPerSearch("18.05.2018"));
-        assertEquals(0, sum);
+        assertEquals(sum, diaryService.countKcalPerSearch("24.04.2018"));
+        assertEquals(0, diaryService.countKcalPerSearch("30.05.2018"));
+        assertEquals(4, sum);
     }
 
     @Test
     public void countKcalByWeekkReturnsKcalSum() throws SQLException {
-        int sum = 0;
+        int sum = 0;;
         List<Diary> diaries = diaryService.getDiaryByWeek();
-        System.out.println("päiväkirjat" + diaries);
 
         for (int i = 0; i < diaries.size(); i++) {
             sum = sum + diaries.get(i).getKcal();
         }
-        System.out.println("sum" + sum);
 
         assertEquals(sum, diaryService.countKcalPerWeek());
-        assertEquals(904, sum);
+        assertEquals(600, sum);
     }
 
     @Test
     public void loginReturnsFalseIfUserNull() throws SQLException {
-        assertEquals(false, diaryService.login("hölmöeiuseri"));
+        assertEquals(false, diaryService.login("holmoeiuseri"));
+    }
+
+    @Test
+    public void FindDiaryByWeekReturnsListOfDiariesWhenDateTodaySmallerThan7() throws SQLException {
+        List<Diary> diaries = diaryService.getDiaryBySearch("01.04.2018");
+        assertEquals(diaries, diaryDao.findDiaryByWeek(testuser.getUsername(), "07.04.2018", "01.04.2018"));
     }
 
 }
-
-//TODONEXT
-//       @Test
-//        public void getDayTodayReturnWeekReturnsEMptyListIfLoggedInIsNull() throws SQLException{  
-//        List<Diary> diaries = new ArrayList<>(); 
-////        Date todaysDate = new java.sql.Date(System.currentTimeMillis());
-////        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-////        String testDateString = df.format(todaysDate);  
-//          
-//         assertEquals(diaries, diaryService.getDiaryByWeek());
-//    }
-//TODONEXT
-//           @Test
-//        public void getDayTodayReturnMonthReturnsEMptyListIfLoggedInIsNull() throws SQLException{  
-//        List<Diary> diaries = new ArrayList<>(); 
-////        Date todaysDate = new java.sql.Date(System.currentTimeMillis());
-////        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-////        String testDateString = df.format(todaysDate);  
-//          
-//         assertEquals(diaries, diaryService.getDiaryByMonth());
-//    }     

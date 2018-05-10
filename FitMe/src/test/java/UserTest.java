@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import fitme.domain.User;
 import org.junit.Test;
@@ -15,14 +10,9 @@ import static org.junit.Assert.*;
 public class UserTest {
 
     @Test
-    public void LuoUserilleKayttajanimen() {
+    public void KonstruktoriLuoUserilleKayttajanimenjaNimen() {
         User user = new User("Mat", "Matias");
         assertEquals("Mat", user.getUsername());
-    }
-
-    @Test
-    public void LuoUserilleNimen() {
-        User user = new User("Mat", "Matias");
         assertEquals("Matias", user.getName());
     }
 
