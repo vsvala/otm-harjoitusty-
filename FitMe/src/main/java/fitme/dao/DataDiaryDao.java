@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fitme.dao;
 
 import java.util.ArrayList;
@@ -10,12 +6,9 @@ import java.util.List;
 import fitme.domain.Diary;
 import fitme.domain.User;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 /**
  *
@@ -36,7 +29,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
      *
      * @param object =päiväkirjamerkintä
      * @return talletettu päiväkirjamerkintä
-     * @throws SQLException
+     * @throws SQLException jos tallennus tietokantaan ei onnistu
      */
     @Override
     public Diary saveOrUpdate(Diary object) throws SQLException {
@@ -70,16 +63,12 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
      * päivältä
      *
      * @param key =username
-     * @return
-     * @throws SQLException
+     * @return listan päiväkirjoista
+     * @throws SQLException jos  tietokantatoiminnot ei onnistu
      */
     @Override
-    public List<Diary> findDiaryByDate(String key) throws SQLException {
+    public List<Diary> findDiaryByDate(String key, String day) throws SQLException {
         List<Diary> diaries = new ArrayList<>();
-
-        Date todaysDate = new java.sql.Date(System.currentTimeMillis());
-        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-        String day = df.format(todaysDate);
 
         Connection connection = database.getConnection();
 
@@ -109,23 +98,23 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
      * @param key username
      * @param date tämä päivä
      * @return lista päiväkirjamerkinnöistä viimeisiltä 7 päivältä
-     * @throws SQLException
+     * @throws SQLException  jos  tietokantatoiminnot ei onnistu
      */
     @Override
     public List<Diary> findDiaryByWeek(String key, String date, String d6) throws SQLException {
 
         List<Diary> diaries = new ArrayList<>();
-
+        
         String dd = date.substring(0, 2);
-//        System.out.println("dd" + dd);
         int dateToday = Integer.parseInt(dd);
 
-        if (dateToday > 7) {
+        if (dateToday <= 7) {
+         
             Connection connection = database.getConnection();
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day >=?");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day <=?");
 
             stmt.setObject(1, key);
-            stmt.setObject(2, d6);
+            stmt.setObject(2, date);
 
             ResultSet rs = stmt.executeQuery();
 
@@ -138,14 +127,13 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
             rs.close();
             connection.close();
         } else {
-
+       
             Connection connection = database.getConnection();
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day <= ? OR user_username = ? AND day >= ?");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Diary WHERE user_username = ? AND day <= ? AND day >= ?");
 
             stmt.setObject(1, key);
             stmt.setObject(2, date);
-            stmt.setObject(3, key);
-            stmt.setObject(4, d6);
+            stmt.setObject(3, d6);
 
             ResultSet rs = stmt.executeQuery();
 
@@ -170,7 +158,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
      * @param key username
      * @param date haettu päivä
      * @return lista päiväkirjamerkinnöistä ko. päivältä
-     * @throws SQLException
+     * @throws SQLException  jos  tietokantatoiminnot ei onnistu
      */
     @Override
     public List<Diary> findDiaryBySearch(String key, String date) throws SQLException {
@@ -201,7 +189,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
      *
      * @param key String id päiväkirjan tunniste
      * @return päiväkirja
-     * @throws SQLException
+     * @throws SQLException jos  tietokantatoiminnot ei onnistu
      */
     @Override
     public Diary findOne(String key) throws SQLException {
@@ -232,7 +220,7 @@ public class DataDiaryDao implements DiaryDao<Diary, String> {
      *
      * @param key String id päiväkirjan tunniste
      * @return true jos poisto onnistuu
-     * @throws SQLException
+     * @throws SQLException  jos  tietokantatoiminnot ei onnistu
      */
     @Override
     public boolean delete(String key) throws SQLException {

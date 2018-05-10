@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import fitme.dao.Database;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -19,61 +16,50 @@ import static org.junit.Assert.*;
  */
 public class DatabaseTest {
 
-    Database database;
+    Database testdatabase;
 
     public DatabaseTest() throws ClassNotFoundException {
-        database = new Database("jdbc:sqlite:fitme.db");
+      
+        
     }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
     @Before
-    public void setUp() {
+    public void setUp() throws IOException, ClassNotFoundException, Exception {  
+        testdatabase = new Database("jdbc:sqlite:test.db");   
+        testdatabase.init();   
+     
     }
 
     @After
-    public void tearDown() {
-    }
+    public void tearDown() throws SQLException {
+             
+        Connection connection = testdatabase.getConnection();
+        PreparedStatement stmt = connection.prepareStatement("DROP TABLE User");
 
+        stmt.executeUpdate();
+        stmt.close();
+        connection.close();
+        
+        connection = testdatabase.getConnection();
+        stmt = connection.prepareStatement("DROP TABLE Diary");
+
+        stmt.executeUpdate();
+        stmt.close();
+        connection.close();
+    }
+    
     @Test
     public void sqlitelauseetLuovatListan() {
         ArrayList<String> lista = new ArrayList<>();
         lista.add("CREATE TABLE IF NOT EXISTS User (username varchar (10) PRIMARY KEY, name varchar(30));");
         lista.add("CREATE TABLE IF NOT EXISTS Diary (id integer PRIMARY KEY, user_username varchar, day varchar, content varchar(100), kcal Integer (5), FOREIGN KEY (user_username) REFERENCES User(username));");
 
-       
-//        lista.add("INSERT INTO User(\n"
-//                + "name,\n"
-//                + "username) VALUES ('testjorma', 'testJokke');");
-//        lista.add("INSERT INTO Diary(\n"
-//                + "id,\n"
-//                + "user_username,\n"
-//                + "day,\n"
-//                + "content,\n"
-//                + "kcal)\n"
-//                + "VALUES (67, 'testJokke', 28.04.2018, 'makkara', 400);");
-//         lista.add("INSERT INTO Diary(\n"
-//                + "id,\n"
-//                + "user_username,\n"
-//                + "day,\n"
-//                + "content,\n"
-//                + "kcal)\n"
-//                + "VALUES (66, 'testJokke', 02.05.2018, 'nakki', 111);");
-//        
-
-        assertEquals(lista, database.sqliteLauseet());
+        assertEquals(lista, testdatabase.sqliteLauseet());
     }
 
     @Test
-    public void initReturnsFalseIfDatabaseExists() {
+    public void initReturnsTrueIfExecuted() {
 
-        assertEquals(true, database.init());
+        assertEquals(true, testdatabase.init());
     }
 
 }

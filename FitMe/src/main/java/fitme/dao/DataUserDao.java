@@ -1,17 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fitme.dao;
 
 import java.sql.*;
-import java.util.*;
-import java.io.File;
-import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 import fitme.domain.User;
 
 /**
@@ -30,17 +20,13 @@ public class DataUserDao implements UserDao<User, String> {
  * 
  * @param object tallennettava päiväkirja
  * @return true, jos tallennus onnistuu
- * @throws SQLException 
+ * @throws SQLException  jos  tietokantatoiminnot ei onnistu
  */
     
     @Override
-    public boolean saveOrUpdate(User object) throws SQLException { //User
+    public boolean saveOrUpdate(User object) throws SQLException {
         Connection connection = database.getConnection();
 
-//        if (user != null) {
-//            System.out.println("käyttäjälöytyy..palautetaan käyttäjä");
-//            return false;
-//        }
         System.out.println("luodaan tietokantaan uus käyttäjä");
         PreparedStatement stmt = connection.prepareStatement("INSERT INTO User(username, name) VALUES(?, ?)");
 
@@ -57,7 +43,7 @@ public class DataUserDao implements UserDao<User, String> {
      * 
      * @param key poistettavan merkinnän käyttäjänimi
      * @return true, jos poisto onnistuu
-     * @throws SQLException 
+     * @throws SQLException  jos  tietokantatoiminnot ei onnistu
      */
 
     @Override
@@ -76,7 +62,7 @@ public class DataUserDao implements UserDao<User, String> {
  * 
  * @param key käyttäjänimi
  * @return käyttäjä
- * @throws SQLException 
+ * @throws SQLException  jos  tietokantatoiminnot ei onnistu
  */
     @Override
     public User findByUsername(String key) throws SQLException {
@@ -99,33 +85,3 @@ public class DataUserDao implements UserDao<User, String> {
         return user;
     }
 }
-
-
-
-
-
-//    @Override
-//    public List<User> findAll() throws SQLException {
-//        Connection connection = database.getConnection();
-//
-//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM User");
-//        ResultSet rs = stmt.executeQuery();
-//
-//        List<User> users = new ArrayList<>();
-//
-//        while (rs.next()) {
-//            User a = new User(rs.getString("name"),
-//                    rs.getString("username"));
-//
-//            users.add(a);
-//        }
-//
-//        stmt.close();
-//        rs.close();
-//
-//        connection.close();
-//
-//        System.out.println(users);
-//        return users;
-//
-//    }
