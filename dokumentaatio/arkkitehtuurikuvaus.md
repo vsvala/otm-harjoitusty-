@@ -102,6 +102,7 @@ Kun SummaryScenessä eli yhteenvetonäkymässä syötetään haluttu päivämä�
 
 #### Muut toiminnallisuudet
 
+Sama periaate toistuu sovelluksen kaikissa toiminnallisuuksissa, käyttöliittymän tapahtumakäsittelijä kutsuu sopivaa sovelluslogiikan metodia, sovelluslogiikka päivittää päiväkirjamerkintöjä tai kirjautuneen käyttäjän tilaa. Kontrollin palatessa käyttöliittymään, päivitetään tarvittaessa päiväkirjamerkintöjen lista sekä aktiivinen näkymä.
 
 ## Ohjelman rakenteeseen jääneet heikkoudet
 
