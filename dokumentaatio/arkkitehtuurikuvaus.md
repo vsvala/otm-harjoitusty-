@@ -92,4 +92,6 @@ Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createUser antaen paramet
 
 ## Ohjelman rakenteeseen jääneet heikkoudet
 
+Käyttöliittymä FitMeUi luokka on pitkä. Olisin halunnut jakaa sitä osiin esimerkiksi näkymien mukaan, mutta en saanut sitä  toimimaan, enkä ehtinyt saamaan siihen tarpeeksi ohjeistusta.
+
 
