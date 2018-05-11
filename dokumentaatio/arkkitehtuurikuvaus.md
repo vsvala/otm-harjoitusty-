@@ -33,7 +33,7 @@ Toiminnallisista kokonaisuuksista vastaa luokan [DiaryService](https://github.co
 - boolean createDiary(String content, int kcal) 
 - boolean delete(String id) 
 
-_DiaryService_ pääsee käsiksi käyttäjiin ja Päiväkirjaan tietojen tallennuksesta vastaavan pakkauksessa _fitme.dao_ sijaitsevien rajapinnat  Diary_Dao_ ja _UserDao_ toteuttavien luokkien kautta. Luokkien toteutuksen injektoidaan sovelluslogiikalle konstruktorikutsun yhteydessä.
+_DiaryService_ pääsee käsiksi käyttäjiin ja Päiväkirjaan tietojen tallennuksesta vastaavan pakkauksessa _fitme.dao_ sijaitsevien rajapinnat  Diary_Dao_ ja _UserDao_ toteuttavien luokkien kautta. Luokkien toteutuksen [injektoidaan](https://en.wikipedia.org/wiki/Dependency_injection) sovelluslogiikalle konstruktorikutsun yhteydessä.
 
 DiaryServicen ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/dev/dokumentaatio/kuvat/luokka_pakkausKaavio.png" >
@@ -42,12 +42,13 @@ DiaryServicen ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
 
 Pakkauksen _fitme.dao_ luokat _DataDiaryoDao_ ja _DataserDao_ huolehtivat tietojen tallettamisesta tietokantaan.
 
-Luokat noudattavat Data Access Object-suunnittelumallia ja ne on tarvittaessa mahdollista korvata uusilla toteutuksilla, jos sovelluksen datan talletustapaa päätetään vaihtaa. Luokat onkin eristetty rajapintojen _DiaryoDao_ ja _UserDao_ taakse ja sovelluslogiikka ei käytä luokkia suoraan.
+Luokat noudattavat  [Data Access Object](https://en.wikipedia.org/wiki/Data_access_object) ja ne on tarvittaessa mahdollista korvata uusilla toteutuksilla, jos sovelluksen datan talletustapaa päätetään vaihtaa. Luokat onkin eristetty rajapintojen _DiaryoDao_ ja _UserDao_ taakse ja sovelluslogiikka ei käytä luokkia suoraan.
 
 
 ### Tietokanta
 
 Sovellus tallettaa käyttäjien ja Diaryjen tiedot fitme.db tietokantaan User ja Diary tauluihin.
+Sovelluksen juureen sijoitettu [konfiguraatiotiedosto](https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md#konfiguraatiotiedosto) [config.properties](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/config.properties) määrittelee tietokantataulun nimen.
 
 Käynnistettäessä ohjelmaa esim jar tiedostosta, Database luoka luo tietokantataulut, jos niitä ei ole olemassa
 
