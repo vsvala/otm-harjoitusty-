@@ -47,5 +47,4 @@ Kaikki [määrittelydokumentin](https://github.com/vsvala/otm-harjoitustyo/blob/
 ## Sovellukseen jääneet laatuongelmat
 
 Sovellus ei anna tällä hetkellä järkeviä virheilmoituksia, seuraavissa tilanteissa
-- Jos yhteenvetosivun päivämäärä kenttään kirjoittaa päiväyksen väärin
 - konfiguraation määrittelemiin tiedostoihin ei ole luku/kirjoitusoikeuksia
