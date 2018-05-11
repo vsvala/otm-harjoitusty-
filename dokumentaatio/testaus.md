@@ -7,7 +7,7 @@ Ohjelmaa on testattu sekä automatisoiduin yksikkö- ja integraatiotestein JUnit
 ### sovelluslogiikka
 
 Automatisoitujen testien ytimen moudostavat sovelluslogiikkaa, eli pakkauksen [fitme.domain](https://github.com/vsvala/otm-harjoitustyo/tree/master/FitMe/src/main/java/fitme/domain) luokkia testaavat integraatiotestit [DiaryServiceUserTest](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/test/java/DiaryServiceTest.java) joiden määrittelevät testitapaukset simuloivat käyttöliittymän [DiaryService](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/DiaryService.java)-olin avulla suorittamia toiminnallisuuksia.
-DataDiaryDaon toiminnallisuuksia testaa suoraan [UseDaoTest](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/test/java/UserDaoTest.java)
+DataDiaryDaon toiminnallisuuksia testaa suoraan [UserDaoTest](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/test/java/UserDaoTest.java)
 
 Integraatiotestit käyttävät datan tallennukseen daojen alussa luotua testitietokantaa [DataDiaryDao](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/DiaryService.java) ja [DataUserDao](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/dao/DataUserDao.java)
 
