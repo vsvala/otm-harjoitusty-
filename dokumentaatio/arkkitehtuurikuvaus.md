@@ -16,7 +16,7 @@ Käyttöliittymä sisältää neljä erillistä näkymää
 - ruokapäiväkirjan sivu
 - yhteenvetosivu
 
-jokainen näistä on toteutettu omana [Scene](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/Scene.html)-oliona. Näkymistä yksi kerrallaan on näkyvänä eli sijoitettuna sovelluksen [stageen](https://docs.oracle.com/javase/8/javafx/api/javafx/stage/Stage.html). Käyttöliittymä on rakennettu ohjelmallisesti luokassa [fitme.ui.FitMeUi](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/ui/FitMeUi.java).
+jokainen näistä on toteutettu omana [Scene](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/Scene.html)-oliona. Näkymistä yksi kerrallaan on näkyvänä eli sijoitettuna sovelluksen [stageen](https://docs.oracle.com/javase/8/javafx/api/javafx/stage/Stage.html) . Käyttöliittymä on rakennettu ohjelmallisesti luokassa [fitme.ui.FitMeUi](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/ui/FitMeUi.java).
 
 Käyttöliittymä on pyritty eristämään täysin sovelluslogiikasta, se ainoastaan kutsuu sopivin parametrein sovelluslogiikan toteuttavan olion _DiaryServicen_ metodeja.
 
@@ -86,6 +86,7 @@ Painikkeen painamiseen reagoiva [tapahtumankäsittelijä](https://github.com/vsv
 Kun uuden käyttäjän luomisnäkymässä on syötetty käyttäjätunnus joka ei ole jo käytössä sekä nimi ja klikataan painiketta createUser etenee sovelluksen kontrolli seuraavasti:
 
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/createUser_sekvens.png">
+
 [Tapahtumakäsittelijä](https://github.com/mluukkai/OtmTodoApp/blob/master/src/main/java/todoapp/ui/TodoUi.java#L176) kutsuu sovelluslogiikan metodia [createUser](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/DiaryService.java#L158) antaen parametriksi luotavan käyttäjän tiedot. Sovelluslogiikka selvittää userDao:n avulla onko käyttäjätunnus olemassa. Jos ei, eli uuden käyttäjän luominen on mahdollista, luo sovelluslogiikka User-olion ja tallettaa sen kutsumalla userDao:n metodia saveOrUpdate. Tästä seurauksena on se, että käyttöliittymä vaihtaa näkymäksi loginScenen eli kirjautumisnäkymän.
 
 
