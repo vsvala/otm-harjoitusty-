@@ -3,7 +3,7 @@
 Lataa tiedosto [FitMe.jar](https://github.com/vsvala/otm-harjoitustyo/releases)
 
 ## Konfigurointi
-Ohjelma olettaa, että sen käynnistyshakemistossa on konfiguraatiotiedosto config.properties, joka määrittelee käyttäjät ja ruokapäiväkirjamerkinnät tallentavan tietokannan nimen. Tiedoston muoto on seuraava
+Ohjelma olettaa, että sen käynnistyshakemistossa on konfiguraatiotiedosto config.properties, joka määrittelee käyttäjät ja ruokapäiväkirjamerkinnät tallentavan tietokannan nimen. Tiedoston muoto on seuraava:
 
 ```
 usedDatabase=jdbc:sqlite:fitme.db
@@ -37,7 +37,7 @@ Jos käyttäjän luominen onnistuu, palataan kirjautumisnäkymään.
 
 ## Ruokapäiväkirjamerkintöjen luominen ja poistaminen
 
-Onnistuneen kirjautumisen myötä siirrytään käyttäjän päiväkirjamerkintöjä listaavaan näkymään
+Onnistuneen kirjautumisen myötä siirrytään käyttäjän päiväkirjamerkintöjä listaavaan näkymään:
 
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/DiaryPage.png" width="600">
 
@@ -56,7 +56,7 @@ Sivun alalaidan hakukentään voi kirjoittaa haettavan päiväyksen dd.mm.yyyy m
 _Last 7 days_ painikkeesta pääsee takaisin viimeisen 7 päivän yhteenvetoon.
 
 
-Klikkaamalla näkymän oikean ylänurkan painiketta _logout_, käyttäjä kirjautuu ulos sovelluksesta ja sovellus palaa takaisin kirjaantumisnäkymään
+Klikkaamalla näkymän oikean ylänurkan painiketta _logout_, käyttäjä kirjautuu ulos sovelluksesta ja sovellus palaa takaisin kirjaantumisnäkymään.
 
 _diary_ painikkeen klikkaus puolestaan palauttaa takaisin päiväkirjamerkintöjen lisäämisnäkymään.
  
