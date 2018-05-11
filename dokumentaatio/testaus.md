@@ -8,9 +8,9 @@ Ohjelmaa on testattu sekä automatisoiduin yksikkö- ja integraatiotestein JUnit
 
 Automatisoitujen testien ytimen moudostavat sovelluslogiikkaa, eli pakkauksen [fitme.domain](https://github.com/vsvala/otm-harjoitustyo/tree/master/FitMe/src/main/java/fitme/domain) luokkia testaavat integraatiotestit [DiaryServiceUserTest](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/test/java/DiaryServiceTest.java) joiden määrittelevät testitapaukset simuloivat käyttöliittymän [DiaryService](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/DiaryService.java)-olin avulla suorittamia toiminnallisuuksia.
 
-Integraatiotestit käyttävät datan pysyväistallennukseen DAO-rajapintojen keskusmuistitoteutuksia [FakeTodoDao](https://github.com/mluukkai/OtmTodoApp/blob/master/src/test/java/todoapp/domain/FakeTodoDao.java) ja [FakeUserDao](https://github.com/mluukkai/OtmTodoApp/blob/master/src/test/java/todoapp/domain/FakeTodoDao.java)
+Integraatiotestit käyttävät datan pysyväistallennukseen DAO-rajapintojen keskusmuistitoteutuksia [DataDiaryDao](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/DiaryService.java) ja [DataUserDao](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/dao/DataUserDao.java)
 
-Sovelluslogiikkakerroksen luokille [User](https://github.com/mluukkai/OtmTodoApp/blob/master/src/main/java/todoapp/domain/User.java) ja [Todo](https://github.com/mluukkai/OtmTodoApp/blob/master/src/main/java/todoapp/domain/User.java) on tehty muutama yksikkötesti kattamaan tapaukset, joita integraatiotestit eivät kata (mm. olioiden _equals_-metodit).
+Sovelluslogiikkakerroksen luokille [User](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/User.java) ja [Diary](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/Diary.java) on tehty muutamia yksikkötestejä kattamaan tapaukset, joita integraatiotestit eivät kata (mm. olioiden _equals_-metodit ja kostruktorien luonnit).
 
 ### DAO-luokat
 
