@@ -100,9 +100,9 @@ Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createDiary antaen parame
 #### Päiväkirjamerkintöjen hakeminen
 
 Kun SummaryScenessä eli yhteenvetonäkymässä syötetään haluttu päivämäärä ja klikataan search-painiketta sovelluksen kontrolli etenee seuraavasti:
-<img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/search_diary_sekvenssikaavio.png">
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/search_diary_sekvenssikaavio%20(1).png">
           
-Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia getDiaryBySearch antaen parametriks käyttäjänimenhakumetodin ja syötetyn päiväyksen. Sovelluslogiikka hakee User luokasta getUsername() käyttäjänime parametrikseen.DiaryDao ottaa yhteyden tietokantaan ja hakeetietokannasta kaikki kyseisen käyttäjän ko.päiväyksen päiväkirjamerkinnät ja palauttaa ne listana sovelluslogiikalle, joka palauttaa ne edelleen käyttöliittymälle näytettäväksi.Käyttöliittymä päivittää näytettävät päiväkirjamerkinnät kutsumalla omaa metodissa redrawViewSummarySearch.
+Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia getDiaryBySearch antaen parametreiksi käyttäjänimenhakumetodin ja syötetyn päiväyksen. Sovelluslogiikka hakee User luokasta getUsername() käyttäjänimen. DiaryDao ottaa yhteyden tietokantaan ja hakee tietokannasta kaikki kyseisen käyttäjän ko.päiväyksen päiväkirjamerkinnät ja palauttaa ne listana sovelluslogiikalle, joka palauttaa ne edelleen käyttöliittymälle. Käyttöliittymän metodi redrawViewSummarySearch päivittää näytettävät päiväkirjamerkinnät.
 
 #### Muut toiminnallisuudet
 
