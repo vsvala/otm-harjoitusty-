@@ -21,5 +21,5 @@
 | 2.5   |  6   | testauksen kanssa tappelua, javadoc |
 | 9.5   |  4   | Koodin siivousta, testien siistimistä ja testitietokannan luontijutut |
 | 10.5  |  5   | Syötteen validointia, käyttöohjeen ja vaatimusmäärittelyn päivitys, loput sekvenssikaaviot |
-| 11.5  |  4   | dokumentoinnin hiomista: testidokumentaation lisäys, vika release, tyhjien syötteiden validointia |
-| yht   | ??   |         |
+| 11.5  |  5   | dokumentoinnin hiomista: testidokumentaation lisäys, vika release, tyhjien syötteiden validointia |
+| yht   | 107  |         |
