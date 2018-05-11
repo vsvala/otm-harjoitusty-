@@ -96,7 +96,7 @@ Uuden päiväkirjamerkinnän luovan add-painikkeen klikkaamisen jälkeen sovellu
 
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/createDiary%20sekvenssikaavio.png">
 
-Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createDiary antaen parametriksi luotavan työn tiedot. Sovelluslogiikka luo uuden Diary-olion ja tallettaa sen kutsumalla DiaryDao:n metodia saveOrUpdate. Tästä seurauksena on se, että käyttöliittymä päivittää näytettävät päiväkirjamerkinnät kutsumalla omaa metodiaan redrawView.
+[Tapahtumakäsittelijä](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/ui/FitMeUi.java#L342) kutsuu sovelluslogiikan metodia [createDiary](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/DiaryService.java#L35) antaen parametriksi luotavan työn tiedot. Sovelluslogiikka luo uuden Diary-olion ja tallettaa sen kutsumalla DiaryDao:n metodia saveOrUpdate. Tästä seurauksena on se, että käyttöliittymä päivittää näytettävät päiväkirjamerkinnät kutsumalla omaa metodiaan redrawView.
 
 
 #### Päiväkirjamerkintöjen hakeminen
