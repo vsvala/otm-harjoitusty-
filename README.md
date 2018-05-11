@@ -15,9 +15,13 @@ Ohjelmoinnin harjoitustyönä tehty Fitme ruokapäiväkirja sovellusprojekti sek
 [Työaikakirjanpito](https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/ty%C3%B6aikakirjanpito)
 
 ## Releaset
+
+[Viikko 7](https://github.com/vsvala/otm-harjoitustyo/releases/tag/viikko7)
+
 [Viikko 6](https://github.com/vsvala/otm-harjoitustyo/releases/tag/viikko6)
 
 [Viikko 5](https://github.com/vsvala/otm-harjoitustyo/releases/tag/viikko5)
+
 
 ## <h2>Komentorivitoiminnot
 
