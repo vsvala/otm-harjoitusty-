@@ -26,7 +26,7 @@ Database luokan init metodia sekätietokannanluontilauseita luovaa metodia testa
 
 Käyttöliittymäkerrosta lukuunottamatta sovelluksen testauksen rivikattavuus on 89 ja haarautumakattavuus 82%
 
-<img src="https://raw.githubusercontent.com/mluukkai/OtmTodoApp/master/dokumentaatio/kuvat/t-1.png" width="800">
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/test.png" width="800">
 
 Testaamatta jäivät tilanteet, joissa käyttäjät tai tehtävät tallettavia tiedostoja ei ole, tai niihin ei ole luku- ja kirjoitusoikeutta.
 
