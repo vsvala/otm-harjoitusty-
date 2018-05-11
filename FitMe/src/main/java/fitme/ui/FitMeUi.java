@@ -58,7 +58,7 @@ public class FitMeUi extends Application {
     private Label kcalSumLabels;
     private String date;
     private TextField dateStartInput;
-    private Label wrongInputMessage;
+    private Label dateInputMessage;
     public Database database;
 
     @Override
@@ -340,14 +340,20 @@ public class FitMeUi extends Application {
             try {
                 kcalMessage.setText("");
                 int kcal = Integer.parseInt(kcalInput.getText());
-                diaryService.createDiary(foodInput.getText(), kcal);  // DIARYSERVICE CREATE DIARY TO DATABASE
+                if (foodInput.getText().isEmpty()) {
+                    kcalMessage.setText("Empty food input!!!");
+                    kcalMessage.setTextFill(Color.RED);
+
+                } else {
+                    diaryService.createDiary(foodInput.getText(), kcal);  // DIARYSERVICE CREATE DIARY TO DATABASE
+                }
 
             } catch (java.lang.NumberFormatException ne) {
 
                 System.out.println("input type wrong");
                 kcalMessage.setText("Give calories as numbers!!!");
-
                 kcalMessage.setTextFill(Color.RED);
+
             } catch (SQLException ex) {
                 Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -479,6 +485,7 @@ public class FitMeUi extends Application {
         createForms.setPadding(new Insets(20, 20, 20, 20));
 
         Label dateLabel = new Label("Search diary by date: ");
+        Label dateInputMessage = new Label();
         dateStartInput = new TextField();
         dateStartInput.setPromptText("dd.mm.yyyy");
         dateStartInput.setFont(Font.font("Verdana", FontPosture.ITALIC, 12));
@@ -501,19 +508,26 @@ public class FitMeUi extends Application {
 
         searchButton.setOnAction(e -> {
             nodes2.getChildren().clear();
-            try {
-                date = dateStartInput.getText();
 
-                redrawViewSummarySearch();
-                dateStartInput.setText("");
-                dateStartInput.setPromptText("dd.mm.yyyy");
+            try {
+                if (dateStartInput.getText().isEmpty()) {
+                    dateInputMessage.setText("Empty input!");
+                    dateInputMessage.setTextFill(Color.RED);
+
+                } else {
+                    dateInputMessage.setText("");
+                    date = dateStartInput.getText();
+                    redrawViewSummarySearch();
+                    dateStartInput.setText("");
+                    dateStartInput.setPromptText("dd.mm.yyyy");
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
 
         createButtons.getChildren().addAll(kcal7Button);
-        createForms.getChildren().addAll(dateLabel, dateStartInput, spacer, searchButton);
+        createForms.getChildren().addAll(dateLabel, dateStartInput, dateInputMessage, spacer, searchButton);
         putColumn.getChildren().addAll(createButtons, createForms);
 
         nodes2 = new VBox(10);
@@ -530,7 +544,7 @@ public class FitMeUi extends Application {
             primaryStage.setScene(diaryScene);
         });
 
-        // LOGOUT BUTTON ACTION logout palauttaa login näkymään       
+// LOGOUT BUTTON ACTION logout palauttaa login näkymään       
         logoutButtons.setOnAction(e -> {
             diaryService.logout();
             primaryStage.setScene(loginScene);
