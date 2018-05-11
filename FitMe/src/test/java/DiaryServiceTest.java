@@ -27,7 +27,7 @@ public class DiaryServiceTest {
     Database testdatabase;
     DataUserDao userDao;
     DataDiaryDao diaryDao;
-    DiaryService diaryService;
+    DiaryService diaryService;;
     User testuser;
     Diary testdiary;
     String date;
@@ -45,7 +45,6 @@ public class DiaryServiceTest {
         userDao.saveOrUpdate(testuser);
         diaryService.login("testLissu");
 
-        date = diaryService.getDayToday();
         testdiary = new Diary(1, "24.04.2018", "chili", 4, testuser);
         diaryDao.saveOrUpdate(testdiary);
         diaryDao.saveOrUpdate(new Diary(2, date, "munkki", 500, testuser));

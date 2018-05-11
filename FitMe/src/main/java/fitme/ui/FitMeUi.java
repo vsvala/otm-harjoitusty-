@@ -42,15 +42,13 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
 public class FitMeUi extends Application {
-    //  sovelluslogiikka  
+    //  käyttöliittymän luonnista vastaava luokka  
 
-    private DiaryService diaryService;   //service
-
+    private DiaryService diaryService;
     private Scene diaryScene;
     private Scene createUserScene;
     private Scene loginScene;
     private Scene summaryScene;
-
     private VBox nodes;
     private VBox nodes2;
     private int totalKcal;
@@ -278,10 +276,6 @@ public class FitMeUi extends Application {
         HBox.setHgrow(menuSpacer, Priority.ALWAYS);
         Button summaryButton = new Button("summary");
         Button logoutButton = new Button("logout");
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
 
         //header
         Label diaryHeaderLabel = new Label("My Food Diary " + diaryService.getDayToday());
@@ -310,20 +304,11 @@ public class FitMeUi extends Application {
         TextField kcalInput = new TextField();
         kcalInput.setPrefWidth(75);
         Label kcalMessage = new Label();
-<<<<<<< HEAD
-        
-         
-        createForm.getChildren().addAll(addLabel, foodInput, kcalLabel, kcalInput, spacer, createFood);
-        messagePane.getChildren().addAll(kcalMessage);
-        downbox.getChildren().addAll(messagePane, createForm); 
-        
-=======
 
         createForm.getChildren().addAll(addLabel, foodInput, kcalLabel, kcalInput, spacer, createFood);
         messagePane.getChildren().addAll(kcalMessage);
         downbox.getChildren().addAll(messagePane, createForm);
 
->>>>>>> dev
         nodes = new VBox(10);
         nodes.setMaxWidth(500);
         nodes.setMinWidth(500);
@@ -332,13 +317,7 @@ public class FitMeUi extends Application {
         mainSrcollbar.setContent(nodes);
         mainPane.setTop(topPane);
         mainPane.setBottom(downbox);//createForm
-<<<<<<< HEAD
-     
-        
-        
-=======
 
->>>>>>> dev
 // SUMMARY BUTTON ACTION creates summary view
         summaryButton.setOnAction(e -> {
             try {
@@ -354,12 +333,7 @@ public class FitMeUi extends Application {
             diaryService.logout();
             primaryStage.setScene(loginScene);
         });
-<<<<<<< HEAD
-              
-            
-=======
 
->>>>>>> dev
 //CREATEFOOD BUTTON ACTION creates one diary marking   
         createFood.setOnAction(e -> {
 
@@ -369,13 +343,10 @@ public class FitMeUi extends Application {
                 diaryService.createDiary(foodInput.getText(), kcal);  // DIARYSERVICE CREATE DIARY TO DATABASE
 
             } catch (java.lang.NumberFormatException ne) {
-<<<<<<< HEAD
-                System.out.println("Kelvoton syöte");
-                kcalMessage.setText("Syötäthän kalorit kokonaislukuna!!!");
-=======
+
                 System.out.println("input type wrong");
                 kcalMessage.setText("Give calories as numbers!!!");
->>>>>>> dev
+
                 kcalMessage.setTextFill(Color.RED);
             } catch (SQLException ex) {
                 Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
