@@ -19,7 +19,7 @@ DAO-luokan toiminnallisuuksien testaamisessa on käytössä oma testitietokanta,
 
 ### Database
 
-Database luokan init metodia sekätietokannanluontilauseita luovaa metodia testaa [DatabaseTest](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/test/java/DatabaseTest.java).
+[Database](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/dao/Database.java) luokan init metodia sekä tietokannanluontilauseita testaa [DatabaseTest](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/test/java/DatabaseTest.java).
 
 
 ### Testauskattavuus
