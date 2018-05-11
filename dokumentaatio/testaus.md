@@ -7,6 +7,7 @@ Ohjelmaa on testattu sekä automatisoiduin yksikkö- ja integraatiotestein JUnit
 ### sovelluslogiikka
 
 Automatisoitujen testien ytimen moudostavat sovelluslogiikkaa, eli pakkauksen [fitme.domain](https://github.com/vsvala/otm-harjoitustyo/tree/master/FitMe/src/main/java/fitme/domain) luokkia testaavat integraatiotestit [DiaryServiceUserTest](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/test/java/DiaryServiceTest.java) joiden määrittelevät testitapaukset simuloivat käyttöliittymän [DiaryService](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/DiaryService.java)-olin avulla suorittamia toiminnallisuuksia.
+DataDiaryDaon toiminnallisuuksin testaamiseen myös [UseDaoTest](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/test/java/UserDaoTest.java)
 
 Integraatiotestit käyttävät datan pysyväistallennukseen DAO-rajapintojen keskusmuistitoteutuksia [DataDiaryDao](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/DiaryService.java) ja [DataUserDao](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/dao/DataUserDao.java)
 
@@ -14,7 +15,12 @@ Sovelluslogiikkakerroksen luokille [User](https://github.com/vsvala/otm-harjoitu
 
 ### DAO-luokat
 
-Molempien DAO-luokkien toiminnallisuus on testattu luomalla testeissä tilapäinen tiedosto hyödyntäen JUnitin [TemporaryFolder](https://junit.org/junit4/javadoc/4.12/org/junit/rules/TemporaryFolder.html)-ruleja.
+DAO-luokkan toiminnallisuuksien testaamisessa on käytössä oma testitietokanta, joka luodaan testien aluksi.
+
+### Database
+
+DAO-luokkan toiminnallisuuksien testaamisessa on käytössä oma testitietokanta, joka luodaan testien aluksi.
+
 
 ### Testauskattavuus
 
