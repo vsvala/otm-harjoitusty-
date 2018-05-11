@@ -42,7 +42,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
 public class FitMeUi extends Application {
-    //  käyttöliittymän luonnista vastaava luokka  
+//  käyttöliittymän luonnista vastaava luokka  
 
     private DiaryService diaryService;
     private Scene diaryScene;
@@ -59,6 +59,8 @@ public class FitMeUi extends Application {
     private String date;
     private TextField dateStartInput;
     private Label dateInputMessage;
+    private Label notFoundMessage;
+    private Label kcalMessage;
     public Database database;
 
     @Override
@@ -134,7 +136,7 @@ public class FitMeUi extends Application {
 
         loginScene = new Scene(loginPane, 300, 250);
 
-////Call Metod  create USERVIEW////////
+//Call Metod  create USERVIEW////////
         createUserView(primaryStage, loginMessage);
 
 //call Metod  create DIARYVIÈW//////////   
@@ -303,7 +305,7 @@ public class FitMeUi extends Application {
         foodInput.setPrefWidth(200);
         TextField kcalInput = new TextField();
         kcalInput.setPrefWidth(75);
-        Label kcalMessage = new Label();
+        kcalMessage = new Label();
 
         createForm.getChildren().addAll(addLabel, foodInput, kcalLabel, kcalInput, spacer, createFood);
         messagePane.getChildren().addAll(kcalMessage);
@@ -320,6 +322,8 @@ public class FitMeUi extends Application {
 
 // SUMMARY BUTTON ACTION creates summary view
         summaryButton.setOnAction(e -> {
+            dateInputMessage.setText("");
+            notFoundMessage.setText("");
             try {
                 redrawViewSummaryWeek();
             } catch (SQLException ex) {
@@ -340,7 +344,7 @@ public class FitMeUi extends Application {
             try {
                 kcalMessage.setText("");
                 int kcal = Integer.parseInt(kcalInput.getText());
-                if (foodInput.getText().isEmpty()) {
+                if (foodInput.getText().isEmpty() | kcalInput.getText().isEmpty()) {
                     kcalMessage.setText("Empty food input!!!");
                     kcalMessage.setTextFill(Color.RED);
 
@@ -350,13 +354,13 @@ public class FitMeUi extends Application {
 
             } catch (java.lang.NumberFormatException ne) {
 
-                System.out.println("input type wrong");
                 kcalMessage.setText("Give calories as numbers!!!");
                 kcalMessage.setTextFill(Color.RED);
 
             } catch (SQLException ex) {
                 Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
             }
+         
             foodInput.setText("");
             kcalInput.setText("");
             try {
@@ -427,11 +431,19 @@ public class FitMeUi extends Application {
 
     public void redrawViewSummarySearch() throws SQLException {
 
+        List<Diary> diaries = diaryService.getDiaryBySearch(date);
+        if (diaries.isEmpty()) {
+            notFoundMessage.setText("Diary not found for given date! Check you gave date in right format: dd.mm.yyyy");
+            notFoundMessage.setTextFill(Color.RED);
+        } else {
+            notFoundMessage.setText("");
+
+        }
         int totalKcalDay = diaryService.countKcalPerSearch(date);
 
         nodes2.getChildren().clear();
 
-        kcalSumLabels = new Label("Kcal eaten " + date + " :    " + totalKcalDay);
+        kcalSumLabels = new Label("date: " + date + "     kcal eaten:    " + totalKcalDay);
         kcalSumLabels.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         kcalSumLabels.setMinHeight(28);
         kcalSumLabels.setPadding(new Insets(30, 0, 0, 20));
@@ -443,10 +455,12 @@ public class FitMeUi extends Application {
         diariessum.forEach(diarycontent -> {
             try {
                 nodes2.getChildren().add(createDiaryNodeSummary(diarycontent));
+
             } catch (SQLException ex) {
 
                 Logger.getLogger(FitMeUi.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         });
 
     }
@@ -480,12 +494,16 @@ public class FitMeUi extends Application {
         VBox putColumn = new VBox(10);
         HBox createButtons = new HBox(10);
         createButtons.setPadding(new Insets(20));
+        HBox createMessage = new HBox(10);
+        createMessage.setPadding(new Insets(0, 0, 0, 20));
 
         HBox createForms = new HBox(10);
         createForms.setPadding(new Insets(20, 20, 20, 20));
 
         Label dateLabel = new Label("Search diary by date: ");
-        Label dateInputMessage = new Label();
+        dateInputMessage = new Label();
+        notFoundMessage = new Label();
+        notFoundMessage.setText("");
         dateStartInput = new TextField();
         dateStartInput.setPromptText("dd.mm.yyyy");
         dateStartInput.setFont(Font.font("Verdana", FontPosture.ITALIC, 12));
@@ -499,6 +517,8 @@ public class FitMeUi extends Application {
         Button kcal7Button = new Button("last 7 days");
 
         kcal7Button.setOnAction(e -> {
+            dateInputMessage.setText("");
+            notFoundMessage.setText("");
             try {
                 redrawViewSummaryWeek();
             } catch (SQLException ex) {
@@ -527,8 +547,9 @@ public class FitMeUi extends Application {
         });
 
         createButtons.getChildren().addAll(kcal7Button);
+        createMessage.getChildren().addAll(notFoundMessage);
         createForms.getChildren().addAll(dateLabel, dateStartInput, dateInputMessage, spacer, searchButton);
-        putColumn.getChildren().addAll(createButtons, createForms);
+        putColumn.getChildren().addAll(createButtons, createMessage, createForms);
 
         nodes2 = new VBox(10);
         nodes2.setMaxWidth(500);
@@ -541,6 +562,7 @@ public class FitMeUi extends Application {
 
 // DIARY BUTTON ACTION creates diaryview         
         diaryButtons.setOnAction(e -> {
+              kcalMessage.setText("");
             primaryStage.setScene(diaryScene);
         });
 
