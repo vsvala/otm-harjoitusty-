@@ -110,6 +110,6 @@ Sama periaate toistuu sovelluksen kaikissa toiminnallisuuksissa, käyttöliittym
 
 ## Ohjelman rakenteeseen jääneet heikkoudet
 
-Käyttöliittymä FitMeUi luokka on pitkä. Olisin halunnut jakaa sitä osiin esimerkiksi näkymien mukaan, mutta en saanut sitä  toimimaan, enkä ehtinyt saamaan siihen tarpeeksi ohjeistusta.
+Käyttöliittymä FitMeUi luokka on pitkä. Yritin jakaa sitä erillisiin luokkiin näkymien mukaan, mutta en saanut sitä näin toimimaan.
 
 
