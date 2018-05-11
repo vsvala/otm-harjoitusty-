@@ -28,7 +28,7 @@ Käyttöliittymäkerrosta lukuunottamatta sovelluksen testauksen rivikattavuus o
 
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/test.png" width="800">
 
-Testaamatta jäivät tilanteet, joissa käyttäjät tai tehtävät tallettavia tiedostoja ei ole, tai niihin ei ole luku- ja kirjoitusoikeutta.
+Testaamatta jäi esim. tilanne, joissa tietokantaa ei onnistuta luommaan, sekä muutamien testien haaroja.
 
 ## Järjestelmätestaus
 
