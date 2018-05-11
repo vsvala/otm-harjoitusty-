@@ -79,14 +79,14 @@ Kun kirjautumisnäkymässä on syötekenttään kirjoitettu käyttäjätunnus ja
 
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/login_sekvenssikaavio%20(2).png">
 
-Painikkeen painamiseen reagoiva tapahtumankäsittelijä kutsuu sovelluslogiikan diaryService metodia login antaen parametriksi kirjautuneen käyttäjätunnuksen. Sovelluslogiikka selvittää userDao:n ja databasen avulla onko käyttäjätunnus olemassa. Jos on, eli kirjautuminen onnistuu, on seurauksena se että käyttöliittymä vaihtaa näkymäksi diaryScenen, eli sovelluksen varsinaisen päänäkymän ja renderöi näkymään kirjautuneen käyttäjän diaryt eli  ruokapäiväkirjamerkinnät.
+Painikkeen painamiseen reagoiva [tapahtumankäsittelijä](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/ui/FitMeUi.java#L107)  kutsuu sovelluslogiikan diaryService metodia [login](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/DiaryService.java#L119) antaen parametriksi kirjautuneen käyttäjätunnuksen. Sovelluslogiikka selvittää userDao:n ja databasen avulla onko käyttäjätunnus olemassa. Jos on, eli kirjautuminen onnistuu, on seurauksena se että käyttöliittymä vaihtaa näkymäksi diaryScenen, eli sovelluksen varsinaisen päänäkymän ja renderöi näkymään kirjautuneen käyttäjän diaryt eli  ruokapäiväkirjamerkinnät.
 
 #### uuden käyttäjän luominen
 
 Kun uuden käyttäjän luomisnäkymässä on syötetty käyttäjätunnus joka ei ole jo käytössä sekä nimi ja klikataan painiketta createUser etenee sovelluksen kontrolli seuraavasti:
 
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/createUser_sekvens.png">
-Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createUser antaen parametriksi luotavan käyttäjän tiedot. Sovelluslogiikka selvittää userDao:n avulla onko käyttäjätunnus olemassa. Jos ei, eli uuden käyttäjän luominen on mahdollista, luo sovelluslogiikka User-olion ja tallettaa sen kutsumalla userDao:n metodia saveOrUpdate. Tästä seurauksena on se, että käyttöliittymä vaihtaa näkymäksi loginScenen eli kirjautumisnäkymän.
+[Tapahtumakäsittelijä](https://github.com/mluukkai/OtmTodoApp/blob/master/src/main/java/todoapp/ui/TodoUi.java#L176) kutsuu sovelluslogiikan metodia [createUser](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/DiaryService.java#L158) antaen parametriksi luotavan käyttäjän tiedot. Sovelluslogiikka selvittää userDao:n avulla onko käyttäjätunnus olemassa. Jos ei, eli uuden käyttäjän luominen on mahdollista, luo sovelluslogiikka User-olion ja tallettaa sen kutsumalla userDao:n metodia saveOrUpdate. Tästä seurauksena on se, että käyttöliittymä vaihtaa näkymäksi loginScenen eli kirjautumisnäkymän.
 
 
 #### Päiväkirjamerkinnän luominen
