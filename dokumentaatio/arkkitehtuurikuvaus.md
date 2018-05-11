@@ -27,7 +27,7 @@ Kun sovelluksen päiväkirjan sivun tilanne muuttuu, eli uusi käyttäjä kirjau
 Sovelluksen loogisen datamallin muodostavat luokat [User](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/User.java) ja [Diary](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/Diary.java),  jotka kuvaavat käyttäjiä ja käyttäjän ruokapäiväkirjan merkintöjä:
 <img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/lkaavio.png" >
 
-Toiminnallisista kokonaisuuksista vastaa luokan DiaryService ainoa olio. Luokka tarjoaa kaikille käyttäliittymän toiminnoille oman metodin. Näitä ovat esim.
+Toiminnallisista kokonaisuuksista vastaa luokan [DiaryService](https://github.com/vsvala/otm-harjoitustyo/blob/master/FitMe/src/main/java/fitme/domain/DiaryService.java)  ainoa olio. Luokka tarjoaa kaikille käyttäliittymän toiminnoille oman metodin. Näitä ovat esim.
 - boolean login(String username)
 - List<Diary> getDiaryByDate() 
 - boolean createDiary(String content, int kcal) 
