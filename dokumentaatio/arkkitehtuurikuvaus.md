@@ -92,6 +92,7 @@ Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createUser antaen paramet
 
 Uuden päiväkirjamerkinnän luovan add-painikkeen klikkaamisen jälkeen sovelluksen kontrolli etenee seuraavasti:
 
+<img src="https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kuvat/createDiary%20sekvenssikaavio.png">
 
 Tapahtumakäsittelijä kutsuu sovelluslogiikan metodia createDiary antaen parametriksi luotavan työn tiedot. Sovelluslogiikka luo uuden Diary-olion ja tallettaa sen kutsumalla DiaryDao:n metodia saveOrUpdate. Tästä seurauksena on se, että käyttöliittymä päivittää näytettävät päiväkirjamerkinnät kutsumalla omaa metodiaan redrawView.
 
