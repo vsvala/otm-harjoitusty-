@@ -34,7 +34,7 @@ Testaamatta jäi esim. tilanne, joissa tietokantaa ei onnistuta luommaan, sekä 
 
 Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
 
-### Asennus ja kanfigurointi
+### Asennus ja konfigurointi
 
 Sovellus on haettu ja sitä on testattu [käyttöohjeen](https://github.com/vsvala/otm-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md) kuvaamalla tavalla sekä OSX- että Linux-ympäristöön siten, että sovelluksen käynnistyshakemistossa on ollut käyttöohjeen kuvauksen mukainen _config.properties_-tiedosto.
 
